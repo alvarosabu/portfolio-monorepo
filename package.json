@@ -1,0 +1,22 @@
+{
+    "name": "alvarosabu",
+    "author": "Alvaro Saburido <alvaro.saburido@gmail.com>",
+    "description": "AS 20XX Personal Portfolio, Blog, CV, Labs",
+    "private": true,
+    "workspaces": [
+      "apps/**",
+      "packages/*"
+    ],
+    "scripts": {
+      "dev:portfolio": "cd packages/portfolio && npm run dev",
+      "build:portfolio": "cd packages/portfolio && npm run build",
+      "dev:ui": "cd packages/ui && npm run dev",
+      "build:ui": "cd packages/ui && npm run build",
+      "dev:alvaro-dev-labs": "cd apps/alvaro-dev-lab && npm run dev",
+      "publish": "pnpm publish -r"
+    },
+    "devDependencies": {
+      "@alvarosabu/prettier-config": "^1.1.0",
+      "prettier": "^2.6.2"
+    }
+  }

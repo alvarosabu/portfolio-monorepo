@@ -1,0 +1,15 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": "/Users/x400048/Projects/github/portfolio"
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_SCRIPT",
+    "err": {
+      "name": "pnpm",
+      "message": "Missing script: build",
+      "code": "ERR_PNPM_NO_SCRIPT",
+      "stack": "pnpm: Missing script: build\n    at Object.handler (/Users/x400048/.nvm/versions/node/v16.11.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.11/node_modules/pnpm/dist/pnpm.cjs:178379:15)\n    at async /Users/x400048/.nvm/versions/node/v16.11.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.11/node_modules/pnpm/dist/pnpm.cjs:182630:21\n    at async run (/Users/x400048/.nvm/versions/node/v16.11.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.11/node_modules/pnpm/dist/pnpm.cjs:182604:34)\n    at async runPnpm (/Users/x400048/.nvm/versions/node/v16.11.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.11/node_modules/pnpm/dist/pnpm.cjs:182823:5)\n    at async /Users/x400048/.nvm/versions/node/v16.11.0/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.11/node_modules/pnpm/dist/pnpm.cjs:182815:7"
+    }
+  }
+}
