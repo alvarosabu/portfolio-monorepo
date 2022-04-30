@@ -18,5 +18,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "scss.lint.unknownAtRules": "ignore",
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+
+  "unocss.root": "packages/ui"
 }
