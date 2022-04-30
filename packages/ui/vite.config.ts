@@ -1,41 +1,20 @@
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
+
 import vue from '@vitejs/plugin-vue'
-import {
-  presetAttributify,
-  presetUno,
-  presetIcons,
-  presetWebFonts,
-} from 'unocss'
+
 import { resolve } from 'pathe'
+
+import { ASUnoConfig } from './config/unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    Unocss({
-      /* options */
-      presets: [
-        presetUno(),
-        presetIcons({
-          /* options */
-        }),
-        presetAttributify({
-          /* options */
-        }),
-        presetWebFonts({
-          provider: 'google', // default provider
-          fonts: {
-            // these will extend the default theme
-            sans: 'Nunito',
-            mono: ['Fira Code', 'Fira Mono:400,700'],
-            display: ['Gilroy', 'Gilroy:400,700'],
-          },
-        }),
-        // ...other presets
-      ],
-    }),
-  ],
+  resolve: {
+    alias: {
+      '/@': resolve(__dirname, './src'),
+    },
+  },
+  plugins: [vue(), Unocss(ASUnoConfig)],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),

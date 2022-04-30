@@ -1,0 +1,100 @@
+<script lang="ts" setup>
+import { useLogger } from '/@/composables/useLogger'
+import { btnSize, btnVariant, ButtonSize, ButtonVariant } from './const'
+import { computed } from 'vue'
+
+const props = defineProps({
+  disabled: Boolean,
+  outline: Boolean,
+  flat: Boolean,
+  link: String,
+  label: {
+    type: String,
+    default: '',
+  },
+  variant: {
+    type: String,
+    default: btnVariant.PRIMARY,
+    validator: (val: ButtonVariant) => {
+      const { logError } = useLogger()
+      const valid = Object.values(btnVariant).includes(val as btnVariant)
+      if (!valid) {
+        logError(
+          `Invalid button variant specified "${val}". Valid values are [${Object.values(
+            btnVariant,
+          )}]`,
+        )
+      }
+      return valid
+    },
+  },
+  size: {
+    type: String,
+    default: btnSize.DEFAULT,
+    validator: (val: ButtonSize) => {
+      const { logError } = useLogger()
+      const valid = Object.values(btnSize).includes(val as btnSize)
+      if (!valid) {
+        logError(
+          `Invalid button size specified "${val}". Valid values are [${Object.values(
+            btnSize,
+          )}]`,
+        )
+      }
+      return valid
+    },
+  },
+  target: {
+    type: String,
+    default: '_blank',
+  },
+})
+
+/* const hasLabel = computed(() => props.label !== '') */
+
+// Classes
+const btnClasses = computed(() => {
+  const classes: any[] = [`as-btn`]
+
+  if (props.variant) {
+    if (props.flat) {
+      classes.push(`btn-flat-${props.variant.toLowerCase()}`)
+    } else if (props.outline) {
+      classes.push(`btn-outline-${props.variant.toLowerCase()}`)
+    } else {
+      classes.push(`btn-${props.variant.toLowerCase()}`)
+    }
+  }
+
+  if (props.size) {
+    classes.push({
+      'py-2 px-4': props.size === btnSize.DEFAULT,
+      'w-full py-2 px-5': props.size === btnSize.BLOCK,
+      'text-xs py-1 px-2': props.size === btnSize.SM,
+      'text-sm py-1.5 px-3': props.size === btnSize.MD,
+      'text-lg py-2.5 px-5': props.size === btnSize.LG,
+    })
+  }
+
+  return classes
+})
+</script>
+
+<template>
+  <component
+    :is="link ? 'a' : 'button'"
+    :disabled="disabled"
+    :href="link || undefined"
+    :target="link ? target : undefined"
+    :class="btnClasses"
+    font="sans semibold"
+    border="2 rounded-sm"
+    transition-all
+    duration-300
+    disabled:opacity-20
+    cursor-pointer
+    decoration-none
+  >
+    <slot name="default">{{ label }}</slot>
+  </component>
+</template>

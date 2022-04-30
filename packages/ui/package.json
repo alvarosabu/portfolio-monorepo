@@ -1,11 +1,22 @@
 {
   "name": "@alvarosabu/ui",
-  "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
+  "description": "UI Library for AS development",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "main": "./dist/as-ui.umd.js",
+  "module": "./dist/as-ui.es.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "histoire": "pnpm exec histoire dev"
   },
   "dependencies": {
     "vue": "^3.2.33"
@@ -16,7 +27,9 @@
     "@unocss/preset-icons": "^0.32.1",
     "@unocss/preset-uno": "^0.32.1",
     "@unocss/preset-web-fonts": "^0.32.1",
+    "@unocss/reset": "^0.32.1",
     "@vitejs/plugin-vue": "^2.3.1",
+    "histoire": "^0.2.5",
     "pathe": "^0.2.0",
     "typescript": "^4.6.3",
     "unocss": "^0.32.1",
