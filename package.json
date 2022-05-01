@@ -19,7 +19,7 @@
     "changeset": "changeset",
     "publish": "pnpm publish -r",
     "build:all": "pnpm run build --filter @alvarosabu/*",
-    "ci:version": "pnpm changelog && pnpx changeset version && pnpm install --no-frozen-lockfile && git add .",
+    "ci:version": "pnpm changelog && pnpx changeset version && pnpm install --no-frozen-lockfile --shamefully-hoist && git add .",
     "ci:publish": "pnpm build:all && git status && pnpm publish -r && pnpm changeset tag",
     "changeset-publish": "changeset publish",
     "changeset-tag": "changeset tag",
