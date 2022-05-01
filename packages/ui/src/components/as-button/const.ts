@@ -24,16 +24,17 @@ export enum btnSize {
 export const btnShortcuts = [
   [
     /^btn-(?!.*(outline|flat|block|sm|md|lg|default))(.*)/,
-    ([, , c]) => `bg-${c}-400 text-white hover:bg-${c}-500 border-transparent `,
+    ([, , c]: [any, any, string]) =>
+      `bg-${c}-400 text-white hover:bg-${c}-500 border-transparent `,
   ],
   [
     /^btn-outline-(.*)$/,
-    ([, c]) =>
+    ([, c]: [any, string]) =>
       `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500`,
   ],
   [
     /^btn-flat-(.*)$/,
-    ([, c]) =>
+    ([, c]: [any, string]) =>
       `bg-gray-50 border-transparent text-${c}-400 hover:text-${c}-500`,
   ],
 ]

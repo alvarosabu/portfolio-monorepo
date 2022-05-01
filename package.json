@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
   "description": "AS 20XX Personal Portfolio, Blog, CV, Labs",
+  "license": "MIT",
   "workspaces": [
     "apps/**",
     "packages/*"
   ],
+  "engines": {
+    "node": ">16.0.0",
+    "pnpm": ">=6"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "update-deps": "pnpm update -i -r --latest",
