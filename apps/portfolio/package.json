@@ -9,6 +9,8 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@alvarosabu/ui": "workspace:*",
+    "@unocss/nuxt": "^0.32.1",
     "nuxt": "3.0.0-rc.1"
   }
 }
