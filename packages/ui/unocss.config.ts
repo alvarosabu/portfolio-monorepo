@@ -1,16 +1,15 @@
-import { btnShortcuts, btnSafelist } from '/@/components/as-button/const'
 import {
+  defineConfig,
   presetAttributify,
-  presetUno,
   presetIcons,
+  presetTypography,
+  presetUno,
   presetWebFonts,
+  transformerDirectives,
+  transformerVariantGroup,
 } from 'unocss'
 
-export type UnoConfig = {
-  presets?: Array<any>
-  rules?: Array<any>
-  shortcuts?: Array<any>
-}
+import { btnShortcuts, btnSafelist } from './src/components/as-button/const'
 
 const primary = {
   // oxford
@@ -47,29 +46,36 @@ export const ASTheme = {
     primary,
     secondary,
   },
+  breakpoints: {
+    xs: '320px',
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1536px',
+  },
+  boxShadow: {
+    active: 'inset 4px 4px 2px 0 rgba(0, 0, 0, 0.08)',
+  },
 }
 
-export const ASThemeRules = [
-  [
-    /^text-(.*)$/,
-    ([, c], { theme }) => {
-      if (theme.colors[c]) return { color: theme.colors[c] }
-    },
-  ],
-]
-
-export const ASUnoConfig = {
+export default defineConfig({
   theme: ASTheme,
   shortcuts: [...btnShortcuts],
   safelist: [...btnSafelist],
   presets: [
     presetUno(),
+    presetAttributify(),
     presetIcons({
-      /* options */
+      scale: 1.2,
+      warn: true,
+      extraProperties: {
+        display: 'inline-block',
+        'vertical-align': 'middle',
+        // ...
+      },
     }),
-    presetAttributify({
-      /* options */
-    }),
+    presetTypography(),
     presetWebFonts({
       provider: 'google', // default provider
       fonts: {
@@ -80,6 +86,5 @@ export const ASUnoConfig = {
       },
     }),
   ],
-}
-
-export default ASUnoConfig
+  transformers: [transformerDirectives(), transformerVariantGroup()],
+})

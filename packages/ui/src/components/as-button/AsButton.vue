@@ -94,6 +94,9 @@ const btnClasses = computed(() => {
     disabled:opacity-20
     cursor-pointer
     decoration-none
+    transform
+    shadow="hover:current hover:sm active:active"
+    translate="hover:-x-0.5 hover:-y-0.5"
   >
     <slot name="default">{{ label }}</slot>
   </component>

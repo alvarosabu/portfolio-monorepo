@@ -24,7 +24,7 @@ export enum btnSize {
 export const btnShortcuts = [
   [
     /^btn-(?!.*(outline|flat|block|sm|md|lg|default))(.*)/,
-    ([, , c]) => `bg-${c}-400 text-white hover:bg-${c}-500 border-transparent`,
+    ([, , c]) => `bg-${c}-400 text-white hover:bg-${c}-500 border-transparent `,
   ],
   [
     /^btn-outline-(.*)$/,
