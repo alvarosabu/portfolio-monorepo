@@ -23,7 +23,7 @@ function initState() {
           :outline="state.outline"
           :disabled="state.disabled"
         >
-          Hello world
+          Awiwi
         </AsButton>
       </template>
 
@@ -40,7 +40,7 @@ function initState() {
     </Variant>
 
     <Variant title="Primary" icon="carbon:star-filled" icon-color="#10B981">
-      <AsButton variant="primary"> Hello world </AsButton>
+      <AsButton variant="primary"> Awiwi </AsButton>
     </Variant>
   </Story>
 </template>

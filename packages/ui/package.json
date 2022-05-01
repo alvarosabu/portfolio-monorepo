@@ -16,24 +16,29 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "histoire": "pnpm exec histoire dev"
+    "histoire": "pnpm exec histoire dev",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "vue": "^3.2.33"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.33",
-    "@unocss/preset-attributify": "^0.32.1",
-    "@unocss/preset-icons": "^0.32.1",
-    "@unocss/preset-uno": "^0.32.1",
-    "@unocss/preset-web-fonts": "^0.32.1",
-    "@unocss/reset": "^0.32.1",
+    "@iconify/json": "^2.1.34",
+    "@unocss/preset-attributify": "^0.32.8",
+    "@unocss/preset-icons": "^0.32.8",
+    "@unocss/preset-uno": "^0.32.8",
+    "@unocss/preset-web-fonts": "^0.32.8",
+    "@unocss/reset": "^0.32.8",
     "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/test-utils": "^2.0.0-rc.21",
     "histoire": "^0.2.5",
+    "jsdom": "^19.0.0",
     "pathe": "^0.2.0",
-    "typescript": "^4.6.3",
-    "unocss": "^0.32.1",
+    "typescript": "^4.6.4",
+    "unocss": "^0.32.8",
     "vite": "^2.9.6",
-    "vue-tsc": "^0.34.10"
+    "vitest": "^0.10.0",
+    "vue-tsc": "^0.34.11"
   }
 }
