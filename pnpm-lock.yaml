@@ -34,6 +34,12 @@ importers:
 
   packages/ui:
     specifiers:
+      '@iconify-json/ant-design': ^1.1.1
+      '@iconify-json/carbon': ^1.1.4
+      '@iconify-json/gg': ^1.1.1
+      '@iconify-json/logos': ^1.1.5
+      '@iconify-json/octicon': ^1.1.6
+      '@iconify-json/teenyicons': ^1.1.1
       '@iconify/json': ^2.1.34
       '@unocss/preset-attributify': ^0.32.8
       '@unocss/preset-icons': ^0.32.8
@@ -54,6 +60,12 @@ importers:
     dependencies:
       vue: 3.2.33
     devDependencies:
+      '@iconify-json/ant-design': 1.1.1
+      '@iconify-json/carbon': 1.1.4
+      '@iconify-json/gg': 1.1.1
+      '@iconify-json/logos': 1.1.5
+      '@iconify-json/octicon': 1.1.6
+      '@iconify-json/teenyicons': 1.1.1
       '@iconify/json': 2.1.34
       '@unocss/preset-attributify': 0.32.8
       '@unocss/preset-icons': 0.32.8
@@ -621,6 +633,42 @@ packages:
   /@hutson/parse-repository-url/3.0.2:
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
     engines: {node: '>=6.9.0'}
+    dev: true
+
+  /@iconify-json/ant-design/1.1.1:
+    resolution: {integrity: sha512-aziSNNmMGe/BpDVn+LCi7BP1hBJq39kn0j9yk4ZHqKGytiF9JRF/0ziKjxvo0BvYFuPAjwMVJpFzhG0KMZ/DGw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/carbon/1.1.4:
+    resolution: {integrity: sha512-I2Y80wAR+Z3Ut68xiwBfRtw4Lwj7IqeOkCfEnWFC9/dA2ixIJEkCxy8HyNLO3z9RiSF7HZtgI8qGHhyNA2b6EQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/gg/1.1.1:
+    resolution: {integrity: sha512-M0DqErX7GItsiaPt9Se1JvFD5XfcCqW94CL5310dy9JunkNhnKxziNGRSwXgIc13+3bR4vaMEQeeZ+SPWyYdWA==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/logos/1.1.5:
+    resolution: {integrity: sha512-PVBTp7fZ7zNBDdCCqN9IqJt78jO4f8agtiNVwxWfflmEGi3+Fu95Jre0CYAPDalyy862r46DXg8AiCoNENQ3SQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/octicon/1.1.6:
+    resolution: {integrity: sha512-nfcPOL3weTd6vf7Sbm4jMzHOiD7g8CT1k/i/sT433FE7PnxfP60LEavk2jkGRz2adP4xUDpbsfDHdr5Nlyj1HQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/teenyicons/1.1.1:
+    resolution: {integrity: sha512-3gJdTDGmWQAg90+aGhvJwsziZ+eK3iTVJ4r3AZCXlVer5Zc46aVWEpD0WEZfnbnb/A7lTKSjK+kZsn/aUPqkwA==}
+    dependencies:
+      '@iconify/types': 1.1.0
     dev: true
 
   /@iconify/json/2.1.34:

@@ -10,6 +10,7 @@ import {
 } from 'unocss'
 
 import { btnShortcuts, btnSafelist } from './src/components/as-button/const'
+import { iconSafelist } from './src/components/as-icon/const'
 
 const primary = {
   // oxford
@@ -62,7 +63,7 @@ export const ASTheme = {
 export default defineConfig({
   theme: ASTheme,
   shortcuts: [...btnShortcuts],
-  safelist: [...btnSafelist],
+  safelist: [...btnSafelist, ...iconSafelist],
   presets: [
     presetUno(),
     presetAttributify(),
