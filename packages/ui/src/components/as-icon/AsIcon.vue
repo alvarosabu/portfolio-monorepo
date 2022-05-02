@@ -12,5 +12,5 @@ const props = defineProps({
 const iconName = computed(() => asIcons.get(props.name))
 </script>
 <template>
-  <div class="text-primary dark:text-light" :class="`i-${iconName}`" />
+  <div :class="`i-${iconName}`" />
 </template>

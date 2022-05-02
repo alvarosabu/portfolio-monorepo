@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
 import { useLogger } from '/@/composables/useLogger'
 import { btnSize, btnVariant, ButtonSize, ButtonVariant } from './const'
-import { computed } from 'vue'
+
+import AsIcon from '/@/components/as-icon/AsIcon.vue'
 
 const props = defineProps({
   disabled: Boolean,
@@ -48,6 +50,12 @@ const props = defineProps({
     type: String,
     default: '_blank',
   },
+  icon: {
+    type: String,
+  },
+  iconRight: {
+    type: String,
+  },
 })
 
 /* const hasLabel = computed(() => props.label !== '') */
@@ -78,6 +86,8 @@ const btnClasses = computed(() => {
 
   return classes
 })
+
+const hasLabel = computed(() => props.label !== '')
 </script>
 
 <template>
@@ -98,6 +108,22 @@ const btnClasses = computed(() => {
     shadow="hover:current hover:sm active:active"
     translate="hover:-x-0.5 hover:-y-0.5"
   >
+    <slot name="preffix">
+      <AsIcon
+        :name="icon"
+        class="bg-current"
+        :class="hasLabel ? 'mr-2' : ''"
+        v-if="icon"
+      />
+    </slot>
     <slot name="default">{{ label }}</slot>
+    <slot name="suffix">
+      <AsIcon
+        :name="iconRight"
+        class="b-current"
+        :class="hasLabel ? 'ml-2' : ''"
+        v-if="hasLabel && iconRight"
+      />
+    </slot>
   </component>
 </template>
