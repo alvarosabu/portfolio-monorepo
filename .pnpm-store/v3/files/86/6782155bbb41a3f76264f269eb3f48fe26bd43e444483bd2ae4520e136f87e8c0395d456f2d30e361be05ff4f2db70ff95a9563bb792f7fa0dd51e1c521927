@@ -1,0 +1,8 @@
+import type { PreviewSettings } from '../types';
+export declare const usePreviewSettingsStore: import("pinia").StoreDefinition<"preview-settings", import("pinia")._UnwrapAll<Pick<{
+    currentSettings: import("@vueuse/shared").RemovableRef<PreviewSettings>;
+}, "currentSettings">>, import("pinia")._UnwrapAll<Pick<{
+    currentSettings: import("@vueuse/shared").RemovableRef<PreviewSettings>;
+}, never>>, Pick<{
+    currentSettings: import("@vueuse/shared").RemovableRef<PreviewSettings>;
+}, never>>;

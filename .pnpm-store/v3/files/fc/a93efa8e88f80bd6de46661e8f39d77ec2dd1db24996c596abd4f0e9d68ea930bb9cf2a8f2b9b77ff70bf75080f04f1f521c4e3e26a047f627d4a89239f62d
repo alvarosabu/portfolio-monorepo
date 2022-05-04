@@ -1,0 +1,8 @@
+import { Ref } from 'vue';
+export declare type KeyboardShortcut = string[];
+export declare type KeyboardHandler = (event: KeyboardEvent) => unknown;
+export interface KeyboardShortcutOptions {
+    event?: 'keyup' | 'keydown' | 'keypress';
+}
+export declare function onKeyboardShortcut(shortcut: KeyboardShortcut | Ref<KeyboardShortcut>, handler: KeyboardHandler, options?: KeyboardShortcutOptions): void;
+export declare function formatKey(key: string): string;

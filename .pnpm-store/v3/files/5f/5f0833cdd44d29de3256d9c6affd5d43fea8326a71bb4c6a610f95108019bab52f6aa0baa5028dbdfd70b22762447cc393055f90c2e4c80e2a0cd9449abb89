@@ -1,0 +1,81 @@
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { defineNuxtModule, addPluginTemplate, addComponentsDir, extendViteConfig, extendWebpackConfig } from '@nuxt/kit';
+import WebpackPlugin from '@unocss/webpack';
+import VitePlugin from '@unocss/vite';
+import presetUno from '@unocss/preset-uno';
+import presetAttributify from '@unocss/preset-attributify';
+import presetIcons from '@unocss/preset-icons';
+import presetWebFonts from '@unocss/preset-web-fonts';
+import presetTypography from '@unocss/preset-typography';
+import presetWind from '@unocss/preset-wind';
+
+function resolveOptions(options) {
+  if (options.presets == null) {
+    options.presets = [];
+    const presetMap = {
+      uno: presetUno,
+      attributify: presetAttributify,
+      icons: presetIcons,
+      webFonts: presetWebFonts,
+      typography: presetTypography,
+      wind: presetWind
+    };
+    for (const [key, preset] of Object.entries(presetMap)) {
+      const option = options[key];
+      if (option)
+        options.presets.push(preset(typeof option === "boolean" ? {} : option));
+    }
+  }
+}
+
+const dir = dirname(fileURLToPath(import.meta.url));
+const index = defineNuxtModule({
+  meta: {
+    name: "unocss",
+    configKey: "unocss"
+  },
+  defaults: {
+    autoImport: true,
+    preflight: false,
+    components: true,
+    uno: true,
+    attributify: false,
+    webFonts: false,
+    icons: false,
+    wind: false
+  },
+  setup(options) {
+    resolveOptions(options);
+    if (options.autoImport) {
+      addPluginTemplate({
+        filename: "unocss.mjs",
+        getContents: () => {
+          const lines = [
+            "import 'uno.css'",
+            "export default () => {};"
+          ];
+          if (options.preflight)
+            lines.unshift("import '@unocss/reset/tailwind.css'");
+          return lines.join("\n");
+        }
+      });
+    }
+    if (options.components) {
+      addComponentsDir({
+        path: resolve(dir, "../runtime"),
+        watch: false
+      });
+    }
+    extendViteConfig((config) => {
+      config.plugins = config.plugins || [];
+      config.plugins.unshift(...VitePlugin(options));
+    });
+    extendWebpackConfig((config) => {
+      config.plugins = config.plugins || [];
+      config.plugins.unshift(WebpackPlugin(options));
+    });
+  }
+});
+
+export { index as default };

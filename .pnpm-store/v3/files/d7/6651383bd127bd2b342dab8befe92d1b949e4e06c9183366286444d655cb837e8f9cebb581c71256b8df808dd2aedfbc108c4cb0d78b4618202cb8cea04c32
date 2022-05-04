@@ -1,0 +1,14 @@
+{
+  "name": "@unocss/scope",
+  "version": "0.32.1",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    }
+  },
+  "readme": "# @unocss/scope\n\nA stub package for the `per-module` mode of [`@unocss/vite`](https://github.com/unocss/unocss/tree/main/packages/vite).\n"
+}

@@ -1,0 +1,1 @@
+.htw-bind-col-size{grid-template-columns:repeat(auto-fill,minmax(var(--histoire-col-size),1fr))}

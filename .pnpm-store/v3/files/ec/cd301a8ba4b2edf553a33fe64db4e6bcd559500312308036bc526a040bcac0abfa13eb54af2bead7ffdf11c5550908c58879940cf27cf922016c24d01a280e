@@ -1,0 +1,6 @@
+export declare function makeTooltip(descriptionHtml: string, keyboardShortcut: ({ isMac: boolean }: {
+    isMac: any;
+}) => string): {
+    content: string;
+    html: boolean;
+};

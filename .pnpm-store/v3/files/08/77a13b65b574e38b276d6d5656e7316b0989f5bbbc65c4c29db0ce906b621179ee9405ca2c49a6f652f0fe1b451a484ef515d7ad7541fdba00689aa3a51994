@@ -1,0 +1,3 @@
+import type { StoryFile, Variant } from '../types';
+export declare function mapFile(file: StoryFile, existingFile?: StoryFile): StoryFile;
+export declare function mapVariant(variant: Variant): Variant;

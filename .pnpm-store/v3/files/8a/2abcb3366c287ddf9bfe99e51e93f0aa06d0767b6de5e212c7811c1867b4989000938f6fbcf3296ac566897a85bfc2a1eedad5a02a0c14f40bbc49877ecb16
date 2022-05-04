@@ -1,0 +1,171 @@
+import type { App } from 'vue';
+export declare const HstCheckbox: import("vue").DefineComponent<{
+    modelValue: {
+        type: import("vue").PropType<boolean>;
+        required: true;
+    };
+    title: {
+        type: import("vue").PropType<string>;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    'update:modelValue': (newValue: boolean) => true;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    modelValue: {
+        type: import("vue").PropType<boolean>;
+        required: true;
+    };
+    title: {
+        type: import("vue").PropType<string>;
+    };
+}>> & {
+    "onUpdate:modelValue"?: (newValue: boolean) => any;
+}, {}>;
+export declare const HstText: import("vue").DefineComponent<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    'update:modelValue': (newValue: string) => true;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}>> & {
+    "onUpdate:modelValue"?: (newValue: string) => any;
+}, {}>;
+export declare const HstNumber: import("vue").DefineComponent<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<number>;
+        required: true;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    'update:modelValue': (newValue: number) => true;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<number>;
+        required: true;
+    };
+}>> & {
+    "onUpdate:modelValue"?: (newValue: number) => any;
+}, {}>;
+export declare const HstTextarea: import("vue").DefineComponent<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    'update:modelValue': (newValue: string) => true;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    title: {
+        type: import("vue").PropType<string>;
+    };
+    modelValue: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}>> & {
+    "onUpdate:modelValue"?: (newValue: string) => any;
+}, {}>;
+export declare const HstColorShades: import("vue").DefineComponent<{
+    shades: {
+        type: import("vue").PropType<Record<string, string>>;
+        required: true;
+    };
+    getName: {
+        type: import("vue").PropType<(key: string, color: string) => string>;
+    };
+    search: {
+        type: import("vue").PropType<string>;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    shades: {
+        type: import("vue").PropType<Record<string, string>>;
+        required: true;
+    };
+    getName: {
+        type: import("vue").PropType<(key: string, color: string) => string>;
+    };
+    search: {
+        type: import("vue").PropType<string>;
+    };
+}>>, {}>;
+export declare const HstTokenList: import("vue").DefineComponent<{
+    tokens: {
+        type: import("vue").PropType<Record<string, string | number | any[] | Record<string, any>>>;
+        required: true;
+    };
+    getName: {
+        type: import("vue").PropType<(key: string, value: string | number | any[] | Record<string, any>) => string>;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    tokens: {
+        type: import("vue").PropType<Record<string, string | number | any[] | Record<string, any>>>;
+        required: true;
+    };
+    getName: {
+        type: import("vue").PropType<(key: string, value: string | number | any[] | Record<string, any>) => string>;
+    };
+}>>, {}>;
+export declare const HstTokenGrid: import("vue").DefineComponent<{
+    getName: {
+        type: import("vue").PropType<(key: string, value: string | number | any[] | Record<string, any>) => string>;
+    } & {
+        default: any;
+    };
+    colSize: {
+        type: import("vue").PropType<number>;
+    } & {
+        default: number;
+    };
+    tokens: {
+        type: import("vue").PropType<Record<string, string | number | any[] | Record<string, any>>>;
+        required: true;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    getName: {
+        type: import("vue").PropType<(key: string, value: string | number | any[] | Record<string, any>) => string>;
+    } & {
+        default: any;
+    };
+    colSize: {
+        type: import("vue").PropType<number>;
+    } & {
+        default: number;
+    };
+    tokens: {
+        type: import("vue").PropType<Record<string, string | number | any[] | Record<string, any>>>;
+        required: true;
+    };
+}>>, {
+    getName: (key: string, value: string | number | any[] | Record<string, any>) => string;
+    colSize: number;
+}>;
+export declare const HstCopyIcon: import("vue").DefineComponent<{
+    content: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    content: {
+        type: import("vue").PropType<string>;
+        required: true;
+    };
+}>>, {}>;
+export declare function registerVueComponents(app: App): void;

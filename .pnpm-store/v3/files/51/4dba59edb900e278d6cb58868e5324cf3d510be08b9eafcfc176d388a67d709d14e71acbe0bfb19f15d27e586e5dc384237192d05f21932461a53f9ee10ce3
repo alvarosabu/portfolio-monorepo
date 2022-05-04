@@ -1,0 +1,4 @@
+export { hstEvent } from './app/util/events';
+export function defineSetupVue3(handler) {
+    return handler;
+}

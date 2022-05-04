@@ -1,0 +1,60 @@
+{
+  "name": "@unocss/nuxt",
+  "version": "0.32.1",
+  "description": "Nuxt module for UnoCSS",
+  "keywords": [
+    "unocss",
+    "nuxt-module",
+    "nuxt",
+    "nuxt3"
+  ],
+  "homepage": "https://github.com/unocss/unocss#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/nuxt"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "index.cjs",
+    "runtime"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@nuxt/kit": "^3.0.0-rc.1",
+    "@unocss/core": "0.32.1",
+    "@unocss/preset-attributify": "0.32.1",
+    "@unocss/preset-icons": "0.32.1",
+    "@unocss/preset-typography": "0.32.1",
+    "@unocss/preset-uno": "0.32.1",
+    "@unocss/preset-web-fonts": "0.32.1",
+    "@unocss/preset-wind": "0.32.1",
+    "@unocss/reset": "0.32.1",
+    "@unocss/vite": "0.32.1",
+    "@unocss/webpack": "0.32.1",
+    "unocss": "0.32.1"
+  },
+  "devDependencies": {
+    "@nuxt/schema": "^3.0.0-rc.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/nuxt\n\nNuxt module for UnoCSS\n\n## Supporting Status\n\n| | Nuxt 2 | Nuxt Bridge | Nuxt 3 |\n| --- | --- | --- | --- |\n| Webpack Dev | ✅ | ✅ | 🚧 |\n| Webpack Build | ✅ | ✅ | ✅ |\n| Vite Dev | - | ✅ | ✅ |\n| Vite Build | - | ✅ | ✅ |\n\n## Installation\n\n```bash\nnpm i -D @unocss/nuxt\n```\n\n```js\n// nuxt.config.js\n\nexport default {\n  buildModules: [\n    '@unocss/nuxt',\n  ],\n}\n```\n\n## Configuration\n\nIn the Nuxt module, we also provided some shortcuts for official presets:\n\n```js\n// nuxt.config.js\n\nexport default {\n  buildModules: [\n    '@unocss/nuxt',\n  ],\n  unocss: {\n    // presets\n    uno: true, // enabled `@unocss/preset-uno`\n    icons: true, // enabled `@unocss/preset-icons`\n    attributify: true, // enabled `@unocss/preset-attributify`,\n\n    // core options\n    shortcuts: [],\n    rules: [],\n  },\n}\n```\n\n## License\n\nMIT License © 2021-PRESENT [Anthony Fu](https://github.com/antfu)\n"
+}

@@ -1,0 +1,29 @@
+export declare type HstEvent = {
+    name: string;
+    argument: unknown;
+};
+export declare const useEventsStore: import("pinia").StoreDefinition<"events", import("pinia")._UnwrapAll<Pick<{
+    addEvent: (event: HstEvent) => void;
+    reset: () => void;
+    events: {
+        name: string;
+        argument: unknown;
+    }[];
+    unseen: import("vue").Ref<number>;
+}, "events" | "unseen">>, import("pinia")._UnwrapAll<Pick<{
+    addEvent: (event: HstEvent) => void;
+    reset: () => void;
+    events: {
+        name: string;
+        argument: unknown;
+    }[];
+    unseen: import("vue").Ref<number>;
+}, never>>, Pick<{
+    addEvent: (event: HstEvent) => void;
+    reset: () => void;
+    events: {
+        name: string;
+        argument: unknown;
+    }[];
+    unseen: import("vue").Ref<number>;
+}, "addEvent" | "reset">>;

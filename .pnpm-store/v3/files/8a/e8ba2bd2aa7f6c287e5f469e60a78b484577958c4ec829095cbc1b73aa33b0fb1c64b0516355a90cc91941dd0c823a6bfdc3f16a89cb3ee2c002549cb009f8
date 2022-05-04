@@ -1,0 +1,5 @@
+import { Plugin } from '../plugin.js';
+export interface TailwindTokensOptions {
+    configFile?: string;
+}
+export declare function tailwindTokens(options?: TailwindTokensOptions): Plugin;

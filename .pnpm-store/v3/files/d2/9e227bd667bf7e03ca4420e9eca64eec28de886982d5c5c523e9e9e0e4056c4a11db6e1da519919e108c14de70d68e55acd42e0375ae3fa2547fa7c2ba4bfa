@@ -1,0 +1,57 @@
+{
+  "name": "@unocss/cli",
+  "version": "0.32.8",
+  "description": "CLI for UnoCSS",
+  "keywords": [],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/cli#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Johann Schopplich",
+    "email": "pkg@johannschopplich.com",
+    "url": "https://johannschopplich.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/cli"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "bin": {
+    "unocss": "./bin/unocss.mjs"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@unocss/config": "0.32.8",
+    "@unocss/core": "0.32.8",
+    "@unocss/preset-uno": "0.32.8",
+    "cac": "^6.7.12",
+    "chokidar": "^3.5.3",
+    "colorette": "^2.0.16",
+    "consola": "^2.15.3",
+    "fast-glob": "^3.2.11",
+    "pathe": "^0.2.0",
+    "perfect-debounce": "^0.1.3"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}

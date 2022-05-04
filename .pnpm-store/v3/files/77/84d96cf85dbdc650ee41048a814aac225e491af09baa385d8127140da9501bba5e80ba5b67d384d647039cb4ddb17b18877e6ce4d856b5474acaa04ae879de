@@ -1,0 +1,16 @@
+{
+	"name": "@volar/source-map",
+	"version": "0.34.11",
+	"main": "out/index.js",
+	"license": "MIT",
+	"files": [
+		"out/**/*.js",
+		"out/**/*.d.ts"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/johnsoncodehk/volar.git",
+		"directory": "packages/source-map"
+	},
+	"gitHead": "55bca2915d0d4a41ac893e015358cdb3424440d2"
+}

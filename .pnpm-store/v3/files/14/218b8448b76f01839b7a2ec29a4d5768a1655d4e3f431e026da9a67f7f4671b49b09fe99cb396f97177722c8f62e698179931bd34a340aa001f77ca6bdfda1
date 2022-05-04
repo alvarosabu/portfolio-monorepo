@@ -1,0 +1,43 @@
+{
+  "name": "@unocss/preset-attributify",
+  "version": "0.32.1",
+  "description": "Attributify preset for UnoCSS",
+  "keywords": [
+    "unocss",
+    "unocss-preset"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/preset-attributify#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/preset-attributify"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/preset-attributify\n\nAttributify Mode for [UnoCSS](https://github.com/unocss/unocss).\n\n## Installation\n\n```bash\nnpm i -D @unocss/preset-attributify\n```\n\n```ts\nimport presetAttributify from '@unocss/preset-attributify'\n\nUnocss({\n  presets: [\n    presetAttributify({ /* options */ }),\n    // ...other presets\n  ],\n})\n```\n\n## Attributify Mode\n\nThis preset enabled [Windi CSS's Attributify Mode](https://windicss.org/posts/v30.html#attributify-mode) for **other presets**.\n\nImagine you have this button using Tailwind's utilities. When the list gets long, it becomes really hard to read and maintain.\n\n```html\n<button class=\"bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600\">\n  Button\n</button>\n```\n\nWith attributify mode, you can separate utilities into attributes:\n\n```html\n<button \n  bg=\"blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600\"\n  text=\"sm white\"\n  font=\"mono light\"\n  p=\"y-2 x-4\"\n  border=\"2 rounded blue-200\"\n>\n  Button\n</button>\n```\n\nFor example, `text-sm text-white` could be grouped into `text=\"sm white\"` without duplicating the same prefix.\n\n###### Valueless Attributify\n\nIn addition to Windi CSS's Attributify Mode, this presets also supports valueless attributes.\n\nFor example, \n\n```html\n<div class=\"m-2 rounded text-teal-400\" />\n```\n\nnow can be\n\n```html\n<div m-2 rounded text-teal-400 />\n```\n\n## TypeScript Support (JSX/TSX)\n\nCreate `shims.d.ts` with the following content:\n\n> By default, the type includes common attributes from `@unocss/preset-uno`. If you need custom attributes, refer to the [type source](https://github.com/antfu/unocss/blob/main/packages/preset-attributify/src/jsx.ts) to implement your own type.\n\n### React\n\n```ts\nimport { AttributifyAttributes } from '@unocss/preset-attributify'\n\ndeclare module 'react' {\n  interface HTMLAttributes<T> extends AttributifyAttributes {}\n}\n```\n\n### Vue 3\n\n```ts\nimport { AttributifyAttributes } from '@unocss/preset-attributify'\n\ndeclare module '@vue/runtime-dom' {\n  interface HTMLAttributes extends AttributifyAttributes {}\n}\n```\n\n### SolidJS\n\n```ts\nimport { AttributifyAttributes } from '@unocss/preset-attributify'\n\ndeclare module \"solid-js\" {\n  namespace JSX {\n    interface HTMLAttributes<T> extends AttributifyAttributes {}\n  }\n}\n```\n\n### Attributify with Prefix\n\n```ts\nimport { AttributifyNames } from '@unocss/preset-attributify'\n\ntype Prefix = 'uno:' // change it to your prefix\n\ninterface HTMLAttributes extends Partial<Record<AttributifyNames<Prefix>, string>> {}\n```\n\n## Credits\n\nInitial idea by [@Tahul](https://github.com/Tahul) and [@antfu](https://github.com/antfu). Pior implementation in Windi CSS by [@voorjaar](https://github.com/voorjaar).\n\n## License\n\nMIT License © 2021-PRESENT [Anthony Fu](https://github.com/antfu)\n"
+}

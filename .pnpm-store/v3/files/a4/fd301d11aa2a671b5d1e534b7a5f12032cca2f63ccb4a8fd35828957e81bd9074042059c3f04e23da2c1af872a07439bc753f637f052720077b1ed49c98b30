@@ -1,0 +1,101 @@
+{
+  "name": "unocss",
+  "version": "0.32.8",
+  "description": "The instant on-demand Atomic CSS engine.",
+  "keywords": [
+    "unocss",
+    "atomic-css",
+    "atomic-css-engine",
+    "css",
+    "tailwind",
+    "windicss"
+  ],
+  "homepage": "https://github.com/unocss/unocss#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./preset-attributify": {
+      "require": "./dist/preset-attributify.cjs",
+      "import": "./dist/preset-attributify.mjs",
+      "types": "./dist/preset-attributify.d.ts"
+    },
+    "./preset-icons": {
+      "require": "./dist/preset-icons.cjs",
+      "import": "./dist/preset-icons.mjs",
+      "types": "./dist/preset-icons.d.ts"
+    },
+    "./preset-mini": {
+      "require": "./dist/preset-mini.cjs",
+      "import": "./dist/preset-mini.mjs",
+      "types": "./dist/preset-mini.d.ts"
+    },
+    "./preset-typography": {
+      "require": "./dist/preset-typography.cjs",
+      "import": "./dist/preset-typography.mjs",
+      "types": "./dist/preset-typography.d.ts"
+    },
+    "./preset-uno": {
+      "require": "./dist/preset-uno.cjs",
+      "import": "./dist/preset-uno.mjs",
+      "types": "./dist/preset-uno.d.ts"
+    },
+    "./preset-web-fonts": {
+      "require": "./dist/preset-web-fonts.cjs",
+      "import": "./dist/preset-web-fonts.mjs",
+      "types": "./dist/preset-web-fonts.d.ts"
+    },
+    "./preset-wind": {
+      "require": "./dist/preset-wind.cjs",
+      "import": "./dist/preset-wind.mjs",
+      "types": "./dist/preset-wind.d.ts"
+    },
+    "./vite": {
+      "require": "./dist/vite.cjs",
+      "import": "./dist/vite.mjs",
+      "types": "./dist/vite.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/cli": "0.32.8",
+    "@unocss/core": "0.32.8",
+    "@unocss/preset-attributify": "0.32.8",
+    "@unocss/preset-icons": "0.32.8",
+    "@unocss/preset-mini": "0.32.8",
+    "@unocss/preset-typography": "0.32.8",
+    "@unocss/preset-uno": "0.32.8",
+    "@unocss/preset-web-fonts": "0.32.8",
+    "@unocss/preset-wind": "0.32.8",
+    "@unocss/reset": "0.32.8",
+    "@unocss/transformer-directives": "0.32.8",
+    "@unocss/transformer-variant-group": "0.32.8",
+    "@unocss/vite": "0.32.8"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}

@@ -1,0 +1,14 @@
+/// <reference types="node" />
+import type { MessagePort } from 'worker_threads';
+import type { StoryFile, Story } from '../types.js';
+export interface Payload {
+    root: string;
+    base: string;
+    port: MessagePort;
+    storyFile: StoryFile;
+}
+export interface ReturnData {
+    storyData: Story[];
+}
+declare const _default: (payload: Payload) => Promise<ReturnData>;
+export default _default;

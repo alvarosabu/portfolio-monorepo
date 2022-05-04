@@ -1,0 +1,46 @@
+{
+  "name": "@unocss/preset-wind",
+  "version": "0.32.1",
+  "description": "Tailwind / Windi CSS compact preset for UnoCSS",
+  "keywords": [
+    "unocss",
+    "unocss-preset"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/preset-wind#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/preset-wind"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "files": [
+    "dist",
+    "*.css"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.1",
+    "@unocss/preset-mini": "0.32.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/preset-wind\n\nTailwind / Windi CSS compact preset for [UnoCSS](https://github.com/unocss/unocss).\n\n## Installation\n\n```bash\nnpm i -D @unocss/preset-wind\n```\n\n```ts\nimport presetWind from '@unocss/preset-wind'\n\nUnocss({\n  presets: [\n    presetWind(),\n  ],\n})\n```\n\n## License\n\nMIT License © 2021-PRESENT [Anthony Fu](https://github.com/antfu)\n"
+}

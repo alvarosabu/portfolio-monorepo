@@ -1,0 +1,191 @@
+import { createUnplugin } from 'unplugin';
+import WebpackSources from 'webpack-sources';
+import 'crypto';
+import { createFilter } from '@rollup/pluginutils';
+import { loadConfig } from '@unocss/config';
+import { createGenerator, BetterMap } from '@unocss/core';
+
+function getPath(id) {
+  return id.replace(/\?.*$/, "");
+}
+
+const regexCssId = /\.(css|postcss|sass|scss|less|stylus|styl)$/;
+const defaultExclude = [regexCssId];
+const defaultInclude = [/\.vue$/, /\.vue\?vue/, /\.svelte$/, /\.[jt]sx$/, /\.mdx?$/, /\.astro$/, /\.elm$/];
+
+const VIRTUAL_ENTRY_ALIAS = [
+  /^(?:virtual:)?uno(?::(.+))?\.css(\?.*)?$/
+];
+const LAYER_MARK_ALL = "__ALL__";
+function resolveId(id) {
+  for (const alias of VIRTUAL_ENTRY_ALIAS) {
+    const match = id.match(alias);
+    if (match) {
+      return match[1] ? {
+        id: `/__uno_${match[1]}.css`,
+        layer: match[1]
+      } : {
+        id: "/__uno.css",
+        layer: LAYER_MARK_ALL
+      };
+    }
+  }
+}
+const LAYER_PLACEHOLDER_RE = /(\\?")?#--unocss--\s*{\s*layer\s*:\s*(.+?);?\s*}/g;
+function getLayerPlaceholder(layer) {
+  return `#--unocss--{layer:${layer}}`;
+}
+
+const INCLUDE_COMMENT = "@unocss-include";
+const CSS_PLACEHOLDER = "@unocss-placeholder";
+
+function createContext(configOrPath, defaults = {}, extraConfigSources = [], resolveConfigResult = () => {
+}) {
+  let root = process.cwd();
+  let rawConfig = {};
+  const uno = createGenerator(rawConfig, defaults);
+  let rollupFilter = createFilter(defaultInclude, defaultExclude);
+  const invalidations = [];
+  const modules = new BetterMap();
+  const tokens = /* @__PURE__ */ new Set();
+  let ready = reloadConfig();
+  async function reloadConfig() {
+    const result = await loadConfig(root, configOrPath, extraConfigSources);
+    resolveConfigResult(result);
+    rawConfig = result.config;
+    uno.setConfig(rawConfig);
+    uno.config.envMode = "dev";
+    rollupFilter = createFilter(rawConfig.include || defaultInclude, rawConfig.exclude || defaultExclude);
+    tokens.clear();
+    await Promise.all(modules.map((code, id) => uno.applyExtractors(code, id, tokens)));
+    invalidate();
+    return result;
+  }
+  async function updateRoot(newRoot) {
+    if (newRoot !== root) {
+      root = newRoot;
+      ready = reloadConfig();
+    }
+    return await ready;
+  }
+  function invalidate() {
+    invalidations.forEach((cb) => cb());
+  }
+  async function extract(code, id) {
+    if (id)
+      modules.set(id, code);
+    const len = tokens.size;
+    await uno.applyExtractors(code, id, tokens);
+    if (tokens.size > len)
+      invalidate();
+  }
+  const filter = (code, id) => {
+    return code.includes(INCLUDE_COMMENT) || code.includes(CSS_PLACEHOLDER) || rollupFilter(id);
+  };
+  async function getConfig() {
+    await ready;
+    return rawConfig;
+  }
+  return {
+    get ready() {
+      return ready;
+    },
+    tokens,
+    modules,
+    invalidate,
+    onInvalidate(fn) {
+      invalidations.push(fn);
+    },
+    filter,
+    reloadConfig,
+    uno,
+    extract,
+    getConfig,
+    root,
+    updateRoot
+  };
+}
+
+const PLUGIN_NAME = "unocss:webpack";
+const UPDATE_DEBOUNCE = 10;
+function defineConfig(config) {
+  return config;
+}
+function WebpackPlugin(configOrPath, defaults) {
+  return createUnplugin(() => {
+    const context = createContext(configOrPath, defaults);
+    const { uno, tokens, filter, extract, onInvalidate } = context;
+    let timer;
+    onInvalidate(() => {
+      clearTimeout(timer);
+      timer = setTimeout(updateModules, UPDATE_DEBOUNCE);
+    });
+    const tasks = [];
+    const entries = /* @__PURE__ */ new Map();
+    const plugin = {
+      name: "unocss:webpack",
+      enforce: "pre",
+      transformInclude(id) {
+        return filter("", id);
+      },
+      transform(code, id) {
+        tasks.push(extract(code, id));
+        return null;
+      },
+      resolveId(id) {
+        const entry = resolveId(id);
+        if (entry) {
+          entries.set(entry.id, entry.layer);
+          entries.set(id, entry.layer);
+          return entry.id;
+        }
+      },
+      load(id) {
+        const layer = entries.get(getPath(id));
+        if (layer)
+          return getLayerPlaceholder(layer);
+      },
+      webpack(compiler) {
+        compiler.hooks.compilation.tap(PLUGIN_NAME, (compilation) => {
+          compilation.hooks.optimizeAssets.tapPromise(PLUGIN_NAME, async () => {
+            const files = Object.keys(compilation.assets);
+            await Promise.all(tasks);
+            const result = await uno.generate(tokens, { minify: true });
+            for (const file of files) {
+              let code = compilation.assets[file].source().toString();
+              let replaced = false;
+              code = code.replace(LAYER_PLACEHOLDER_RE, (_, quote, layer) => {
+                replaced = true;
+                const css = layer === LAYER_MARK_ALL ? result.getLayers(void 0, Array.from(entries.values())) : result.getLayer(layer) || "";
+                if (!quote)
+                  return css;
+                let escaped = JSON.stringify(css).slice(1, -1);
+                if (quote === '\\"')
+                  escaped = JSON.stringify(escaped).slice(1, -1);
+                return quote + escaped;
+              });
+              if (replaced)
+                compilation.assets[file] = new WebpackSources.RawSource(code);
+            }
+          });
+        });
+      }
+    };
+    async function updateModules() {
+      if (!plugin.__vfsModules)
+        return;
+      const result = await uno.generate(tokens);
+      Array.from(plugin.__vfsModules).forEach((id) => {
+        const path = id.slice(plugin.__virtualModulePrefix.length);
+        const layer = entries.get(path);
+        if (!layer)
+          return;
+        const code = layer === LAYER_MARK_ALL ? result.getLayers(void 0, Array.from(entries.values())) : result.getLayer(layer) || "";
+        plugin.__vfs.writeModule(id, code);
+      });
+    }
+    return plugin;
+  }).webpack();
+}
+
+export { WebpackPlugin as default, defineConfig };
