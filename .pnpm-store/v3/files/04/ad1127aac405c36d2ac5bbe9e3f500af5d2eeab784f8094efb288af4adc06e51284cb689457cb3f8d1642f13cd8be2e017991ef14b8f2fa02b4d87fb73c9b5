@@ -1,0 +1,42 @@
+{
+  "name": "@unocss/preset-typography",
+  "version": "0.32.1",
+  "description": "Typography preset for UnoCSS",
+  "keywords": [
+    "unocss",
+    "unocss-preset"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/preset-typography#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Jeff Yang",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/preset-typography"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/preset-typography\n\nTypography Preset for UnoCSS\n\n## Installation\n\n```bash\npnpm add @unocss/preset-typography -D\n```\n\n## Usage\n\n```js\n// unocss.config.js\nimport { defineConfig, presetAttributify, presetUno } from 'unocss'\nimport { presetTypography } from '@unocss/preset-typography'\n\nexport default defineConfig({\n  presets: [\n    presetAttributify(), // required if using attributify mode\n    presetUno(), // required\n    presetTypography(),\n  ],\n})\n```\n\n<table>\n<thead>\n<tr style=\"text-align: center\">\n<th>With classes</th>\n<th>With attributes</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\n\n<!-- prettier-ignore -->\n```html\n<article class=\"text-base prose prose-truegray xl:text-xl\">\n  {{ markdown }}\n  <p class=\"not-prose\">\n    some text\n  </p>\n</article>\n```\n\n</td>\n\n<td>\n\n<!-- prettier-ignore -->\n```html\n<article text-base prose prose-truegray xl=\"text-xl\">\n  {{ markdown }}\n  <p class=\"not-prose\">\n    not-prose is only available in class.\n  </p>\n</article>\n```\n\n</td>\n</tr>\n</tbody>\n</table>\n\n## Highlight\n\n- **Any font size you want**\n\n  Apply any font size for body you like and `prose` will scale the styles for\n  the respective HTML elements. For instance, `prose text-lg` has body font size\n  `1.125rem` and `h1` will with scale with that size 2.25 times. See [all the\n  supported HTML elements].\n\n  [all the supported html elements]: https://github.com/unocss/unocss/blob/main/packages/preset-typography/src/preflights/default.ts\n\n- **Any color you like**\n\n  Apply any color with `prose-${colorName}` by UnoCSS (e.g. `prose-coolgray`,\n  `prose-sky`) since `prose` does not have any color by default. See\n  [all available colors](#colors). For instance, `prose prose-truegray` will use\n  the respective colors for the respective HTML elements.\n\n- **Dark mode in ONE utility**\n\n  Apply typographic dark mode with `prose-invert` (background color needs to be\n  handled by users). For instance, `prose dark:prose-invert` will use the\n  inverted colors in the dark mode.\n\n- **Your own style, still your style**\n\n  Styles of elements not within `prose` will stay the same. No style resetting\n  just like UnoCSS.\n\n- **Undo with `not` utility**\n\n  Apply `not-prose` to the elements to undo the typographic styles. For\n  instance, `<table class=\"not-prose\">` will skip the styles by this preset for\n  the `table` element **(NOTE: `not` utility is only usable in class since it is\n  only used in CSS** **selector & not scanned by UnoCSS)**.\n\n## Utilities\n\n|  Rule   |                                            Styles by this rule                                                    |\n| :-----: | :---------------------------------------------------------------------------------------------------------------: |\n| `prose` | See [on GitHub](https://github.com/unocss/unocss/blob/main/packages/preset-typography/src/preflights/default.ts). |\n\n### Colors\n\n| Rules (color)   |\n| --------------- |\n| `prose-rose`    |\n| `prose-pink`    |\n| `prose-fuchsia` |\n| `prose-purple`  |\n| `prose-violet`  |\n| `prose-indigo`  |\n| `prose-blue`    |\n| `prose-sky`     |\n| `prose-cyan`    |\n| `prose-teal`    |\n| `prose-emerald` |\n| `prose-green`   |\n| `prose-lime`    |\n| `prose-yellow`  |\n| `prose-amber`   |\n| `prose-orange`  |\n| `prose-red`     |\n| `prose-gray`    |\n| `prose-slate`   |\n| `prose-zinc`    |\n| `prose-neutral` |\n| `prose-stone`   |\n\n## Configurations\n\nThis preset has `className` and `cssExtend` configurations for users who like to\noverride or extend.\n\nThe CSS declarations passed to `cssExtend` will\n\n- **override** the built-in styles if the values are conflicting, else\n\n- **be merged** deeply with built-in styles.\n\n### Type of `TypographyOptions`\n\n```ts\nexport interface TypographyOptions {\n  /**\n   * The class name to use the typographic utilities.\n   * To undo the styles to the elements, use it like\n   * `not-${className}` which is by default `not-prose`.\n   *\n   * Note: `not` utility is only available in class.\n   *\n   * @defaultValue `prose`\n   */\n  className?: string\n\n  /**\n   * Extend or override CSS selectors with CSS declaration block.\n   *\n   * @defaultValue undefined\n   */\n  cssExtend?: Record<string, CSSObject>\n}\n```\n\n### Example\n\n```ts\n// unocss.config.ts\nimport { defineConfig, presetAttributify, presetUno } from 'unocss'\nimport { presetTypography } from '@unocss/preset-typography'\n\nexport default defineConfig({\n  presets: [\n    presetAttributify(), // required if using attributify mode\n    presetUno(), // required\n    presetTypography({\n      className: 'markdown', // now use like `markdown markdown-gray`, `not-markdown`\n      // cssExtend is an object with CSS selector as key and\n      // CSS declaration block as value like writing normal CSS.\n      cssExtend: {\n        'code': {\n          color: '#8b5cf6',\n        },\n        'a:hover': {\n          color: '#f43f5e',\n        },\n        'a:visited': {\n          color: '#14b8a6',\n        },\n      },\n    }),\n  ],\n})\n```\n\n## Acknowledgement\n\n- [TailwindCSS Typography](https://github.com/tailwindlabs/tailwindcss-typography)\n- [WindiCSS Typography](https://github.com/windicss/windicss/tree/main/src/plugin/typography)\n\n## License\n\nMIT &copy; 2021-Present Anthony Fu\n\nMIT &copy; 2021-Present Jeff Yang\n"
+}

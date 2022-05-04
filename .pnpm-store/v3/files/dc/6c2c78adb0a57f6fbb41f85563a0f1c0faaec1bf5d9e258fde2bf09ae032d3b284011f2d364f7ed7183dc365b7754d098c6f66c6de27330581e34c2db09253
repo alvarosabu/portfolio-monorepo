@@ -1,0 +1,31 @@
+{
+  "name": "@unocss/reset",
+  "version": "0.32.1",
+  "description": "Collection of CSS reseting",
+  "keywords": [],
+  "homepage": "https://github.com/unocss/unocss#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "exports": {
+    "./*": "./*"
+  },
+  "files": [
+    "**/*.css"
+  ],
+  "devDependencies": {
+    "@csstools/normalize.css": "^12.0.0",
+    "sanitize.css": "^13.0.0"
+  },
+  "scripts": {
+    "build": "esno scripts/copy.ts"
+  },
+  "readme": "# @unocss/reset\n\nCollection of standard reset CSS stylesheets.\n\n```bash\nnpm i @unocss/reset\n```\n\n```ts\n// main.js\n// pick one of the following\n\n// normalize.css https://necolas.github.io/normalize.css/\nimport '@unocss/reset/normalize.css'\n\n// sanitize.css https://github.com/csstools/sanitize.css#usage\nimport '@unocss/reset/sanitize/sanitize.css'\nimport '@unocss/reset/sanitize/assets.css'\n\n// reset.css by Eric Meyer https://meyerweb.com/eric/tools/css/reset/index.html\nimport '@unocss/reset/eric-meyer.css'\n\n// preflights from tailwind\nimport '@unocss/reset/tailwind.css'\n```\n"
+}

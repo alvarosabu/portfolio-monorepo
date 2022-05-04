@@ -1,0 +1,47 @@
+{
+  "name": "@unocss/inspector",
+  "version": "0.32.1",
+  "description": "The inspector UI for UnoCSS",
+  "keywords": [
+    "unocss",
+    "inspector",
+    "debugger"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/inspector#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/inspector"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "gzip-size": "^6.0.0",
+    "sirv": "^2.0.2"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "build-post": "vite build",
+    "stub": "unbuild --stub",
+    "dev": "nr play",
+    "play": "nr stub && vite"
+  },
+  "readme": "# @unocss/inspector\n\nThe inspector UI for UnoCSS. Ships with `unocss` and `@unocss/vite`.\n\nVisit `http://localhost:3000/__unocss` in your Vite dev server to see the inspector.\n\n<img src=\"https://user-images.githubusercontent.com/11247099/140885990-1827f5ce-f12a-4ed4-9d63-e5145a65fb4a.png\">\n<img src=\"https://user-images.githubusercontent.com/11247099/140886020-7014f412-f020-4aed-a169-d025cc1bbcd3.png\">\n\n## TODO\n\n- [x] Basic Overview\n- [x] Basic REPL\n- [x] Basic file view\n- [x] Resizeable sidebar (use `splitpanes`, refer to playground)\n- [x] Data caches (move the fetches to shared modules instead of in components)\n- [ ] Manual refresh button\n- [x] Auto reload on file changes (reuse Vite's hmr if possible)\n- [ ] Config view\n- [ ] Edit files directly\n- [ ] CSS Prettify\n\n> 🙌 Contribution welcome!\n\n## License\n\nMIT License © 2021-PRESENT [Anthony Fu](https://github.com/antfu)\n"
+}

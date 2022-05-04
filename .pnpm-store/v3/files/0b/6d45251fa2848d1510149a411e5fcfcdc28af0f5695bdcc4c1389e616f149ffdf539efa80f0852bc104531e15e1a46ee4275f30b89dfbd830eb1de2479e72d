@@ -1,0 +1,59 @@
+{
+	"name": "@iconify/json",
+	"description": "Iconify icons collection in JSON format",
+	"license": "MIT",
+	"version": "2.1.34",
+	"homepage": "https://iconify.design/icon-sets/",
+	"bugs": "https://github.com/iconify/icon-sets/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/iconify/icon-sets.git"
+	},
+	"exports": {
+		"./*": "./*",
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"dist",
+		"json",
+		"lib",
+		"collections.json",
+		"collections.md",
+		"composer.json",
+		"readme.md"
+	],
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "rimraf dist && tsup src/index.ts --format cjs,esm --dts",
+		"test-esm": "jest --clearCache && cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --config=jest.esm.config.ts",
+		"test-cjs": "npm run build && jest --clearCache && jest --config=jest.cjs.config.ts",
+		"test-locate-esm": "jest --clearCache && cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --config=jest.esm.config.ts src/locate.esm.test.ts -i",
+		"test-locate-cjs": "npm run build && jest --clearCache && jest --config=jest.cjs.config.ts src/locate.cjs.test.ts -i",
+		"test": "npm run test-esm && npm run test-cjs && npm run test-locate-esm && npm run test-locate-cjs",
+		"version": "node sync-version",
+		"prepublishOnly": "npm run build && npm run version"
+	},
+	"dependencies": {
+		"@iconify/types": "^1.1.0",
+		"pathe": "^0.2.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^27.4.1",
+		"@types/node": "^17.0.12",
+		"@typescript-eslint/eslint-plugin": "^5.16.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.7.0",
+		"esno": "^0.14.0",
+		"jest": "^27.5.1",
+		"jest-each": "^27.5.1",
+		"ts-jest": "^27.1.4",
+		"ts-node": "^10.7.0",
+		"tsup": "^5.12.1",
+		"typescript": "^4.6.3"
+	}
+}

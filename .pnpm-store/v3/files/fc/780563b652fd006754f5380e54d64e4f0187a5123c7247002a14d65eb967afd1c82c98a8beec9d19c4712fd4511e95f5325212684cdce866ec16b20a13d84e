@@ -1,0 +1,11 @@
+import chokidar from 'chokidar';
+import { Context } from './context.js';
+import type { StoryFile } from './types.js';
+declare type StoryChangeHandler = (file?: StoryFile) => unknown;
+export declare function onStoryChange(handler: StoryChangeHandler): void;
+export declare function watchStories(newContext: Context): Promise<chokidar.FSWatcher>;
+export declare function notifyStoryChange(file?: StoryFile): void;
+export declare function addStory(relativeFilePath: string): StoryFile;
+export declare function removeStory(relativeFilePath: string): void;
+export declare function findAllStories(newContext: Context): Promise<void>;
+export {};

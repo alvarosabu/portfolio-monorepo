@@ -1,0 +1,23 @@
+import type { HistoireConfig } from './config.js';
+import type { StoryFile } from './types.js';
+export interface TreeFile {
+    title: string;
+    path: string;
+}
+export interface TreeLeaf {
+    title: string;
+    index: number;
+}
+export interface TreeFolder {
+    title: string;
+    children: (TreeFolder | TreeLeaf)[];
+}
+export interface TreeGroup {
+    group: true;
+    id: string;
+    title: string;
+    children: (TreeFolder | TreeLeaf)[];
+}
+export declare type Tree = (TreeGroup | TreeFolder | TreeLeaf)[];
+export declare function createPath(config: HistoireConfig, file: TreeFile): string[];
+export declare function makeTree(config: HistoireConfig, files: StoryFile[]): Tree;

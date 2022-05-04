@@ -1,0 +1,53 @@
+{
+  "name": "h3",
+  "version": "0.3.9",
+  "description": "Tiny JavaScript Server",
+  "repository": "unjs/h3",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "siroc build",
+    "dev": "jiti test/playground",
+    "lint": "eslint --ext ts .",
+    "profile": "0x -o -D .profile -P 'autocannon -c 100 -p 10 -d 40 http://localhost:$PORT' ./hello.js",
+    "release": "yarn test && yarn build && standard-version && npm publish && git push --follow-tags",
+    "test": "yarn lint && jest"
+  },
+  "devDependencies": {
+    "0x": "latest",
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/cookie": "latest",
+    "@types/express": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "@types/supertest": "latest",
+    "autocannon": "latest",
+    "connect": "latest",
+    "cookie-es": "latest",
+    "destr": "latest",
+    "eslint": "latest",
+    "express": "latest",
+    "get-port": "^5.0.0",
+    "jest": "latest",
+    "jiti": "latest",
+    "listhen": "latest",
+    "siroc": "latest",
+    "standard-version": "latest",
+    "supertest": "latest",
+    "ts-jest": "latest",
+    "typescript": "latest",
+    "ufo": "latest"
+  }
+}

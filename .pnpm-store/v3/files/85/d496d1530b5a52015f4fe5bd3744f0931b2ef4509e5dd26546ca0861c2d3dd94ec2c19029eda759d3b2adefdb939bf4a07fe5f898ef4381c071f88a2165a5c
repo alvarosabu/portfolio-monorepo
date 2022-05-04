@@ -1,0 +1,7 @@
+import type { StoryFile, Story } from '../../node/types';
+export interface ServerRunPayload {
+    file: StoryFile;
+    storyData: Story[];
+    el: HTMLElement;
+}
+export declare function run(payload: ServerRunPayload): Promise<any>;

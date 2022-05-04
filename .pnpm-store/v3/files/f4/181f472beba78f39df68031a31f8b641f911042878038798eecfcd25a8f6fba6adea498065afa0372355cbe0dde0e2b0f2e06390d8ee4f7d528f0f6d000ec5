@@ -1,0 +1,61 @@
+{
+  "name": "@unocss/preset-uno",
+  "version": "0.32.8",
+  "description": "The default preset for UnoCSS",
+  "keywords": [
+    "unocss",
+    "unocss-preset"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/preset-uno#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/preset-uno"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./theme": {
+      "require": "./dist/theme.cjs",
+      "import": "./dist/theme.mjs",
+      "types": "./dist/theme.d.ts"
+    },
+    "./colors": {
+      "require": "./dist/colors.cjs",
+      "import": "./dist/colors.mjs",
+      "types": "./dist/colors.d.ts"
+    },
+    "./utils": {
+      "require": "./dist/utils.cjs",
+      "import": "./dist/utils.mjs",
+      "types": "./dist/utils.d.ts"
+    },
+    "./*": "./*"
+  },
+  "files": [
+    "dist",
+    "*.css"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.8",
+    "@unocss/preset-mini": "0.32.8",
+    "@unocss/preset-wind": "0.32.8"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}

@@ -1,0 +1,243 @@
+import { UserConfig as ViteConfig, ConfigEnv as ViteConfigEnv } from 'vite';
+import type MarkdownIt from 'markdown-it';
+import { TreeFile } from './tree.js';
+import { Plugin } from './plugin.js';
+declare type CustomizableColors = 'primary' | 'gray';
+declare type ColorKeys = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+declare type GrayColorKeys = ColorKeys | '750' | '850' | '950';
+export interface ResponsivePreset {
+    label: string;
+    width: number;
+    height: number;
+}
+export interface BackgroundPreset {
+    label: string;
+    color: string;
+}
+export interface TreeGroupConfig {
+    title: string;
+    id?: string;
+    include?: (file: TreeFile) => boolean;
+}
+export interface HistoireConfig {
+    plugins: Plugin[];
+    /**
+     * Output directory.
+     */
+    outDir: string;
+    /**
+     * Glob patterns for story files to include.
+     */
+    storyMatch: string[];
+    /**
+     * Glob patterns to ignore files while searching for story files.
+     */
+    storyIgnored: string[];
+    /**
+     * How to generate the story tree.
+     */
+    tree: {
+        /**
+         * Use `'title'` to create the path from the title of the story, using `/` as the separator.
+         *
+         * Use `'path'` use the real folder structure on your computer.
+         */
+        file?: 'title' | 'path' | ((file: TreeFile) => string[]);
+        order?: 'asc' | ((a: string, b: string) => number);
+        groups?: TreeGroupConfig[];
+    };
+    /**
+     * Customize the look of the histoire book.
+     */
+    theme: {
+        /**
+         * Main page title. For example: 'Acme Inc.'
+         */
+        title?: string;
+        /**
+         * Custom logo files. Should be import paths (processed by Vite).
+         *
+         * Example: `'/src/assets/my-logo.svg'`
+         */
+        logo?: {
+            /**
+             * Square logo without text.
+             */
+            square?: string;
+            /**
+             * Full logo for light theme.
+             */
+            light?: string;
+            /**
+             * Full logo for dark theme.
+             */
+            dark?: string;
+        };
+        /**
+         * Href to the favicon file (**not** processed by Vite). Put the file in the `public` directory.
+         *
+         * Example: `'/favicon.ico'`
+         */
+        favicon?: string;
+        /**
+         * Customize the colors. Each color should be an object with shades as keys.
+         *
+         * Example: ```{ primary: { 50: '#eef2ff', 100: '#e0e7ff', ..., 900: '#312e81' } }```
+         *
+         * You can import `defaultColors` from `'histoire'` to use predefined colors or you can create your own colors from scratch.
+         */
+        colors?: {
+            [key in CustomizableColors]?: key extends 'gray' ? {
+                [key in GrayColorKeys]?: string;
+            } : {
+                [key in ColorKeys]?: string;
+            };
+        };
+        /**
+         * Add a link to the main logo
+         */
+        logoHref?: string;
+    };
+    /**
+     * Setup file exporting a default function executed when setting up each story preview.
+     *
+     * Import custom CSS files from this file.
+     *
+     * Example: `'/src/histoire-setup.ts'`
+     */
+    setupFile?: string;
+    /**
+     * Predefined responsive sizes for story playgrounds.
+     */
+    responsivePresets?: ResponsivePreset[];
+    /**
+     * Background color of the story preview.
+     */
+    backgroundPresets?: BackgroundPreset[];
+    /**
+     * Class added to the html root of the story preview when dark mode is enabled.
+     */
+    sandboxDarkClass?: string;
+    /**
+     * Customize the markdown-it renderer
+     */
+    markdown?: (md: MarkdownIt) => MarkdownIt | Promise<MarkdownIt>;
+    /**
+     * Vite config override
+     */
+    vite?: ViteConfig | ((config: ViteConfig, env: ViteConfigEnv) => void | ViteConfig | Promise<void | ViteConfig>);
+}
+export declare type ConfigMode = 'build' | 'dev';
+export declare function getDefaultConfig(): HistoireConfig;
+export declare const configFileNames: string[];
+export declare function resolveConfigFile(cwd?: string): string;
+export declare function loadConfigFile(configFile: string): Promise<Partial<HistoireConfig>>;
+export declare const mergeConfig: <Source extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+}, Defaults extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+}>(source: Source, ...defaults: Defaults[]) => Source extends Defaults ? Source : Omit<Source, keyof Source & keyof Defaults> & Omit<Defaults, keyof Source & keyof Defaults> & { -readonly [Key in keyof Source & keyof Defaults]: Source[Key] extends void ? Defaults[Key] extends void ? void : Defaults[Key] : Defaults[Key] extends void ? Source[Key] : Source[Key] extends void ? Defaults[Key] extends void ? void : Defaults[Key] : Defaults[Key] extends void ? Source[Key] : Source[Key] extends any[] ? Defaults[Key] extends any[] ? Source[Key] extends (infer DestinationType)[] ? Defaults[Key] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key] : Source[Key] | Defaults[Key] : Defaults[Key] | Source[Key] : Source[Key] extends Function ? Defaults[Key] | Source[Key] : Source[Key] extends RegExp ? Defaults[Key] | Source[Key] : Source[Key] extends Promise<any> ? Defaults[Key] | Source[Key] : Defaults[Key] extends Function ? Source[Key] | Defaults[Key] : Defaults[Key] extends RegExp ? Source[Key] | Defaults[Key] : Defaults[Key] extends Promise<any> ? Source[Key] | Defaults[Key] : Source[Key] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key] extends Defaults[Key] ? Defaults[Key] & Source[Key] : Omit<Source[Key], keyof Source[Key] & keyof Defaults[Key]> & Omit<Defaults[Key], keyof Source[Key] & keyof Defaults[Key]> & { -readonly [Key_1 in keyof Source[Key] & keyof Defaults[Key]]: Source[Key][Key_1] extends void ? Defaults[Key][Key_1] extends void ? void : Defaults[Key][Key_1] : Defaults[Key][Key_1] extends void ? Source[Key][Key_1] : Source[Key][Key_1] extends void ? Defaults[Key][Key_1] extends void ? void : Defaults[Key][Key_1] : Defaults[Key][Key_1] extends void ? Source[Key][Key_1] : Source[Key][Key_1] extends any[] ? Defaults[Key][Key_1] extends any[] ? Source[Key][Key_1] extends (infer DestinationType)[] ? Defaults[Key][Key_1] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1] : Source[Key][Key_1] | Defaults[Key][Key_1] : Defaults[Key][Key_1] | Source[Key][Key_1] : Source[Key][Key_1] extends Function ? Defaults[Key][Key_1] | Source[Key][Key_1] : Source[Key][Key_1] extends RegExp ? Defaults[Key][Key_1] | Source[Key][Key_1] : Source[Key][Key_1] extends Promise<any> ? Defaults[Key][Key_1] | Source[Key][Key_1] : Defaults[Key][Key_1] extends Function ? Source[Key][Key_1] | Defaults[Key][Key_1] : Defaults[Key][Key_1] extends RegExp ? Source[Key][Key_1] | Defaults[Key][Key_1] : Defaults[Key][Key_1] extends Promise<any> ? Source[Key][Key_1] | Defaults[Key][Key_1] : Source[Key][Key_1] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1] extends Defaults[Key][Key_1] ? Defaults[Key][Key_1] & Source[Key][Key_1] : Omit<Source[Key][Key_1], keyof Source[Key][Key_1] & keyof Defaults[Key][Key_1]> & Omit<Defaults[Key][Key_1], keyof Source[Key][Key_1] & keyof Defaults[Key][Key_1]> & { -readonly [Key_2 in keyof Source[Key][Key_1] & keyof Defaults[Key][Key_1]]: Source[Key][Key_1][Key_2] extends void ? Defaults[Key][Key_1][Key_2] extends void ? void : Defaults[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] extends void ? Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends void ? Defaults[Key][Key_1][Key_2] extends void ? void : Defaults[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] extends void ? Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends any[] ? Defaults[Key][Key_1][Key_2] extends any[] ? Source[Key][Key_1][Key_2] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] | Defaults[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] | Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends Function ? Defaults[Key][Key_1][Key_2] | Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends RegExp ? Defaults[Key][Key_1][Key_2] | Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends Promise<any> ? Defaults[Key][Key_1][Key_2] | Source[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] extends Function ? Source[Key][Key_1][Key_2] | Defaults[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] extends RegExp ? Source[Key][Key_1][Key_2] | Defaults[Key][Key_1][Key_2] : Defaults[Key][Key_1][Key_2] extends Promise<any> ? Source[Key][Key_1][Key_2] | Defaults[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2] extends Defaults[Key][Key_1][Key_2] ? Defaults[Key][Key_1][Key_2] & Source[Key][Key_1][Key_2] : Omit<Source[Key][Key_1][Key_2], keyof Source[Key][Key_1][Key_2] & keyof Defaults[Key][Key_1][Key_2]> & Omit<Defaults[Key][Key_1][Key_2], keyof Source[Key][Key_1][Key_2] & keyof Defaults[Key][Key_1][Key_2]> & { -readonly [Key_3 in keyof Source[Key][Key_1][Key_2] & keyof Defaults[Key][Key_1][Key_2]]: Source[Key][Key_1][Key_2][Key_3] extends void ? Defaults[Key][Key_1][Key_2][Key_3] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] extends void ? Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends void ? Defaults[Key][Key_1][Key_2][Key_3] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] extends void ? Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3] extends any[] ? Source[Key][Key_1][Key_2][Key_3] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] | Defaults[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] | Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends Function ? Defaults[Key][Key_1][Key_2][Key_3] | Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3] | Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3] | Source[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] extends Function ? Source[Key][Key_1][Key_2][Key_3] | Defaults[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] extends RegExp ? Source[Key][Key_1][Key_2][Key_3] | Defaults[Key][Key_1][Key_2][Key_3] : Defaults[Key][Key_1][Key_2][Key_3] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3] | Defaults[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3] extends Defaults[Key][Key_1][Key_2][Key_3] ? Defaults[Key][Key_1][Key_2][Key_3] & Source[Key][Key_1][Key_2][Key_3] : Omit<Source[Key][Key_1][Key_2][Key_3], keyof Source[Key][Key_1][Key_2][Key_3] & keyof Defaults[Key][Key_1][Key_2][Key_3]> & Omit<Defaults[Key][Key_1][Key_2][Key_3], keyof Source[Key][Key_1][Key_2][Key_3] & keyof Defaults[Key][Key_1][Key_2][Key_3]> & { -readonly [Key_4 in keyof Source[Key][Key_1][Key_2][Key_3] & keyof Defaults[Key][Key_1][Key_2][Key_3]]: Source[Key][Key_1][Key_2][Key_3][Key_4] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] | Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] | Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] | Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] | Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] | Source[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4] | Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4] | Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4] | Defaults[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4] & Source[Key][Key_1][Key_2][Key_3][Key_4] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4], keyof Source[Key][Key_1][Key_2][Key_3][Key_4] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4], keyof Source[Key][Key_1][Key_2][Key_3][Key_4] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4]> & { -readonly [Key_5 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] & Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5]> & { -readonly [Key_6 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] & Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6]> & { -readonly [Key_7 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] & Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7]> & { -readonly [Key_8 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] & Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8]> & { -readonly [Key_9 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] extends Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] & Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Omit<Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9]> & Omit<Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9], keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9]> & { -readonly [Key_10 in keyof Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] & keyof Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9]]: Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? void : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends void ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends any[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends any[] ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends (infer DestinationType)[] ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends (infer SourceType)[] ? (DestinationType | SourceType)[] : DestinationType[] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends Function ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends RegExp ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends Promise<any> ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends Function ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends RegExp ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends Promise<any> ? Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] extends {
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} ? any : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9][Key_10]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8][Key_9]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7][Key_8]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6][Key_7]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5][Key_6]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] : Source[Key][Key_1][Key_2][Key_3][Key_4][Key_5] | Defaults[Key][Key_1][Key_2][Key_3][Key_4][Key_5]; } : Defaults[Key][Key_1][Key_2][Key_3][Key_4] | Source[Key][Key_1][Key_2][Key_3][Key_4] : Source[Key][Key_1][Key_2][Key_3][Key_4] | Defaults[Key][Key_1][Key_2][Key_3][Key_4]; } : Defaults[Key][Key_1][Key_2][Key_3] | Source[Key][Key_1][Key_2][Key_3] : Source[Key][Key_1][Key_2][Key_3] | Defaults[Key][Key_1][Key_2][Key_3]; } : Defaults[Key][Key_1][Key_2] | Source[Key][Key_1][Key_2] : Source[Key][Key_1][Key_2] | Defaults[Key][Key_1][Key_2]; } : Defaults[Key][Key_1] | Source[Key][Key_1] : Source[Key][Key_1] | Defaults[Key][Key_1]; } : Defaults[Key] | Source[Key] : Source[Key] | Defaults[Key]; };
+export declare function resolveConfig(cwd: string, mode: ConfigMode): Promise<HistoireConfig>;
+export declare function processConfig(config: HistoireConfig, mode: ConfigMode): Promise<HistoireConfig>;
+export declare function defineConfig(config: Partial<HistoireConfig>): Partial<HistoireConfig>;
+declare module 'vite' {
+    interface UserConfig {
+        /**
+         * Histoire configuration
+         */
+        histoire?: Partial<HistoireConfig>;
+    }
+}
+export {};

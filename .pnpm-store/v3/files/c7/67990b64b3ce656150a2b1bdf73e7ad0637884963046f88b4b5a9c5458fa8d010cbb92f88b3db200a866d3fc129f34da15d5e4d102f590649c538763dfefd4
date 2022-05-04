@@ -1,0 +1,4 @@
+// @ts-expect-error virtual module
+import { config as configRaw, logos as logosRaw } from '$histoire-config';
+export const histoireConfig = configRaw;
+export const customLogos = logosRaw;

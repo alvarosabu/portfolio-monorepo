@@ -1,0 +1,45 @@
+{
+  "name": "@unocss/transformer-directives",
+  "version": "0.32.1",
+  "description": "UnoCSS transformer for `@apply` directive",
+  "keywords": [
+    "unocss",
+    "unocss-transformer"
+  ],
+  "homepage": "https://github.com/antfu/unocss/tree/main/packages/transformer-directives#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "hannoeru <me@hanlee.co>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/unocss.git",
+    "directory": "packages/transformer-directives"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.1",
+    "css-tree": "^2.1.0"
+  },
+  "devDependencies": {
+    "magic-string": "^0.26.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/transformer-directives\n\nUnoCSS transformer for `@apply` directive\n\n## Install\n\n```bash\nnpm i -D @unocss/transformer-directives\n```\n\n```ts\nimport Unocss from 'unocss/vite'\nimport transformerDirective from '@unocss/transformer-directives'\n\nUnocss({\n  transformers: [\n    transformerDirective(),\n  ],\n})\n```\n\n## Usage\n\n```css\n.custom-div {\n  @apply text-center my-0 font-medium;\n}\n```\n\nWill be transformed to:\n\n```css\n.custom-div {\n  margin-top: 0rem;\n  margin-bottom: 0rem;\n  text-align: center;\n  font-weight: 500;\n}\n```\n\n> Currently only `@apply` is supported.\n\n## License\n\nMIT License © 2022 [hannoeru](https://github.com/hannoeru)\n"
+}

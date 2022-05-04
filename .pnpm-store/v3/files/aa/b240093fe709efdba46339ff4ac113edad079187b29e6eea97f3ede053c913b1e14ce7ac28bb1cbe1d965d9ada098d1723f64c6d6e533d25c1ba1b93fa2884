@@ -1,0 +1,3 @@
+import type { HeadersObject } from './types';
+export declare function rawHeaders(headers: HeadersObject): any[];
+export declare function mergeFns(...functions: Function[]): (...args: any[]) => void;

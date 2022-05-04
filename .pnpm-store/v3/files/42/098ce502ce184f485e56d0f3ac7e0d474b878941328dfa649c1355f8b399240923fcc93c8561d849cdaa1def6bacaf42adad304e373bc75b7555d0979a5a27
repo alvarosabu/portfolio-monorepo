@@ -1,0 +1,233 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var SelfClosingElements_1 = __importDefault(require("../config/SelfClosingElements"));
+var UnnestableElements_1 = __importDefault(require("../config/UnnestableElements"));
+var ChildLessElements_1 = __importDefault(require("../config/ChildLessElements"));
+var he_1 = require("he");
+var NamespaceURI_1 = __importDefault(require("../config/NamespaceURI"));
+var MARKUP_REGEXP = /<(\/?)([a-z][-.0-9_a-z]*)\s*([^>]*?)(\/?)>/gi;
+var COMMENT_REGEXP = /<!--(.*?)-->|<([!?])([^>]*)>/gi;
+var DOCUMENT_TYPE_ATTRIBUTE_REGEXP = /"([^"]+)"/gm;
+var ATTRIBUTE_REGEXP = /([^\s=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|(\S+)))/gms;
+var XMLNS_ATTRIBUTE_REGEXP = /xmlns[ ]*=[ ]*"([^"]+)"/;
+/**
+ * XML parser.
+ */
+var XMLParser = /** @class */ (function () {
+    function XMLParser() {
+    }
+    /**
+     * Parses XML/HTML and returns a root element.
+     *
+     * @param document Document.
+     * @param data HTML data.
+     * @param [evaluateScripts = false] Set to "true" to enable script execution.
+     * @returns Root element.
+     */
+    XMLParser.parse = function (document, data, evaluateScripts) {
+        if (evaluateScripts === void 0) { evaluateScripts = false; }
+        var root = document.createElement('root');
+        var stack = [root];
+        var markupRegexp = new RegExp(MARKUP_REGEXP, 'gi');
+        var parent = root;
+        var parentUnnestableTagName = null;
+        var lastTextIndex = 0;
+        var match;
+        while ((match = markupRegexp.exec(data))) {
+            var tagName = match[2].toLowerCase();
+            var isStartTag = !match[1];
+            if (parent && match.index !== lastTextIndex) {
+                var text = data.substring(lastTextIndex, match.index);
+                this.appendTextAndCommentNodes(document, parent, text);
+            }
+            if (isStartTag) {
+                var newElement = document.createElement(tagName);
+                var xmlnsAttribute = this.getXmlnsAttribute(match[3]);
+                // Scripts are not allowed to be executed when they are parsed using innerHTML, outerHTML, replaceWith() etc.
+                // However, they are allowed to be executed when document.write() is used.
+                // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement
+                if (tagName === 'script') {
+                    newElement._evaluateScript = evaluateScripts;
+                }
+                // An assumption that the same rule should be applied for the HTMLLinkElement is made here.
+                if (tagName === 'link') {
+                    newElement._evaluateCSS = evaluateScripts;
+                }
+                // The HTML engine can guess that the namespace is SVG for SVG tags
+                // Even if "xmlns" is not set if the parent namespace is HTML.
+                if (tagName === 'svg' && parent.namespaceURI === NamespaceURI_1.default.html) {
+                    newElement.namespaceURI = xmlnsAttribute || NamespaceURI_1.default.svg;
+                }
+                else {
+                    newElement.namespaceURI = xmlnsAttribute || parent.namespaceURI;
+                }
+                this.setAttributes(newElement, newElement.namespaceURI, match[3]);
+                if (!SelfClosingElements_1.default.includes(tagName)) {
+                    // Some elements are not allowed to be nested (e.g. "<a><a></a></a>" is not allowed.).
+                    // Therefore we will auto-close the tag.
+                    if (parentUnnestableTagName === tagName) {
+                        stack.pop();
+                        parent = parent.parentNode || root;
+                    }
+                    parent = parent.appendChild(newElement);
+                    parentUnnestableTagName = this.getUnnestableTagName(parent);
+                    stack.push(parent);
+                }
+                else {
+                    parent.appendChild(newElement);
+                }
+                lastTextIndex = markupRegexp.lastIndex;
+                // Tags which contain non-parsed content
+                // For example: <script> JavaScript should not be parsed
+                if (ChildLessElements_1.default.includes(tagName)) {
+                    var childLessMatch = null;
+                    while ((childLessMatch = markupRegexp.exec(data))) {
+                        if (childLessMatch[2] === match[2] && childLessMatch[1]) {
+                            markupRegexp.lastIndex -= childLessMatch[0].length;
+                            break;
+                        }
+                    }
+                }
+            }
+            else {
+                stack.pop();
+                parent = stack[stack.length - 1] || root;
+                parentUnnestableTagName = this.getUnnestableTagName(parent);
+                lastTextIndex = markupRegexp.lastIndex;
+            }
+        }
+        // Text after last element
+        if ((!match && data.length > 0) || (match && lastTextIndex !== match.index)) {
+            var text = data.substring(lastTextIndex);
+            this.appendTextAndCommentNodes(document, parent || root, text);
+        }
+        return root;
+    };
+    /**
+     * Returns a tag name if element is unnestable.
+     *
+     * @param element Element.
+     * @returns Tag name if element is unnestable.
+     */
+    XMLParser.getUnnestableTagName = function (element) {
+        var tagName = element.tagName.toLowerCase();
+        return tagName && UnnestableElements_1.default.includes(tagName) ? tagName : null;
+    };
+    /**
+     * Appends text and comment nodes.
+     *
+     * @param document Document.
+     * @param node Node.
+     * @param text Text to search in.
+     */
+    XMLParser.appendTextAndCommentNodes = function (document, node, text) {
+        for (var _i = 0, _a = this.getTextAndCommentNodes(document, text); _i < _a.length; _i++) {
+            var innerNode = _a[_i];
+            node.appendChild(innerNode);
+        }
+    };
+    /**
+     * Returns text and comment nodes from a text.
+     *
+     * @param document Document.
+     * @param text Text to search in.
+     * @returns Nodes.
+     */
+    XMLParser.getTextAndCommentNodes = function (document, text) {
+        var nodes = [];
+        var commentRegExp = new RegExp(COMMENT_REGEXP, 'gms');
+        var hasDocumentType = false;
+        var lastIndex = 0;
+        var match;
+        while ((match = commentRegExp.exec(text))) {
+            if (match.index > 0 && lastIndex !== match.index) {
+                var textNode = document.createTextNode(text.substring(lastIndex, match.index));
+                nodes.push(textNode);
+            }
+            if (match[3] && match[3].toUpperCase().startsWith('DOCTYPE')) {
+                var docTypeSplit = match[3].split(' ');
+                if (docTypeSplit.length > 1) {
+                    var docTypeString = docTypeSplit.slice(1).join(' ');
+                    var attributes = [];
+                    var attributeRegExp = new RegExp(DOCUMENT_TYPE_ATTRIBUTE_REGEXP, 'gm');
+                    var isPublic = docTypeString.includes('PUBLIC');
+                    var attributeMatch = void 0;
+                    while ((attributeMatch = attributeRegExp.exec(docTypeString))) {
+                        attributes.push(attributeMatch[1]);
+                    }
+                    var publicId = isPublic ? attributes[0] || '' : '';
+                    var systemId = isPublic ? attributes[1] || '' : attributes[0] || '';
+                    var documentTypeNode = document.implementation.createDocumentType(docTypeSplit[1], publicId, systemId);
+                    nodes.push(documentTypeNode);
+                    hasDocumentType = true;
+                }
+            }
+            else {
+                var comment = match[1] ? match[1] : match[2] === '?' ? '?' + match[3] : match[3];
+                var commentNode = document.createComment(comment);
+                nodes.push(commentNode);
+                lastIndex = match.index + match[0].length;
+            }
+        }
+        if (!hasDocumentType && lastIndex < text.length) {
+            var textNode = document.createTextNode(text.substring(lastIndex));
+            nodes.push(textNode);
+        }
+        return nodes;
+    };
+    /**
+     * Returns XMLNS attribute.
+     *
+     * @param attributesString Raw attributes.
+     */
+    XMLParser.getXmlnsAttribute = function (attributesString) {
+        var match = attributesString.match(XMLNS_ATTRIBUTE_REGEXP);
+        return match ? match[1] : null;
+    };
+    /**
+     * Sets raw attributes.
+     *
+     * @param element Element.
+     * @param namespaceURI Namespace URI.
+     * @param attributesString Raw attributes.
+     */
+    XMLParser.setAttributes = function (element, namespaceURI, attributesString) {
+        var attributes = attributesString.trim();
+        if (attributes) {
+            var regExp = new RegExp(ATTRIBUTE_REGEXP, 'gi');
+            var match = void 0;
+            // Attributes with value
+            while ((match = regExp.exec(attributes))) {
+                if (match[1]) {
+                    element.setAttributeNS(null, this._getAttributeName(namespaceURI, match[1]), (0, he_1.decode)(match[2] || match[3] || match[4] || ''));
+                }
+            }
+            // Attributes with no value
+            for (var _i = 0, _a = attributes.replace(ATTRIBUTE_REGEXP, '').trim().split(' '); _i < _a.length; _i++) {
+                var name = _a[_i];
+                if (name) {
+                    element.setAttributeNS(null, this._getAttributeName(namespaceURI, name), '');
+                }
+            }
+        }
+    };
+    /**
+     * Returns attribute name.
+     *
+     * @param namespaceURI Namespace URI.
+     * @param name Name.
+     * @returns Attribute name based on namespace.
+     */
+    XMLParser._getAttributeName = function (namespaceURI, name) {
+        if (namespaceURI === NamespaceURI_1.default.svg) {
+            return name;
+        }
+        return name.toLowerCase();
+    };
+    return XMLParser;
+}());
+exports.default = XMLParser;
+//# sourceMappingURL=XMLParser.js.map

@@ -1,0 +1,3 @@
+import type { HistoireConfig } from '../../../node/config';
+export declare const histoireConfig: HistoireConfig;
+export declare const customLogos: HistoireConfig['theme']['logo'];

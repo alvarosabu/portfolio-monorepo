@@ -1,0 +1,18 @@
+import { Ref } from 'vue';
+import { Variant } from '../types';
+export declare function useCurrentVariantRoute(variant: Ref<Variant>): {
+    isActive: import("vue").ComputedRef<boolean>;
+    targetRoute: import("vue").ComputedRef<{
+        query: {
+            variantId: string;
+        };
+        matched: import("vue-router").RouteLocationMatched[];
+        path: string;
+        fullPath: string;
+        hash: string;
+        name: import("vue-router").RouteRecordName;
+        params: import("vue-router").RouteParams;
+        redirectedFrom: import("vue-router").RouteLocation;
+        meta: import("vue-router").RouteMeta;
+    }>;
+};

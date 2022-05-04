@@ -1,0 +1,58 @@
+{
+  "name": "@unocss/cli",
+  "version": "0.32.1",
+  "description": "CLI for UnoCSS",
+  "keywords": [],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/cli#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Johann Schopplich",
+    "email": "pkg@johannschopplich.com",
+    "url": "https://johannschopplich.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/cli"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "bin": {
+    "unocss": "./bin/unocss.mjs"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@unocss/config": "0.32.1",
+    "@unocss/core": "0.32.1",
+    "@unocss/preset-uno": "0.32.1",
+    "cac": "^6.7.12",
+    "chokidar": "^3.5.3",
+    "colorette": "^2.0.16",
+    "consola": "^2.15.3",
+    "fast-glob": "^3.2.11",
+    "pathe": "^0.2.0",
+    "perfect-debounce": "^0.1.3"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/cli\n\nThe CLI for UnoCSS. A perfect fit for traditional backends.\n\n## Key Features\n\n- 🍱 Suited for traditional backends like Laravel or Kirby\n- 👀 [Watch mode](#watch) included\n- 🔌 Supports custom configurations via [`unocss.config.js`](#unocssconfigjs-support)\n\n## Requirements\n\n- Node 14+ (Node 16 recommended)\n\n## Installation\n\nThis package is shipped with the `unocss` package:\n\n```bash\nnpm i -D unocss\n```\n\nYou can also install it standalone:\n\n```bash\nnpm i -D @unocss/cli\n```\n\n## Usage\n\nYou can also pass multiple glob patterns to `@unocss/cli`:\n\n```bash\nunocss \"site/snippets/**/*.php\" \"site/templates/**/*.php\"\n```\n\nExample package configuration:\n\n> ℹ️ Make sure to add escaped quotes to your npm script glob patterns.\n\n```json\n{\n  \"scripts\": {\n    \"dev\": \"unocss \\\"site/{snippets,templates}/**/*.php\\\" --watch\",\n    \"build\": \"unocss \\\"site/{snippets,templates}/**/*.php\\\"\"\n  },\n  \"devDependencies\": {\n    \"@unocss/cli\": \"latest\"\n  }\n}\n```\n\n### Development\n\nAdd the `--watch` (or `-w`) flag to enable watching for file changes:\n\n```bash\nunocss \"site/{snippets,templates}/**/*.php\" --watch\n```\n\n### Production\n\n```bash\nunocss \"site/{snippets,templates}/**/*.php\"\n```\n\nThe final `uno.css` will be generated to the current directory by default.\n\n## Built-in Features\n\n### Configurations\n\nCreate a `unocss.config.js` or `unocss.config.ts` configuration file the root-level of your project to customize UnoCSS.\n\n```js\nimport { defineConfig } from 'unocss'\n\nexport default defineConfig({\n  shortcuts: [\n    { box: 'max-w-7xl mx-auto bg-gray-100 rounded-md shadow-sm p-4' },\n  ],\n})\n```\n\nFor a list of options, head over to the [UnoCSS configurations](https://github.com/unocss/unocss#configurations) docs.\n\n## CLI Options\n\n> Inspect all available options with `unocss --help`.\n\n### `--out-file`\n\nThe output filename for the generated UnoCSS file. Defaults to `uno.css` in the current working directory.\n\n### `--watch`\n\nIndicates if the files found by the glob pattern should be watched.\n\n## License\n\nMIT License © 2021-PRESENT [Anthony Fu](https://github.com/antfu)\n\nMIT License © 2021-PRESENT [Johann Schopplich](https://github.com/johannschopplich)\n"
+}

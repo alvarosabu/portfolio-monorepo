@@ -1,0 +1,2 @@
+import '$histoire-theme';
+import '../../style.css';

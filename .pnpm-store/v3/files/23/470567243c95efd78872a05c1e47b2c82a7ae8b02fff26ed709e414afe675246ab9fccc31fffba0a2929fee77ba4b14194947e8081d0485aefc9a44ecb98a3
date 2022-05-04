@@ -1,0 +1,55 @@
+{
+  "name": "@unocss/webpack",
+  "version": "0.32.1",
+  "description": "The Webpack plugin for UnoCSS",
+  "keywords": [
+    "unocss",
+    "webpack-plugin"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/webpack#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/webpack"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "webpack": "^4 || ^5"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^4.2.1",
+    "@unocss/config": "0.32.1",
+    "@unocss/core": "0.32.1",
+    "unplugin": "^0.6.2",
+    "webpack-sources": "^3.2.3"
+  },
+  "devDependencies": {
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-sources": "^3.2.0",
+    "webpack": "^5.72.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/webpack\n\nThe Webpack plugin for UnoCSS.\n\n> This plugin does not come with any default presets.\n\nCurrently, this plugin only supports [the `global` mode](https://github.com/unocss/unocss/blob/main/packages/vite/src/types.ts#L11-L21)\n\n## Installation\n\n```bash\nnpm i -D @unocss/webpack\n```\n\n```ts\n// webpack.config.js\nconst UnoCSS = require('@unocss/webpack').default\n\nmodule.exports = {\n  plugins: [\n    UnoCSS({ /* options */ }),\n  ],\n}\n```\n\nOr you can have the config file in `unocss.config.js` or `unocss.config.ts`.\n"
+}

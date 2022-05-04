@@ -1,0 +1,79 @@
+import * as _nuxt_schema from '@nuxt/schema';
+import { UserConfig } from '@unocss/core';
+import { PresetUnoOptions } from '@unocss/preset-uno';
+import { AttributifyOptions } from '@unocss/preset-attributify';
+import { IconsOptions } from '@unocss/preset-icons';
+import { WebFontsOptions } from '@unocss/preset-web-fonts';
+import { TypographyOptions } from '@unocss/preset-typography';
+import { PresetWindOptions } from '@unocss/preset-wind';
+
+interface UnocssNuxtOptions extends UserConfig {
+    /**
+     * Injecting `uno.css` entry
+     *
+     * @default true
+     */
+    autoImport?: boolean;
+    /**
+     * Injecting `@unocss/reset/tailwind.css` entry
+     *
+     * @default false
+     */
+    preflight?: boolean;
+    /**
+     * Installing UnoCSS components
+     * - `<UnoIcon>`
+     *
+     * @default true
+     */
+    components?: boolean;
+    /**
+     * Enable the default preset
+     * Only works when `presets` is not specified
+     * @default true
+     */
+    uno?: boolean | PresetUnoOptions;
+    /**
+     * Enable attributify mode and the options of it
+     * Only works when `presets` is not specified
+     * @default false
+     */
+    attributify?: boolean | AttributifyOptions;
+    /**
+     * Enable icons preset and the options of it
+     * Only works when `presets` is not specified
+     * @default false
+     */
+    icons?: boolean | IconsOptions;
+    /**
+     * Enable web fonts preset and the options of it
+     * Only works when `presets` is not specified
+     * @default false
+     */
+    webFonts?: boolean | WebFontsOptions;
+    /**
+     * Enable typography preset and the options of it
+     * Only works when `presets` is not specified
+     * @default false
+     */
+    typography?: boolean | TypographyOptions;
+    /**
+     * Enable the wind preset
+     * Only works when `presets` is not specified
+     * @default false
+     */
+    wind?: boolean | PresetWindOptions;
+}
+
+declare const _default: _nuxt_schema.NuxtModule<UnocssNuxtOptions>;
+
+declare module '@nuxt/schema' {
+    interface NuxtConfig {
+        unocss?: UnocssNuxtOptions;
+    }
+    interface NuxtOptions {
+        unocss?: UnocssNuxtOptions;
+    }
+}
+
+export { UnocssNuxtOptions, _default as default };

@@ -1,0 +1,184 @@
+import path from 'pathe';
+import { createDefu } from 'defu';
+import { createServer, resolveConfig as resolveViteConfig, mergeConfig as mergeViteConfig, } from 'vite';
+import { ViteNodeServer } from 'vite-node/server';
+import { ViteNodeRunner } from 'vite-node/client';
+import pc from 'picocolors';
+import { defaultColors } from './colors.js';
+import { findUp } from './util/find-up.js';
+import { tailwindTokens } from './builtin-plugins/tailwind-tokens.js';
+export function getDefaultConfig() {
+    return {
+        plugins: [
+            tailwindTokens(),
+        ],
+        outDir: '.histoire/dist',
+        storyMatch: ['**/*.story.vue'],
+        storyIgnored: [
+            '**/node_modules/**',
+            '**/dist/**',
+        ],
+        tree: {
+            file: 'title',
+            order: 'asc',
+        },
+        theme: {
+            title: 'Histoire',
+            colors: {
+                primary: defaultColors.emerald,
+                gray: defaultColors.zinc,
+            },
+        },
+        responsivePresets: [
+            {
+                label: 'Mobile (Small)',
+                width: 320,
+                height: 560,
+            },
+            {
+                label: 'Mobile (Medium)',
+                width: 360,
+                height: 640,
+            },
+            {
+                label: 'Mobile (Large)',
+                width: 414,
+                height: 896,
+            },
+            {
+                label: 'Tablet',
+                width: 768,
+                height: 1024,
+            },
+            {
+                label: 'Laptop (Small)',
+                width: 1024,
+                height: null,
+            },
+            {
+                label: 'Laptop (Large)',
+                width: 1366,
+                height: null,
+            },
+            {
+                label: 'Desktop',
+                width: 1920,
+                height: null,
+            },
+            {
+                label: '4K',
+                width: 3840,
+                height: null,
+            },
+        ],
+        backgroundPresets: [
+            {
+                label: 'Transparent',
+                color: 'transparent',
+            },
+            {
+                label: 'White',
+                color: '#fff',
+            },
+            {
+                label: 'Light gray',
+                color: '#aaa',
+            },
+            {
+                label: 'Dark gray',
+                color: '#333',
+            },
+            {
+                label: 'Black',
+                color: '#000',
+            },
+        ],
+        sandboxDarkClass: 'dark',
+    };
+}
+export const configFileNames = [
+    'histoire.config.ts',
+    'histoire.config.js',
+    '.histoire.ts',
+    '.histoire.js',
+];
+export function resolveConfigFile(cwd = process.cwd()) {
+    return findUp(cwd, configFileNames);
+}
+export async function loadConfigFile(configFile) {
+    try {
+        const server = await createServer();
+        await server.pluginContainer.buildStart({});
+        const node = new ViteNodeServer(server, {
+            deps: {
+                inline: [
+                    /histoire\/dist/,
+                ],
+            },
+        });
+        const runner = new ViteNodeRunner({
+            root: path.dirname(configFile),
+            fetchModule(id) {
+                return node.fetchModule(id);
+            },
+            resolveId(id, importer) {
+                return node.resolveId(id, importer);
+            },
+        });
+        const result = await runner.executeFile(configFile);
+        await server.close();
+        if (!result.default) {
+            throw new Error(`Expected default export in ${configFile}`);
+        }
+        return result.default;
+    }
+    catch (e) {
+        console.error(pc.red(`Error while loading ${configFile}`));
+        throw e;
+    }
+}
+export const mergeConfig = createDefu((obj, key, value) => {
+    if (obj[key] && key === 'vite') {
+        obj[key] = mergeViteConfig(obj[key], value);
+        return true;
+    }
+    if (obj[key] && key === 'plugins') {
+        const initialValue = obj[key];
+        const newValue = obj[key] = [...value];
+        const nameMap = newValue.reduce((map, plugin) => {
+            map[plugin.name] = true;
+            return map;
+        }, {});
+        for (const plugin of initialValue) {
+            if (!nameMap[plugin.name]) {
+                newValue.unshift(plugin);
+            }
+        }
+        return true;
+    }
+});
+export async function resolveConfig(cwd = process.cwd(), mode) {
+    let result;
+    const configFile = resolveConfigFile(cwd);
+    if (configFile) {
+        result = await loadConfigFile(configFile);
+    }
+    const viteConfig = await resolveViteConfig({}, 'serve');
+    const viteHistoireConfig = (viteConfig.histoire ?? {});
+    return processConfig(mergeConfig(result, viteHistoireConfig, getDefaultConfig()), mode);
+}
+export async function processConfig(config, mode) {
+    for (const plugin of config.plugins) {
+        if (plugin.config) {
+            const result = await plugin.config(config, mode);
+            if (result) {
+                config = mergeConfig(result, config);
+            }
+        }
+    }
+    config.outDir = path.resolve(process.cwd(), config.outDir);
+    return config;
+}
+export function defineConfig(config) {
+    return config;
+}

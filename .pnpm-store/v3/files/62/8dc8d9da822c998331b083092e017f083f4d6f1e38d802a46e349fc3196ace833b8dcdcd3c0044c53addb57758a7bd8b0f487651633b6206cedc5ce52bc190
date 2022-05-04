@@ -1,0 +1,64 @@
+{
+  "name": "unconfig",
+  "version": "0.3.3",
+  "description": "A universal solution for loading configurations.",
+  "keywords": [
+    "config"
+  ],
+  "homepage": "https://github.com/antfu/unconfig#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/unconfig/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/unconfig.git"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./presets": {
+      "require": "./dist/presets.cjs",
+      "import": "./dist/presets.mjs",
+      "types": "./dist/presets.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@antfu/utils": "^0.5.1",
+    "defu": "^6.0.0",
+    "jiti": "^1.13.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.20.2",
+    "@antfu/ni": "^0.14.0",
+    "@types/node": "^17.0.23",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.13.0",
+    "esno": "^0.14.1",
+    "typescript": "^4.6.3",
+    "unbuild": "^0.7.3",
+    "vitest": "^0.9.3"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "release": "bumpp --commit --push --tag && pnpm publish",
+    "start": "esno src/index.ts",
+    "test": "vitest"
+  },
+  "readme": "# unconfig\n\n[![NPM version](https://img.shields.io/npm/v/unconfig?color=a1b858&label=)](https://www.npmjs.com/package/unconfig)\n\nA universal solution for loading configurations.\n\n## Why?\n\nConfiguration is hard, especially when you want to build an ecosystem of your tools.\n\nYou want your tools to be general and easy to use, you allow you config to be defined in a custom field of `package.json`.\n\nYou want your tools to be easy to integrate, you allow the configs to be defined in other tools' configurations like `vite.config.js` or `webpack.config.js`.\n\nYou want the configs to be agnostic and probably need to be load by IDE, you create new config files like `.myconfigrc`.\n\nYou want the configs to also be flexible and dynamic, you make your config files a JavaScript file, like `my.config.js`.\n\nThen you want users to be able to use ESM and TypeScript, you also make your config accepting `.ts` or `.mjs`.\n\nSo users' project root end up with a lot of config files like `.npmrc`, `rollup.config.js`, `.eslintrc`, `tsconfig.json`, `jest.config.js`, `postcss.config.js`, `nuxt.config.js`, `vite.config.cjs`, `windi.config.ts`, etc. And each of them use different syntax, in JSON, in CJS, in ESM, in TypeScript, in INI, in TOML...\n\n`unconfig` can't solve this fragmentation entirely, but it's trying to make loading them easier for tool authors.\n\n## Usage\n\n```bash\nnpm i unconfig\n```\n\nFor example, to load config for `my.config`:\n\n```js\nimport { loadConfig } from 'unconfig'\n\nconst { config, sources } = await loadConfig({\n  sources: [\n    // load from `my.config.xx`\n    {\n      files: 'my.config',\n      // default extensions\n      extensions: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'json', ''],\n    },\n    // load `my` field in `package.json` if no above config files found\n    {\n      files: 'package.json',\n      extensions: [],\n      rewrite(config) {\n        return config?.my\n      },\n    },\n    // load inline config from `vite.config`\n    {\n      files: 'vite.config',\n      async rewrite(config) {\n        const config = await (typeof config === 'function' ? config() : config)\n        return config?.my\n      },\n    },\n    // ...\n  ],\n  // if false, the only the first matched will be loaded\n  // if true, all matched will be loaded and deep merged\n  merge: false,\n})\n```\n\n`unconfig` supports loading `ts`, `mjs`, `js`, `json` by default.\n\n## Sponsors\n\n<p align=\"center\">\n  <a href=\"https://cdn.jsdelivr.net/gh/antfu/static/sponsors.svg\">\n    <img src='https://cdn.jsdelivr.net/gh/antfu/static/sponsors.svg'/>\n  </a>\n</p>\n\n## License\n\n[MIT](./LICENSE) License © 2021 [Anthony Fu](https://github.com/antfu)\n"
+}

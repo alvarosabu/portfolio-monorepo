@@ -1,0 +1,7 @@
+import { base } from '../../router';
+export function getSandboxUrl(story, variant) {
+    const url = new URLSearchParams();
+    url.append('storyId', story.id);
+    url.append('variantId', variant.id);
+    return `${base}__sandbox?${url.toString()}`;
+}

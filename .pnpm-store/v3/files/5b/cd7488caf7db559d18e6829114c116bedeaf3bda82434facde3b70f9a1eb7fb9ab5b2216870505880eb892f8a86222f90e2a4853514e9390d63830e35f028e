@@ -1,0 +1,2 @@
+import { Story, Variant } from '../../types';
+export declare function getSandboxUrl(story: Story, variant: Variant): string;

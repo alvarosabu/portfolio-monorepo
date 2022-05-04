@@ -1,0 +1,17 @@
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+export function useCurrentVariantRoute(variant) {
+    const route = useRoute();
+    const isActive = computed(() => route.query.variantId === variant.value.id);
+    const targetRoute = computed(() => ({
+        ...route,
+        query: {
+            ...route.query,
+            variantId: variant.value.id,
+        },
+    }));
+    return {
+        isActive,
+        targetRoute,
+    };
+}

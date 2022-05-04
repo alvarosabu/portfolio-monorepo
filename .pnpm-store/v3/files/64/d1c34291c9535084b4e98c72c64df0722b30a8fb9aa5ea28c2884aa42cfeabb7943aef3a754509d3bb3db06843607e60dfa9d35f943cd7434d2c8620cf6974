@@ -1,0 +1,23 @@
+{
+	"prefix": "ant-design",
+	"name": "Ant Design Icons",
+	"total": 789,
+	"version": "4.2.1",
+	"author": {
+		"name": "HeskeyBaozi",
+		"url": "https://github.com/ant-design/ant-design-icons"
+	},
+	"license": {
+		"title": "MIT",
+		"spdx": "MIT",
+		"url": "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE"
+	},
+	"samples": [
+		"pushpin-filled",
+		"pie-chart-outlined",
+		"shopping-twotone"
+	],
+	"height": 16,
+	"category": "General",
+	"palette": false
+}

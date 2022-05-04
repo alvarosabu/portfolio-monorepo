@@ -1,0 +1,30 @@
+{
+  "name": "@unocss/reset",
+  "version": "0.32.8",
+  "description": "Collection of CSS reseting",
+  "keywords": [],
+  "homepage": "https://github.com/unocss/unocss#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "exports": {
+    "./*": "./*"
+  },
+  "files": [
+    "**/*.css"
+  ],
+  "devDependencies": {
+    "@csstools/normalize.css": "^12.0.0",
+    "sanitize.css": "^13.0.0"
+  },
+  "scripts": {
+    "build": "esno scripts/copy.ts"
+  }
+}
