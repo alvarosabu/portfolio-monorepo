@@ -106,6 +106,7 @@ const figureClasses = ref([
   'relative',
   'overflow-hidden',
   'rounded',
+  'm-0',
   props.aspectRatio ? `aspect-${props.aspectRatio}` : null,
 ])
 
