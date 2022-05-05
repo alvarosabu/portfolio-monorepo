@@ -17,7 +17,13 @@ function initState() {
 </script>
 
 <template>
-  <Story title="AsButton">
+  <Story
+    title="AsButton"
+    :layout="{
+      type: 'grid',
+      width: 200,
+    }"
+  >
     <Variant title="playground" :init-state="initState">
       <template #default="{ state }">
         <AsButton
@@ -51,7 +57,23 @@ function initState() {
     </Variant>
 
     <Variant title="Secondary" icon="carbon:star-filled" icon-color="#34D399">
-      <AsButton variant="primary"> Awiwi </AsButton>
+      <AsButton variant="secondary"> Awiwi </AsButton>
+    </Variant>
+
+    <Variant title="Primary Outline" icon="carbon:outline">
+      <AsButton variant="primary" outline> Awiwi </AsButton>
+    </Variant>
+
+    <Variant title="Secondary Outline" icon="carbon:outline">
+      <AsButton variant="secondary" outline> Awiwi </AsButton>
+    </Variant>
+
+    <Variant title="Primary Flat" icon="carbon:outline">
+      <AsButton variant="primary" flat> Awiwi </AsButton>
+    </Variant>
+
+    <Variant title="Secondary Flat" icon="carbon:outline">
+      <AsButton variant="secondary" flat> Awiwi </AsButton>
     </Variant>
 
     <Variant title="Icon" icon="carbon:logo-github" icon-color="#10B981">
