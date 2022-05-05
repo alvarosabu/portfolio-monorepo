@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.4.0
+
+### Minor Changes
+
+- 95b9f240: Dark mode Switch
+
 ## 2.3.0
 
 ### Minor Changes
