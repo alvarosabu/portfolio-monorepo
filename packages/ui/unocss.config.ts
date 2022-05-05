@@ -63,9 +63,6 @@ export const ASTheme = {
 
 export default defineConfig({
   theme: ASTheme,
-  rules: [
-    [/^aspect-(\d+)-(\d+)$/, ([, w, h]) => ({ 'aspect-ratio': `${w}/${h}` })],
-  ],
   shortcuts: [...btnShortcuts],
   safelist: [...btnSafelist, ...iconSafelist, ...imgAspectRatiosSafelist],
   presets: [

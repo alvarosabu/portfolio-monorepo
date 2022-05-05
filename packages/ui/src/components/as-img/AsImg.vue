@@ -57,7 +57,7 @@ const props = defineProps({
       return valid
     },
   },
-  imgCaptionType: {
+  captionType: {
     type: String,
     default: imgCaptionType.OUTSIDE,
     validator: (val: string) => {
@@ -104,11 +104,13 @@ const imgClasses = computed(() => ({
 const figureClasses = ref([
   `as-img`,
   'relative',
-  props.aspectRatio ? `aspect-${props.aspectRatio.replace('/', '-')}` : null,
+  'overflow-hidden',
+  'rounded',
+  props.aspectRatio ? `aspect-${props.aspectRatio}` : null,
 ])
 
 const captionClasses = computed(() => {
-  switch (props.imgCaptionType) {
+  switch (props.captionType) {
     case imgCaptionType.OUTSIDE:
       return ['text-sm', 'py-4']
     case imgCaptionType.BOTTOM:
