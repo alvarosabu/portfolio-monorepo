@@ -82,7 +82,7 @@ export default defineConfig({
       provider: 'google', // default provider
       fonts: {
         // these will extend the default theme
-        sans: 'Nunito',
+        sans: ['Nunito', 'Nunito:400,700'],
         mono: ['Fira Code', 'Fira Mono:400,700'],
         display: ['Gilroy', 'Gilroy:400,700'],
       },
