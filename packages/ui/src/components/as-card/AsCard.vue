@@ -33,22 +33,22 @@ const props = defineProps({
   >
     <slot name="header">
       <header>
-        <AsImg class="w-full" v-if="media" :src="media" />
+        <AsImg w-full rounded-none v-if="media" :src="media" />
         <h2 v-if="title" font="bold display" text="base lg" p-4 m-0>
           <slot name="title">{{ title }}</slot>
         </h2>
-        <p class="m-0 pl-4 font-typewrite text-xs" v-if="subtitle">
+        <p m-0 pl-4 font-typewrite text-xs v-if="subtitle">
           <slot name="subtitle">{{ subtitle }}</slot>
         </p>
       </header>
     </slot>
     <slot name="content">
-      <div class="text-sm p-4">
+      <div text-sm p-4>
         {{ content }}
       </div>
     </slot>
     <slot name="footer">
-      <footer class="flex w-full text-sm justify-end"></footer>
+      <footer flex w-full text-sm justify-end></footer>
     </slot>
   </div>
 </template>
