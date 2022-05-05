@@ -1,6 +1,6 @@
 {
   "name": "@alvarosabu/ui",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "UI Library for AS development",
   "files": [
     "dist"
