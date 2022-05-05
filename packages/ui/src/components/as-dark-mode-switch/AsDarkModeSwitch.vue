@@ -12,7 +12,7 @@ const props = defineProps({
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
-const inputRef = ref<HTMLInputElement>(null)
+const inputRef = ref<HTMLInputElement | null>(null)
 const { focused } = useFocus(inputRef)
 </script>
 <template>
