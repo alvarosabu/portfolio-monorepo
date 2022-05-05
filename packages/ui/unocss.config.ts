@@ -1,3 +1,4 @@
+import { imgAspectRatiosSafelist } from './src/components/as-img/const'
 import {
   defineConfig,
   presetAttributify,
@@ -63,7 +64,7 @@ export const ASTheme = {
 export default defineConfig({
   theme: ASTheme,
   shortcuts: [...btnShortcuts],
-  safelist: [...btnSafelist, ...iconSafelist],
+  safelist: [...btnSafelist, ...iconSafelist, ...imgAspectRatiosSafelist],
   presets: [
     presetUno(),
     presetAttributify(),
