@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.3.0
+
+### Minor Changes
+
+- 8fc41314: Card component
+
 ## 2.2.0
 
 ### Minor Changes
