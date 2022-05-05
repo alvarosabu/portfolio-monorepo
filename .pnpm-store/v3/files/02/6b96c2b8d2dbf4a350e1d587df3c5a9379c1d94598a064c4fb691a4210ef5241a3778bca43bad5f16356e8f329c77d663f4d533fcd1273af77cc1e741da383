@@ -1,0 +1,4 @@
+export declare const STATE_SYNC = "__histoire:state-sync";
+export declare const SANDBOX_READY = "__histoire:sandbox-ready";
+export declare const EVENT_SEND = "__histoire:event";
+export declare const PREVIEW_SETTINGS_SYNC = "__histoire:preview-settings-sync";

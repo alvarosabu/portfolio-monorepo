@@ -1,0 +1,12 @@
+import { resolveConfig as resolveViteConfig } from 'vite';
+import { resolveConfig } from './config.js';
+export async function createContext(options) {
+    const config = await resolveConfig(process.cwd(), options.mode);
+    const viteConfig = await resolveViteConfig({}, 'build');
+    return {
+        root: viteConfig.root,
+        config,
+        mode: options.mode,
+        storyFiles: [],
+    };
+}

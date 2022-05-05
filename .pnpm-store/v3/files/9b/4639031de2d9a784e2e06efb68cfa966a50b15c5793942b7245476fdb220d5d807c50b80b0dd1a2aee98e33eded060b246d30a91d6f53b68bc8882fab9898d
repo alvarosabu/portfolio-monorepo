@@ -1,0 +1,60 @@
+{
+  "name": "@unocss/vite",
+  "version": "0.32.8",
+  "description": "The Vite plugin for UnoCSS",
+  "keywords": [
+    "unocss",
+    "vite",
+    "vite-plugin"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/vite#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/vite"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./client": {
+      "import": "./dist/client.mjs",
+      "require": "./dist/client.js",
+      "types": "./dist/client.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "vite": "^2.9.0"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^4.2.1",
+    "@unocss/config": "0.32.8",
+    "@unocss/core": "0.32.8",
+    "@unocss/inspector": "0.32.8",
+    "@unocss/scope": "0.32.8",
+    "@unocss/transformer-directives": "0.32.8",
+    "magic-string": "^0.26.1"
+  },
+  "devDependencies": {
+    "vite": "^2.9.6"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}

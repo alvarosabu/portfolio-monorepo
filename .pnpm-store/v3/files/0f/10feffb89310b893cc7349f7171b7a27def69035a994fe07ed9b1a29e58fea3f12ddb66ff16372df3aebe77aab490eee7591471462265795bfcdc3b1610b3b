@@ -1,0 +1,9 @@
+import * as webpack from 'webpack';
+import { UserConfig, UserConfigDefaults } from '@unocss/core';
+
+interface WebpackPluginOptions<Theme extends {} = {}> extends UserConfig<Theme> {
+}
+declare function defineConfig<Theme extends {}>(config: WebpackPluginOptions<Theme>): WebpackPluginOptions<Theme>;
+declare function WebpackPlugin(configOrPath?: WebpackPluginOptions | string, defaults?: UserConfigDefaults): webpack.WebpackPluginInstance;
+
+export { WebpackPluginOptions, WebpackPlugin as default, defineConfig };

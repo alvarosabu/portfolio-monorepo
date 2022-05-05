@@ -1,0 +1,13 @@
+import { Plugin as VitePlugin } from 'vite';
+import { Context } from './context.js';
+export declare const STORIES_ID = "$histoire-stories";
+export declare const RESOLVED_STORIES_ID: string;
+export declare const SETUP_ID = "$histoire-setup";
+export declare const NOOP_ID = "/$histoire-noop";
+export declare const CONFIG_ID = "$histoire-config";
+export declare const RESOLVED_CONFIG_ID: string;
+export declare const THEME_ID = "$histoire-theme";
+export declare const RESOLVED_THEME_ID: string;
+export declare const SEARCH_DATA_ID = "$histoire-search-data";
+export declare const RESOLVED_SEARCH_DATA_ID: string;
+export declare function createVitePlugins(ctx: Context): Promise<VitePlugin[]>;

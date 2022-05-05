@@ -1,0 +1,335 @@
+import { Story, Variant } from '../types';
+export declare const useStoryStore: import("pinia").StoreDefinition<"story", import("pinia")._UnwrapAll<Pick<{
+    stories: import("vue").Ref<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }[]>;
+    setStories: (value: Story[]) => void;
+    currentStory: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }>;
+    currentVariant: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        icon?: string;
+        iconColor?: string;
+        initState?: () => any;
+        slots?: () => Readonly<any>;
+        state?: any;
+        source?: string;
+        responsiveDisabled?: boolean;
+        configReady?: boolean;
+        previewReady?: boolean;
+    }>;
+    getStoryById: (id: string) => Story;
+    getVariantById: (idWithStoryId: string) => Variant;
+}, "stories">>, import("pinia")._UnwrapAll<Pick<{
+    stories: import("vue").Ref<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }[]>;
+    setStories: (value: Story[]) => void;
+    currentStory: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }>;
+    currentVariant: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        icon?: string;
+        iconColor?: string;
+        initState?: () => any;
+        slots?: () => Readonly<any>;
+        state?: any;
+        source?: string;
+        responsiveDisabled?: boolean;
+        configReady?: boolean;
+        previewReady?: boolean;
+    }>;
+    getStoryById: (id: string) => Story;
+    getVariantById: (idWithStoryId: string) => Variant;
+}, "currentStory" | "currentVariant">>, Pick<{
+    stories: import("vue").Ref<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }[]>;
+    setStories: (value: Story[]) => void;
+    currentStory: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        group?: string;
+        variants: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        }[];
+        layout?: {
+            type: "single";
+        } | {
+            type: "grid";
+            width?: string | number;
+        };
+        icon?: string;
+        iconColor?: string;
+        docsOnly?: boolean;
+        file?: {
+            id: string;
+            framework: string;
+            component: any;
+            story: any;
+            path: string[];
+        };
+        lastSelectedVariant?: {
+            id: string;
+            title: string;
+            icon?: string;
+            iconColor?: string;
+            initState?: () => any;
+            slots?: () => Readonly<any>;
+            state?: any;
+            source?: string;
+            responsiveDisabled?: boolean;
+            configReady?: boolean;
+            previewReady?: boolean;
+        };
+    }>;
+    currentVariant: import("vue").ComputedRef<{
+        id: string;
+        title: string;
+        icon?: string;
+        iconColor?: string;
+        initState?: () => any;
+        slots?: () => Readonly<any>;
+        state?: any;
+        source?: string;
+        responsiveDisabled?: boolean;
+        configReady?: boolean;
+        previewReady?: boolean;
+    }>;
+    getStoryById: (id: string) => Story;
+    getVariantById: (idWithStoryId: string) => Variant;
+}, "setStories" | "getStoryById" | "getVariantById">>;

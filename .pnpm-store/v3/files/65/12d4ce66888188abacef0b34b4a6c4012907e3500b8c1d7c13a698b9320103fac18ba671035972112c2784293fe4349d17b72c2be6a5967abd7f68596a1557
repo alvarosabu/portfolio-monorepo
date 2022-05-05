@@ -1,0 +1,21 @@
+@import '@histoire/controls/dist/style.css';
+
+html,
+body {
+  background: transparent !important;
+}
+
+body {
+  margin: 0;
+}
+
+html,
+body,
+#app {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.htw-sandbox-hidden {
+  display: none;
+}

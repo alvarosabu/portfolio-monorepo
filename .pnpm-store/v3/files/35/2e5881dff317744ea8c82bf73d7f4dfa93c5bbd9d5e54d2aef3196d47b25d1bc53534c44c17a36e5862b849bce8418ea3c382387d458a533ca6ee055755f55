@@ -1,0 +1,44 @@
+{
+  "name": "@unocss/transformer-directives",
+  "version": "0.32.8",
+  "description": "UnoCSS transformer for `@apply` directive",
+  "keywords": [
+    "unocss",
+    "unocss-transformer"
+  ],
+  "homepage": "https://github.com/antfu/unocss/tree/main/packages/transformer-directives#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "hannoeru <me@hanlee.co>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/unocss.git",
+    "directory": "packages/transformer-directives"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.8",
+    "css-tree": "^2.1.0"
+  },
+  "devDependencies": {
+    "magic-string": "^0.26.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  }
+}

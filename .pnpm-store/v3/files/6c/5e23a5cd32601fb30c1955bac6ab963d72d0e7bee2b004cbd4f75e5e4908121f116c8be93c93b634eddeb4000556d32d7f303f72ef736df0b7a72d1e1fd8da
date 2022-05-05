@@ -1,0 +1,12 @@
+import type { ViteDevServer } from 'vite';
+import type { StoryFile } from '../types.js';
+import type { Context } from '../context.js';
+export interface UseCollectStoriesOptions {
+    server: ViteDevServer;
+    throws?: boolean;
+}
+export declare function useCollectStories(options: UseCollectStoriesOptions, ctx: Context): {
+    clearCache: () => void;
+    executeStoryFile: (storyFile: StoryFile) => Promise<void>;
+    destroy: () => Promise<void>;
+};

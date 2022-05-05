@@ -1,0 +1,9 @@
+export async function run(payload) {
+    let result;
+    // @TODO if (vue3)
+    {
+        const { run } = await import('./vue3/run.js');
+        result = await run(payload);
+    }
+    return result;
+}

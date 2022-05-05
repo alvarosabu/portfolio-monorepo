@@ -1,0 +1,7 @@
+import { b as getWorkerState } from './chunk-utils-global.37a7c822.js';
+
+const rpc = () => {
+  return getWorkerState().rpc;
+};
+
+export { rpc as r };

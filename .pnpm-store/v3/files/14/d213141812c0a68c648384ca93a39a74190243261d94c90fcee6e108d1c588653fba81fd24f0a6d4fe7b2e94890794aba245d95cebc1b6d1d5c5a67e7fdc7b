@@ -1,0 +1,9 @@
+import type { PreviewSettings } from '../types';
+export declare const receivedSettings: {
+    responsiveWidth: number;
+    responsiveHeight: number;
+    rotate: boolean;
+    backgroundColor: string;
+    checkerboard: boolean;
+};
+export declare function applyPreviewSettings(settings: PreviewSettings): void;

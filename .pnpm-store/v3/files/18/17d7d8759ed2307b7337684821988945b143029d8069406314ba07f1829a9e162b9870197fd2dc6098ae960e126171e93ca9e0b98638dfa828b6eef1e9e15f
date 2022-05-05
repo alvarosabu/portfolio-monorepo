@@ -1,0 +1,53 @@
+{
+  "name": "@unocss/preset-web-fonts",
+  "version": "0.32.1",
+  "description": "Web Fonts support for Uno CSS",
+  "keywords": [
+    "unocss",
+    "unocss-preset",
+    "fonts",
+    "web-fonts",
+    "google-fonts"
+  ],
+  "homepage": "https://github.com/unocss/unocss/tree/main/packages/preset-web-fonts#readme",
+  "bugs": {
+    "url": "https://github.com/unocss/unocss/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unocss/unocss.git",
+    "directory": "packages/preset-web-fonts"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./fs": {
+      "require": "./dist/fs.cjs",
+      "import": "./dist/fs.mjs",
+      "types": "./dist/fs.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "*.css"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@unocss/core": "0.32.1",
+    "axios": "^0.26.1"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "readme": "# @unocss/preset-web-fonts\n\nWeb fonts support for [UnoCSS](https://github.com/unocss/unocss).\n\n## Install\n\n```bash\nnpm i -D @unocss/preset-web-fonts\n```\n\n```ts\nimport presetWebFonts from '@unocss/preset-web-fonts'\nimport presetUno from '@unocss/preset-uno'\n\nUnocss({\n  presets: [\n    presetUno(),\n    presetWebFonts({\n      provider: 'google', // default provider\n      fonts: {\n        // these will extend the default theme\n        sans: 'Roboto',\n        mono: ['Fira Code', 'Fira Mono:400,700'],\n        // custom ones\n        lobster: 'Lobster',\n        lato: [\n          {\n            name: 'Lato',\n            weights: ['400', '700'],\n            italic: true,\n          },\n          {\n            name: 'sans-serif',\n            provider: 'none',\n          },\n        ],\n      },\n    }),\n  ],\n})\n```\n\nThe following CSS will be generated\n\n```css\n@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Fira+Code&family=Fira+Mono:wght@400;700&family=Lobster&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');\n\n/* layer: default */\n.font-lato {\n  font-family: \"Lato\", sans-serif;\n}\n.font-lobster {\n  font-family: \"Lobster\";\n}\n.font-mono {\n  font-family: \"Fira Code\", \"Fira Mono\", ui-monospace, SFMono-Regular, Menlo,\n    Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n}\n.font-sans {\n  font-family: \"Roboto\", ui-sans-serif, system-ui, -apple-system,\n    BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\",\n    sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\",\n    \"Noto Color Emoji\";\n}\n```\n\n## Providers\n\nCurrently supported Providers:\n\n- `none` - do nothing, treat the font as system font\n- `google` - [Google Fonts](https://fonts.google.com/)\n\nPR welcome to add more providers 🙌\n\n## Configuration\n\nRefer to the [type definition](https://github.com/unocss/unocss/blob/main/packages/preset-web-fonts/src/types.ts#L4) for all configurations avaliable.\n\n## License\n\nMIT License © 2022-PRESENT [Anthony Fu](https://github.com/antfu)\n"
+}

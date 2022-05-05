@@ -1,0 +1,10 @@
+export declare const useFolderStore: import("pinia").StoreDefinition<"folder", import("pinia")._UnwrapAll<Pick<{
+    isFolderOpened: (path: Array<string>, defaultValue?: boolean) => boolean;
+    toggleFolder: (path: Array<string>, defaultToggleValue?: boolean) => void;
+}, never>>, import("pinia")._UnwrapAll<Pick<{
+    isFolderOpened: (path: Array<string>, defaultValue?: boolean) => boolean;
+    toggleFolder: (path: Array<string>, defaultToggleValue?: boolean) => void;
+}, never>>, Pick<{
+    isFolderOpened: (path: Array<string>, defaultValue?: boolean) => boolean;
+    toggleFolder: (path: Array<string>, defaultToggleValue?: boolean) => void;
+}, "isFolderOpened" | "toggleFolder">>;
