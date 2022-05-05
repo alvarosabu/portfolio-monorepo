@@ -1,3 +1,4 @@
+import { imgAspectRatiosSafelist } from './src/components/as-img/const'
 import {
   defineConfig,
   presetAttributify,
@@ -62,8 +63,11 @@ export const ASTheme = {
 
 export default defineConfig({
   theme: ASTheme,
+  rules: [
+    [/^aspect-(\d+)-(\d+)$/, ([, w, h]) => ({ 'aspect-ratio': `${w}/${h}` })],
+  ],
   shortcuts: [...btnShortcuts],
-  safelist: [...btnSafelist, ...iconSafelist],
+  safelist: [...btnSafelist, ...iconSafelist, ...imgAspectRatiosSafelist],
   presets: [
     presetUno(),
     presetAttributify(),

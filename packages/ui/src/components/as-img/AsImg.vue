@@ -104,9 +104,7 @@ const imgClasses = computed(() => ({
 const figureClasses = ref([
   `as-img`,
   'relative',
-  props.aspectRatio
-    ? `aspect-ratio-${props.aspectRatio.replace('/', '-')}`
-    : null,
+  props.aspectRatio ? `aspect-${props.aspectRatio.replace('/', '-')}` : null,
 ])
 
 const captionClasses = computed(() => {
