@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.5.0
+
+### Minor Changes
+
+- 29ada97f: Misc components and graphics
+
 ## 2.4.0
 
 ### Minor Changes
