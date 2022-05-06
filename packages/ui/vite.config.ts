@@ -30,7 +30,12 @@ export default defineConfig({
       include: [resolve(__dirname, 'src')],
     },
     rollupOptions: {
-      plugins: [analyze(), visualizer()],
+      plugins: [
+        analyze(),
+        visualizer({
+          open: true,
+        }),
+      ],
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue', '@vueuse/shared', '@vueuse/core'],
