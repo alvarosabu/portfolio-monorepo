@@ -58,6 +58,7 @@ importers:
       typescript: ^4.6.4
       unocss: ^0.32.13
       vite: ^2.9.8
+      vite-plugin-banner: ^0.2.0
       vite-svg-loader: ^3.3.0
       vitest: ^0.10.5
       vue: ^3.2.33
@@ -89,6 +90,7 @@ importers:
       typescript: 4.6.4
       unocss: 0.32.13_vite@2.9.8
       vite: 2.9.8_sass@1.51.0
+      vite-plugin-banner: 0.2.0
       vite-svg-loader: 3.3.0
       vitest: 0.10.5_jsdom@19.0.0+sass@1.51.0
       vue-tsc: 0.34.11_typescript@4.6.4
@@ -8158,6 +8160,10 @@ packages:
       - less
       - sass
       - stylus
+    dev: true
+
+  /vite-plugin-banner/0.2.0:
+    resolution: {integrity: sha512-IBRYVK6v92ihchBYxl6yhT57hr2cRnSX4RX6CJp84vNeWAg/Hht4B5Ywe0jwKA26Kkx/Yx4SGbMp8YLvAqm2pg==}
     dev: true
 
   /vite-plugin-checker/0.4.6_vite@2.9.6:
