@@ -56,6 +56,7 @@ importers:
       typescript: ^4.6.4
       unocss: ^0.32.12
       vite: ^2.9.8
+      vite-svg-loader: ^3.3.0
       vitest: ^0.10.2
       vue: ^3.2.33
       vue-tsc: ^0.34.11
@@ -84,6 +85,7 @@ importers:
       typescript: 4.6.4
       unocss: 0.32.12_vite@2.9.8
       vite: 2.9.8_sass@1.51.0
+      vite-svg-loader: 3.3.0
       vitest: 0.10.2_jsdom@19.0.0+sass@1.51.0
       vue-tsc: 0.34.11_typescript@4.6.4
 
@@ -8154,6 +8156,13 @@ packages:
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.4
       vscode-uri: 3.0.3
+    dev: true
+
+  /vite-svg-loader/3.3.0:
+    resolution: {integrity: sha512-3bvC4NoaBIr8e9DoiYBjC/C8zg83wfc565PiWhUfJML1X4nGbVsGImOabWX1ebah8EYlRwIhRXkFjh7UntF1dg==}
+    dependencies:
+      '@vue/compiler-sfc': 3.2.33
+      svgo: 2.8.0
     dev: true
 
   /vite/2.9.6:
