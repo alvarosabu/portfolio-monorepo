@@ -18,13 +18,16 @@
     "preview": "vite preview",
     "histoire": "pnpm exec histoire dev",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "test:components": "cypress open-ct"
   },
   "dependencies": {
     "@vueuse/core": "^8.4.2",
     "vue": "^3.2.33"
   },
   "devDependencies": {
+    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vue": "^3.1.2",
     "@iconify-json/ant-design": "^1.1.1",
     "@iconify-json/carbon": "^1.1.4",
     "@iconify-json/gg": "^1.1.1",
@@ -40,6 +43,7 @@
     "@vitejs/plugin-vue": "^2.3.2",
     "@vue/test-utils": "^2.0.0-rc.21",
     "c8": "^7.11.2",
+    "cypress": "^9.6.0",
     "histoire": "^0.3.1",
     "jsdom": "^19.0.0",
     "pathe": "^0.3.0",
