@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.5.1
+
+### Patch Changes
+
+- 7fdfab41: Bundler improvements
+
 ## 2.5.0
 
 ### Minor Changes
