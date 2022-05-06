@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
+import SvgLoader from 'vite-svg-loader'
 
 import vue from '@vitejs/plugin-vue'
 
@@ -16,7 +17,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-  plugins: [vue(), Unocss()],
+  plugins: [vue(), Unocss(), SvgLoader()],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
