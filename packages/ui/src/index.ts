@@ -3,7 +3,9 @@ import 'uno.css'
 // normalize.css
 import '@unocss/reset/tailwind.css'
 
-const modules = import.meta.globEager('./components/**/*.vue')
+const modules = import.meta.globEager(
+  './components/**/!(*.spec|*.test|*.story).vue',
+)
 const components = Object.entries(modules)
 
 export default {
