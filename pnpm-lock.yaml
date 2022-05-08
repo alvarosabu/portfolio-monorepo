@@ -53,7 +53,7 @@ importers:
       '@vueuse/core': ^8.4.2
       c8: ^7.11.2
       cypress: ^9.6.0
-      histoire: ^0.3.1
+      histoire: ^0.3.3
       jsdom: ^19.0.0
       pathe: ^0.3.0
       rollup-plugin-analyzer: ^4.0.0
@@ -89,7 +89,7 @@ importers:
       '@vue/test-utils': 2.0.0-rc.21_vue@3.2.33
       c8: 7.11.2
       cypress: 9.6.0
-      histoire: 0.3.1_f6c5230238d0a9d061560825c29eaf20
+      histoire: 0.3.3_f6c5230238d0a9d061560825c29eaf20
       jsdom: 19.0.0
       pathe: 0.3.0
       rollup-plugin-analyzer: 4.0.0
@@ -723,8 +723,8 @@ packages:
       '@floating-ui/core': 0.3.1
     dev: true
 
-  /@histoire/controls/0.3.1_vue@3.2.33:
-    resolution: {integrity: sha512-HLiG5UT8MFbOxXRdgUVgM+13U2V/6d/+wHOBDdyCwEKuJVPd4skvo/Q40dqNZzlfYcuABH3Jjzv2DT7cY4ohTQ==}
+  /@histoire/controls/0.3.3_vue@3.2.33:
+    resolution: {integrity: sha512-Pksi7+zurdHXq/JXstpUfBqy2ojmQsReVKvHiH2FAcDf4OWB8of+DXSuLXZrLlI7dNCQfAbEBiBZPhVAAMg35g==}
     dependencies:
       '@iconify/vue': 3.2.1_vue@3.2.33
       '@vueuse/core': 8.4.2_vue@3.2.33
@@ -4692,14 +4692,14 @@ packages:
     hasBin: true
     dev: true
 
-  /histoire/0.3.1_f6c5230238d0a9d061560825c29eaf20:
-    resolution: {integrity: sha512-Wl1uF+OyXaLqeiVZCL9iP5Y/YcxjR1TZfq5QeTZFRUgQvIED2n2STrNU71xeb2C7d2BCybcRDDyQNKqqcB9Nlg==}
+  /histoire/0.3.3_f6c5230238d0a9d061560825c29eaf20:
+    resolution: {integrity: sha512-jh4w0eWHu9S75BqI0hmv2gmHJEnr0ykqLFD2Vtm8/HO2DMyPKl8W/e2yZNAw87jsV9HKyA1cPcrjm8ub/TqHEw==}
     hasBin: true
     peerDependencies:
       vite: ^2.9.0
       vue: ^3.2.31
     dependencies:
-      '@histoire/controls': 0.3.1_vue@3.2.33
+      '@histoire/controls': 0.3.3_vue@3.2.33
       '@iconify/vue': 3.2.1_vue@3.2.33
       '@vitejs/plugin-vue': 2.3.2_vite@2.9.8+vue@3.2.33
       '@vueuse/core': 8.4.2_vue@3.2.33
