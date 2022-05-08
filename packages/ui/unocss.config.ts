@@ -13,7 +13,7 @@ import {
 import { btnShortcuts, btnSafelist } from './src/components/as-button/const'
 import { iconSafelist } from './src/components/as-icon/const'
 
-const primary = {
+export const primary = {
   // oxford
   DEFAULT: '#3E5166',
   50: '#B7C4D3',
@@ -28,7 +28,7 @@ const primary = {
   900: '#000000',
 }
 
-const secondary = {
+export const secondary = {
   // caribbean-green
   DEFAULT: '#34D399',
   50: '#F1FCF8',

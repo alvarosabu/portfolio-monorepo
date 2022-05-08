@@ -2,6 +2,7 @@
   "name": "@alvarosabu/ui",
   "version": "2.5.1",
   "description": "UI Library for AS development",
+  "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
   "files": [
     "dist"
   ],
