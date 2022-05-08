@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.5.2
+
+### Patch Changes
+
+- 9677411d: Testing with Cypress
+
 ## 2.5.1
 
 ### Patch Changes
