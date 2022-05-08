@@ -12,14 +12,6 @@ import { resolve } from 'pathe'
 
 import pkg from './package.json'
 
-/* const { name, version, author } = pkg
-
-const banner = `/*!
-  * ${name} v${version}
-  * (c) ${new Date().getFullYear()} ${author}
-  * @license MIT
-  */
-
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -40,7 +32,7 @@ export default defineConfig({
         pkg.version
       }\n * (c) ${new Date().getFullYear()}\n * description: ${
         pkg.description
-      }\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,
+      }\n * author: ${pkg.author}\n */`,
     }),
   ],
   build: {
