@@ -25,12 +25,12 @@ export const btnShortcuts = [
   [
     /^btn-(?!.*(outline|flat|block|sm|md|lg|default))(.*)/,
     ([, , c]: [any, any, string]) =>
-      `bg-${c}-400 text-white hover:bg-${c}-500 border-transparent `,
+      `bg-${c}-400 text-white border-transparent hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
   [
     /^btn-outline-(.*)$/,
     ([, c]: [any, string]) =>
-      `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500`,
+      `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500 hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
   [
     /^btn-flat-(.*)$/,

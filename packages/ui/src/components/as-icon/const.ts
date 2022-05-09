@@ -39,7 +39,6 @@ export const asIcons = new Map([
 ])
 
 export const iconList = Array.from(asIcons.entries())
-console.log(iconList)
 
 export const iconSafelist = [...iconList.map(([key, value]) => `i-${value}`)]
 

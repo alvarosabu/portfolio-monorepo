@@ -105,3 +105,9 @@ function initState() {
     </Variant>
   </Story>
 </template>
+
+<style>
+.__histoire-sandbox > div {
+  padding: 1rem;
+}
+</style>
