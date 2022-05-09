@@ -104,9 +104,6 @@ const hasLabel = computed(() => props.label !== '')
     disabled:opacity-20
     cursor-pointer
     decoration-none
-    transform
-    shadow="hover:current hover:sm active:active"
-    translate="hover:-x-0.5 hover:-y-0.5"
   >
     <slot name="preffix">
       <AsIcon
@@ -127,3 +124,11 @@ const hasLabel = computed(() => props.label !== '')
     </slot>
   </component>
 </template>
+
+<style>
+.as-btn:not([class*='btn-flat-']):hover {
+  /* TODO: Add transform directives on unocss and replace this */
+  /* @apply transform -translate-x-0.5 -translate-y-0.5; */
+  transform: translate(-0.125rem, -0.125rem);
+}
+</style>

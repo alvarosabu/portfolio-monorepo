@@ -1,5 +1,4 @@
 export const asNavigationIcons = new Map([
-  ['arrow-back', 'arrow-back'],
   ['menu', 'gg-menu-right'],
   ['close', 'gg-close'],
   ['location', 'carbon-location'],
@@ -39,8 +38,8 @@ export const asIcons = new Map([
   ...miscIcons,
 ])
 
-export const iconSafelist = [
-  ...Array.from(asIcons.values()).map(icon => `i-${icon}`),
-]
+export const iconList = Array.from(asIcons.entries())
+
+export const iconSafelist = [...iconList.map(([key, value]) => `i-${value}`)]
 
 export default asIcons

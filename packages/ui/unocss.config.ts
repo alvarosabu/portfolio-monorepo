@@ -58,6 +58,7 @@ export const ASTheme = {
   },
   boxShadow: {
     active: 'inset 4px 4px 2px 0 rgba(0, 0, 0, 0.08)',
+    button: '4px 4px 1px 0px var(--un-shadow-color)',
   },
 }
 

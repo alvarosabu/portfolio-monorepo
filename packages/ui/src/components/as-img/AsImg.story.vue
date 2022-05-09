@@ -6,6 +6,9 @@ import {
   imgCaptionType,
   imgFitModes,
   imgLoadingMode,
+  imgFitModesList,
+  imgLoadingModeList,
+  imgCaptionTypeList,
 } from './const'
 
 function initState() {
@@ -31,16 +34,27 @@ function initState() {
       <template #controls="{ state }">
         <HstText title="Url" v-model="state.src" />
         <!--TODO: Replace this with HstSelect when is finished -->
-        <HstText title="Aspect ratio" v-model="state.aspectRatio" />
-        <HstText title="Caption" v-model="state.caption" />
-        <HstText title="Caption type" v-model="state.captionType" />
-        <HstText title="Object fit" v-model="state.objectFit" />
-        <HstText title="Loading mode" v-model="state.loading" />
-        <!--  <HstSelect
+        <HstSelect
           title="Aspect ratio"
           v-model="state.aspectRatio"
           :options="imgAspectRatios"
-        /> -->
+        />
+        <HstText title="Caption" v-model="state.caption" />
+        <HstSelect
+          title="Caption Type"
+          v-model="state.captionType"
+          :options="imgCaptionTypeList"
+        />
+        <HstSelect
+          title="Object fit"
+          v-model="state.objectFit"
+          :options="imgFitModesList"
+        />
+        <HstSelect
+          title="Loading Mode"
+          v-model="state.loading"
+          :options="imgLoadingModeList"
+        />
       </template>
     </Variant>
   </Story>

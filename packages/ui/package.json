@@ -45,7 +45,7 @@
     "@vue/test-utils": "^2.0.0-rc.21",
     "c8": "^7.11.2",
     "cypress": "^9.6.0",
-    "histoire": "^0.3.1",
+    "histoire": "^0.3.3",
     "jsdom": "^19.0.0",
     "pathe": "^0.3.0",
     "rollup-plugin-analyzer": "^4.0.0",
