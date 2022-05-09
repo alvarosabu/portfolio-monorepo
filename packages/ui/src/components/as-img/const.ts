@@ -21,11 +21,18 @@ export const imgAspectRatiosSafelist = imgAspectRatios.map(
   aspect => `aspect-${aspect}`,
 )
 
+export const imgFitModesList = Object.values(imgFitModes)
+export const imgLoadingModeList = Object.values(imgLoadingMode)
+export const imgCaptionTypeList = Object.values(imgCaptionType)
+
 const AsImgConsts = {
   imgFitModes,
   imgCaptionType,
   imgAspectRatios,
   imgLoadingMode,
   imgAspectRatiosSafelist,
+  imgFitModesList,
+  imgLoadingModeList,
+  imgCaptionTypeList,
 }
 export default AsImgConsts
