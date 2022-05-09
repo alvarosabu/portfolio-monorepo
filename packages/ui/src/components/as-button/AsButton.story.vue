@@ -1,8 +1,16 @@
 <script lang="ts" setup>
+import { computed } from '@vue/reactivity'
 import 'uno.css'
+import { iconList } from '../as-icon'
 import AsButton from './AsButton.vue'
-import { btnVariant } from './const'
+import { btnVariant, btnVariantList } from './const'
 
+const iconOptions = computed(() =>
+  iconList.map(([key, value]) => ({
+    label: value,
+    value: key,
+  })),
+)
 function initState() {
   return {
     label: 'Awiwi',
@@ -39,7 +47,11 @@ function initState() {
 
       <template #controls="{ state }">
         <HstText title="Label" v-model="state.label" />
-        <HstText title="Variant" v-model="state.variant" />
+        <HstSelect
+          title="Variant"
+          v-model="state.variant"
+          :options="btnVariantList"
+        />
         <HstCheckbox title="Flat" v-model="state.flat"> Flat </HstCheckbox>
         <HstCheckbox title="Outline" v-model="state.outline">
           Outline
@@ -47,8 +59,12 @@ function initState() {
         <HstCheckbox title="Disabled" v-model="state.disabled">
           Disabled
         </HstCheckbox>
-        <HstText title="Icon" v-model="state.icon" />
-        <HstText title="IconRight" v-model="state.iconRight" />
+        <HstSelect title="Icon" v-model="state.icon" :options="iconOptions" />
+        <HstSelect
+          title="IconRight"
+          v-model="state.iconRight"
+          :options="iconOptions"
+        />
       </template>
     </Variant>
 
@@ -79,8 +95,13 @@ function initState() {
     <Variant title="Icon" icon="carbon:logo-github" icon-color="#10B981">
       <AsButton variant="primary" :icon="'github'"> Awiwi </AsButton>
     </Variant>
+
     <Variant title="IconRight" icon="carbon:download" icon-color="#10B981">
       <AsButton variant="primary" :icon-right="'download'" label="Download" />
+    </Variant>
+
+    <Variant title="Only Icon" icon="carbon:star-filled" icon-color="#10B981">
+      <AsButton variant="primary" icon="term" />
     </Variant>
   </Story>
 </template>

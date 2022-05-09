@@ -46,5 +46,13 @@ export const btnSafelist = [
   ...Object.values(btnSize).map(v => `btn-${v}`),
 ]
 
-const AsBtnConsts = { btnType, btnVariant, btnSize, btnShortcuts, btnSafelist }
+export const btnVariantList = Object.values(btnVariant)
+const AsBtnConsts = {
+  btnType,
+  btnVariant,
+  btnSize,
+  btnShortcuts,
+  btnSafelist,
+  btnVariantList,
+}
 export default AsBtnConsts
