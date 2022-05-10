@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt dev --port=2590 -o",
     "dev:https": "nuxt dev --https --port=2591 -o",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "histoire": "pnpm exec histoire dev"
