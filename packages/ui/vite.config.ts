@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
 import SvgLoader from 'vite-svg-loader'
 import banner from 'vite-plugin-banner'
+import copy from 'rollup-plugin-copy'
 
 import analyze from 'rollup-plugin-analyzer'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -34,6 +35,7 @@ export default defineConfig({
         pkg.description
       }\n * author: ${pkg.author}\n */`,
     }),
+    copy({ targets: [{ src: './unocss.config.ts', dest: 'dist/' }] }),
   ],
   build: {
     lib: {
