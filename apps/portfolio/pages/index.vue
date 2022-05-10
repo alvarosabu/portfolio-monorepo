@@ -2,7 +2,7 @@
 useHead({ title: 'Home - AS Portfolio' })
 </script>
 <template>
-  <h2>Home</h2>
+  <TheLogo />
 </template>
 
 <style lang="scss" scoped>

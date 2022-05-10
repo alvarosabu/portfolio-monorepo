@@ -3,14 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --port=2590 -o",
+    "dev:https": "nuxt dev --https --port=2591 -o",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "histoire": "pnpm exec histoire dev"
   },
   "devDependencies": {
     "@alvarosabu/ui": "workspace:*",
-    "@unocss/nuxt": "^0.32.1",
-    "nuxt": "3.0.0-rc.1"
+    "@unocss/nuxt": "^0.33.2",
+    "histoire": "^0.4.5",
+    "nuxt": "3.0.0-rc.3"
   }
 }
