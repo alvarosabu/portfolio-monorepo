@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "nuxt dev --port=2590 -o",
     "dev:https": "nuxt dev --https --port=2591 -o",
