@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.5.3
+
+### Patch Changes
+
+- d7cf2d2a: Basic portfolio + Unocss config is now available on dist
+
 ## 2.5.2
 
 ### Patch Changes
