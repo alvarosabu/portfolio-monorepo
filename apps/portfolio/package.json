@@ -11,7 +11,10 @@
   },
   "devDependencies": {
     "@alvarosabu/ui": "workspace:*",
+    "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
+    "@storyblok/vue": "^6.0.3",
     "@unocss/nuxt": "^0.33.2",
+    "axios": "^0.27.2",
     "histoire": "^0.4.5",
     "nuxt": "3.0.0-rc.3"
   }
