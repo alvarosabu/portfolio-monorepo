@@ -19,12 +19,18 @@ importers:
   apps/portfolio:
     specifiers:
       '@alvarosabu/ui': workspace:*
+      '@marvr/storyblok-rich-text-vue-renderer': ^3.2.1
+      '@storyblok/vue': ^6.0.3
       '@unocss/nuxt': ^0.33.2
+      axios: ^0.27.2
       histoire: ^0.4.5
       nuxt: 3.0.0-rc.3
     devDependencies:
       '@alvarosabu/ui': link:../../packages/ui
+      '@marvr/storyblok-rich-text-vue-renderer': 3.2.1
+      '@storyblok/vue': 6.0.3_axios@0.27.2
       '@unocss/nuxt': 0.33.2
+      axios: 0.27.2
       histoire: 0.4.5
       nuxt: 3.0.0-rc.3
 
@@ -892,6 +898,19 @@ packages:
       - supports-color
     dev: true
 
+  /@marvr/storyblok-rich-text-types/3.2.1:
+    resolution: {integrity: sha512-W6iiJi8dPi7Dz4qGwnd+Zxtf7ltl+apjslHyWobikCoX8w6P4o7rpE1nBTsDjWK0ORncwId1B5bEPE0fpfILhg==}
+    dev: true
+
+  /@marvr/storyblok-rich-text-vue-renderer/3.2.1:
+    resolution: {integrity: sha512-6FQVhAu+TjyQs4Mu4PTkTX1LW7QIdfOnIEPy1TdVGK8px6VEIALm5j0/7o4tvqJhyxNTU2P9oB4bLO15Kn1qfA==}
+    dependencies:
+      '@marvr/storyblok-rich-text-types': 3.2.1
+      vue: 3.2.33
+    optionalDependencies:
+      vue-router: 4.0.15_vue@3.2.33
+    dev: true
+
   /@netlify/functions/1.0.0:
     resolution: {integrity: sha512-7fnJv3vr8uyyyOYPChwoec6MjzsCw1CoRUO2DhQ1BD6bOyJRlD4DUaOOGlMILB2LCT8P24p5LexEGx8AJb7xdA==}
     engines: {node: '>=8.3.0'}
@@ -1237,6 +1256,22 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@storyblok/js/1.2.0_axios@0.27.2:
+    resolution: {integrity: sha512-/F02x+9vhTG4dRsNhBQ+/5/CG+lvOuibFcNWqtA0H3kJswS9WLTKYpT4S0lM2F7PwH6uil7lxMv6AMTmfLoyjA==}
+    dependencies:
+      storyblok-js-client: 4.5.0_axios@0.27.2
+    transitivePeerDependencies:
+      - axios
+    dev: true
+
+  /@storyblok/vue/6.0.3_axios@0.27.2:
+    resolution: {integrity: sha512-eGCwocDQRGS/6ddzKzBKY6DENUmd66UCUQoJOIwWPZPShKjEb1wAjRoaLlRhm9htKerpEAhm4wDjhtsYgtpZgw==}
+    dependencies:
+      '@storyblok/js': 1.2.0_axios@0.27.2
+    transitivePeerDependencies:
+      - axios
     dev: true
 
   /@tootallnate/once/2.0.0:
@@ -1722,7 +1757,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.8_sass@1.51.0
+      vite: 2.9.8
       vue: 3.2.33
     dev: true
 
@@ -2211,6 +2246,15 @@ packages:
 
   /aws4/1.11.0:
     resolution: {integrity: sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==}
+    dev: true
+
+  /axios/0.27.2:
+    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+    dependencies:
+      follow-redirects: 1.14.9
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /balanced-match/1.0.2:
@@ -7375,6 +7419,10 @@ packages:
       is-plain-object: 3.0.1
     dev: true
 
+  /rollup-plugin-mjs-entry/0.1.1:
+    resolution: {integrity: sha512-uii0Txyrn4YCgP++fypLqsT3LgO3Fx0gAZLZlWRSwKCuZ+bdSzAzdVbJFATmCHcBNlO61i65EgemOVdVQYONHA==}
+    dev: true
+
   /rollup-plugin-terser/7.0.2_rollup@2.72.0:
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     peerDependencies:
@@ -7826,6 +7874,16 @@ packages:
 
   /std-env/3.1.1:
     resolution: {integrity: sha512-/c645XdExBypL01TpFKiG/3RAa/Qmu+zRi0MwAmrdEkwHNuN0ebo8ccAXBBDa5Z0QOJgBskUIbuCK91x0sCVEw==}
+    dev: true
+
+  /storyblok-js-client/4.5.0_axios@0.27.2:
+    resolution: {integrity: sha512-VRxVnivvc15RV0Osfbn5a5OWjYwhM3UnUJ3CjuAiK9pJasWBzF6X8GwwasKg3ZDCz/NU40+lj/t5APHS7P7ZcQ==}
+    peerDependencies:
+      axios: ^0.21.1
+    dependencies:
+      axios: 0.27.2
+      prettier: 2.6.2
+      rollup-plugin-mjs-entry: 0.1.1
     dev: true
 
   /stream-transform/2.1.3:

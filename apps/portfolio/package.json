@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "nuxt dev --port=2590 -o",
     "dev:https": "nuxt dev --https --port=2591 -o",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "histoire": "pnpm exec histoire dev"
   },
   "devDependencies": {
     "@alvarosabu/ui": "workspace:*",
+    "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
+    "@storyblok/vue": "^6.0.3",
     "@unocss/nuxt": "^0.33.2",
+    "axios": "^0.27.2",
     "histoire": "^0.4.5",
     "nuxt": "3.0.0-rc.3"
   }

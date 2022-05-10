@@ -1,8 +1,13 @@
 <script setup lang="ts">
 useHead({ title: 'Home - AS Portfolio' })
+
+const { getStory, storiesForNav } = useStories()
+
+const story = await getStory('home')
 </script>
 <template>
-  <TheLogo />
+  <StoryblokComponent v-if="story" :blok="story.content" />
+  <pre>{{ storiesForNav }}</pre>
 </template>
 
 <style lang="scss" scoped>
