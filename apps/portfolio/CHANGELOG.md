@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.1.0
+
+### Minor Changes
+
+- 2a894aff: Repos component
+
 ## 1.0.0
 
 ### Major Changes
