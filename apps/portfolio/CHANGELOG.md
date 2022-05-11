@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.0.0
+
+### Major Changes
+
+- e8bde3c4: Portfolio Header component
+
 ## 0.2.0
 
 ### Minor Changes
