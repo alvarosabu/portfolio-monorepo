@@ -19,7 +19,6 @@ const { focused } = useFocus(inputRef)
   <div
     relative
     inline-block
-    cursor-pointer
     class="dark-mode-switch"
     :class="{ 'outline-solid-blue-500': focused }"
   >
@@ -36,7 +35,7 @@ const { focused } = useFocus(inputRef)
       :checked="!isDark"
       @change="toggleDark()"
     />
-    <label for="dark-switch" relative>
+    <label for="dark-switch" relative cursor-pointer>
       <div class="planet" />
       <div class="dots">
         <span
