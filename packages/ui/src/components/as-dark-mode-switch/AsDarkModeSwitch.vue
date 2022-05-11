@@ -35,7 +35,7 @@ const { focused } = useFocus(inputRef)
       :checked="!isDark"
       @change="toggleDark()"
     />
-    <label for="dark-switch" relative>
+    <label for="dark-switch" relative cursor-pointer>
       <div class="planet" />
       <div class="dots">
         <span
@@ -210,7 +210,8 @@ $_precision: 10;
       box-shadow: inset 0 0 0 1px $moon-stroke;
 
       &::after {
-        @apply transform translate-x-1/4 -translate-y-1/4;
+        /*       @apply transform translate-x-0.25 -translate-y-0.25; */
+        transform: translate(20%, -19%);
 
         border: 1px solid $moon-stroke;
 
@@ -233,11 +234,11 @@ $_precision: 10;
       opacity: 1;
       background-color: $crater;
       border: 1px solid $crater-stroke;
-      transform: translate(2px, 2px) scale(1.75);
+      transform: translate(1px, 1px) scale(1.25);
     }
 
     .dot-135 {
-      opacity: 1;
+      opacity: 0;
       background-color: $crater;
       border: 1px solid $crater-stroke;
       transform: translate(-5px, -1px) scale(1.15);
@@ -247,7 +248,7 @@ $_precision: 10;
       opacity: 1;
       background-color: $crater;
       border: 1px solid $crater-stroke;
-      transform: translate(4px, -6px) scale(0.85);
+      transform: translate(5px, -5px) scale(0.85);
     }
 
     .dot-45 {
