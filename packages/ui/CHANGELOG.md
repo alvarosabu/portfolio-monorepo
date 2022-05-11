@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.5.4
+
+### Patch Changes
+
+- e8bde3c4: Portfolio Header component
+
 ## 2.5.3
 
 ### Patch Changes
