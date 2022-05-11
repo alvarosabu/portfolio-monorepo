@@ -33,7 +33,6 @@ function initState() {
 
       <template #controls="{ state }">
         <HstText title="Url" v-model="state.src" />
-        <!--TODO: Replace this with HstSelect when is finished -->
         <HstSelect
           title="Aspect ratio"
           v-model="state.aspectRatio"

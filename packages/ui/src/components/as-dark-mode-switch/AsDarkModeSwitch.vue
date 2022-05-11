@@ -19,6 +19,7 @@ const { focused } = useFocus(inputRef)
   <div
     relative
     inline-block
+    cursor-pointer
     class="dark-mode-switch"
     :class="{ 'outline-solid-blue-500': focused }"
   >

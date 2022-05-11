@@ -4,7 +4,7 @@ const { fetchStories } = useStories()
 await fetchStories()
 </script>
 <template>
-  <!-- <TheHeader /> -->
+  <TheHeader />
 
   <div class="mt-16">
     <slot />
