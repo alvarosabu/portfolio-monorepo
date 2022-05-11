@@ -18,12 +18,14 @@
     "changelog": "echo 'generate master changelog' && conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "changeset": "changeset",
     "publish": "pnpm publish -r",
+    "build:ci": "pnpm build:ui && pnpm run generate:portfolio",
     "build:all": "pnpm run build --filter='./packages/'",
     "ci:version": "pnpm changelog && pnpx changeset version && pnpm install --no-frozen-lockfile --shamefully-hoist && git add .",
     "ci:publish": "pnpm build:all && git status && pnpm publish -r && pnpm changeset tag",
     "changeset-publish": "changeset publish",
     "changeset-tag": "changeset tag",
     "dev:portfolio": "pnpm run dev --filter @alvarosabu/portfolio",
+    "generate:portfolio": "pnpm run generate --filter @alvarosabu/portfolio",
     "build:ui": "pnpm run build --filter @alvarosabu/ui"
   },
   "devDependencies": {
