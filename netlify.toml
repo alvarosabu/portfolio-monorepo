@@ -3,4 +3,4 @@
   NPM_FLAGS = "--version" # prevent Netlify npm install
 [build]
   publish = ".output/public"
-  command = "npx pnpm@7 i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm@7 run build:ci"
+  command = "npx pnpm@6 i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm@6 run build:ci"
