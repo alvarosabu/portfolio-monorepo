@@ -3,7 +3,7 @@ import { RemovableRef, useStorage } from '@vueuse/core'
 import { differenceInHours } from 'date-fns'
 
 import { GithubRepo, LanguageColor } from '@alvarosabu/ui'
-import { snakeToCamel } from '@alvarosabu/utils/dist'
+import { snakeToCamel } from '@alvarosabu/utils/dist/index.js'
 
 export type GithubState = {
   repositories: Array<GithubRepo>

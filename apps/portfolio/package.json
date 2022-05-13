@@ -8,7 +8,8 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "histoire": "pnpm exec histoire dev"
+    "histoire": "pnpm exec histoire dev",
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@alvarosabu/ui": "workspace:*",

@@ -26,6 +26,7 @@
     "changeset-tag": "changeset tag",
     "dev:portfolio": "pnpm run dev --filter @alvarosabu/portfolio",
     "generate:portfolio": "pnpm run generate --filter @alvarosabu/portfolio",
+    "build:portfolio": "pnpm run build --filter @alvarosabu/portfolio",
     "build:ui": "pnpm run build --filter @alvarosabu/ui"
   },
   "devDependencies": {
