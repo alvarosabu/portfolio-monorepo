@@ -30,11 +30,11 @@ export default defineNuxtConfig({
   vite: {
     logLevel: 'info',
     optimizeDeps: {
-      include: ['@alvarosabu/ui', 'vue', 'ufo'],
+      include: ['@alvarosabu/ui', 'vue', 'ufo', '@vueuse/core'],
     },
     build: {
       rollupOptions: {
-        external: ['vue', 'ufo'],
+        external: ['vue', 'ufo', '@vueuse/core'],
       },
     },
   },
