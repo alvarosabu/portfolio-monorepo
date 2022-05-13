@@ -27,4 +27,9 @@ export default defineNuxtConfig({
     shortcuts: [],
     rules: [],
   },
+  vite: {
+    rollupOptions: {
+      external: ['vue', 'ufo', '@vueuse/core'],
+    },
+  },
 })
