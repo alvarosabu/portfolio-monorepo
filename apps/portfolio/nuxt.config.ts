@@ -32,5 +32,10 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: ['@alvarosabu/ui', 'vue', 'ufo'],
     },
+    build: {
+      rollupOptions: {
+        external: ['vue', 'ufo'],
+      },
+    },
   },
 })
