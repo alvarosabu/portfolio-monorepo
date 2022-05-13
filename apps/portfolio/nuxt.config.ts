@@ -27,4 +27,10 @@ export default defineNuxtConfig({
     shortcuts: [],
     rules: [],
   },
+  vite: {
+    logLevel: 'info',
+    optimizeDeps: {
+      include: ['@alvarosabu/ui', 'vue', 'ufo'],
+    },
+  },
 })
