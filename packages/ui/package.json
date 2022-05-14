@@ -10,6 +10,12 @@
   "main": "./dist/as-ui.umd.js",
   "module": "./dist/as-ui.es.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/as-ui.es.js",
+      "require": "./dist/as-ui.umd.js"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -36,6 +42,7 @@
     "@iconify-json/octicon": "^1.1.7",
     "@iconify-json/teenyicons": "^1.1.1",
     "@iconify/json": "^2.1.37",
+    "@rollup/plugin-typescript": "^8.3.2",
     "@unocss/preset-attributify": "^0.32.13",
     "@unocss/preset-icons": "^0.32.13",
     "@unocss/preset-uno": "^0.32.13",
