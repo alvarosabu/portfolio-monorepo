@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.6.0
+
+### Minor Changes
+
+- 685c3fa3: Added types to build
+
 ## 2.5.4
 
 ### Patch Changes
