@@ -20,7 +20,9 @@
     "axios": "^0.27.2",
     "date-fns": "^2.28.0",
     "histoire": "^0.4.5",
-    "nuxt": "3.0.0-rc.3"
+    "lite-youtube-embed": "^0.2.0",
+    "nuxt": "3.0.0-rc.3",
+    "swiper": "^8.1.4"
   },
   "dependencies": {
     "velocity-animate": "^1.5.2"

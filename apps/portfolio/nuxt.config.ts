@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     public: {
       apiURL: process.env.STORYBLOK_API_URL,
       apiToken: process.env.STORYBLOK_API_TOKEN,
-      /*      youtubeKey: process.env.YOUTUBE_API_KEY, */
+      youtubeKey: process.env.YOUTUBE_API_KEY,
     },
   },
   components: {
@@ -17,8 +17,13 @@ export default defineNuxtConfig({
   /*   autoImports: {
     dirs: ['@storyblok/vue'],
   }, */
-  css: ['@alvarosabu/ui/styles'],
+  css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
   buildModules: ['@unocss/nuxt'],
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => ['lite-youtube'].includes(tag),
+    },
+  },
   unocss: {
     // presets
     uno: true, // enabled `@unocss/preset-uno`
