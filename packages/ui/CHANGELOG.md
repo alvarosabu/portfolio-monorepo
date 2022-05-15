@@ -1,5 +1,12 @@
 # @alvarosabu/ui
 
+## 2.6.1
+
+### Patch Changes
+
+- 119a5b3c: Using dts vite plugin
+- 5f175c4f: fixed theme exporting on lib
+
 ## 2.6.0
 
 ### Minor Changes
