@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import 'uno.css'
 import { iconList } from '../as-icon'
 import AsButton from './AsButton.vue'
