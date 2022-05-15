@@ -46,7 +46,7 @@ jobs:
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
 
       - name: Create versions PR & prepare publish
         id: changesets
