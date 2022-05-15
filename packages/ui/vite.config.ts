@@ -38,7 +38,6 @@ export default defineConfig({
         pkg.description
       }\n * author: ${pkg.author}\n */`,
     }),
-    copy({ targets: [{ src: './unocss.config.ts', dest: 'dist/' }] }),
   ],
   build: {
     lib: {
