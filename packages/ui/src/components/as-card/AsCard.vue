@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AsImg from '/@/components/as-img/AsImg.vue'
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: '',

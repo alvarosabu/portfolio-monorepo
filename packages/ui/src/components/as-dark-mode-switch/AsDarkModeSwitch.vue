@@ -2,7 +2,7 @@
 import { useDark, useToggle, useFocus } from '@vueuse/core'
 import { ref } from 'vue'
 
-const props = defineProps({
+defineProps({
   valueDark: {
     type: String,
     default: 'dark',
