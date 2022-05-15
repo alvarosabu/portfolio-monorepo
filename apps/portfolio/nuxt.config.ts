@@ -25,4 +25,17 @@ export default defineNuxtConfig({
     icons: true, // enabled `@unocss/preset-icons`
     attributify: true, // enabled `@unocss/preset-attributify`,
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['vue', 'ufo'],
+        output: {
+          globals: {
+            vue: 'Vue',
+            ufo: 'ufo',
+          },
+        },
+      },
+    },
+  },
 })
