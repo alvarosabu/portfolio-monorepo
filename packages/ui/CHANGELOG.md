@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.6.2
+
+### Patch Changes
+
+- d0a42fb1: Fixed way of rxporting theme on ui
+
 ## 2.6.1
 
 ### Patch Changes
