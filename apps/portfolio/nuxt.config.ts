@@ -28,11 +28,12 @@ export default defineNuxtConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['vue', 'ufo'],
+        external: ['vue', 'ufo', '@vueuse/core'],
         output: {
           globals: {
             vue: 'Vue',
             ufo: 'ufo',
+            '@vueuse/core': 'VueUseCore',
           },
         },
       },
