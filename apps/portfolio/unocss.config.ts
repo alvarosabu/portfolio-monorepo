@@ -1,4 +1,4 @@
-import { ASTheme } from '@alvarosabu/ui/unocss.config'
+import AsUI from '@alvarosabu/ui/'
 import {
   defineConfig,
   presetWebFonts,
@@ -7,7 +7,7 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  theme: ASTheme,
+  theme: AsUI.theme,
   rules: [
     [
       'text-bg-md',
