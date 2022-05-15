@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useLogger } from '/@/composables/useLogger'
 
-const props = defineProps({
+defineProps({
   size: {
     type: String,
     default: '1rem',

@@ -5,7 +5,7 @@ import banner from 'vite-plugin-banner'
 import copy from 'rollup-plugin-copy'
 import analyze from 'rollup-plugin-analyzer'
 import { visualizer } from 'rollup-plugin-visualizer'
-import typescript from '@rollup/plugin-typescript'
+import dts from 'vite-plugin-dts'
 
 import vue from '@vitejs/plugin-vue'
 
@@ -26,6 +26,9 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    dts({
+      insertTypesEntry: true,
+    }),
     Unocss(),
     SvgLoader(),
     banner({
@@ -53,14 +56,6 @@ export default defineConfig({
           gzipSize: true,
           brotliSize: true,
           open: true,
-        }),
-        typescript({
-          target: 'es2020',
-          rootDir: resolve(__dirname, 'src'),
-          declaration: true,
-          declarationDir: resolve(__dirname, 'dist'),
-          exclude: resolve(__dirname, 'node_modules/**'),
-          allowSyntheticDefaultImports: true,
         }),
       ],
       // make sure to externalize deps that shouldn't be bundled

@@ -5,7 +5,7 @@ import AsDarkModeSwitch from './AsDarkModeSwitch.vue'
 <template>
   <Story>
     <Variant title="playground">
-      <template #default="{ state }">
+      <template #default>
         <div p-4>
           <AsDarkModeSwitch />
         </div>

@@ -2,7 +2,7 @@
 import { useLogger } from '/@/composables/useLogger'
 import { graphicType, graphicTypeMap } from './const'
 
-const props = defineProps({
+defineProps({
   type: {
     type: String,
     default: graphicType.DOTS,
