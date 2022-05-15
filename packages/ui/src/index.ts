@@ -1,5 +1,7 @@
 import { App } from 'vue'
 import 'uno.css'
+import { ASTheme } from './styles/as-theme'
+
 // normalize.css
 import '@unocss/reset/tailwind.css'
 
@@ -9,6 +11,7 @@ const modules = import.meta.globEager(
 const components = Object.entries(modules)
 
 export default {
+  theme: ASTheme,
   install(app: App, options: any) {
     if (typeof options === 'undefined') {
       for (let [key, value] of components) {
