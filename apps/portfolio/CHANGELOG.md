@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.1.1
+
+### Patch Changes
+
+- d0a42fb1: Fixed way of rxporting theme on ui
+
 ## 1.1.0
 
 ### Minor Changes
