@@ -14,7 +14,10 @@
     ".": {
       "import": "./dist/as-ui.es.js",
       "require": "./dist/as-ui.umd.js"
-    }
+    },
+    "./styles": "./dist/style.css",
+    "./theme": "./styles/as-theme.css",
+    "./": "./dist/as-ui.es.js"
   },
   "publishConfig": {
     "access": "public"

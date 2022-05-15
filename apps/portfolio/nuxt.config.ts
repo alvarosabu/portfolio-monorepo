@@ -17,14 +17,12 @@ export default defineNuxtConfig({
   /*   autoImports: {
     dirs: ['@storyblok/vue'],
   }, */
-  css: ['@alvarosabu/ui/dist/style.css'],
+  css: ['@alvarosabu/ui/styles'],
   buildModules: ['@unocss/nuxt'],
   unocss: {
     // presets
     uno: true, // enabled `@unocss/preset-uno`
     icons: true, // enabled `@unocss/preset-icons`
     attributify: true, // enabled `@unocss/preset-attributify`,
-    shortcuts: [],
-    rules: [],
   },
 })
