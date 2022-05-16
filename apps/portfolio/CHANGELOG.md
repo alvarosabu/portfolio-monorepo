@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.2.0
+
+### Minor Changes
+
+- a3816362: Youube portfolio section
+
 ## 1.1.1
 
 ### Patch Changes
