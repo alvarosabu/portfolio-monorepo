@@ -27,8 +27,8 @@ const getClasses = computed(() => {
         :href="item.url.url"
         inline-flex
         justify-center
-        text-bg
         w-9
+        class="text-bg-md hover:text-bg-sm"
         target="_blank"
         :title="item.icon"
       >

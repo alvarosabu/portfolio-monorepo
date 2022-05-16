@@ -60,6 +60,7 @@ const dotsStyle = computed(() => {
       absolute
       bottom="-10"
       left="-10"
+      dark:text-light
       :style="dotsStyle"
     />
     <Blob absolute top="-40" right="-40" :style="blobStyle" />
