@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.3.0
+
+### Minor Changes
+
+- df83d289: Home Hero with Pancake Planet
+
 ## 1.2.0
 
 ### Minor Changes
