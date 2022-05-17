@@ -4,4 +4,7 @@
 [build]
   publish = "apps/portfolio/dist"
   command = "npx pnpm@6 i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm@6 run build:ci"
-
+[[redirects]]
+  from = "/*"
+  to = "index.html"
+  status = 200
