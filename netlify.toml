@@ -6,5 +6,5 @@
   command = "npx pnpm@6 i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm@6 run build:ci"
 [[redirects]]
   from = "/*"
-  to = "index.html"
+  to = "apps/portfolio/dist/index.html"
   status = 200
