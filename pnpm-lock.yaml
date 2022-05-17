@@ -30,6 +30,7 @@ importers:
       nuxt: 3.0.0-rc.3
       swiper: ^8.1.4
       velocity-animate: ^1.5.2
+      vite-svg-loader: ^3.3.0
     dependencies:
       velocity-animate: 1.5.2
     devDependencies:
@@ -44,6 +45,7 @@ importers:
       lite-youtube-embed: 0.2.0
       nuxt: 3.0.0-rc.3
       swiper: 8.1.4
+      vite-svg-loader: 3.3.0
 
   packages/prettier:
     specifiers:
@@ -2966,7 +2968,7 @@ packages:
     dev: true
 
   /boolbase/1.0.0:
-    resolution: {integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=}
+    resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: true
 
   /brace-expansion/1.1.11:
