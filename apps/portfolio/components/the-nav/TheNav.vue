@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
-import { navOrientation, MenuItem } from './const'
+import { navOrientation, MenuItem } from './consts'
 defineProps({
   menu: {
     type: Array as PropType<MenuItem[]>,

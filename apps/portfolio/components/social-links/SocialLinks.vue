@@ -28,7 +28,7 @@ const getClasses = computed(() => {
         inline-flex
         justify-center
         w-9
-        class="text-bg-md hover:text-bg-sm"
+        class="text-primary-400 dark:text-gray-50 text-bg-md hover:text-bg-sm"
         target="_blank"
         :title="item.icon"
       >
