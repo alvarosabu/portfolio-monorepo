@@ -6,7 +6,7 @@ await fetchStories()
 <template>
   <TheHeader />
 
-  <div class="mt-16">
+  <div class="page mt-16">
     <slot />
   </div>
 </template>

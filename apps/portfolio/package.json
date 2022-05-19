@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.3.0",
   "scripts": {
-    "dev": "nuxt dev --port=2590 -o",
-    "dev:https": "nuxt dev --https --port=2591 -o",
+    "dev": "nuxt dev --port=2590",
+    "dev:https": "nuxt dev --https --port=2591",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
