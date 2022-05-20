@@ -12,7 +12,7 @@
     "histoire": "pnpm exec histoire dev"
   },
   "devDependencies": {
-    "@alvarosabu/ui": "workspace:*",
+    "@alvarosabu/ui": "^2.6.2",
     "@alvarosabu/utils": "^1.0.3",
     "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
     "@storyblok/vue": "^6.0.3",
