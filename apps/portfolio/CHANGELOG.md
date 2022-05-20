@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.4.0
+
+### Minor Changes
+
+- 8e12eef6: Footer component
+
 ## 1.3.0
 
 ### Minor Changes
