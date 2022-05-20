@@ -32,6 +32,18 @@ export default defineNuxtConfig({
     attributify: true, // enabled `@unocss/preset-attributify`,
   },
   vite: {
+    build: {
+      rollupOptions: {
+        external: ['vue', 'ufo', '@vueuse/core'],
+        output: {
+          globals: {
+            vue: 'Vue',
+            ufo: 'ufo',
+            '@vueuse/core': 'VueUseCore',
+          },
+        },
+      },
+    },
     plugins: [SvgLoader()],
   },
 })
