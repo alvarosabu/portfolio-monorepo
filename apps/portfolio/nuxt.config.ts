@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt'
 import SvgLoader from 'vite-svg-loader'
+import head from './config/head'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -10,6 +11,9 @@ export default defineNuxtConfig({
       apiToken: process.env.STORYBLOK_API_TOKEN,
       youtubeKey: process.env.YOUTUBE_API_KEY,
     },
+  },
+  app: {
+    head,
   },
   components: {
     global: true,

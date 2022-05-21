@@ -13,7 +13,7 @@ defineProps({
 })
 </script>
 <template>
-  <nav>
+  <nav aria-label="Main Navigation">
     <ul
       flex
       :class="{

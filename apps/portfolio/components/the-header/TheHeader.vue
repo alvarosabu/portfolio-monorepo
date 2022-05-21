@@ -34,6 +34,7 @@ function toggleMenu() {
       z-60
       bg="white dark:primary-500"
       text="dark:gray-200"
+      role="banner"
     >
       <div
         md:container
@@ -58,6 +59,7 @@ function toggleMenu() {
             :icon="showMenu ? 'close' : 'menu'"
             @click="toggleMenu"
             flat="true"
+            :aria-label="showMenu ? 'Close menu' : 'Open menu'"
             v-if="isMobile"
           />
         </div>
