@@ -20,7 +20,9 @@ const lastName = ref('Saburido')
     dark:text-gray-50
   >
     <img
-      src="/avatar.png"
+      src="/avatar.webp"
+      width="32"
+      height="32"
       w-8
       h-8
       border="4 gray-300"
