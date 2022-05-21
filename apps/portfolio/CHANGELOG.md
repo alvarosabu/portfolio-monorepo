@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.4.1
+
+### Patch Changes
+
+- dd13b6fc: Improving performance and accesibility on the header avatar
+
 ## 1.4.0
 
 ### Minor Changes
