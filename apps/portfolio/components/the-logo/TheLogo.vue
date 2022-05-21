@@ -20,7 +20,10 @@ const lastName = ref('Saburido')
     dark:text-gray-50
   >
     <img
-      src="/avatar.png"
+      src="/avatar.webp"
+      width="32"
+      height="32"
+      alt="Alvaro Saburido avatar"
       w-8
       h-8
       border="4 gray-300"
@@ -41,5 +44,6 @@ const lastName = ref('Saburido')
     >
     <span text-secondary-400 hidden sm:inline-block>{{ lastName }}</span>
     <span hidden sm:inline-block>{{ '/>' }}</span>
+    <span hidden> Go to home page</span>
   </nuxt-link>
 </template>
