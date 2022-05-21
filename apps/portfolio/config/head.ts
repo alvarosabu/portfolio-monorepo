@@ -60,6 +60,9 @@ const TWITTER = [
 
 const head: MetaObject = {
   title: 'Alvaro Saburido | Creative Engineer & Front-end Developer',
+  htmlAttrs: {
+    lang: 'en',
+  },
   meta: [
     {
       hid: 'description',
