@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.4.2
+
+### Patch Changes
+
+- 6541ec65: Page meta, favicon and seo + accesibility fixes
+
 ## 1.4.1
 
 ### Patch Changes
