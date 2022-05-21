@@ -34,6 +34,7 @@ function toggleMenu() {
       z-60
       bg="white dark:primary-500"
       text="dark:gray-200"
+      role="banner"
     >
       <div
         md:container
