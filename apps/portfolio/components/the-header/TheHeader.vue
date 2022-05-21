@@ -59,6 +59,7 @@ function toggleMenu() {
             :icon="showMenu ? 'close' : 'menu'"
             @click="toggleMenu"
             flat="true"
+            :aria-label="showMenu ? 'Close menu' : 'Open menu'"
             v-if="isMobile"
           />
         </div>
