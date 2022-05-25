@@ -28,6 +28,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          install: false
           build: pnpm run build:portfolio
           start: pnpm run start:portfolio
           wait-on: http://localhost:3000
