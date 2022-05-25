@@ -41,7 +41,7 @@ export default defineNuxtConfig({
     attributify: true, // enabled `@unocss/preset-attributify`,
   },
   vite: {
-    build: {
+    /*  build: {
       rollupOptions: {
         external: ['vue', 'ufo', '@vueuse/core'],
         output: {
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
           },
         },
       },
-    },
+    }, */
     plugins: [SvgLoader()],
   },
 })

@@ -25,7 +25,9 @@
     "changeset-publish": "changeset publish",
     "changeset-tag": "changeset tag",
     "dev:portfolio": "pnpm run dev --filter @alvarosabu/portfolio",
+    "build:portfolio": "pnpm run build --filter @alvarosabu/portfolio",
     "generate:portfolio": "pnpm run generate --filter @alvarosabu/portfolio",
+    "start:portfolio": "pnpm run start --filter @alvarosabu/portfolio",
     "build:ui": "pnpm run build --filter @alvarosabu/ui",
     "test:e2e:ci:portfolio": "pnpm run test:e2e:ci --filter @alvarosabu/portfolio"
   },
