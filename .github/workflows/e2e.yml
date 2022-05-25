@@ -1,6 +1,6 @@
 name: Cypress Tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   cypress-run:
@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: 16.x
           cache: 'pnpm'
-      
+
       - name: setup pnpm config
-        - run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-        
-        - run: pnpm install --no-frozen-lockfile
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      - run: pnpm install --no-frozen-lockfile
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
