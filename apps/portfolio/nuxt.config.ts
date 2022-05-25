@@ -17,7 +17,12 @@ export default defineNuxtConfig({
   },
   components: {
     global: true,
-    dirs: ['~/components'],
+    dirs: [
+      {
+        path: '~/components',
+        ignore: ['**/*.{spec,test,e2e}.{js,ts,jsx,tsx}'],
+      },
+    ],
   },
   /*   autoImports: {
     dirs: ['@storyblok/vue'],

@@ -41,7 +41,12 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
     v-editable="blok"
     v-if="!isMobile"
   >
-    <h2 font-display text="primary-400 dark:gray-50 3xl" mb-24>
+    <h2
+      data-cy="repos-title"
+      font-display
+      text="primary-400 dark:gray-50 3xl"
+      mb-24
+    >
       {{ blok.title }}
     </h2>
     <div
@@ -91,7 +96,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
     </transition-group>
     <footer class="flex w-full justify-end">
       <a
-        href="https://github.com/sponsors/alvarosaburido"
+        href="https://github.com/sponsors/alvarosabu"
         target="_blank"
         data-cy="button-sponsor"
         border="2 gray-300"
@@ -114,7 +119,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
         variant="secondary"
         data-cy="button-github"
         outline
-        :link="'https://github.com/alvarosaburido?tab=repositories'"
+        :link="'https://github.com/alvarosabu?tab=repositories'"
       />
     </footer>
   </section>

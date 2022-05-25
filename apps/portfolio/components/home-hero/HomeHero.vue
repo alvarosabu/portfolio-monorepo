@@ -41,6 +41,7 @@ const title = computed(() => {
         font-display
         text="primary-400 dark:gray-50 3xl"
         mb-8
+        data-cy="home-hero-title"
         v-html="title"
       ></h2>
       <RichTextRenderer :document="blok.content" v-if="blok" />

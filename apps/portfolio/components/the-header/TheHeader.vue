@@ -46,7 +46,7 @@ function toggleMenu() {
       >
         <TheLogo class="animate-tada animate-count-1" />
         <div flex items-center>
-          <AsDarkModeSwitch mr-8 />
+          <AsDarkModeSwitch mr-8 data-cy="dark-switch" />
           <TheNav :menu="storiesForNav" v-if="!isMobile" />
           <AsButton
             ml-4

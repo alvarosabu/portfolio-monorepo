@@ -21,7 +21,7 @@ const getClasses = computed(() => {
 })
 </script>
 <template>
-  <ul :class="getClasses">
+  <ul :class="getClasses" data-cy="social-links">
     <li v-for="item in items" :key="item.icon">
       <a
         :href="item.url.url"
