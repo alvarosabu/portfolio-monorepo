@@ -9,7 +9,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "histoire": "pnpm exec histoire dev"
+    "histoire": "pnpm exec histoire dev",
+    "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
     "@alvarosabu/ui": "^2.6.2",

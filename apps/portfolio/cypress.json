@@ -1,3 +1,4 @@
 {
+  "testFiles": "**/**.e2e.ts",
   "chromeWebSecurity": false
 }
