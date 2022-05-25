@@ -32,6 +32,7 @@ const { storiesForNav } = await useStories()
           class="w-full sm:w-1/3 mb-8"
           :orientation="navOrientation.VERTICAL"
           :menu="storiesForNav"
+          parent="footer"
         />
       </div>
       <div class="flex flex-col items-center sm:(w-1/3 items-end)">

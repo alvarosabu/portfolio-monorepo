@@ -18,4 +18,9 @@ export enum navOrientation {
   VERTICAL = 'vertical',
 }
 
+export enum navOrigin {
+  HEADER = 'header',
+  FOOTER = 'footer',
+}
+
 export type navOrientationType = 'horizontal' | 'vertical'

@@ -6,7 +6,9 @@ const { getStory } = useStories()
 const story = await getStory('home')
 </script>
 <template>
-  <StoryblokComponent v-if="story" :blok="story.content" />
+  <main role="main">
+    <StoryblokComponent v-if="story" :blok="story.content" />
+  </main>
 </template>
 
 <style lang="scss" scoped>

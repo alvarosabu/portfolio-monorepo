@@ -8,6 +8,7 @@ describe('Home Page', () => {
   beforeEach(() => {
     cy.restoreLocalStorage()
     cy.visit('http://localhost:2590')
+    cy.injectAxe()
   })
 
   afterEach(() => {
@@ -16,10 +17,15 @@ describe('Home Page', () => {
 
   context('General', () => {
     it('should change the page to dark mode', () => {
-      cy.get('html').then($html => {
-        cy.get('#dark-switch + label').click()
-        cy.get('html').should('have.class', 'dark')
-      })
+      cy.get('#dark-switch + label').click()
+      cy.get('html').should('have.class', 'dark')
+    })
+  })
+
+  context('A11y', () => {
+    it('should have no detectable a11y violations on load', () => {
+      cy.wait(1500)
+      cy.checkA11y()
     })
   })
 
@@ -31,7 +37,7 @@ describe('Home Page', () => {
     it('should have a Home hero component with a title', () => {
       cy.get('[data-cy="home-hero-title"]')
         .should('have.prop', 'tagName')
-        .should('eq', 'H2')
+        .should('eq', 'H1')
     })
 
     it('should have a Home hero component with text', () => {

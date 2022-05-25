@@ -37,13 +37,13 @@ const title = computed(() => {
       class="home-hero__content sm:w-2/5 text-primary-500 dark:text-gray-100 flex flex-col justify-center animate__animated animate__fadeIn"
       v-show="true"
     >
-      <h2
+      <h1
         font-display
-        text="primary-400 dark:gray-50 3xl"
+        text="primary-400 dark:gray-50 4xl"
         mb-8
         data-cy="home-hero-title"
         v-html="title"
-      ></h2>
+      ></h1>
       <RichTextRenderer :document="blok.content" v-if="blok" />
       <SocialLinks mb-8 :items="blok.socialLinks" />
     </div>
