@@ -37,8 +37,6 @@ importers:
       swiper: ^8.1.4
       velocity-animate: ^1.5.2
       vite-svg-loader: ^3.3.0
-    dependencies:
-      velocity-animate: 1.5.2
     devDependencies:
       '@alvarosabu/ui': link:../../packages/ui
       '@alvarosabu/utils': 1.0.3
@@ -57,6 +55,7 @@ importers:
       lite-youtube-embed: 0.2.0
       nuxt: 3.0.0-rc.3
       swiper: 8.1.4
+      velocity-animate: 1.5.2
       vite-svg-loader: 3.3.0
 
   packages/prettier:
@@ -11414,7 +11413,7 @@ packages:
 
   /velocity-animate/1.5.2:
     resolution: {integrity: sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==}
-    dev: false
+    dev: true
 
   /verror/1.10.0:
     resolution: {integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=}
