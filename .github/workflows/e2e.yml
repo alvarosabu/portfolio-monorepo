@@ -23,7 +23,7 @@ jobs:
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
-      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
       - name: Cypress run
         uses: cypress-io/github-action@v2

@@ -30,7 +30,8 @@
     "start:portfolio": "pnpm run --dir apps/portfolio start",
     "build:ui": "pnpm run --dir packages/ui build",
     "e2e:ci:build": "pnpm build:ui && pnpm run build:portfolio",
-    "test:e2e:ci:portfolio": "pnpm run pnpm run --dir apps/portfolio test:e2e:ci"
+    "test:e2e:ci:portfolio": "pnpm run --dir apps/portfolio test:e2e:ci",
+    "clean": "pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
     "@alvarosabu/prettier-config": "workspace:^1.1.0",
