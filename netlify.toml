@@ -4,7 +4,7 @@
 [build]
   base = "apps/portfolio"
   publish = "/dist"
-  command = "npx pnpm i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm run generate"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run generate"
 [[redirects]]
   from = "/*"
   to = "index.html"
