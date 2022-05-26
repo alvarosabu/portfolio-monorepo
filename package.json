@@ -24,12 +24,12 @@
     "ci:publish": "pnpm build:all && git status && pnpm publish -r && pnpm changeset tag",
     "changeset-publish": "changeset publish",
     "changeset-tag": "changeset tag",
-    "dev:portfolio": "pnpm run dev --filter @alvarosabu/portfolio",
-    "build:portfolio": "pnpm run build --filter @alvarosabu/portfolio",
-    "generate:portfolio": "pnpm run generate --filter @alvarosabu/portfolio",
-    "start:portfolio": "pnpm run start --filter @alvarosabu/portfolio",
-    "build:ui": "pnpm run build --filter @alvarosabu/ui",
-    "test:e2e:ci:portfolio": "pnpm run test:e2e:ci --filter @alvarosabu/portfolio"
+    "dev:portfolio": "pnpm run --dir apps/portfolio dev",
+    "build:portfolio": "pnpm run --dir apps/portfolio build",
+    "generate:portfolio": "pnpm run --dir apps/portfolio generate",
+    "start:portfolio": "pnpm run --dir apps/portfolio start",
+    "build:ui": "pnpm run --dir packages/ui build",
+    "test:e2e:ci:portfolio": "pnpm run pnpm run --dir apps/portfolio test:e2e:ci"
   },
   "devDependencies": {
     "@alvarosabu/prettier-config": "workspace:^1.1.0",
