@@ -2,7 +2,8 @@
   NODE_VERSION = "16"
   NPM_FLAGS = "--version" # prevent Netlify npm install
 [build]
-  publish = "/apps/portfolio/dist/"
+  base = "apps/portfolio/"
+  publish = "./dist"
   command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build:ci"
 [[redirects]]
   from = "/*"
