@@ -6,7 +6,7 @@ import Nuxt from '@/assets/nuxt.svg'
 
 import { navOrientation } from '@/components/the-nav/consts'
 
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     required: true,
