@@ -1,5 +1,6 @@
 import { App } from 'vue'
 import 'uno.css'
+import './styles/fonts.css'
 import { ASTheme } from './styles/as-theme'
 
 // normalize.css
