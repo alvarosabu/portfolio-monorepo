@@ -41,6 +41,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
+          config-file: apps/portfolio/cypress.json
           build: pnpm run e2e:ci:build
           start: pnpm run start:portfolio
           wait-on: http://localhost:3000
