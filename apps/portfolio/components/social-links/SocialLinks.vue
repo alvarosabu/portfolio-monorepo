@@ -1,6 +1,18 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
-import { SocialLink } from './consts'
+
+export interface StoryLink {
+  id: string
+  url: string
+  linktype: string
+  fieldtype: string
+  cached_url: string
+}
+
+export interface SocialLink {
+  icon: string
+  url: StoryLink
+}
 
 const props = defineProps({
   size: {
@@ -21,7 +33,7 @@ const getClasses = computed(() => {
 })
 </script>
 <template>
-  <ul :class="getClasses">
+  <ul :class="getClasses" data-cy="social-links">
     <li v-for="item in items" :key="item.icon">
       <a
         :href="item.url.url"

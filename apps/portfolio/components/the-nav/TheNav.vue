@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
-import { navOrientation, MenuItem } from './consts'
+import { navOrientation, MenuItem, navOrigin } from './consts'
+
 defineProps({
   menu: {
     type: Array as PropType<MenuItem[]>,
@@ -10,10 +11,14 @@ defineProps({
     type: String,
     default: navOrientation.HORIZONTAL,
   },
+  parent: {
+    type: String,
+    default: navOrigin.HEADER,
+  },
 })
 </script>
 <template>
-  <nav aria-label="Main Navigation">
+  <nav :aria-label="`${parent} navigation`">
     <ul
       flex
       :class="{

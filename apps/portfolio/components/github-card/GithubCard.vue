@@ -27,7 +27,12 @@ defineProps({
 })
 </script>
 <template>
-  <a inline-flex :href="url" :alt="`Github repository ${name}`">
+  <a
+    data-cy="github-card"
+    inline-flex
+    :href="url"
+    :alt="`Github repository ${name}`"
+  >
     <AsCard p-4 h-full>
       <template #header>
         <header flex w-full mb-4>

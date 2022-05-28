@@ -17,7 +17,12 @@ export default defineNuxtConfig({
   },
   components: {
     global: true,
-    dirs: ['~/components'],
+    dirs: [
+      {
+        path: '~/components',
+        ignore: ['**/*.{spec,test,e2e}.{js,ts,jsx,tsx}'],
+      },
+    ],
   },
   /*   autoImports: {
     dirs: ['@storyblok/vue'],
@@ -36,7 +41,7 @@ export default defineNuxtConfig({
     attributify: true, // enabled `@unocss/preset-attributify`,
   },
   vite: {
-    build: {
+    /*  build: {
       rollupOptions: {
         external: ['vue', 'ufo', '@vueuse/core'],
         output: {
@@ -47,7 +52,7 @@ export default defineNuxtConfig({
           },
         },
       },
-    },
+    }, */
     plugins: [SvgLoader()],
   },
 })

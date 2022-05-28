@@ -6,26 +6,34 @@
     "dev": "nuxt dev --port=2590",
     "dev:https": "nuxt dev --https --port=2591",
     "build": "nuxt build",
+    "build:e2e:ci": "pnpm run -w build:ui && nuxt build",
     "generate": "nuxt generate",
+    "generate:ci": "pnpm run -w build:ui && nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "histoire": "pnpm exec histoire dev"
+    "histoire": "pnpm exec histoire dev",
+    "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
     "@alvarosabu/ui": "^2.6.2",
     "@alvarosabu/utils": "^1.0.3",
+    "@cypress/vite-dev-server": "^2.2.3",
+    "@cypress/vue": "^3.1.2",
     "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
     "@storyblok/vue": "^6.0.3",
     "@unocss/nuxt": "^0.33.2",
+    "axe-core": "^4.4.2",
     "axios": "^0.27.2",
+    "cypress": "^9.6.1",
+    "cypress-axe": "^0.14.0",
+    "cypress-localstorage-commands": "^1.7.0",
     "date-fns": "^2.28.0",
     "histoire": "^0.4.5",
     "lite-youtube-embed": "^0.2.0",
     "nuxt": "3.0.0-rc.3",
     "swiper": "^8.1.4",
-    "vite-svg-loader": "^3.3.0"
-  },
-  "dependencies": {
+    "vite-svg-loader": "^3.3.0",
     "velocity-animate": "^1.5.2"
   }
 }
