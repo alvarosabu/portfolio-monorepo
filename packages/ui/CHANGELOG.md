@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.7.0
+
+### Minor Changes
+
+- 0894606e: Draft of e2e ci and deploy working for Netlify
+
 ## 2.6.2
 
 ### Patch Changes

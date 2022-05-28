@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "1.4.2",
+  "version": "1.5.0",
   "scripts": {
     "dev": "nuxt dev --port=2590",
     "dev:https": "nuxt dev --https --port=2591",
@@ -16,7 +16,7 @@
     "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
-    "@alvarosabu/ui": "^2.6.2",
+    "@alvarosabu/ui": "^2.7.0",
     "@alvarosabu/utils": "^1.0.3",
     "@cypress/vite-dev-server": "^2.2.3",
     "@cypress/vue": "^3.1.2",
