@@ -15,20 +15,16 @@ export default defineNuxtConfig({
   app: {
     head,
   },
-  components: {
-    global: true,
-    dirs: [
+  css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
+  buildModules: [
+    '@unocss/nuxt',
+    [
+      '@storyblok/nuxt',
       {
-        path: '~/components',
-        ignore: ['**/*.{spec,test,e2e}.{js,ts,jsx,tsx}'],
+        accessToken: process.env.STORYBLOK_API_TOKEN,
       },
     ],
-  },
-  /*   autoImports: {
-    dirs: ['@storyblok/vue'],
-  }, */
-  css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
-  buildModules: ['@unocss/nuxt'],
+  ],
   vue: {
     compilerOptions: {
       isCustomElement: tag => ['lite-youtube'].includes(tag),
@@ -41,18 +37,6 @@ export default defineNuxtConfig({
     attributify: true, // enabled `@unocss/preset-attributify`,
   },
   vite: {
-    /*  build: {
-      rollupOptions: {
-        external: ['vue', 'ufo', '@vueuse/core'],
-        output: {
-          globals: {
-            vue: 'Vue',
-            ufo: 'ufo',
-            '@vueuse/core': 'VueUseCore',
-          },
-        },
-      },
-    }, */
     plugins: [SvgLoader()],
   },
 })

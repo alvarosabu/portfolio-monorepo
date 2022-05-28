@@ -4,7 +4,7 @@ import Logo from '@/assets/logo.svg'
 /* tslint:disable-next-line */
 import Nuxt from '@/assets/nuxt.svg'
 
-import { navOrientation } from '../the-nav/consts'
+import { navOrientation } from '@/components/the-nav/consts'
 
 const props = defineProps({
   blok: {
