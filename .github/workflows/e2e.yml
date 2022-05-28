@@ -1,6 +1,10 @@
 name: e2e
 on: [push]
 
+env:
+  PNPM_CACHE_FOLDER: .pnpm-store
+  HUSKY: 0 # Bypass husky commit hook for CI
+
 jobs:
   cypress-run:
     name: E2E on Chrome
