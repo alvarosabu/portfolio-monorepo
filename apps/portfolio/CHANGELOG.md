@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.5.0
+
+### Minor Changes
+
+- 0894606e: Draft of e2e ci and deploy working for Netlify
+
 ## 1.4.2
 
 ### Patch Changes
