@@ -4,7 +4,7 @@
 [build]
   base = "apps/portfolio/"
   publish = "./dist"
-  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build:ci"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run generate:ci"
 [[redirects]]
   from = "/*"
   to = "index.html"

@@ -7,6 +7,7 @@
     "dev:https": "nuxt dev --https --port=2591",
     "build": "nuxt build",
     "generate": "nuxt generate",
+    "generate:ci": "pnpm run -w build:ui && nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
     "histoire": "pnpm exec histoire dev",
