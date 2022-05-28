@@ -6,6 +6,7 @@
     "dev": "nuxt dev --port=2590",
     "dev:https": "nuxt dev --https --port=2591",
     "build": "nuxt build",
+    "build:e2e:ci": "pnpm run -w build:ui && nuxt build",
     "generate": "nuxt generate",
     "generate:ci": "pnpm run -w build:ui && nuxt generate",
     "preview": "nuxt preview",
