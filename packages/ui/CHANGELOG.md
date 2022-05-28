@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.7.1
+
+### Patch Changes
+
+- 321a54cc: Added Gilroy as a local font
+
 ## 2.7.0
 
 ### Minor Changes
