@@ -4,14 +4,18 @@ import Logo from '@/assets/logo.svg'
 /* tslint:disable-next-line */
 import Nuxt from '@/assets/nuxt.svg'
 
-import { navOrientation } from '../the-nav/consts'
+import { navOrientation } from '@/components/the-nav/consts'
 
-const props = defineProps({
+defineProps({
   blok: {
     type: Object,
     required: true,
   },
 })
+
+const showVersion = ref(false)
+
+const { version, environment } = useVersion()
 
 // Feature Menu
 const { storiesForNav } = await useStories()
@@ -25,7 +29,8 @@ const { storiesForNav } = await useStories()
     relative
     snap-start
   >
-    <Logo m="x-auto b-16" />
+    <Logo m="x-auto b-16" @click="showVersion = !showVersion" />
+
     <div container mx-auto class="flex flex-col sm:(flex-row justify-between)">
       <div class="mb-8 sm:(w-1/2 mb-0)">
         <TheNav
@@ -37,7 +42,21 @@ const { storiesForNav } = await useStories()
       </div>
       <div class="flex flex-col items-center sm:(w-1/3 items-end)">
         <SocialLinks mb-14 size="xl" :items="blok.socialLinks" />
-        <div absolute left-0 bottom-0 px-4 w-full>
+        <div
+          absolute
+          left-0
+          bottom-0
+          px-4
+          w-full
+          flex
+          justify-between
+          align-center
+        >
+          <div>
+            <span text-xs text-gray-400 inline v-show="showVersion"
+              >{{ environment }} - v{{ version }}</span
+            >
+          </div>
           <p
             flex
             justify-between
