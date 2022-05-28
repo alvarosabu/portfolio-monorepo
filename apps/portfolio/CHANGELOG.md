@@ -1,5 +1,15 @@
 # @alvarosabu/portfolio
 
+## 1.6.0
+
+### Minor Changes
+
+- 87b5f0dd: Storyblok nuxt module integration
+
+### Patch Changes
+
+- fab20e1c: Scroll layout fixed, easter egg version
+
 ## 1.5.0
 
 ### Minor Changes
