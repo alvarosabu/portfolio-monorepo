@@ -1,3 +1,5 @@
+import { DynamicShortcut } from 'unocss'
+
 export type ButtonType = 'button' | 'submit' | 'reset'
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
 export type ButtonSize = 'default' | 'block' | 'sm' | 'md' | 'lg'
@@ -21,20 +23,20 @@ export enum btnSize {
   LG = 'lg',
 }
 
-export const btnShortcuts = [
+export const btnShortcuts: DynamicShortcut[] = [
   [
     /^btn-(?!.*(outline|flat|block|sm|md|lg|default))(.*)/,
-    ([, , c]: [any, any, string]) =>
+    ([, , c]) =>
       `bg-${c}-400 text-white border-transparent hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
   [
     /^btn-outline-(.*)$/,
-    ([, c]: [any, string]) =>
+    ([, c]) =>
       `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500 hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
   [
     /^btn-flat-(.*)$/,
-    ([, c]: [any, string]) =>
+    ([, c]) =>
       `bg-gray-50 border-transparent text-${c}-400 hover:text-${c}-500`,
   ],
 ]

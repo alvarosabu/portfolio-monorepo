@@ -1,10 +1,15 @@
 import { App } from 'vue'
 import 'uno.css'
-import './styles/fonts.css'
-import { ASTheme } from './styles/as-theme'
+import './styles/base.css'
 
 // normalize.css
 import '@unocss/reset/tailwind.css'
+import { ASWebFontsOptions } from './styles/fonts'
+import { ASIconsOptions } from './styles/icons'
+import { ASTheme } from './styles/as-theme'
+import { ASRules } from './styles/rules'
+import { ASShortcuts } from './styles/shortcuts'
+import { ASTypographyOptions } from './styles/typography'
 
 const modules = import.meta.globEager(
   './components/**/!(*.spec|*.test|*.story).vue',
@@ -12,7 +17,14 @@ const modules = import.meta.globEager(
 const components = Object.entries(modules)
 
 export default {
-  theme: ASTheme,
+  unoconfig: {
+    theme: ASTheme,
+    fonts: ASWebFontsOptions,
+    icons: ASIconsOptions,
+    shortcuts: ASShortcuts,
+    typhography: ASTypographyOptions,
+    rules: ASRules,
+  },
   install(app: App, options: any) {
     if (typeof options === 'undefined') {
       for (let [key, value] of components) {

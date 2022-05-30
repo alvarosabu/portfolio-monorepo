@@ -1,0 +1,9 @@
+@import './fonts.css';
+
+body {
+  @apply text-primary-400;
+}
+
+.dark {
+  @apply bg-primary-500 text-gray-50;
+}

@@ -1,3 +1,5 @@
+/* import { Theme } from '@unocss/preset-uno' */
+
 export const primary = {
   // oxford
   DEFAULT: '#3E5166',
