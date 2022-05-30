@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.8.0
+
+### Minor Changes
+
+- 18ef05cd: More export options for unocss config
+
 ## 2.7.1
 
 ### Patch Changes
