@@ -9,6 +9,9 @@ describe('Home Page', () => {
     cy.restoreLocalStorage()
     cy.visit('http://localhost:2590')
     cy.injectAxe()
+    cy.configureAxe({
+      rules: [{ id: 'color-contrast', enabled: false }],
+    })
   })
 
   afterEach(() => {

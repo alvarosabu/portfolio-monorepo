@@ -15,6 +15,7 @@ const getCSSAnimation = computed(() => {
       animation: getCSSAnimation,
     }"
     class="shevas"
+    data-cy="shevas"
     w-300px
     h-200px
     z-2
