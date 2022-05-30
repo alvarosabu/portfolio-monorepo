@@ -33,18 +33,18 @@ const getClasses = computed(() => {
 })
 </script>
 <template>
-  <ul :class="getClasses" data-cy="social-links">
+  <ul :class="getClasses" data-cy="social-links" class="not-prose">
     <li v-for="item in items" :key="item.icon">
       <a
         :href="item.url.url"
         inline-flex
         justify-center
         w-9
-        class="text-primary-400 dark:text-gray-50 text-bg-md hover:text-bg-sm"
+        class="text-primary-400 dark:text-gray-50 text-bg-md hover:text-bg-sm not-prose"
         target="_blank"
         :title="item.icon"
       >
-        <AsIcon :name="item.icon" size="36px" />
+        <AsIcon :name="item.icon" size="48px" />
       </a>
     </li>
   </ul>
