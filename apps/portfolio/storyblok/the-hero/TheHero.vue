@@ -20,13 +20,13 @@ defineProps({
     prose
     class="flex flex-col md:flex-row dark:text-gray-50"
     :class="{ 'flex-col-reverse md:flex-row-reverse': blok.reverse }"
-    daya-cy="hero"
+    data-cy="hero"
   >
     <div class="w-full md:w-1/3">
       <!-- <pre> {{ blok.slot }}</pre> -->
     </div>
     <div class="w-full md:w-2/3">
-      <h1 class="headline-1 mb-8">{{ blok.title }}</h1>
+      <h1 class="headline-1 mb-8" data-cy="hero-title">{{ blok.title }}</h1>
       <RichTextRenderer :document="blok.content" />
     </div>
   </div>
