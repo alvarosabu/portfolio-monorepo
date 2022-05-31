@@ -25,7 +25,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test:ci": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "pathe": "^0.3.0",

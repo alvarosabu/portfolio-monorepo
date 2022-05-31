@@ -8,12 +8,14 @@ importers:
       '@changesets/changelog-github': ^0.4.4
       '@changesets/cli': ^2.22.0
       conventional-changelog-cli: ^2.2.2
+      husky: ^8.0.1
       prettier: ^2.6.2
     devDependencies:
       '@alvarosabu/prettier-config': link:packages/prettier
       '@changesets/changelog-github': 0.4.4
       '@changesets/cli': 2.22.0
       conventional-changelog-cli: 2.2.2
+      husky: 8.0.1
       prettier: 2.6.2
 
   apps/portfolio:
@@ -147,6 +149,7 @@ importers:
 
   packages/utils:
     specifiers:
+      husky: ^8.0.1
       pathe: ^0.3.0
       typescript: ^4.5.4
       vite: ^2.9.9
@@ -154,6 +157,7 @@ importers:
       vite-plugin-dts: ^1.1.1
       vitest: ^0.10.5
     devDependencies:
+      husky: 8.0.1
       pathe: 0.3.0
       typescript: 4.7.2
       vite: 2.9.9
@@ -6323,6 +6327,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
