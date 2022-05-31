@@ -6,8 +6,8 @@ env:
   HUSKY: 0 # Bypass husky commit hook for CI
 
 jobs:
-  cypress-run:
-    name: E2E on Chrome
+  vitest:
+    name: Run Unit Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
