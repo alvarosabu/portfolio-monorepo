@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import { resolve } from 'pathe'
 import banner from 'vite-plugin-banner'
@@ -10,6 +11,10 @@ export default defineConfig({
     alias: {
       '/@': resolve(__dirname, './src'),
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
   },
   plugins: [
     dts({
