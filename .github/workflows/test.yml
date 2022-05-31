@@ -1,4 +1,4 @@
-name: e2e
+name: Run all unit testing
 on: [push]
 
 env:
@@ -37,11 +37,5 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile --shamefully-hoist
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          working-directory: apps/portfolio
-          build: pnpm run build:e2e:ci
-          start: pnpm run start
-          wait-on: http://localhost:3000
+      - name: Run tests
+        run: pnpm run test
