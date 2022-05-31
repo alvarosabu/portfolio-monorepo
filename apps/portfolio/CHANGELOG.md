@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.7.0
+
+### Minor Changes
+
+- 18ef05cd: Portfolio Uses
+
 ## 1.6.0
 
 ### Minor Changes
