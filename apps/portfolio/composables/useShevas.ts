@@ -1,5 +1,5 @@
 import { reactive, watch, toRefs } from 'vue'
-import { orderByPriorityAsc } from '@alvarosabu/utils/dist/index'
+
 import { useTime } from './useTime'
 
 export enum ShevasAnimationTypes {
@@ -204,13 +204,16 @@ const state = reactive<ShevasState>({
   animationQueue: [],
 })
 
+export const orderByPriorityDesc = (a: any, b: any) => b.priority - a.priority
+export const orderByPriorityAsc = (a: any, b: any) => a.priority - b.priority
+
 export const useShevas = () => {
   const { hours } = useTime()
 
   const getTimeBasedAnimation = (animations: ShevasAnimation[]) => {
     const matches = animations
       .filter(animation => animation.conditions.hours.includes(hours.value))
-      .sort(orderByPriorityAsc)
+      .sort(orderByPriorityDesc)
     return matches.length > 1
       ? {
           ...matches[0],
