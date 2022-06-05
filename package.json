@@ -33,15 +33,13 @@
     "e2e:ci:build": "pnpm build:ui && pnpm run build:portfolio",
     "test:e2e:ci:portfolio": "pnpm run --dir apps/portfolio test:e2e:ci",
     "test:utils": "pnpm run --filter utils test:ci",
-    "clean": "pnpm -r exec rm -rf node_modules",
-    "prepare": "husky install"
+    "clean": "pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
     "@alvarosabu/prettier-config": "workspace:^1.1.0",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.22.0",
     "conventional-changelog-cli": "^2.2.2",
-    "husky": "^8.0.1",
     "prettier": "^2.6.2"
   }
 }
