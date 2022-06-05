@@ -1,3 +1,5 @@
+import { Fn } from '../types'
+
 /**
  * Mock an async function for APIs
  * @param  {boolean} success
@@ -14,4 +16,18 @@ export const mockAsync = (success: boolean, timeout: number, value: any) => {
       }
     }, timeout)
   })
+}
+
+/**
+ * Promised `setTimeout`
+ *
+ * @category Promise
+ */
+export function sleep(ms: number, callback?: Fn<any>) {
+  return new Promise<void>(resolve =>
+    setTimeout(async () => {
+      await callback?.()
+      resolve()
+    }, ms),
+  )
 }
