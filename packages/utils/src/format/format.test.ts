@@ -1,5 +1,5 @@
-import { snakeToCamel } from '@alvarosabu/utils/dist/index.js'
 import {
+  snakeToCamel,
   camelToSnake,
   listCamelToSnake,
   listSnakeToCamel,
