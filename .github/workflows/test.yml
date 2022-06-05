@@ -1,4 +1,4 @@
-name: e2e
+name: Run all unit testing
 on: [push]
 
 env:
@@ -6,8 +6,8 @@ env:
   HUSKY: 0 # Bypass husky commit hook for CI
 
 jobs:
-  cypress-run:
-    name: E2E on Chrome
+  vitest:
+    name: Run Unit Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -37,11 +37,5 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile --shamefully-hoist
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          working-directory: apps/portfolio
-          build: pnpm run build:e2e:ci
-          start: pnpm run start
-          wait-on: http://localhost:3000
+      - name: Run tests
+        run: pnpm run test

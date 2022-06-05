@@ -1,0 +1,39 @@
+{
+  "name": "@alvarosabu/utils",
+  "version": "1.0.3",
+  "description": "Personal collection of common JavaScript / TypeScript utils",
+  "keywords": [
+    "utils",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
+  "license": "MIT",
+  "main": "./dist/as-utils.umd.js",
+  "module": "./dist/as-utils.es.js",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/alvarosabu/portfolio#readme",
+  "files": [
+    "lib"
+  ],
+  "repository": "https://github.com/alvarosabu/as-portfolio",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "pathe": "^0.3.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vite-plugin-banner": "^0.2.0",
+    "vite-plugin-dts": "^1.1.1",
+    "vitest": "^0.10.5"
+  }
+}
