@@ -135,4 +135,8 @@ suite('isEmpty', () => {
   it('should return false if the value is not an empty object', () => {
     expect(isEmpty({ a: 1 })).toBe(false)
   })
+
+  it('should return false if the value is not an empty object', () => {
+    expect(isEmpty(1)).toBe(false)
+  })
 })
