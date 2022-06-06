@@ -12,9 +12,15 @@
   "main": "./dist/as-utils.umd.js",
   "module": "./dist/as-utils.es.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/as-utils.es.js",
+      "require": "./dist/as-utils.umd.js"
+    }
+  },
   "homepage": "https://github.com/alvarosabu/portfolio#readme",
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": "https://github.com/alvarosabu/as-portfolio",
   "publishConfig": {
