@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.8.1
+
+### Patch Changes
+
+- 661ca0e3: Fixed release pipeline
+
 ## 2.8.0
 
 ### Minor Changes
