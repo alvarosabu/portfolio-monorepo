@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.7.1
+
+### Patch Changes
+
+- 235b363c: Fix pipeline errors for netlify
+
 ## 1.7.0
 
 ### Minor Changes

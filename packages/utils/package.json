@@ -1,6 +1,6 @@
 {
   "name": "@alvarosabu/utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Personal collection of common JavaScript / TypeScript utils",
   "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
   "files": [
