@@ -2,20 +2,26 @@
   "name": "@alvarosabu/utils",
   "version": "2.0.0",
   "description": "Personal collection of common JavaScript / TypeScript utils",
+  "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "utils",
     "javascript",
     "typescript"
   ],
-  "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
   "license": "MIT",
   "main": "./dist/as-utils.umd.js",
   "module": "./dist/as-utils.es.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/as-utils.es.js",
+      "require": "./dist/as-utils.umd.js"
+    }
+  },
   "homepage": "https://github.com/alvarosabu/portfolio#readme",
-  "files": [
-    "lib"
-  ],
   "repository": "https://github.com/alvarosabu/as-portfolio",
   "publishConfig": {
     "access": "public"
