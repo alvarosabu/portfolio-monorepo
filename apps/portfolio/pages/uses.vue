@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AnimationTriggers, ShevasAnimationTypes } from '/@/composables/useShevas'
+import { AnimationTriggers, ShevasAnimationTypes } from '@/composables/useShevas'
 
 useHead({ title: 'Uses - AS Portfolio' })
 
