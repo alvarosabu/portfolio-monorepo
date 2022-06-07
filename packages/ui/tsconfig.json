@@ -17,6 +17,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
+
     "paths": {
       "/@/*": ["src/*"]
     }

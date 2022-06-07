@@ -18,7 +18,7 @@ function initState() {
       </template>
 
       <template #controls="{ state }">
-        <HstText title="Name" v-model="state.name" />
+        <HstText v-model="state.name" title="Name" />
       </template>
     </Variant>
   </Story>

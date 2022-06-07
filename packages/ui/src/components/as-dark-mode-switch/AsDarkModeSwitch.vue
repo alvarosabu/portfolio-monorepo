@@ -16,16 +16,11 @@ const inputRef = ref<HTMLInputElement | null>(null)
 const { focused } = useFocus(inputRef)
 </script>
 <template>
-  <div
-    relative
-    inline-block
-    class="dark-mode-switch"
-    :class="{ 'outline-solid-blue-500': focused }"
-  >
+  <div relative inline-block class="dark-mode-switch" :class="{ 'outline-solid-blue-500': focused }">
     <input
-      type="checkbox"
       id="dark-switch"
       ref="inputRef"
+      type="checkbox"
       w-2
       h-2
       absolute
@@ -38,11 +33,7 @@ const { focused } = useFocus(inputRef)
     <label for="dark-switch" relative cursor-pointer>
       <div class="planet" />
       <div class="dots">
-        <span
-          v-for="dot of [0, 45, 90, 135, 180, 225, 270, 315]"
-          :key="`dot-${dot}`"
-          :class="`dot-${dot}`"
-        />
+        <span v-for="dot of [0, 45, 90, 135, 180, 225, 270, 315]" :key="`dot-${dot}`" :class="`dot-${dot}`" />
       </div>
     </label>
   </div>
@@ -106,9 +97,7 @@ $_precision: 10;
   $a: _to_unitless_rad($angle);
   $sin: $a;
   @for $n from 1 through $_precision {
-    $sin: $sin +
-      (math.div(pow(-1, $n), fact(2 * $n + 1))) *
-      pow($a, (2 * $n + 1));
+    $sin: $sin + (math.div(pow(-1, $n), fact(2 * $n + 1))) * pow($a, (2 * $n + 1));
   }
   @return $sin;
 }

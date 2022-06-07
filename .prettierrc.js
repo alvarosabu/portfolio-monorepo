@@ -1,4 +1,4 @@
 module.exports = {
-    ...require('@alvarosabu/prettier-config'),
+  ...require('@alvarosabu/prettier-config'),
+  printWidth: 120,
 }
-  

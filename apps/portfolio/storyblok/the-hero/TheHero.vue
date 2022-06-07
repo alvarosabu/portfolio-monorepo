@@ -26,7 +26,9 @@ defineProps({
       <!-- <pre> {{ blok.slot }}</pre> -->
     </div>
     <div class="w-full md:w-2/3">
-      <h1 class="headline-1 mb-8" data-cy="hero-title">{{ blok.title }}</h1>
+      <h1 class="headline-1 mb-8" data-cy="hero-title">
+        {{ blok.title }}
+      </h1>
       <RichTextRenderer :document="blok.content" />
     </div>
   </div>

@@ -36,7 +36,7 @@ suite('is String', () => {
 
 suite('isFunction', () => {
   it('should return true if the value is a function', () => {
-    const noop = () => {}
+    const noop = () => ({})
     expect(isFunction(noop)).toBe(true)
   })
 

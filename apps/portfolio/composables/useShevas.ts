@@ -116,7 +116,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     },
   },
   [ShevasAnimationTypes.GOING_TO_BED]: {
-    backgroundImage: `shevas_goingtobed_stripe.png`,
+    backgroundImage: 'shevas_goingtobed_stripe.png',
     animation: 'goingtobed-play',
     animationDuration: 5,
     steps: 42,
@@ -131,7 +131,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     priority: 2,
   },
   [ShevasAnimationTypes.SLEEP_TIGHT_LEFT]: {
-    backgroundImage: `shevas_sleeptightleft_stripe.png`,
+    backgroundImage: 'shevas_sleeptightleft_stripe.png',
     animation: 'sleeptightleft-play',
     animationDuration: 1,
     steps: 8,
@@ -145,7 +145,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     },
   },
   [ShevasAnimationTypes.SLEEPING_LEFT]: {
-    backgroundImage: `shevas_sleepingleft_stripe.png`,
+    backgroundImage: 'shevas_sleepingleft_stripe.png',
     animation: 'sleepingleft-play',
     animationDuration: 5,
     steps: 2,
@@ -156,7 +156,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     repeat: 10,
   },
   [ShevasAnimationTypes.SLEEPING_RIGHT]: {
-    backgroundImage: `shevas_sleepingright_stripe.png`,
+    backgroundImage: 'shevas_sleepingright_stripe.png',
     animation: 'sleepingright-play',
     animationDuration: 5,
     steps: 2,
@@ -167,7 +167,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     repeat: 10,
   },
   [ShevasAnimationTypes.SLEEP_TIGHT_RIGHT]: {
-    backgroundImage: `shevas_sleeptightright_stripe.png`,
+    backgroundImage: 'shevas_sleeptightright_stripe.png',
     animation: 'sleeptightright-play',
     animationDuration: 1,
     steps: 8,
@@ -177,7 +177,7 @@ export const ShevasAnimations: ShevasAnimationsMap = {
     end: ShevasAnimationTypes.LEAVING_THE_BED,
   },
   [ShevasAnimationTypes.LEAVING_THE_BED]: {
-    backgroundImage: `shevas_leavingthebed_stripe.png`,
+    backgroundImage: 'shevas_leavingthebed_stripe.png',
     animation: 'leavingthebed-play',
     animationDuration: 5,
     steps: 41,
@@ -234,27 +234,18 @@ export const useShevas = () => {
     },
   )
 
-  function updateCurrentAnimation({
-    condition,
-    animation,
-  }: {
-    condition: string
-    animation?: ShevasAnimationTypes
-  }) {
+  function updateCurrentAnimation({ condition, animation }: { condition: string; animation?: ShevasAnimationTypes }) {
     let newAnimation
     if (condition) {
       switch (condition) {
         case AnimationTriggers.TIME:
           newAnimation = getTimeBasedAnimation(
-            Object.values(state.animations).filter(
-              anim => anim.trigger === AnimationTriggers.TIME,
-            ),
+            Object.values(state.animations).filter(anim => anim.trigger === AnimationTriggers.TIME),
           )
           break
 
         default:
-          newAnimation =
-            state.animations[animation || ShevasAnimationTypes.IDDLE]
+          newAnimation = state.animations[animation || ShevasAnimationTypes.IDDLE]
           break
       }
     }
@@ -270,9 +261,7 @@ export const useShevas = () => {
       newAnimation = animations[currentAnimation.next]
     } else {
       newAnimation = getTimeBasedAnimation(
-        Object.values(state.animations).filter(
-          anim => anim.trigger === AnimationTriggers.TIME,
-        ),
+        Object.values(state.animations).filter(anim => anim.trigger === AnimationTriggers.TIME),
       )
     }
     if (newAnimation) {

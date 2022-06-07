@@ -10,9 +10,7 @@ defineProps({
 
 const { listRelevantRepos, fetchRepos, error, pending } = useGithubRepo()
 const hasError = computed(() => error.value && !pending.value)
-const showRepos = computed(
-  () => !error.value && !pending.value && listRelevantRepos.value.length > 0,
-)
+const showRepos = computed(() => !error.value && !pending.value && listRelevantRepos.value.length > 0)
 
 const { beforeEnter, enter, leave } = useStaggered(450)
 const { isMobile } = useBreakpoints()
@@ -29,8 +27,10 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
 </script>
 <template>
   <section
-    data-cy="repos"
+    v-if="!isMobile"
     ref="repos"
+    v-editable="blok"
+    data-cy="repos"
     container
     mx-auto
     h-screen
@@ -38,18 +38,12 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
     flex-col
     justify-center
     snap-start
-    v-editable="blok"
-    v-if="!isMobile"
   >
-    <h2
-      data-cy="repos-title"
-      font-display
-      text="primary-400 dark:gray-50 3xl"
-      mb-24
-    >
+    <h2 data-cy="repos-title" font-display text="primary-400 dark:gray-50 3xl" mb-24>
       {{ blok.title }}
     </h2>
     <div
+      v-if="listRelevantRepos.length === 0"
       w-full
       min-h-40
       p-4
@@ -60,17 +54,9 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
       bg="gray-50 dark:primary-600"
       font-mono
       text="sm gray-500 dark:gray-50"
-      v-if="listRelevantRepos.length === 0"
     >
-      <img
-        w-8
-        h-8
-        mr-4
-        src="/pixel-penguin.png"
-        :alt="blok.errorState"
-        v-if="hasError"
-      />
-      <AsParticleLoader size="4rem" v-if="pending" />
+      <img v-if="hasError" w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />
+      <AsParticleLoader v-if="pending" size="4rem" />
       {{ hasError ? blok.errorState : '' }}
     </div>
     <transition-group
@@ -87,12 +73,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
       @enter="enter"
       @leave="leave"
     >
-      <GithubCard
-        v-for="(repo, $index) of listRelevantRepos"
-        :key="repo.name"
-        v-bind="repo"
-        :data-index="$index + 1"
-      />
+      <GithubCard v-for="(repo, $index) of listRelevantRepos" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
     </transition-group>
     <footer class="flex w-full justify-end">
       <a

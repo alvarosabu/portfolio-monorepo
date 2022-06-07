@@ -19,6 +19,6 @@
   },
   "scss.lint.unknownAtRules": "ignore",
   "css.lint.unknownAtRules": "ignore",
-
+  "eslint.workingDirectories": ["apps/", "packages/"],
   "unocss.root": "packages/ui"
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { ComputedRef } from 'vue'
 import { useStoryblok, useStoryblokApi } from '@storyblok/vue'
 
@@ -98,7 +99,7 @@ export function useStories() {
       .sort((a, b) => a.order - b.order),
   )
 
-  async function getStory(id: string = 'home') {
+  async function getStory(id = 'home') {
     const story: Story = await useStoryblok(id, {
       version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
     })

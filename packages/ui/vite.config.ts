@@ -3,9 +3,7 @@ import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
 import SvgLoader from 'vite-svg-loader'
 import banner from 'vite-plugin-banner'
-import copy from 'rollup-plugin-copy'
-import analyze from 'rollup-plugin-analyzer'
-import { visualizer } from 'rollup-plugin-visualizer'
+
 import dts from 'vite-plugin-dts'
 
 import vue from '@vitejs/plugin-vue'
@@ -35,9 +33,7 @@ export default defineConfig({
     banner({
       content: `/**\n * name: ${pkg.name}\n * version: v${
         pkg.version
-      }\n * (c) ${new Date().getFullYear()}\n * description: ${
-        pkg.description
-      }\n * author: ${pkg.author}\n */`,
+      }\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
   ],
   build: {

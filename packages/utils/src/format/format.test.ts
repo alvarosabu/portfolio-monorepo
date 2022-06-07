@@ -1,11 +1,5 @@
-import {
-  snakeToCamel,
-  camelToSnake,
-  listCamelToSnake,
-  listSnakeToCamel,
-  slugify,
-} from './index'
 import { expect, it, suite } from 'vitest'
+import { snakeToCamel, camelToSnake, listCamelToSnake, listSnakeToCamel, slugify } from './index'
 
 suite('Slugify', () => {
   it('should replace all spaces with -', () => {
@@ -13,9 +7,7 @@ suite('Slugify', () => {
     expect(slugify(phrase)).toBe('my-blog-post')
   })
   it('should lowercase the entry string', () => {
-    expect(slugify('SheIsMyFriendAndSheIsCrazy')).toBe(
-      'sheismyfriendandsheiscrazy',
-    )
+    expect(slugify('SheIsMyFriendAndSheIsCrazy')).toBe('sheismyfriendandsheiscrazy')
   })
   it('should remove all non-word chars', () => {
     expect(slugify('Awiwi$%&$')).toBe('awiwi')

@@ -46,54 +46,62 @@ function initState() {
       </template>
 
       <template #controls="{ state }">
-        <HstText title="Label" v-model="state.label" />
-        <HstSelect
-          title="Variant"
-          v-model="state.variant"
-          :options="btnVariantList"
-        />
-        <HstCheckbox title="Flat" v-model="state.flat"> Flat </HstCheckbox>
-        <HstCheckbox title="Outline" v-model="state.outline">
+        <HstText v-model="state.label" title="Label" />
+        <HstSelect v-model="state.variant" title="Variant" :options="btnVariantList" />
+        <HstCheckbox v-model="state.flat" title="Flat">
+          Flat
+        </HstCheckbox>
+        <HstCheckbox v-model="state.outline" title="Outline">
           Outline
         </HstCheckbox>
-        <HstCheckbox title="Disabled" v-model="state.disabled">
+        <HstCheckbox v-model="state.disabled" title="Disabled">
           Disabled
         </HstCheckbox>
-        <HstSelect title="Icon" v-model="state.icon" :options="iconOptions" />
-        <HstSelect
-          title="IconRight"
-          v-model="state.iconRight"
-          :options="iconOptions"
-        />
+        <HstSelect v-model="state.icon" title="Icon" :options="iconOptions" />
+        <HstSelect v-model="state.iconRight" title="IconRight" :options="iconOptions" />
       </template>
     </Variant>
 
     <Variant title="Primary" icon="carbon:star-filled" icon-color="#10B981">
-      <AsButton variant="primary"> Awiwi </AsButton>
+      <AsButton variant="primary">
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Secondary" icon="carbon:star-filled" icon-color="#34D399">
-      <AsButton variant="secondary"> Awiwi </AsButton>
+      <AsButton variant="secondary">
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Primary Outline" icon="carbon:outline">
-      <AsButton variant="primary" outline> Awiwi </AsButton>
+      <AsButton variant="primary" outline>
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Secondary Outline" icon="carbon:outline">
-      <AsButton variant="secondary" outline> Awiwi </AsButton>
+      <AsButton variant="secondary" outline>
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Primary Flat" icon="carbon:outline">
-      <AsButton variant="primary" flat> Awiwi </AsButton>
+      <AsButton variant="primary" flat>
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Secondary Flat" icon="carbon:outline">
-      <AsButton variant="secondary" flat> Awiwi </AsButton>
+      <AsButton variant="secondary" flat>
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="Icon" icon="carbon:logo-github" icon-color="#10B981">
-      <AsButton variant="primary" :icon="'github'"> Awiwi </AsButton>
+      <AsButton variant="primary" :icon="'github'">
+        Awiwi
+      </AsButton>
     </Variant>
 
     <Variant title="IconRight" icon="carbon:download" icon-color="#10B981">

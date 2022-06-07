@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+/* eslint-disable max-len */
 import { computed } from 'vue'
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
@@ -17,6 +18,7 @@ const title = computed(() => {
 </script>
 <template>
   <div
+    v-editable="blok"
     data-cy="home-hero"
     class="home-hero"
     container
@@ -27,17 +29,16 @@ const title = computed(() => {
     justify-between
     items-center
     snap-start
-    v-editable="blok"
   >
-    <div flex w="1/2" justify-center v-if="!isMobile">
+    <div v-if="!isMobile" flex w="1/2" justify-center>
       <PancakePlanet />
     </div>
     <div
-      class="home-hero__content prose dark:prose-invert sm:w-2/5 text-primary-500 dark:text-gray-100 flex flex-col justify-center animate__animated animate__fadeIn"
       v-show="true"
+      class="home-hero__content prose dark:prose-invert sm:w-2/5 text-primary-500 dark:text-gray-100 flex flex-col justify-center animate__animated animate__fadeIn"
     >
       <h1 mb-8 data-cy="home-hero-title" v-html="title"></h1>
-      <RichTextRenderer :document="blok.content" v-if="blok" />
+      <RichTextRenderer v-if="blok" :document="blok.content" />
       <SocialLinks mb-8 :items="blok.socialLinks" />
     </div>
   </div>

@@ -10,7 +10,7 @@ export const slugify = (text: string): string =>
     .toString()
     .toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/[^\w-]+/g, '') // Remove all non-word chars
     .replace(/--+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '')
@@ -21,13 +21,9 @@ export const snakeToCamel = (myObj: KeyObject) => {
   const newObj: KeyObject = {}
   Object.keys(myObj).forEach(key => {
     if (isArray(myObj[key])) {
-      newObj[key.replace(/(_\w)/g, m => m[1].toUpperCase())] = listSnakeToCamel(
-        myObj[key],
-      )
+      newObj[key.replace(/(_\w)/g, m => m[1].toUpperCase())] = listSnakeToCamel(myObj[key])
     } else if (isObject(myObj[key])) {
-      newObj[key.replace(/(_\w)/g, m => m[1].toUpperCase())] = snakeToCamel(
-        myObj[key],
-      )
+      newObj[key.replace(/(_\w)/g, m => m[1].toUpperCase())] = snakeToCamel(myObj[key])
     } else {
       newObj[key.replace(/(_\w)/g, m => m[1].toUpperCase())] = myObj[key]
     }
@@ -40,17 +36,11 @@ export const camelToSnake = (myObj: KeyObject) => {
   const newObj: KeyObject = {}
   Object.keys(myObj).forEach(key => {
     if (isArray(myObj[key])) {
-      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[
-        key
-      ] = listCamelToSnake(myObj[key])
+      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[key] = listCamelToSnake(myObj[key])
     } else if (isObject(myObj[key])) {
-      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[
-        key
-      ] = camelToSnake(myObj[key])
+      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[key] = camelToSnake(myObj[key])
     } else {
-      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[
-        key
-      ] = myObj[key]
+      newObj[key.replace(/([A-Z])/g, $1 => `_${$1.toLowerCase()}`)] = myObj[key]
     }
     // do something with obj
   })

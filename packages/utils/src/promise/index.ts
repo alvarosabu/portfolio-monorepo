@@ -12,7 +12,7 @@ export const mockAsync = (success: boolean, timeout: number, value: any) => {
       if (success) {
         resolve(value)
       } else {
-        reject({ message: 'Error' })
+        reject(new Error('Oops'))
       }
     }, timeout)
   })

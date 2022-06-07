@@ -13,6 +13,7 @@ import {
 
 function initState() {
   return {
+    // eslint-disable-next-line
     src: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2102&q=80',
     alt: 'Awiwi',
     aspectRatio: imgAspectRatios[0],
@@ -32,28 +33,12 @@ function initState() {
       </template>
 
       <template #controls="{ state }">
-        <HstText title="Url" v-model="state.src" />
-        <HstSelect
-          title="Aspect ratio"
-          v-model="state.aspectRatio"
-          :options="imgAspectRatios"
-        />
-        <HstText title="Caption" v-model="state.caption" />
-        <HstSelect
-          title="Caption Type"
-          v-model="state.captionType"
-          :options="imgCaptionTypeList"
-        />
-        <HstSelect
-          title="Object fit"
-          v-model="state.objectFit"
-          :options="imgFitModesList"
-        />
-        <HstSelect
-          title="Loading Mode"
-          v-model="state.loading"
-          :options="imgLoadingModeList"
-        />
+        <HstText v-model="state.src" title="Url" />
+        <HstSelect v-model="state.aspectRatio" title="Aspect ratio" :options="imgAspectRatios" />
+        <HstText v-model="state.caption" title="Caption" />
+        <HstSelect v-model="state.captionType" title="Caption Type" :options="imgCaptionTypeList" />
+        <HstSelect v-model="state.objectFit" title="Object fit" :options="imgFitModesList" />
+        <HstSelect v-model="state.loading" title="Loading Mode" :options="imgLoadingModeList" />
       </template>
     </Variant>
   </Story>

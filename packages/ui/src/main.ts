@@ -1,6 +1,6 @@
-import AsUI from './index'
 import { createApp } from 'vue'
 import App from './App.vue'
+import AsUI from './index'
 
 const app = createApp(App)
 

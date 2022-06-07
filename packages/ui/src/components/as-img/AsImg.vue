@@ -13,9 +13,7 @@ const props = defineProps({
 
       const valid = imgAspectRatios.includes(val)
       if (!valid) {
-        logError(
-          `Invalid image aspect-ratio specified "${val}". Valid values are [${imgAspectRatios}]`,
-        )
+        logError(`Invalid image aspect-ratio specified "${val}". Valid values are [${imgAspectRatios}]`)
       }
       return valid
     },
@@ -28,11 +26,7 @@ const props = defineProps({
 
       const valid = Object.values(imgFitModes).includes(val as imgFitModes)
       if (!valid) {
-        logError(
-          `Invalid object-ratio specified "${val}". Valid values are [${Object.values(
-            imgFitModes,
-          )}]`,
-        )
+        logError(`Invalid object-ratio specified "${val}". Valid values are [${Object.values(imgFitModes)}]`)
       }
       return valid
     },
@@ -44,15 +38,9 @@ const props = defineProps({
     validator: (val: string) => {
       const { logError } = useLogger()
 
-      const valid = Object.values(imgCaptionType).includes(
-        val as imgCaptionType,
-      )
+      const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
-        logError(
-          `Invalid image caption mode specified "${val}". Valid values are [${Object.values(
-            imgCaptionType,
-          )}]`,
-        )
+        logError(`Invalid image caption mode specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
       }
       return valid
     },
@@ -63,21 +51,15 @@ const props = defineProps({
     validator: (val: string) => {
       const { logError } = useLogger()
 
-      const valid = Object.values(imgCaptionType).includes(
-        val as imgCaptionType,
-      )
+      const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
-        logError(
-          `Invalid caption-type specified "${val}". Valid values are [${Object.values(
-            imgCaptionType,
-          )}]`,
-        )
+        logError(`Invalid caption-type specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
       }
       return valid
     },
   },
 })
-
+// eslint-disable-next-line
 const emit = defineEmits<{
   (e: 'loaded', event: Event): void
   (e: 'error', errorMessage: string): void
@@ -97,12 +79,11 @@ const imgStyles = computed(
 
 const imgClasses = computed(() => ({
   'rounded-lg w-full bg-gray-100 relative': true,
-  'overflow-hidden :before:(bg-red-100 block absolute inset-0 bg-no-repeat bg-center)':
-    hasError.value,
+  'overflow-hidden :before:(bg-red-100 block absolute inset-0 bg-no-repeat bg-center)': hasError.value,
 }))
 
 const figureClasses = ref([
-  `as-img`,
+  'as-img',
   'relative',
   'overflow-hidden',
   'rounded',
@@ -117,9 +98,10 @@ const captionClasses = computed(() => {
     case imgCaptionType.BOTTOM:
       return 'absolute bg-black text-sm text-white bottom-0 bg-opacity-20 w-full p-4 text-center'
     case imgCaptionType.FULL:
-      return 'absolute bg-black text-sm text-white inset-0 bg-opacity-20 w-full p-4 text-center flex items-center justify-center'
+      return `absolute bg-black text-sm text-white inset-0 bg-opacity-20 w-full 
+      p-4 text-center flex items-center justify-center`
     default:
-      break
+      return ''
   }
 })
 
@@ -143,20 +125,14 @@ function onError(event: Event) {
 </script>
 <template>
   <figure :class="figureClasses">
-    <img
-      v-bind="$attrs"
-      :class="imgClasses"
-      :style="imgStyles"
-      @load="onLoad"
-      @error="onError"
-    />
+    <img v-bind="$attrs" :class="imgClasses" :style="imgStyles" @load="onLoad" @error="onError" />
     <!-- TODO: Implement when loaders -->
     <!--  <as-particle-loader
       size="4rem"
       class="absolute text-gray-400 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       v-if="loading"
     /> -->
-    <figcaption :class="captionClasses" v-if="caption || $slots.default">
+    <figcaption v-if="caption || $slots.default" :class="captionClasses">
       <slot>{{ caption }} </slot>
     </figcaption>
   </figure>

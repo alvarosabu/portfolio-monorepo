@@ -33,12 +33,16 @@ defineProps({
   >
     <slot name="header">
       <header>
-        <AsImg w-full rounded-none v-if="media" :src="media" />
+        <AsImg v-if="media" w-full rounded-none :src="media" />
         <h2 v-if="title" font="bold display" text="base lg" p-4 m-0>
-          <slot name="title">{{ title }}</slot>
+          <slot name="title">
+            {{ title }}
+          </slot>
         </h2>
-        <p m-0 pl-4 font-typewrite text-xs v-if="subtitle">
-          <slot name="subtitle">{{ subtitle }}</slot>
+        <p v-if="subtitle" m-0 pl-4 font-typewrite text-xs>
+          <slot name="subtitle">
+            {{ subtitle }}
+          </slot>
         </p>
       </header>
     </slot>

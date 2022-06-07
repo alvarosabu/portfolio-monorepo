@@ -8,10 +8,6 @@ defineProps({
 </script>
 <template>
   <div v-editable="blok" data-test="page">
-    <StoryblokComponent
-      v-for="blok in blok.body"
-      :key="blok._uid"
-      :blok="blok"
-    />
+    <StoryblokComponent v-for="inblok in blok.body" :key="inblok._uid" :blok="inblok" />
   </div>
 </template>

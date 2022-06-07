@@ -54,7 +54,7 @@ defineProps({
       </template>
       <template #footer>
         <footer class="flex w-full text-sm">
-          <span class="w-1/3 inline-flex items-center" v-if="language">
+          <span v-if="language" class="w-1/3 inline-flex items-center">
             <span
               class="w-2 h-2 rounded-full mr-4"
               :style="{ backgroundColor: languageColor }"

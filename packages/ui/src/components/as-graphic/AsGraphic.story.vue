@@ -24,7 +24,7 @@ function initState() {
         </div>
       </template>
       <template #controls="{ state }">
-        <HstText title="Type" v-model="state.type" />
+        <HstText v-model="state.type" title="Type" />
       </template>
     </Variant>
 
@@ -52,11 +52,7 @@ function initState() {
       <AsGraphic type="curve-big" />
     </Variant>
 
-    <Variant
-      title="Dots"
-      icon="ic-baseline-format-color-fill"
-      icon-color="#34D399"
-    >
+    <Variant title="Dots" icon="ic-baseline-format-color-fill" icon-color="#34D399">
       <AsGraphic type="dots" class="text-teal-400" />
     </Variant>
   </Story>
