@@ -18,18 +18,13 @@ const props = defineProps({
   upsidedown: Boolean,
 })
 
-const getClasses = computed(() => [
-  'pancake-planet',
-  { 'planet-pancake--upsidedown': props.upsidedown },
-])
+const getClasses = computed(() => ['pancake-planet', { 'planet-pancake--upsidedown': props.upsidedown }])
 
 const { getTimeOfTheDay } = useTime()
 const pancakeClasses = computed(() => ['pancake', `glow-${getTimeOfTheDay()}`])
 
 const backgroundImage = {
-  backgroundImage: isSafari
-    ? `url(/home/planet-pancake.png)`
-    : `url(/home/planet-pancake.webp)`,
+  backgroundImage: isSafari ? 'url(/home/planet-pancake.png)' : 'url(/home/planet-pancake.webp)',
 }
 
 const planet = ref(null)
@@ -38,31 +33,20 @@ const parallax = reactive(useParallax(planet.value))
 const blobStyle = computed(() => {
   const { roll, tilt } = parallax
   return {
-    transform: `translate3d(${tilt * -20}px, 0, 0) rotate3d(1, 0, 0, ${
-      roll * 20
-    }deg)`,
+    transform: `translate3d(${tilt * -20}px, 0, 0) rotate3d(1, 0, 0, ${roll * 20}deg)`,
   }
 })
 const dotsStyle = computed(() => {
   const { roll, tilt } = parallax
   return {
-    transform: `translate3d(0, ${tilt * -20}px, 0) rotate3d(1, 0, 0, ${
-      roll * 20
-    }deg)`,
+    transform: `translate3d(0, ${tilt * -20}px, 0) rotate3d(1, 0, 0, ${roll * 20}deg)`,
   }
 })
 </script>
 
 <template>
-  <div relative w-full h-full :class="getClasses" ref="planet">
-    <AsGraphic
-      :type="'dots'"
-      absolute
-      bottom="-10"
-      left="-10"
-      dark:text-light
-      :style="dotsStyle"
-    />
+  <div ref="planet" relative w-full h-full :class="getClasses">
+    <AsGraphic :type="'dots'" absolute bottom="-10" left="-10" dark:text-light :style="dotsStyle" />
     <Blob absolute top="-40" right="-40" :style="blobStyle" />
     <div class="salto-angel" />
     <div class="waterfall" />

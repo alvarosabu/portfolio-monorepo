@@ -22,7 +22,7 @@ function initState() {
         </div>
       </template>
       <template #controls="{ state }">
-        <HstText title="Size" v-model="state.size" />
+        <HstText v-model="state.size" title="Size" />
       </template>
     </Variant>
   </Story>

@@ -46,25 +46,13 @@ function initState() {
       </template>
 
       <template #controls="{ state }">
-        <HstText title="Label" v-model="state.label" />
-        <HstSelect
-          title="Variant"
-          v-model="state.variant"
-          :options="btnVariantList"
-        />
-        <HstCheckbox title="Flat" v-model="state.flat"> Flat </HstCheckbox>
-        <HstCheckbox title="Outline" v-model="state.outline">
-          Outline
-        </HstCheckbox>
-        <HstCheckbox title="Disabled" v-model="state.disabled">
-          Disabled
-        </HstCheckbox>
-        <HstSelect title="Icon" v-model="state.icon" :options="iconOptions" />
-        <HstSelect
-          title="IconRight"
-          v-model="state.iconRight"
-          :options="iconOptions"
-        />
+        <HstText v-model="state.label" title="Label" />
+        <HstSelect v-model="state.variant" title="Variant" :options="btnVariantList" />
+        <HstCheckbox v-model="state.flat" title="Flat"> Flat </HstCheckbox>
+        <HstCheckbox v-model="state.outline" title="Outline"> Outline </HstCheckbox>
+        <HstCheckbox v-model="state.disabled" title="Disabled"> Disabled </HstCheckbox>
+        <HstSelect v-model="state.icon" title="Icon" :options="iconOptions" />
+        <HstSelect v-model="state.iconRight" title="IconRight" :options="iconOptions" />
       </template>
     </Variant>
 

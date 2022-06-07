@@ -21,11 +21,7 @@ const props = defineProps({
       const { logError } = useLogger()
       const valid = Object.values(btnVariant).includes(val as btnVariant)
       if (!valid) {
-        logError(
-          `Invalid button variant specified "${val}". Valid values are [${Object.values(
-            btnVariant,
-          )}]`,
-        )
+        logError(`Invalid button variant specified "${val}". Valid values are [${Object.values(btnVariant)}]`)
       }
       return valid
     },
@@ -37,11 +33,7 @@ const props = defineProps({
       const { logError } = useLogger()
       const valid = Object.values(btnSize).includes(val as btnSize)
       if (!valid) {
-        logError(
-          `Invalid button size specified "${val}". Valid values are [${Object.values(
-            btnSize,
-          )}]`,
-        )
+        logError(`Invalid button size specified "${val}". Valid values are [${Object.values(btnSize)}]`)
       }
       return valid
     },
@@ -62,7 +54,7 @@ const props = defineProps({
 
 // Classes
 const btnClasses = computed(() => {
-  const classes: any[] = [`as-btn`]
+  const classes: any[] = ['as-btn']
 
   if (props.variant) {
     if (props.flat) {
@@ -106,21 +98,13 @@ const hasLabel = computed(() => props.label !== '')
     decoration-none
   >
     <slot name="preffix">
-      <AsIcon
-        :name="icon"
-        class="bg-current"
-        :class="hasLabel ? 'mr-2' : ''"
-        v-if="icon"
-      />
+      <AsIcon v-if="icon" :name="icon" class="bg-current" :class="hasLabel ? 'mr-2' : ''" />
     </slot>
-    <slot name="default">{{ label }}</slot>
+    <slot name="default">
+      {{ label }}
+    </slot>
     <slot name="suffix">
-      <AsIcon
-        :name="iconRight"
-        class="b-current"
-        :class="hasLabel ? 'ml-2' : ''"
-        v-if="hasLabel && iconRight"
-      />
+      <AsIcon v-if="hasLabel && iconRight" :name="iconRight" class="b-current" :class="hasLabel ? 'ml-2' : ''" />
     </slot>
   </component>
 </template>

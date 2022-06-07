@@ -1,9 +1,9 @@
-import { btnSize, btnVariant } from './const'
+import { h } from 'vue'
 import { mount } from '@cypress/vue'
+import { btnSize, btnVariant } from './const'
 import 'uno.css'
 
 import AsButton from './AsButton.vue'
-import { h } from 'vue'
 
 describe('Basic', () => {
   it('renders a label', () => {

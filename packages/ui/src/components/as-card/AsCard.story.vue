@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import 'uno.css'
-import AsCard from './AsCard.vue'
 import AsIcon from '../as-icon/AsIcon.vue'
+import AsCard from './AsCard.vue'
 
 function initState() {
   return {
     title: 'Soy una pequeña tetera',
     subtitle: 'Pero no una tetera cualquiera',
     media:
+      // eslint-disable-next-line max-len
       'https://res.cloudinary.com/alvarosaburido/image/upload/v1610379831/blog/Create%20Dynamic%20Forms%20in%20Vue3/create-dynamic-forms-in-vue3_xirpvg.png',
-    content:
-      'Easy way to dynamically create reactive forms in vue based on a varying business',
+    content: 'Easy way to dynamically create reactive forms in vue based on a varying business',
   }
 }
 </script>
@@ -25,26 +25,18 @@ function initState() {
   >
     <Variant title="playground" :init-state="initState">
       <template #default="{ state }">
-        <AsCard
-          :title="state.title"
-          :media="state.media"
-          :subtitle="state.subtitle"
-          :content="state.content"
-        />
+        <AsCard :title="state.title" :media="state.media" :subtitle="state.subtitle" :content="state.content" />
       </template>
 
       <template #controls="{ state }">
-        <HstText title="Title" v-model="state.title" />
-        <HstText title="Subtitle" v-model="state.subtitle" />
-        <HstText title="Media" v-model="state.media" />
+        <HstText v-model="state.title" title="Title" />
+        <HstText v-model="state.subtitle" title="Subtitle" />
+        <HstText v-model="state.media" title="Media" />
       </template>
     </Variant>
 
     <Variant title="Simple" icon="carbon:star-filled" icon-color="#10B981">
-      <AsCard
-        title="Find the repo on your channel"
-        content="Write stories to showcase and document your components."
-      />
+      <AsCard title="Find the repo on your channel" content="Write stories to showcase and document your components." />
     </Variant>
     <Variant title="Slots" icon="carbon:star-filled" icon-color="#10B981">
       <AsCard>
@@ -65,9 +57,7 @@ function initState() {
           </header>
         </template>
         <template #content>
-          <p class="px-4 m-0 pb-4">
-            Write stories to showcase and document your components.
-          </p>
+          <p class="px-4 m-0 pb-4">Write stories to showcase and document your components.</p>
         </template>
         <template #footer>
           <footer class="flex w-full text-sm px-4 pb-4">

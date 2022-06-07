@@ -8,7 +8,7 @@ it('should resolve the mock promise if success is true', async () => {
 
 it('should reject the mock promise if success is false', async () => {
   const mockPromise = mockAsync(false, 1, 'success')
-  await expect(mockPromise).rejects.toEqual({ message: 'Error' })
+  await expect(mockPromise).rejects.toEqual(new Error('Oops'))
 })
 
 it('should return a mocked object as data', async () => {

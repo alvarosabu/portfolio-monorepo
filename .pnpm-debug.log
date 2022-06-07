@@ -1,0 +1,15 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": "/Users/x400048/Projects/github/portfolio"
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_MISSING_PACKAGE_NAME",
+    "err": {
+      "name": "pnpm",
+      "message": "`pnpm add` requires the package name",
+      "code": "ERR_PNPM_MISSING_PACKAGE_NAME",
+      "stack": "pnpm: `pnpm add` requires the package name\n    at Object.handler [as add] (/Users/x400048/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:122365:15)\n    at /Users/x400048/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:182628:83\n    at async run (/Users/x400048/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:182604:34)\n    at async runPnpm (/Users/x400048/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:182823:5)\n    at async /Users/x400048/.nvm/versions/node/v16.11.0/lib/node_modules/pnpm/dist/pnpm.cjs:182815:7"
+    }
+  }
+}

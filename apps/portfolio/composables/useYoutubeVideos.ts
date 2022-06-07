@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { RemovableRef, useStorage } from '@vueuse/core'
 import { differenceInHours } from 'date-fns'
+import { useLogger } from './useLogger'
 
 export type YoutubeVideo = {
   id: string
@@ -10,13 +11,13 @@ export type YoutubeVideo = {
   publishedAt: string
   channelTitle: string
   channelId: string
-  duration: string
-  viewCount: string
-  likeCount: string
-  dislikeCount: string
-  favoriteCount: string
-  commentCount: string
-  tags: string[]
+  duration?: string
+  viewCount?: string
+  likeCount?: string
+  dislikeCount?: string
+  favoriteCount?: string
+  commentCount?: string
+  tags?: string[]
 }
 
 export type VideosState = {
@@ -26,16 +27,18 @@ export type VideosState = {
   updatedAt?: Date
 }
 
-let preservedState: RemovableRef<Partial<VideosState>> = useStorage('videos', {
+const preservedState: RemovableRef<Partial<VideosState>> = useStorage('videos', {
   videos: [],
 })
 
-let state = reactive({
+const state = reactive({
   pending: false,
   error: null,
 })
 
-const formatVideos = item => {
+const { logError } = useLogger()
+
+const formatVideos = (item): YoutubeVideo => {
   const { id, snippet } = item
   return {
     id: id.videoId,
@@ -48,42 +51,36 @@ const formatVideos = item => {
   }
 }
 
+type VideoData = Pick<unknown, never> & { items: unknown[] }
+
 export const useYoutubeVideos = () => {
   const config = useRuntimeConfig()
 
   const fetchVideos = async () => {
-    const timeSinceLastUpdated = differenceInHours(
-      Date.now(),
-      new Date(preservedState.value.updatedAt),
-    )
+    const timeSinceLastUpdated = differenceInHours(Date.now(), new Date(preservedState.value.updatedAt))
     if (preservedState.value.videos.length === 0 || timeSinceLastUpdated > 4) {
       try {
-        const { data, pending, error } = await useFetch(
-          `https://www.googleapis.com/youtube/v3/search`,
-          {
-            params: {
-              part: 'snippet',
-              channelId: 'UC6D2KveNVcuuPqOKp0YWO3w',
-              key: config.youtubeKey,
-              maxResults: 5,
-              order: 'date',
-            },
+        const { data, pending, error } = await useFetch('https://www.googleapis.com/youtube/v3/search', {
+          params: {
+            part: 'snippet',
+            channelId: 'UC6D2KveNVcuuPqOKp0YWO3w',
+            key: config.youtubeKey,
+            maxResults: 5,
+            order: 'date',
           },
-        )
-        preservedState.value.videos = [...data?.value?.items.map(formatVideos)]
+        })
+        const videoData = data.value as VideoData
+        preservedState.value.videos = [...videoData.items.map(formatVideos)]
         preservedState.value.updatedAt = new Date()
         state.pending = pending.value
         state.error = error.value
       } catch (error) {
-        console.error('There was an error fetching youtube videos', error)
-        // logError(error);
+        logError('There was an error fetching youtube videos', error)
       }
     }
   }
 
-  const popularVideos = computed(() =>
-    preservedState.value.videos.filter(video => video.id),
-  )
+  const popularVideos = computed(() => preservedState.value.videos.filter(video => video.id))
 
   return {
     popularVideos,

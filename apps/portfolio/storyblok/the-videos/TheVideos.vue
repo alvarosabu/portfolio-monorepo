@@ -44,8 +44,9 @@ function onSlideChange(swiper) {
 </script>
 <template>
   <section
-    data-cy="videos"
     ref="videos"
+    v-editable="blok"
+    data-cy="videos"
     h-screen
     flex
     flex-col
@@ -55,12 +56,12 @@ function onSlideChange(swiper) {
     md:px-0
     class="youtube-videos"
     :class="!isMobile ? 'container mx-auto' : null"
-    v-editable="blok"
   >
     <h2 font-display text="primary-400 dark:gray-50 3xl" mb-24>
       {{ blok.title }}
     </h2>
     <div
+      v-if="error?.length > 0 && !pending"
       min-h-40
       bg="gray-50 dark:primary-600"
       text="sm gray-500 dark:gray-50"
@@ -71,31 +72,21 @@ function onSlideChange(swiper) {
       justify-center
       items-center
       font-mono
-      v-if="error?.length > 0 && !pending"
     >
-      <img
-        w-8
-        h-8
-        mr-4
-        src="/assets/pixel-penguin.png"
-        :alt="blok.errorState"
-      />{{ blok.errorState }}
+      <img w-8 h-8 mr-4 src="/assets/pixel-penguin.png" :alt="blok.errorState" />{{ blok.errorState }}
     </div>
     <suspense v-else>
       <template #default>
         <div
           class="relative"
-          :class="[
-            { 'swiper-gradient--left': !isBeginning },
-            { 'swiper-gradient--right': !isEnd },
-          ]"
+          :class="[{ 'swiper-gradient--left': !isBeginning }, { 'swiper-gradient--right': !isEnd }]"
         >
           <swiper
             :slides-per-view="isMobile ? 1.5 : 3"
             :space-between="50"
             class="w-full mb-8 min-h-40"
             @swiper="onSwiper"
-            @slideChange="onSlideChange"
+            @slide-change="onSlideChange"
           >
             <swiper-slide v-for="{ id, title } of popularVideos" :key="id">
               <YoutubeCard :title="title" :video-id="id" />
@@ -108,10 +99,7 @@ function onSlideChange(swiper) {
       </template>
     </suspense>
 
-    <footer
-      class="flex w-full"
-      :class="isMobile ? 'container mx-auto justify-center' : 'justify-end'"
-    >
+    <footer class="flex w-full" :class="isMobile ? 'container mx-auto justify-center' : 'justify-end'">
       <AsButton
         :label="blok.youtubeLabel"
         variant="secondary"
@@ -143,29 +131,17 @@ function onSlideChange(swiper) {
     content: '';
 
     width: 20%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 1) 75%
-    );
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 75%);
   }
 }
 
 .dark {
   .swiper-gradient {
     &--left:before {
-      background: linear-gradient(
-        to left,
-        rgba(62, 81, 255, 0) 0%,
-        #3e5066 75%
-      );
+      background: linear-gradient(to left, rgba(62, 81, 255, 0) 0%, #3e5066 75%);
     }
     &--right:after {
-      background: linear-gradient(
-        to right,
-        rgba(62, 81, 255, 0) 0%,
-        #3e5066 75%
-      );
+      background: linear-gradient(to right, rgba(62, 81, 255, 0) 0%, #3e5066 75%);
     }
   }
 }

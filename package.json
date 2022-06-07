@@ -33,13 +33,22 @@
     "e2e:ci:build": "pnpm build:ui && pnpm run build:portfolio",
     "test:e2e:ci:portfolio": "pnpm run --dir apps/portfolio test:e2e:ci",
     "test:utils": "pnpm run --filter utils test:ci",
-    "clean": "pnpm -r exec rm -rf node_modules"
+    "clean": "pnpm -r exec rm -rf node_modules",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
   },
   "devDependencies": {
     "@alvarosabu/prettier-config": "workspace:^1.1.0",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.22.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@rushstack/eslint-patch": "^1.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "conventional-changelog-cli": "^2.2.2",
-    "prettier": "^2.6.2"
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.1.0",
+    "prettier": "^2.6.2",
+    "vue-eslint-parser": "^9.0.2"
   }
 }

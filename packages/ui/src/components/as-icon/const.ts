@@ -31,15 +31,10 @@ export const miscIcons = new Map([
   ['download', 'carbon-download'],
 ])
 
-export const asIcons = new Map([
-  ...asNavigationIcons,
-  ...asSocialIcons,
-  ...asTechIcons,
-  ...miscIcons,
-])
+export const asIcons = new Map([...asNavigationIcons, ...asSocialIcons, ...asTechIcons, ...miscIcons])
 
 export const iconList = Array.from(asIcons.entries())
 
-export const iconSafelist = [...iconList.map(([key, value]) => `i-${value}`)]
+export const iconSafelist = [...iconList.map(([_key, value]) => `i-${value}`)]
 
 export default asIcons

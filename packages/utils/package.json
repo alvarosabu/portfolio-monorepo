@@ -32,9 +32,12 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ci": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "pathe": "^0.3.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",

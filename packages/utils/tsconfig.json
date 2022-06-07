@@ -15,7 +15,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "paths": {
+      "/@/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["**/*.test.ts"]
