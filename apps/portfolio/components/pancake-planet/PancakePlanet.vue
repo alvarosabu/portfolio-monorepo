@@ -58,22 +58,9 @@ const dotsStyle = computed(() => {
 </template>
 
 <style lang="scss">
-.pancake-planet {
-  @apply;
-
-  .pancake {
-    @apply relative w-465px h-full bg-cover;
-
-    transform-style: preserve-3d;
-
-    &::before {
-      content: '';
-
-      @apply rounded-full w-full h-full;
-
-      transform: translateZ(-1px) scale(0.8);
-    }
-  }
+.pancake {
+  @apply relative w-465px h-full bg-cover;
+  transform-style: preserve-3d;
 }
 
 .salto-angel {
