@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.9.0
+
+### Minor Changes
+
+- 37abab70: Typescript Eslint fix All
+
 ## 2.8.1
 
 ### Patch Changes
