@@ -57,7 +57,9 @@ function initState() {
           </header>
         </template>
         <template #content>
-          <p class="px-4 m-0 pb-4">Write stories to showcase and document your components.</p>
+          <p class="px-4 m-0 pb-4">
+            Write stories to showcase and document your components.
+          </p>
         </template>
         <template #footer>
           <footer class="flex w-full text-sm px-4 pb-4">

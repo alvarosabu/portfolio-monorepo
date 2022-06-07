@@ -53,9 +53,7 @@ const { storiesForNav } = await useStories()
           align-center
         >
           <div>
-            <span text-xs text-gray-400 inline v-show="showVersion"
-              >{{ environment }} - v{{ version }}</span
-            >
+            <span v-show="showVersion" text-xs text-gray-400 inline>{{ environment }} - v{{ version }}</span>
           </div>
           <p
             flex

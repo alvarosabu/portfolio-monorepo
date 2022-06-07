@@ -34,7 +34,8 @@
     "test:e2e:ci:portfolio": "pnpm run --dir apps/portfolio test:e2e:ci",
     "test:utils": "pnpm run --filter utils test:ci",
     "clean": "pnpm -r exec rm -rf node_modules",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue",
+    "lint:fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx,.vue"
   },
   "devDependencies": {
     "@alvarosabu/prettier-config": "workspace:^1.1.0",

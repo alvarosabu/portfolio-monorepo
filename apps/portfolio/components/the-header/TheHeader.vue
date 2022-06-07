@@ -17,38 +17,17 @@ function toggleMenu() {
     enter-active-class="animate-fade-in animate-duration-200 animate-count-1"
     leave-active-class="animate-fade-out animate-duration-200 animate-count-1"
   >
-    <div
-      w-full
-      h-full
-      fixed
-      inset-0
-      bg="black opacity-50"
-      v-show="showMenu && isMobile"
-    ></div>
+    <div v-show="showMenu && isMobile" w-full h-full fixed inset-0 bg="black opacity-50"></div>
   </transition>
   <div ref="navMenu">
-    <header
-      w-full
-      fixed
-      top-0
-      z-60
-      bg="white dark:primary-500"
-      text="dark:gray-200"
-      role="banner"
-    >
-      <div
-        md:container
-        mx-auto
-        p="x-4 md:x-0 md:y-2"
-        flex
-        justify-between
-        items-center
-      >
+    <header w-full fixed top-0 z-60 bg="white dark:primary-500" text="dark:gray-200" role="banner">
+      <div md:container mx-auto p="x-4 md:x-0 md:y-2" flex justify-between items-center>
         <TheLogo class="animate-tada animate-count-1" />
         <div flex items-center>
           <AsDarkModeSwitch mr-8 data-cy="dark-switch" />
-          <TheNav :menu="storiesForNav" v-if="!isMobile" />
+          <TheNav v-if="!isMobile" :menu="storiesForNav" />
           <AsButton
+            v-if="isMobile"
             ml-4
             border-transparent
             bg-transparent
@@ -57,10 +36,9 @@ function toggleMenu() {
             text="md dark:gray-50"
             cursor-pointer
             :icon="showMenu ? 'close' : 'menu'"
-            @click="toggleMenu"
             flat="true"
             :aria-label="showMenu ? 'Close menu' : 'Open menu'"
-            v-if="isMobile"
+            @click="toggleMenu"
           />
         </div>
       </div>
@@ -71,6 +49,7 @@ function toggleMenu() {
       leave-active-class="animate-slide-out-up animate-duration-200 animate-count-1"
     >
       <TheNav
+        v-show="showMenu && isMobile"
         w-full
         fixed
         top-13
@@ -78,7 +57,6 @@ function toggleMenu() {
         dark:bg-primary-500
         z-50
         :menu="storiesForNav"
-        v-show="showMenu && isMobile"
         orientation="vertical"
       />
     </transition>

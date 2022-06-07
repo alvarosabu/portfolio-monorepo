@@ -40,8 +40,7 @@ const lastName = ref('Saburido')
           ? 'text-gray-50 dark:text-primary-400'
           : 'text-primary-400 dark:text-gray-50'
       "
-      >{{ '<' + name }}</span
-    >
+    >{{ '<' + name }}</span>
     <span text-secondary-400 hidden sm:inline-block>{{ lastName }}</span>
     <span hidden sm:inline-block>{{ '/>' }}</span>
     <span hidden> Go to home page</span>
