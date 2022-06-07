@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.8.0
+
+### Minor Changes
+
+- 37abab70: Typescript Eslint fix All
+
 ## 1.7.1
 
 ### Patch Changes
