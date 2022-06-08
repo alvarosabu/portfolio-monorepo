@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.8.1
+
+### Patch Changes
+
+- 7fea2993: Cypress v10
+
 ## 1.8.0
 
 ### Minor Changes
