@@ -10,14 +10,13 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "cypress"],
     "incremental": false,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-
     "paths": {
       "/@/*": ["src/*"]
     }
