@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { h } from 'vue'
 import { btnSize, btnVariant } from './const'
 import 'uno.css'
