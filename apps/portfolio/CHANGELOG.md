@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.8.2
+
+### Patch Changes
+
+- 6a958e4d: Fixed uses page on mobile
+
 ## 1.8.1
 
 ### Patch Changes
