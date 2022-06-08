@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.9.1
+
+### Patch Changes
+
+- 7fea2993: Cypress v10
+
 ## 2.9.0
 
 ### Minor Changes
