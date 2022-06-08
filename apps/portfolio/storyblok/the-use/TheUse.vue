@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <div container mx-auto prose dark:text-gray-50 mb-32 data-cy="uses">
+  <div prose important-container mx-auto dark:text-gray-50 mb-32 data-cy="uses">
     <h2 flex items-center data-cy="uses-title">
       {{ blok.title }}
       <span text-bg-md ml-4><AsIcon :name="blok.icon" /></span>
