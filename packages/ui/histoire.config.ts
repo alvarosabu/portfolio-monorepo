@@ -2,7 +2,7 @@
 /// <reference types="histoire" />
 
 import { defineConfig } from 'histoire'
-import { secondary, primary } from './src/styles/as-theme'
+import { primary } from './src/styles/as-theme'
 import 'uno.css'
 
 // histoire.config.ts
