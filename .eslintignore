@@ -1,3 +1,4 @@
 packages/**/dist
 **.spec.js
+**.cy.js
 **/cypress/**

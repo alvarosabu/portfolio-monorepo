@@ -1,5 +1,6 @@
+/// <reference types="cypress" />
+
 import { h } from 'vue'
-import { mount } from '@cypress/vue'
 import { btnSize, btnVariant } from './const'
 import 'uno.css'
 
@@ -8,7 +9,7 @@ import AsButton from './AsButton.vue'
 describe('Basic', () => {
   it('renders a label', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
       },
@@ -19,7 +20,7 @@ describe('Basic', () => {
 
   it('disables the button', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
       },
@@ -35,7 +36,7 @@ describe('Basic', () => {
 describe('Variants', () => {
   it('renders a button with primary color by default', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
       },
@@ -46,7 +47,7 @@ describe('Variants', () => {
 
   it('renders a button with secondary color', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         variant: btnVariant.SECONDARY,
@@ -60,7 +61,7 @@ describe('Variants', () => {
 describe('Sizes', () => {
   it('renders a large button', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         size: btnSize.LG,
@@ -76,7 +77,7 @@ describe('Sizes', () => {
 
   it('renders a small button', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         size: btnSize.SM,
@@ -92,7 +93,7 @@ describe('Sizes', () => {
 
   it('renders a block button', () => {
     const label = 'Awiwi'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         size: btnSize.BLOCK,
@@ -107,7 +108,7 @@ describe('Icons', () => {
   it('renders an icon', () => {
     const label = 'Awiwi'
     const icon = 'code'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         icon,
@@ -122,7 +123,7 @@ describe('Link', () => {
   it('renders a button link', () => {
     const label = 'Awiwi'
     const href = 'https://awiwi.com'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         link: href,
@@ -135,7 +136,7 @@ describe('Link', () => {
   it('renders a button link with target', () => {
     const label = 'Awiwi'
     const href = 'https://awiwi.com'
-    mount(AsButton, {
+    cy.mount(AsButton, {
       propsData: {
         label,
         link: href,
@@ -149,7 +150,7 @@ describe('Link', () => {
 
 describe('Slots usage', () => {
   it('renders a label via default slot', () => {
-    mount(AsButton, {
+    cy.mount(AsButton, {
       slots: {
         default: h('i', 'Awiwi'),
       },
@@ -159,7 +160,7 @@ describe('Slots usage', () => {
   })
 
   it('add a custom icon as preffix', () => {
-    mount(AsButton, {
+    cy.mount(AsButton, {
       slots: {
         default: h('i', 'Awiwi'),
         preffix: h('i', { class: 'i-carbon-github' }),

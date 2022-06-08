@@ -10,19 +10,18 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "cypress"],
     "incremental": false,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-
     "paths": {
       "/@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["dist", "node_modules"],
+  "exclude": ["dist", "node_modules", "src/**/*.cy.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
