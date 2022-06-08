@@ -12,7 +12,7 @@
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
     "histoire": "pnpm exec histoire dev",
-    "test:e2e": "cypress open",
+    "cy": "cypress open",
     "test:e2e:ci": "cypress run"
   },
   "devDependencies": {

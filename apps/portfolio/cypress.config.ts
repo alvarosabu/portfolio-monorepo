@@ -9,6 +9,6 @@ export default defineConfig({
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       return require('./cypress/plugins/index.js')(on, config)
     },
-    specPattern: 'cypress/e2e/**/**.e2e.ts',
+    specPattern: 'cypress/e2e/**/**.cy.ts',
   },
 })
