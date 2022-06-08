@@ -26,7 +26,14 @@ defineProps({
         'flex-col': orientation === navOrientation.VERTICAL,
       }"
     >
-      <li v-for="link in menu" :key="link.label" font-bold mr-4 text="primary-400 hover:bg-md dark:gray-50">
+      <li
+        v-for="link in menu"
+        :key="link.label"
+        font-bold
+        mr-4
+        important-w-full
+        text="primary-400 hover:bg-md dark:gray-50"
+      >
         <nuxt-link
           :class="{
             'p-4 !w-full inline-flex': orientation === navOrientation.VERTICAL,
