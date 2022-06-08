@@ -29,7 +29,7 @@
     "histoire": "pnpm exec histoire dev",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test:components": "cypress open-ct"
+    "cy": "cypress open"
   },
   "dependencies": {
     "@vueuse/core": "^8.4.2",
@@ -55,7 +55,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/test-utils": "^2.0.0-rc.21",
     "c8": "^7.11.2",
-    "cypress": "^9.6.1",
+    "cypress": "^10.0.3",
     "histoire": "^0.4.6",
     "jsdom": "^19.0.0",
     "pathe": "^0.3.0",
