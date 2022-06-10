@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.8.3
+
+### Patch Changes
+
+- a4f4aa60: Fixed mobile menu behavior on clickoutside and route change
+
 ## 1.8.2
 
 ### Patch Changes
