@@ -7,9 +7,16 @@ const { isMobile } = useBreakpoints()
 const navMenu = ref(null)
 // Feature Menu visibiliy
 const showMenu = ref(false)
+
 function toggleMenu() {
   showMenu.value = !showMenu.value
 }
+
+const route = useRoute()
+
+watch(route, () => {
+  showMenu.value = false
+})
 </script>
 <template>
   <transition
@@ -17,7 +24,15 @@ function toggleMenu() {
     enter-active-class="animate-fade-in animate-duration-200 animate-count-1"
     leave-active-class="animate-fade-out animate-duration-200 animate-count-1"
   >
-    <div v-show="showMenu && isMobile" w-full h-full fixed inset-0 bg="black opacity-50"></div>
+    <div
+      v-show="showMenu && isMobile"
+      w-full
+      h-full
+      fixed
+      inset-0
+      bg="black opacity-50"
+      @click="showMenu = false"
+    ></div>
   </transition>
   <div ref="navMenu">
     <header w-full fixed top-0 z-60 bg="white dark:primary-500" text="dark:gray-200" role="banner">
