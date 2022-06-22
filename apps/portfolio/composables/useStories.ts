@@ -7,6 +7,17 @@ export interface Slot {
   content: StoryContent[]
 }
 
+export interface StoryAsset {
+  id: number
+  alt: string
+  name: string
+  focus: string
+  title: string
+  filename: string
+  copyright: string
+  fieldtype: string
+}
+
 export interface StoryBody {
   _uid: string
   slot?: Slot
