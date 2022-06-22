@@ -1,10 +1,14 @@
 import { useStoryblokApi } from '@storyblok/vue'
-import { Story, StoryAsset } from './useStories'
+import { Story, StoryAsset, StoryContent } from './useStories'
 
-export interface ProjectStory extends Story {
+export interface ProjectStoryContent extends StoryContent {
   title: string
   media: StoryAsset
   excerpt: string
+  featured: boolean
+}
+export interface ProjectStory extends Story {
+  content: ProjectStoryContent
 }
 
 export interface PortfolioState {
@@ -14,6 +18,7 @@ export interface PortfolioState {
 const state: PortfolioState = reactive({
   projects: [],
 })
+
 export function usePortfolio() {
   const storyapi = useStoryblokApi()
 
@@ -27,8 +32,16 @@ export function usePortfolio() {
     state.projects = data.stories
   }
 
+  const featuredProject = computed(() => state.projects.filter(project => project.content.featured)[0])
+  const projectList = computed(() => {
+    const [, ...rest] = state.projects
+    return rest
+  })
+
   return {
     ...toRefs(state),
     fetchProjects,
+    featuredProject,
+    projectList,
   }
 }
