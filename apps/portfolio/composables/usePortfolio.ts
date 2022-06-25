@@ -33,10 +33,7 @@ export function usePortfolio() {
   }
 
   const featuredProject = computed(() => state.projects.filter(project => project.content.featured)[0])
-  const projectList = computed(() => {
-    const [, ...rest] = state.projects
-    return rest
-  })
+  const projectList = computed(() => state.projects.filter(project => !project.content.featured))
 
   return {
     ...toRefs(state),

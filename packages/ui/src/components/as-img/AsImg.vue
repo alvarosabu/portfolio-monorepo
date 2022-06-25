@@ -78,7 +78,7 @@ const imgStyles = computed(
 )
 
 const imgClasses = computed(() => ({
-  'rounded-lg w-full bg-gray-100 relative': true,
+  'w-full bg-gray-100 relative': true,
   'overflow-hidden :before:(bg-red-100 block absolute inset-0 bg-no-repeat bg-center)': hasError.value,
 }))
 
