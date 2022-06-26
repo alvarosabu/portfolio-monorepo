@@ -62,7 +62,7 @@ describe('Portfolio Page', () => {
     })
 
     it('should navigate to the Featured Project page if the read more button is clicked', () => {
-      cy.get('[data-cy="project"]').find('a').click()
+      cy.get('[data-cy="project"]').first().find('a').click()
       cy.url().should('include', '/portfolio/')
     })
   })
