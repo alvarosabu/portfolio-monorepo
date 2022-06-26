@@ -18,13 +18,6 @@ describe('Home Page', () => {
     cy.saveLocalStorage()
   })
 
-  context('General', () => {
-    it('should change the page to dark mode', () => {
-      cy.get('#dark-switch + label').click()
-      cy.get('html').should('have.class', 'dark')
-    })
-  })
-
   context('A11y', () => {
     it('should have no detectable a11y violations on load', () => {
       cy.wait(1500)

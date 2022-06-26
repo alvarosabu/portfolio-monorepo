@@ -18,7 +18,7 @@ defineProps({
 })
 </script>
 <template>
-  <nav :aria-label="`${parent} navigation`">
+  <nav :aria-label="`${parent} navigation`" data-cy="main-navigation">
     <ul
       v-if="menu.length > 0"
       flex
