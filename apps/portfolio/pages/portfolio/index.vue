@@ -32,19 +32,23 @@ await fetchProjects()
         </template>
       </FeaturedHero>
     </header>
-    <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-24 py-32>
+    <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-24 py-32 data-cy="project-list">
       <AsCard
         v-for="project of projectList"
         :key="project.content.title"
         :title="project.content.title"
         :media="project.content.media.filename"
+        :media-alt="project.content.media.alt"
+        data-cy="project"
       >
         <template #content>
           <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px mb-8>{{ project.content.excerpt }}</p>
           <footer px-4 py-2 flex justify-end>
-            <AsButton variant="secondary" size="md">
-              {{ story.content.read_more_cta_label }}
-            </AsButton>
+            <NuxtLink :to="`/${project.full_slug}`">
+              <AsButton variant="secondary" size="md">
+                {{ story.content.read_more_cta_label }}
+              </AsButton>
+            </NuxtLink>
           </footer>
         </template>
       </AsCard>

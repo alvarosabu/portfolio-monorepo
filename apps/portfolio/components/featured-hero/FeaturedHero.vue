@@ -12,13 +12,15 @@ defineProps({
 })
 </script>
 <template>
-  <div grid grid-cols-1 md:grid-cols-2 w-full gap-16>
-    <AsImg important-my-0 rounded-lg :src="media.filename" />
+  <div grid grid-cols-1 md:grid-cols-2 w-full gap-16 data-cy="featured-hero">
+    <AsImg important-my-0 rounded-lg :src="media.filename" :alt="media.alt" />
     <div flex flex-col justify-between>
       <slot>
         <div>
-          <h2 important-mt-0>{{ title }}</h2>
-          <h3 uppercase important-text="primary-300 dark:secondary-400">{{ subtitle }}</h3>
+          <h2 important-mt-0 data-cy="featured-hero-title">{{ title }}</h2>
+          <h3 uppercase important-text="primary-300 dark:secondary-400" data-cy="featured-hero-subtitle">
+            {{ subtitle }}
+          </h3>
           <p>{{ description }}</p>
         </div>
       </slot>

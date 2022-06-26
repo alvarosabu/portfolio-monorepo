@@ -7,7 +7,7 @@ describe('Uses Page', () => {
 
   beforeEach(() => {
     cy.restoreLocalStorage()
-    cy.visit('http://localhost:2590/uses')
+    cy.visit('/uses')
     cy.injectAxe()
     cy.configureAxe({
       rules: [{ id: 'color-contrast', enabled: false }],
@@ -44,9 +44,7 @@ describe('Uses Page', () => {
     })
 
     it('should have a Uses hero component with a title', () => {
-      cy.get('[data-cy="hero-title"]')
-        .should('have.prop', 'tagName')
-        .should('eq', 'H1')
+      cy.get('[data-cy="hero-title"]').should('have.prop', 'tagName').should('eq', 'H1')
     })
 
     it('should have a Uses hero component with text', () => {
@@ -72,9 +70,7 @@ describe('Uses Page', () => {
     })
 
     it('should render a uses section with a h2 title', () => {
-      cy.get('[data-cy="uses-title"]')
-        .should('have.prop', 'tagName')
-        .should('eq', 'H2')
+      cy.get('[data-cy="uses-title"]').should('have.prop', 'tagName').should('eq', 'H2')
     })
 
     it('should render a uses section with a list of uses', () => {

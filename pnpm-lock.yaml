@@ -44,7 +44,7 @@ importers:
       '@unocss/nuxt': ^0.33.2
       axe-core: ^4.4.2
       axios: ^0.27.2
-      cypress: ^10.0.3
+      cypress: 10.2.0
       cypress-axe: ^0.14.0
       cypress-localstorage-commands: ^1.7.0
       date-fns: ^2.28.0
@@ -58,16 +58,16 @@ importers:
       '@alvarosabu/ui': link:../../packages/ui
       '@alvarosabu/utils': link:../../packages/utils
       '@cypress/vite-dev-server': 2.2.3
-      '@cypress/vue': 3.1.2_cypress@10.0.3
+      '@cypress/vue': 3.1.2_cypress@10.2.0
       '@marvr/storyblok-rich-text-vue-renderer': 3.2.1
       '@storyblok/nuxt': 4.0.1_axios@0.27.2
       '@storyblok/vue': 6.0.3_axios@0.27.2
       '@unocss/nuxt': 0.33.5
       axe-core: 4.4.2
       axios: 0.27.2
-      cypress: 10.0.3
-      cypress-axe: 0.14.0_axe-core@4.4.2+cypress@10.0.3
-      cypress-localstorage-commands: 1.7.0_cypress@10.0.3
+      cypress: 10.2.0
+      cypress-axe: 0.14.0_axe-core@4.4.2+cypress@10.2.0
+      cypress-localstorage-commands: 1.7.0_cypress@10.2.0
       date-fns: 2.28.0
       histoire: 0.4.6
       lite-youtube-embed: 0.2.0
@@ -769,25 +769,6 @@ packages:
       - supports-color
     dev: true
 
-  /@cypress/vue/3.1.2_cypress@10.0.3:
-    resolution: {integrity: sha512-CqIBupPW6EhXJ7lXE64MBKh3VfdShHnuC3HBV/euHBt9tsgSo7RZHBTZUsKc8aM745VzVnuNiax+JV4CplrtLQ==}
-    engines: {node: '>=8'}
-    peerDependencies:
-      '@cypress/webpack-dev-server': '*'
-      babel-loader: '*'
-      cypress: '>=7.0.0'
-      vue: '>=3.0.0'
-    peerDependenciesMeta:
-      '@cypress/webpack-dev-server':
-        optional: true
-      babel-loader:
-        optional: true
-    dependencies:
-      '@cypress/mount-utils': 1.0.2
-      '@vue/test-utils': 2.0.0
-      cypress: 10.0.3
-    dev: true
-
   /@cypress/vue/3.1.2_cypress@10.0.3+vue@3.2.37:
     resolution: {integrity: sha512-CqIBupPW6EhXJ7lXE64MBKh3VfdShHnuC3HBV/euHBt9tsgSo7RZHBTZUsKc8aM745VzVnuNiax+JV4CplrtLQ==}
     engines: {node: '>=8'}
@@ -806,6 +787,25 @@ packages:
       '@vue/test-utils': 2.0.0_vue@3.2.37
       cypress: 10.0.3
       vue: 3.2.37
+    dev: true
+
+  /@cypress/vue/3.1.2_cypress@10.2.0:
+    resolution: {integrity: sha512-CqIBupPW6EhXJ7lXE64MBKh3VfdShHnuC3HBV/euHBt9tsgSo7RZHBTZUsKc8aM745VzVnuNiax+JV4CplrtLQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      '@cypress/webpack-dev-server': '*'
+      babel-loader: '*'
+      cypress: '>=7.0.0'
+      vue: '>=3.0.0'
+    peerDependenciesMeta:
+      '@cypress/webpack-dev-server':
+        optional: true
+      babel-loader:
+        optional: true
+    dependencies:
+      '@cypress/mount-utils': 1.0.2
+      '@vue/test-utils': 2.0.0
+      cypress: 10.2.0
     dev: true
 
   /@cypress/xvfb/1.2.4:
@@ -2180,7 +2180,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.10_sass@1.52.2
+      vite: 2.9.10
       vue: 3.2.37
     dev: true
 
@@ -3669,7 +3669,7 @@ packages:
     resolution: {integrity: sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==}
     dev: true
 
-  /cypress-axe/0.14.0_axe-core@4.4.2+cypress@10.0.3:
+  /cypress-axe/0.14.0_axe-core@4.4.2+cypress@10.2.0:
     resolution: {integrity: sha512-7Rdjnko0MjggCmndc1wECAkvQBIhuy+DRtjF7bd5YPZRFvubfMNvrxfqD8PWQmxm7MZE0ffS4Xr43V6ZmvLopg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -3677,20 +3677,70 @@ packages:
       cypress: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
     dependencies:
       axe-core: 4.4.2
-      cypress: 10.0.3
+      cypress: 10.2.0
     dev: true
 
-  /cypress-localstorage-commands/1.7.0_cypress@10.0.3:
+  /cypress-localstorage-commands/1.7.0_cypress@10.2.0:
     resolution: {integrity: sha512-4v4FrDRPimMStWmiGikyN7OmO2rH0MLI7DMk76dBpb9/sJqCDwa7fAHTUDx6avUEDmO7TFQFgaT3OQTr1HqasQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       cypress: '>=2.1.0'
     dependencies:
-      cypress: 10.0.3
+      cypress: 10.2.0
     dev: true
 
   /cypress/10.0.3:
     resolution: {integrity: sha512-8C82XTybsEmJC9POYSNITGUhMLCRwB9LadP0x33H+52QVoBjhsWvIzrI+ybCe0+TyxaF0D5/9IL2kSTgjqCB9A==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@cypress/request': 2.88.10
+      '@cypress/xvfb': 1.2.4
+      '@types/node': 14.18.21
+      '@types/sinonjs__fake-timers': 8.1.1
+      '@types/sizzle': 2.3.3
+      arch: 2.2.0
+      blob-util: 2.0.2
+      bluebird: 3.7.2
+      buffer: 5.7.1
+      cachedir: 2.3.0
+      chalk: 4.1.2
+      check-more-types: 2.24.0
+      cli-cursor: 3.1.0
+      cli-table3: 0.6.2
+      commander: 5.1.0
+      common-tags: 1.8.2
+      dayjs: 1.11.3
+      debug: 4.3.4_supports-color@8.1.1
+      enquirer: 2.3.6
+      eventemitter2: 6.4.5
+      execa: 4.1.0
+      executable: 4.1.1
+      extract-zip: 2.0.1_supports-color@8.1.1
+      figures: 3.2.0
+      fs-extra: 9.1.0
+      getos: 3.2.1
+      is-ci: 3.0.1
+      is-installed-globally: 0.4.0
+      lazy-ass: 1.6.0
+      listr2: 3.14.0_enquirer@2.3.6
+      lodash: 4.17.21
+      log-symbols: 4.1.0
+      minimist: 1.2.6
+      ospath: 1.2.2
+      pretty-bytes: 5.6.0
+      proxy-from-env: 1.0.0
+      request-progress: 3.0.0
+      semver: 7.3.7
+      supports-color: 8.1.1
+      tmp: 0.2.1
+      untildify: 4.0.0
+      yauzl: 2.10.0
+    dev: true
+
+  /cypress/10.2.0:
+    resolution: {integrity: sha512-+i9lY5ENlfi2mJwsggzR+XASOIgMd7S/Gd3/13NCpv596n3YSplMAueBTIxNLcxDpTcIksp+9pM3UaDrJDpFqA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
@@ -5745,7 +5795,6 @@ packages:
       - less
       - sass
       - stylus
-      - supports-color
       - typescript
     dev: true
 
@@ -7129,8 +7178,6 @@ packages:
       debug: 3.2.7
       iconv-lite: 0.4.24
       sax: 1.2.4
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /neo-async/2.6.2:
@@ -7269,8 +7316,6 @@ packages:
       rimraf: 2.7.1
       semver: 5.7.1
       tar: 4.4.19
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /node-releases/2.0.5:
@@ -8828,8 +8873,6 @@ packages:
       on-finished: 2.4.1
       range-parser: 1.2.1
       statuses: 2.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /serialize-javascript/4.0.0:
@@ -8852,8 +8895,6 @@ packages:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 0.18.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /set-blocking/2.0.0:
@@ -9110,7 +9151,7 @@ packages:
     dev: true
 
   /string-width/1.0.2:
-    resolution: {integrity: sha1-EYvfW4zcUaKn5w0hHgfisLmxB9M=}
+    resolution: {integrity: sha512-0XsVpQLnVCXHJfyEs8tC0zpTVIr5PKKsQtkT29IwupnPTjtPmQ3xT/4yCREF9hYkV/3M3kzcUTSAZT6a6h81tw==}
     engines: {node: '>=0.10.0'}
     dependencies:
       code-point-at: 1.1.0
@@ -9164,7 +9205,7 @@ packages:
     dev: true
 
   /strip-ansi/3.0.1:
-    resolution: {integrity: sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=}
+    resolution: {integrity: sha512-VhumSSbBqDTP8p2ZLKj40UjBCV4+v8bUSEpUb4KjRgWk9pbqGF4REFj6KEagidb2f/M6AzC0EmFyDNGaw9OCzg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       ansi-regex: 2.1.1
@@ -9444,11 +9485,11 @@ packages:
     dev: true
 
   /throttleit/1.0.0:
-    resolution: {integrity: sha1-nnhYNtr0Z0MUWlmEtiaNgoUorGw=}
+    resolution: {integrity: sha512-rkTVqu6IjfQ/6+uNuuc3sZek4CEYxTJom3IktzgdSxcZqdARuebbA/f4QmAxMQIxqq9ZLEUkSYqvuk1I6VKq4g==}
     dev: true
 
   /through/2.3.8:
-    resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=}
+    resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
     dev: true
 
   /through2/2.0.5:
@@ -9611,13 +9652,13 @@ packages:
     dev: true
 
   /tunnel-agent/0.6.0:
-    resolution: {integrity: sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=}
+    resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
       safe-buffer: 5.2.1
     dev: true
 
   /tweetnacl/0.14.5:
-    resolution: {integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=}
+    resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
     dev: true
 
   /type-check/0.3.2:
@@ -10703,7 +10744,7 @@ packages:
     dev: true
 
   /yauzl/2.10.0:
-    resolution: {integrity: sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=}
+    resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
