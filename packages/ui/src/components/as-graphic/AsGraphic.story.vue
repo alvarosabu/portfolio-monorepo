@@ -36,6 +36,10 @@ function initState() {
       <AsGraphic type="dots" />
     </Variant>
 
+    <Variant title="Dots 2x" icon="ph:dots-nine" icon-color="#34D399">
+      <AsGraphic type="dots-2x" />
+    </Variant>
+
     <Variant title="Cross" icon="ion-close-round" icon-color="#34D399">
       <AsGraphic type="cross" />
     </Variant>
