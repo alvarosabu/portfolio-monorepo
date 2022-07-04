@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, StyleValue } from 'vue'
+import { computed, ref, StyleValue, useAttrs } from 'vue'
 import { useLogger } from '/@/composables/useLogger'
 
 import { imgFitModes, imgCaptionType, imgAspectRatios } from './const'
@@ -65,6 +65,13 @@ const emit = defineEmits<{
   (e: 'error', errorMessage: string): void
 }>()
 
+const attrs = useAttrs()
+
+const imgAttrs = computed(() => ({
+  src: attrs.src as string,
+  alt: attrs.alt as string,
+}))
+
 const hasError = ref(false)
 const loading = ref(true)
 const { logWarning } = useLogger()
@@ -125,7 +132,14 @@ function onError(event: Event) {
 </script>
 <template>
   <figure :class="figureClasses">
-    <img v-bind="$attrs" :class="imgClasses" :style="imgStyles" @load="onLoad" @error="onError" />
+    <img
+      :src="imgAttrs.src"
+      :alt="imgAttrs.alt"
+      :class="imgClasses"
+      :style="imgStyles"
+      @load="onLoad"
+      @error="onError"
+    />
     <!-- TODO: Implement when loaders -->
     <!--  <as-particle-loader
       size="4rem"
