@@ -2180,7 +2180,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.10
+      vite: 2.9.10_sass@1.52.2
       vue: 3.2.37
     dev: true
 
@@ -4808,8 +4808,6 @@ packages:
       table: 3.8.3
       text-table: 0.2.0
       user-home: 2.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /eslint/8.17.0:

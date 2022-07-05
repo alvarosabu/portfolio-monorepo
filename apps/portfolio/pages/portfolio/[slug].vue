@@ -22,8 +22,8 @@ const story = await fetchProjectBySlug(route.params.slug as string)
         :alt="story.content.media.alt"
       />
       <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
+      <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
       <div flex flex-col lg:justify-end lg:items-end lg:h-full relative class="w-full lg:w-1/3">
-        <AsGraphic v-if="isDesktop" class="absolute -left-60 top-[30%] xl:top-[-20%]" type="dots-2x" />
         <h1
           important-mt-0
           text-primary-500
@@ -35,8 +35,8 @@ const story = await fetchProjectBySlug(route.params.slug as string)
           data-cy="project-hero-title"
           important-line-height-6
         >
-          Hasura GraphQL Baas for the busy developer.
-          <!-- {{ story.content.title }} -->
+          <!--        Hasura GraphQL Baas for the busy developer. -->
+          {{ story.content.title }}
         </h1>
       </div>
     </header>
