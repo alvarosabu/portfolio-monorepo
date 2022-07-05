@@ -34,6 +34,7 @@ importers:
 
   apps/portfolio:
     specifiers:
+      '@alvarosabu/nuxt3-markdownit': workspace:^1.0.0
       '@alvarosabu/ui': workspace:^2.9.1
       '@alvarosabu/utils': workspace:^2.1.0
       '@cypress/vite-dev-server': ^2.2.3
@@ -55,6 +56,7 @@ importers:
       velocity-animate: ^1.5.2
       vite-svg-loader: ^3.3.0
     devDependencies:
+      '@alvarosabu/nuxt3-markdownit': link:../../packages/nuxt3-markdownit
       '@alvarosabu/ui': link:../../packages/ui
       '@alvarosabu/utils': link:../../packages/utils
       '@cypress/vite-dev-server': 2.2.3
@@ -1049,7 +1051,7 @@ packages:
       '@marvr/storyblok-rich-text-types': 3.2.1
       vue: 3.2.37
     optionalDependencies:
-      vue-router: 4.0.15_vue@3.2.37
+      vue-router: 4.1.0_vue@3.2.37
     dev: true
 
   /@microsoft/api-extractor-model/7.18.0:
@@ -2579,7 +2581,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.10_sass@1.52.2
+      vite: 2.9.10
       vue: 3.2.37
     dev: true
 
@@ -11538,7 +11540,7 @@ packages:
       fast-glob: 3.2.11
       fs-extra: 10.1.0
       ts-morph: 14.0.0
-      vite: 2.9.10_sass@1.52.2
+      vite: 2.9.10
     transitivePeerDependencies:
       - supports-color
     dev: true

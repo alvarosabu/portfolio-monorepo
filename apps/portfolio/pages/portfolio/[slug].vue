@@ -41,6 +41,8 @@ const story = await fetchProjectBySlug(route.params.slug as string)
       </div>
     </header>
 
-    <main role="main" pt-12 container mx-auto w-full></main>
+    <main role="main" pt-12 container mx-auto w-full prose>
+      <NuxtMarkdown :data="story.content.content" />
+    </main>
   </div>
 </template>

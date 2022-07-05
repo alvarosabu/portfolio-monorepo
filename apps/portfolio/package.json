@@ -16,6 +16,7 @@
     "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
+    "@alvarosabu/nuxt3-markdownit": "workspace:^1.0.0",
     "@alvarosabu/ui": "workspace:^2.9.1",
     "@alvarosabu/utils": "workspace:^2.1.0",
     "@cypress/vite-dev-server": "^2.2.3",
