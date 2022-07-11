@@ -16,7 +16,7 @@ export enum graphicType {
   'CURVE_SMALL' = 'curve-small',
 }
 
-export const graphicTypeMap = {
+export const graphicTypeMap: Record<string, any> = {
   [graphicType.ZIGZAG]: Zigzags,
   [graphicType.DOTS]: Dots,
   [graphicType.DOTS_2X]: Donut2x,

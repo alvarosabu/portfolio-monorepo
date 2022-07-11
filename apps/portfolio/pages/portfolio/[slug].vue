@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Prism from 'prismjs'
+import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
+
 const route = useRoute()
 
 const { isDesktop, isMobile, isTablet } = useBreakpoints()
@@ -8,7 +11,7 @@ const { fetchProjectBySlug } = usePortfolio()
 const story = await fetchProjectBySlug(route.params.slug as string)
 </script>
 <template>
-  <div mx-auto container>
+  <div v-editable="story" mx-auto container>
     <header py-24 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
       <AsImg
         important-my-0
@@ -41,8 +44,8 @@ const story = await fetchProjectBySlug(route.params.slug as string)
       </div>
     </header>
 
-    <main role="main" pt-12 container mx-auto w-full prose>
-      <NuxtMarkdown :data="story.content.content" />
+    <main role="main" pt-12 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
+      <RichTextRenderer v-if="story" :document="story.content.content" />
     </main>
   </div>
 </template>

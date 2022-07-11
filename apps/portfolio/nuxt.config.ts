@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     head,
   },
   css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
-  modules: ['@alvarosabu/nuxt3-markdownit'],
+  /*   modules: ['@alvarosabu/nuxt3-markdownit'], */
   buildModules: [
     '@unocss/nuxt',
     [

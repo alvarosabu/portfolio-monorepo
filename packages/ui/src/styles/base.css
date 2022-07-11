@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import './prism.css';
 
 body {
   @apply text-primary-400;
