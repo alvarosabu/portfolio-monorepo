@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'lite-youtube-embed'
-
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 // Import Swiper Vue.js components
