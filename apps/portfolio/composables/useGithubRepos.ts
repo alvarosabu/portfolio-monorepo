@@ -93,7 +93,7 @@ const formatRepo = (repo: any): GithubRepo => {
     watchers,
   }
 
-  if (owner.type === UserType.Organization) {
+  if (owner?.type === UserType.Organization) {
     const { login, url, avatarUrl } = owner
     formattedRepo.organization = {
       name: login,

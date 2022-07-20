@@ -1,9 +1,9 @@
 import { Fn } from '@alvarosabu/utils'
-import Velocity from 'velocity-animate'
 
 const STAGGER_DURATION = 200
 
 export function useStaggered(duration = STAGGER_DURATION) {
+  const nuxtApp = useNuxtApp()
   function beforeEnter(el: Element) {
     ;(el as HTMLElement).style.opacity = '0'
     /*  el.style.height = 0; */
@@ -14,7 +14,7 @@ export function useStaggered(duration = STAGGER_DURATION) {
     const index = (el as HTMLElement).dataset.index || 1
     const delay = (index as number) * duration
     setTimeout(() => {
-      Velocity(el, { opacity: 1 /*  height: 'auto' */ }, { complete: done })
+      nuxtApp.$velocity(el, { opacity: 1 /*  height: 'auto' */ }, { complete: done })
     }, delay)
   }
 
@@ -23,7 +23,7 @@ export function useStaggered(duration = STAGGER_DURATION) {
     const index = (el as HTMLElement).dataset.index || 1
     const delay = (index as number) * duration
     setTimeout(() => {
-      Velocity(el, { opacity: 0 /* height: 0  */ }, { complete: done })
+      nuxtApp.$velocity(el, { opacity: 0 /* height: 0  */ }, { complete: done })
     }, delay)
   }
 
