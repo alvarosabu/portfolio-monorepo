@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'lite-youtube-embed'
-
 import { ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 // Import Swiper Vue.js components
@@ -73,7 +71,7 @@ function onSlideChange(swiper) {
       items-center
       font-mono
     >
-      <img w-8 h-8 mr-4 src="assets/pixel-penguin.png" :alt="blok.errorState" />{{ blok.errorState }}
+      <img w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />{{ blok.errorState }}
     </div>
     <suspense v-else>
       <template #default>
