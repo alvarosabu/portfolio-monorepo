@@ -1,6 +1,6 @@
-import BlockCode from '@/storyblok/block-code/BlockCode.vue'
 import { plugin, defaultResolvers } from '@marvr/storyblok-rich-text-vue-renderer'
 import { NodeTypes } from '@marvr/storyblok-rich-text-types'
+import BlockCode from '@/storyblok/block-code/BlockCode.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(

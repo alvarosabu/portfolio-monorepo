@@ -5,6 +5,7 @@ import Donut from '/@/assets/svg/donut.svg'
 import Donut2x from '/@/assets/svg/dots-2x.svg'
 import CurveBig from '/@/assets/svg/curve-big.svg'
 import CurveSmall from '/@/assets/svg/curve-small.svg'
+import Blob from '/@/assets/svg/blob.svg'
 
 export enum graphicType {
   'ZIGZAG' = 'zigzag',
@@ -14,6 +15,7 @@ export enum graphicType {
   'DONUT' = 'donut',
   'CURVE_BIG' = 'curve-big',
   'CURVE_SMALL' = 'curve-small',
+  'BLOB' = 'blob',
 }
 
 export const graphicTypeMap: Record<string, any> = {
@@ -24,6 +26,7 @@ export const graphicTypeMap: Record<string, any> = {
   [graphicType.DONUT]: Donut,
   [graphicType.CURVE_BIG]: CurveBig,
   [graphicType.CURVE_SMALL]: CurveSmall,
+  [graphicType.BLOB]: Blob,
 }
 
 const AsGraphicConsts = { graphicType, graphicTypeMap }

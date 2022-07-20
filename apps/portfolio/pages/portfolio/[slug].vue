@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import Prism from 'prismjs'
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
 const route = useRoute()
+definePageMeta({
+  layout: 'single',
+})
 
 const { isDesktop, isMobile, isTablet } = useBreakpoints()
 

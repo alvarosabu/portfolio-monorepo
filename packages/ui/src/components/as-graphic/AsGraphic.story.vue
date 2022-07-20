@@ -59,5 +59,9 @@ function initState() {
     <Variant title="Dots" icon="ic-baseline-format-color-fill" icon-color="#34D399">
       <AsGraphic type="dots" class="text-teal-400" />
     </Variant>
+
+    <Variant title="Blob" icon="ic-baseline-format-color-fill" icon-color="#34D399">
+      <AsGraphic type="blob" class="text-teal-400" />
+    </Variant>
   </Story>
 </template>
