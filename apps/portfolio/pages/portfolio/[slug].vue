@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
-const route = useRoute()
 definePageMeta({
   layout: 'single',
 })
+const route = useRoute()
 
 const { isDesktop, isMobile, isTablet } = useBreakpoints()
 
