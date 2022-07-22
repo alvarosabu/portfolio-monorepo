@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import 'uno.css'
 import { reactive } from 'vue'
+
 import AsImg from './AsImg.vue'
 import {
   imgAspectRatios,

@@ -3,7 +3,6 @@
 
 import { defineConfig } from 'histoire'
 import { primary } from './src/styles/as-theme'
-import 'uno.css'
 
 // histoire.config.ts
 
@@ -33,4 +32,5 @@ export default defineConfig({
       primary,
     },
   },
+  setupFile: '/src/histoire.setup.ts',
 })

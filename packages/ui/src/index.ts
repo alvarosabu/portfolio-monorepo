@@ -26,7 +26,7 @@ export default {
   install(app: App, options: any) {
     if (typeof options === 'undefined') {
       for (const [key, value] of components) {
-        app.component(key.replace(/^.*[\\/]/, '').replace('.vue', ''), value.default)
+        app.component(key.replace(/^.*[\\/]/, '').replace('.vue', ''), (value as any).default)
       }
     } else {
       if (!(options instanceof Array)) {
@@ -36,7 +36,7 @@ export default {
         const componentName = key.replace(/^.*[\\/]/, '').replace('.vue', '')
         // register only components specified in the options
         if (options.includes(componentName)) {
-          app.component(componentName, value.default)
+          app.component(componentName, (value as any).default)
         }
       }
     }
