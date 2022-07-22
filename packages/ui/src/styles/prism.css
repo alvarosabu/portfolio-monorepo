@@ -57,11 +57,11 @@ html.dark {
 }
 
 pre[class*='language-'] {
-  @apply p-4 font-extrabold relative;
+  @apply p-0 sm:p-4 font-extrabold relative;
 }
 
 pre[class*='language-']::before {
-  @apply absolute right-2 top-2 p-2 rounded text-sm;
+  @apply absolute right-2 top-2 p-0.5 sm:p-2 rounded text-xs sm:text-sm;
 }
 
 pre[class*='language-javascript']::before {

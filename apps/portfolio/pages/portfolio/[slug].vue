@@ -14,7 +14,7 @@ const story = await fetchProjectBySlug(route.params.slug as string)
 </script>
 <template>
   <div v-editable="story" mx-auto container>
-    <header py-24 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
+    <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
       <AsImg
         important-my-0
         rounded-xl
@@ -32,7 +32,7 @@ const story = await fetchProjectBySlug(route.params.slug as string)
         <h1
           important-mt-0
           text-primary-500
-          text-3xl
+          text-4xl
           lg:text-6xl
           font-bold
           font-display
