@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.9.0
+
+### Minor Changes
+
+- 8d72b0b8: True SSG
+
 ## 1.8.3
 
 ### Patch Changes
