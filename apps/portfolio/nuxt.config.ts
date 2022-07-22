@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   app: {
     head,
   },
+  ssr: false,
   css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
   /*   modules: ['@alvarosabu/nuxt3-markdownit'], */
   buildModules: [

@@ -6,7 +6,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <pre class="not-prose" :class="$attrs.class">
+  <pre class="important-my-16 not-prose" :class="$attrs.class">
     <code class="not-prose">
       <slot />
     </code>

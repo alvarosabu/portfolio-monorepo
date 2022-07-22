@@ -31,7 +31,7 @@ html:not(.dark) {
 
 html.dark {
   --prism-foreground: #88e5c3;
-  --prism-background: #3e5166;
+  --prism-background: #273038;
   --prism-comment: #a0ada0;
   --prism-string: #f8e4aa;
   --prism-literal: #2f8a89;
@@ -57,7 +57,7 @@ html.dark {
 }
 
 pre[class*='language-'] {
-  @apply p-0 sm:p-4 font-extrabold relative;
+  @apply p-0 sm:px-4 font-extrabold relative;
 }
 
 pre[class*='language-']::before {

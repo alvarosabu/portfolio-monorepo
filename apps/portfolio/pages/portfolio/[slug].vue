@@ -32,6 +32,7 @@ const story = await fetchProjectBySlug(route.params.slug as string)
         <h1
           important-mt-0
           text-primary-500
+          dark:text-gray-100
           text-4xl
           lg:text-6xl
           font-bold
