@@ -29,6 +29,7 @@ export const miscIcons = new Map([
   ['baby-bottle', 'mdi-baby-bottle-outline'],
   ['png', 'carbon-png'],
   ['download', 'carbon-download'],
+  ['calendar', 'octicon-calendar'],
 ])
 
 export const asIcons = new Map([...asNavigationIcons, ...asSocialIcons, ...asTechIcons, ...miscIcons])
