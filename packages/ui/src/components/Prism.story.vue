@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Prism from 'prismjs'
+/* import Prism from 'prismjs' */
 import 'uno.css'
 import '../styles/base.css'
 import { onMounted, ref } from 'vue'
@@ -12,7 +12,7 @@ const typescript = ref(`
 onMounted(() => {
   window.Prism = window.Prism || {}
   window.Prism.manual = false
-  Prism.highlightAll()
+  /*   Prism.highlightAll() */
 })
 </script>
 
@@ -24,7 +24,7 @@ onMounted(() => {
   // code here for example
   function hello(){
      console.log(Hello World)
-  } 
+  }
 </code></pre>
       </template>
     </Variant>
@@ -34,7 +34,7 @@ onMounted(() => {
   // code here for example
   function hello(){
      console.log(Hello World)
-  } 
+  }
 </code></pre>
       </template>
     </Variant>
