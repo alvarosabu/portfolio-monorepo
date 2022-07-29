@@ -11,8 +11,12 @@ import { ASRules } from './styles/rules'
 import { ASShortcuts } from './styles/shortcuts'
 import { ASTypographyOptions } from './styles/typography'
 
-const modules = import.meta.globEager('./components/**/!(*.spec|*.test|*.story).vue')
+const modules = import.meta.glob('./components/**/!(*.spec|*.test|*.story).vue', {
+  eager: true,
+})
 const components = Object.entries(modules)
+
+export * as AsImg from './components/as-img/AsImg.vue'
 
 export default {
   unoconfig: {
