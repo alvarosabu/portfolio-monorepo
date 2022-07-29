@@ -44,7 +44,7 @@ export function usePortfolio() {
     const { data } = await storyapi.get('cdn/stories/', {
       version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
       starts_with: 'portfolio/',
-      resolve_relations: 'categories',
+      resolve_relations: 'category',
       is_startpage: false,
     })
     state.projects = data.stories
@@ -56,9 +56,10 @@ export function usePortfolio() {
       starts_with: 'portfolio/',
       // Prepend */ to match with the first part of the full_slug
       by_slugs: '*/' + slug,
-      resolve_relations: 'categories',
+      resolve_relations: 'category',
     })
     const story = data.stories[0]
+    story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
     return formatPortfolioStory(story)
   }
 

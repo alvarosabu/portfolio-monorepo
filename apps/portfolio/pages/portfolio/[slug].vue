@@ -50,12 +50,17 @@ const isPublished = computed(() => story.publishedDateFormatted)
     </header>
     <div class="prose mx-auto text-primary-500 dark:text-gray-100">
       <p v-if="isPublished" class="flex items-center">
-        Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="ml-4" />
+        Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" /> on
+        <span class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4">{{
+          story.content.category.name
+        }}</span>
+        <!-- <span class="ml-4 border border-gray-400 px-1 rounded">{{ story.content.category.name }}</span> -->
       </p>
       <p v-else>
         This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state and
         {{ story.publishedDateFormatted }} will be published.
       </p>
+
       <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
       <TagList :tags="story.tag_list" />
     </div>
