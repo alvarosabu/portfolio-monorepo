@@ -39,32 +39,43 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
 
 export function usePortfolio() {
   const storyapi = useStoryblokApi()
+  const { logError } = useLogger()
 
   async function fetchProjects() {
-    const { data } = await storyapi.get('cdn/stories/', {
-      version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-      starts_with: 'portfolio/',
-      resolve_relations: 'category',
-      is_startpage: false,
-    })
-    state.projects = data.stories
+    try {
+      const { data } = await storyapi.get('cdn/stories/', {
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        starts_with: 'portfolio/',
+        resolve_relations: 'category',
+        is_startpage: false,
+      })
+      state.projects = data.stories.map(formatPortfolioStory)
+    } catch (error) {
+      logError('There was an error fetching projects from Storyblok', error)
+    }
   }
 
   async function fetchProjectBySlug(slug: string): Promise<ProjectStory> {
-    const { data } = await storyapi.get('cdn/stories', {
-      version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-      starts_with: 'portfolio/',
-      // Prepend */ to match with the first part of the full_slug
-      by_slugs: '*/' + slug,
-      resolve_relations: 'category',
-    })
-    const story = data.stories[0]
-    story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
-    return formatPortfolioStory(story)
+    try {
+      const { data } = await storyapi.get('cdn/stories', {
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        starts_with: 'portfolio/',
+        // Prepend */ to match with the first part of the full_slug
+        by_slugs: '*/' + slug,
+        resolve_relations: 'category',
+      })
+      const story = data.stories[0]
+      story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
+      return formatPortfolioStory(story)
+    } catch (error) {
+      logError(`There was an error fetching project ${slug} from Storyblok`, error)
+    }
   }
 
   const featuredProject = computed(() => state.projects.filter(project => project.content.featured)[0])
-  const projectList = computed(() => state.projects.filter(project => !project.content.featured))
+  const projectList = computed(() =>
+    state.projects.filter(project => !project.content.featured && project.status === StoryStatus.PUBLISHED),
+  )
 
   return {
     ...toRefs(state),

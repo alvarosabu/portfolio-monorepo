@@ -2,7 +2,6 @@ import { plugin, defaultResolvers } from '@marvr/storyblok-rich-text-vue-rendere
 import { NodeTypes } from '@marvr/storyblok-rich-text-types'
 import BlockCode from '@/storyblok/block-code/BlockCode.vue'
 import TextImage from '@/storyblok/text-image/TextImage.vue'
-
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(
     plugin({
