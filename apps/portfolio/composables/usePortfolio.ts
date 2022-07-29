@@ -32,7 +32,8 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
     story.createdDateFormatted = format(new Date(story.created_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.DRAFT
   }
-  story.readingTime = `${Math.ceil(story.content.split(/\s/g).length / 200)} min read`
+  // TODO: add reading time
+  /*  story.readingTime = `${Math.ceil(story.content.split(/\s/g).length / 200)} min read` */
   return story
 }
 
