@@ -11,6 +11,8 @@ const { isDesktop, isMobile, isTablet } = useBreakpoints()
 const { fetchProjectBySlug } = usePortfolio()
 
 const story = await fetchProjectBySlug(route.params.slug as string)
+
+const isPublished = computed(() => story.publishedDateFormatted)
 </script>
 <template>
   <div v-editable="story" mx-auto container>
@@ -46,8 +48,18 @@ const story = await fetchProjectBySlug(route.params.slug as string)
         </h1>
       </div>
     </header>
-
-    <main role="main" pt-12 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
+    <div class="prose mx-auto text-primary-500 dark:text-gray-100">
+      <p v-if="isPublished" class="flex items-center">
+        Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="ml-4" />
+      </p>
+      <p v-else>
+        This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state and
+        {{ story.publishedDateFormatted }} will be published.
+      </p>
+      <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
+      <TagList :tags="story.tag_list" />
+    </div>
+    <main role="main" pt-12 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
       <RichTextRenderer v-if="story" :document="story.content.content" />
     </main>
   </div>

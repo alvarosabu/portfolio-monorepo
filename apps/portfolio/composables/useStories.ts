@@ -71,6 +71,10 @@ export type Story = {
 }
 export type StoryVersion = 'draft' | 'published'
 
+export enum StoryStatus {
+  DRAFT = 'draft',
+  PUBLISHED = 'published',
+}
 export interface StoriesConfig {
   version: StoryVersion
 }
