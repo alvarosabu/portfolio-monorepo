@@ -42,7 +42,6 @@ export default defineConfig({
       name: 'AsUI',
       fileName: 'as-ui',
     },
-    cssCodeSplit: true,
     watch: {
       include: [resolve(__dirname, 'src')],
     },

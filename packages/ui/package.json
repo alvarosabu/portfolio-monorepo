@@ -16,9 +16,7 @@
       "import": "./dist/as-ui.js",
       "require": "./dist/as-ui.umd.cjs"
     },
-    "./styles": "./dist/style.css",
-    "./theme": "./styles/as-theme.css",
-    "./*": "./dist/as-ui.js"
+    "./": "./dist/as-ui.js"
   },
   "publishConfig": {
     "access": "public"
@@ -50,12 +48,13 @@
     "@iconify/json": "^2.1.81",
     "@types/node": "^18.0.6",
     "@types/prismjs": "^1.26.0",
-    "@unocss/preset-attributify": "^0.44.0",
-    "@unocss/preset-icons": "^0.44.0",
-    "@unocss/preset-typography": "^0.44.0",
-    "@unocss/preset-uno": "^0.44.0",
-    "@unocss/preset-web-fonts": "^0.44.0",
-    "@unocss/reset": "^0.44.0",
+    "@unocss/preset-attributify": "^0.45.1",
+    "@unocss/preset-icons": "^0.45.1",
+    "@unocss/preset-typography": "^0.45.1",
+    "@unocss/preset-uno": "^0.45.1",
+    "@unocss/preset-web-fonts": "^0.45.1",
+    "@unocss/reset": "^0.45.1",
+    "@unocss/vite": "^0.45.1",
     "@vitejs/plugin-vue": "^3.0.1",
     "@vue/test-utils": "^2.0.2",
     "c8": "^7.12.0",
@@ -68,15 +67,15 @@
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-visualizer": "^5.7.1",
-    "sass": "^1.53.0",
+    "sass": "^1.54.0",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "unocss": "^0.44.5",
-    "vite": "^3.0.2",
+    "unocss": "^0.45.1",
+    "vite": "^3.0.4",
     "vite-plugin-banner": "^0.3.0",
     "vite-plugin-dts": "^1.4.0",
     "vite-svg-loader": "^3.4.0",
-    "vitest": "^0.18.1",
-    "vue-tsc": "^0.38.9"
+    "vitest": "^0.19.1",
+    "vue-tsc": "^0.39.2"
   }
 }
