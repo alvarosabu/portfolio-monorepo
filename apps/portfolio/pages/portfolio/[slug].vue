@@ -13,6 +13,81 @@ const { fetchProjectBySlug } = usePortfolio()
 const story = await fetchProjectBySlug(route.params.slug as string)
 
 const isPublished = computed(() => story.publishedDateFormatted)
+
+useHead({
+  title: `${story.content.title} - AS Portfolio`,
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: story.content.excerpt,
+    },
+    {
+      hid: 'keywords',
+      property: 'keywords',
+      keywords: story.tag_list.join(', '),
+    },
+    // og
+    {
+      hid: 'og:description',
+      property: 'og:description',
+      content: story.content.excerpt,
+    },
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: `${story.content.title} - AS Portfolio`,
+    },
+    {
+      hid: 'og:type',
+      property: 'og:type',
+      content: 'project',
+    },
+    {
+      hid: 'og:url',
+      property: 'og:url',
+      content: `http://alvarosaburido.dev/portfolio/${route.params.slug}`,
+    },
+    {
+      hid: 'og:image',
+      property: 'og:image',
+      content: story.content.media.filename,
+    },
+    {
+      hid: 'og:image:alt',
+      property: 'og:image:alt',
+      content: story.content.media.alt,
+    },
+    {
+      hid: 'og:publish_date',
+      property: 'og:publish_date',
+      content: story.published_at,
+    },
+    // Twitter
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:site', content: '@alvarosabu' },
+    {
+      hid: 'twitter:title',
+      property: 'twitter:title',
+      content: `${story.content.title} - AS Portfolio`,
+    },
+    {
+      hid: 'twitter:description',
+      name: 'twitter:description',
+      content: story.content.excerpt,
+    },
+    {
+      hid: 'twitter:image',
+      name: 'twitter:image',
+      content: story.content.media.filename,
+    },
+    {
+      hid: 'twitter:image:alt',
+      name: 'twitter:image:alt',
+      content: story.content.media.alt,
+    },
+  ],
+})
 </script>
 <template>
   <main role="main">
