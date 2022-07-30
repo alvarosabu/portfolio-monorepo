@@ -18,7 +18,7 @@
     },
     "./styles": "./dist/style.css",
     "./theme": "./styles/as-theme.css",
-    "./": "./dist/as-ui.js"
+    "./*": "./dist/as-ui.js"
   },
   "publishConfig": {
     "access": "public"
