@@ -7,7 +7,7 @@ defineProps({
 })
 </script>
 <template>
-  <ul class="flex-wrap not-prose flex">
+  <ul class="flex-wrap not-prose flex" data-cy="tag-list">
     <li
       v-for="tag in tags"
       :key="(tag as string)"

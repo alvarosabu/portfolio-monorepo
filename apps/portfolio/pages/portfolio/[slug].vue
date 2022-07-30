@@ -15,10 +15,11 @@ const story = await fetchProjectBySlug(route.params.slug as string)
 const isPublished = computed(() => story.publishedDateFormatted)
 </script>
 <template>
-  <div>
+  <main role="main">
     <div v-if="story" v-editable="story" mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <AsImg
+          data-cy="project-thumbnail"
           important-my-0
           rounded-xl
           z-10
@@ -50,7 +51,7 @@ const isPublished = computed(() => story.publishedDateFormatted)
         </div>
       </header>
       <div class="prose mx-auto text-primary-500 dark:text-gray-100">
-        <p v-if="isPublished" class="flex items-center">
+        <p v-if="isPublished" class="flex items-center" data-cy="published-date">
           Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" /> on
           <span class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4">{{
             story.content.category.name
@@ -65,20 +66,9 @@ const isPublished = computed(() => story.publishedDateFormatted)
         <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
         <TagList :tags="story.tag_list" />
       </div>
-      <main
-        role="main"
-        pt-12
-        mb-24
-        container
-        mx-auto
-        w-full
-        prose
-        dark:prose-invert
-        text-primary-500
-        dark:text-gray-100
-      >
+      <div pt-12 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
         <RichTextRenderer v-if="story" :document="story.content.content" />
-      </main>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
