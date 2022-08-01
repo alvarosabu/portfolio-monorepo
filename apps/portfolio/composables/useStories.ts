@@ -7,6 +7,17 @@ export interface Slot {
   content: StoryContent[]
 }
 
+export interface StoryAsset {
+  id: number
+  alt: string
+  name: string
+  focus: string
+  title: string
+  filename: string
+  copyright: string
+  fieldtype: string
+}
+
 export interface StoryBody {
   _uid: string
   slot?: Slot
@@ -31,6 +42,7 @@ export type StoryContent = {
   order: number
   component: string
   _editable: string
+  [key: string]: any
 }
 
 export type Story = {
@@ -59,6 +71,10 @@ export type Story = {
 }
 export type StoryVersion = 'draft' | 'published'
 
+export enum StoryStatus {
+  DRAFT = 'draft',
+  PUBLISHED = 'published',
+}
 export interface StoriesConfig {
   version: StoryVersion
 }
@@ -75,12 +91,18 @@ const state: StoriesState = reactive({
   stories: [],
 })
 
+const navigationContentTypes = ['ThePage', 'overview']
+
 export function useStories() {
   const storyapi = useStoryblokApi()
 
   async function fetchStories() {
     const { data } = await storyapi.get('cdn/stories', storiesConfig)
     state.stories = data.stories
+  }
+
+  const filterPageByContentType = (story: Story) => {
+    return navigationContentTypes.includes(story.content.component)
   }
 
   const storiesForNav: ComputedRef<
@@ -91,11 +113,13 @@ export function useStories() {
     }[]
   > = computed(() =>
     state.stories
+      .filter(filterPageByContentType)
       .map(story => ({
         label: story.name,
-        path: story.path,
+        path: story.slug === 'home' ? '/' : story.slug,
         order: story.content.order,
       }))
+
       .sort((a, b) => a.order - b.order),
   )
 

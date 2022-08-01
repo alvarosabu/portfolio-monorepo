@@ -5,7 +5,7 @@ export const ASWebFontsOptions: WebFontsOptions = {
   fonts: {
     // these will extend the default theme
     sans: ['Nunito', 'Nunito:400,700'],
-    mono: ['Fira Code', 'Fira Mono:400,700'],
+    mono: ['Fira Code', 'Fira Code:400,700'],
     display: ['Gilroy'],
   },
 }

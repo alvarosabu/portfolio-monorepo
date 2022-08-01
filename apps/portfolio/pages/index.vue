@@ -11,7 +11,7 @@ const story = await getStory('home')
   </main>
 </template>
 
-<style lang="scss" scopted>
+<style lang="scss" scoped>
 .page > main {
   overflow-y: scroll;
   height: 100vh;

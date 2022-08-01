@@ -7,7 +7,7 @@ describe('Home Page', () => {
 
   beforeEach(() => {
     cy.restoreLocalStorage()
-    cy.visit('http://localhost:2590')
+    cy.visit('/')
     cy.injectAxe()
     cy.configureAxe({
       rules: [{ id: 'color-contrast', enabled: false }],
@@ -16,13 +16,6 @@ describe('Home Page', () => {
 
   afterEach(() => {
     cy.saveLocalStorage()
-  })
-
-  context('General', () => {
-    it('should change the page to dark mode', () => {
-      cy.get('#dark-switch + label').click()
-      cy.get('html').should('have.class', 'dark')
-    })
   })
 
   context('A11y', () => {
@@ -38,9 +31,7 @@ describe('Home Page', () => {
     })
 
     it('should have a Home hero component with a title', () => {
-      cy.get('[data-cy="home-hero-title"]')
-        .should('have.prop', 'tagName')
-        .should('eq', 'H1')
+      cy.get('[data-cy="home-hero-title"]').should('have.prop', 'tagName').should('eq', 'H1')
     })
 
     it('should have a Home hero component with text', () => {
@@ -48,10 +39,7 @@ describe('Home Page', () => {
     })
 
     it('should have a Home hero component with social links', () => {
-      cy.get('[data-cy="social-links"]')
-        .find('li')
-        .its('length')
-        .should('be.gte', 0)
+      cy.get('[data-cy="social-links"]').find('li').its('length').should('be.gte', 0)
     })
   })
 
@@ -61,17 +49,11 @@ describe('Home Page', () => {
     })
 
     it('should have a Open Source section with a title', () => {
-      cy.get('[data-cy="repos-title"]')
-        .should('have.prop', 'tagName')
-        .should('eq', 'H2')
+      cy.get('[data-cy="repos-title"]').should('have.prop', 'tagName').should('eq', 'H2')
     })
 
     it('should have a Open Source section with a list of projects', () => {
-      cy.get('[data-cy="repos"]')
-        .scrollIntoView()
-        .find('[data-cy="github-card"]')
-        .its('length')
-        .should('be.gte', 0)
+      cy.get('[data-cy="repos"]').scrollIntoView().find('[data-cy="github-card"]').its('length').should('be.gte', 0)
     })
 
     it('should have a list of repositories with links to repos', () => {

@@ -14,6 +14,10 @@ defineProps({
     type: String,
     default: '',
   },
+  mediaAlt: {
+    type: String,
+    default: '',
+  },
   content: {
     type: String,
     default: '',
@@ -33,7 +37,7 @@ defineProps({
   >
     <slot name="header">
       <header>
-        <AsImg v-if="media" w-full rounded-none :src="media" />
+        <AsImg v-if="media" w-full rounded-none :src="media" :alt="mediaAlt" />
         <h2 v-if="title" font="bold display" text="base lg" p-4 m-0>
           <slot name="title">
             {{ title }}

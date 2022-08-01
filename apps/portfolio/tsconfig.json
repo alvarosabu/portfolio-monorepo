@@ -6,6 +6,6 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["cypress", "cypress-axe"]
+    "types": ["cypress", "cypress-axe", "prism"]
   }
 }

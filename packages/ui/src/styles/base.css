@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import './prism.css';
 
 body {
   @apply text-primary-400;
@@ -6,4 +7,9 @@ body {
 
 .dark {
   @apply bg-primary-500 text-gray-50;
+}
+
+.prose > .break-out-prose,
+[prose] > .break-out-prose {
+  @apply md:(relative -ml-25% w-150%);
 }
