@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.10.0
+
+### Minor Changes
+
+- 5015bdee: Portfolio Pages
+
 ## 2.9.1
 
 ### Patch Changes
