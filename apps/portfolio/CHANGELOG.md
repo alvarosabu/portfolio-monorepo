@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.10.0
+
+### Minor Changes
+
+- 5015bdee: Portfolio Pages
+
 ## 1.9.0
 
 ### Minor Changes
