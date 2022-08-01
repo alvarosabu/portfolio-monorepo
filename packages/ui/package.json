@@ -16,7 +16,8 @@
       "import": "./dist/as-ui.js",
       "require": "./dist/as-ui.umd.cjs"
     },
-    "./": "./dist/as-ui.js"
+    "./styles": "./dist/style.css",
+    "./*": "./dist/as-ui.js"
   },
   "publishConfig": {
     "access": "public"
@@ -75,7 +76,7 @@
     "vite-plugin-banner": "^0.3.0",
     "vite-plugin-dts": "^1.4.0",
     "vite-svg-loader": "^3.4.0",
-    "vitest": "^0.19.1",
-    "vue-tsc": "^0.39.2"
+    "vitest": "^0.20.2",
+    "vue-tsc": "^0.39.4"
   }
 }
