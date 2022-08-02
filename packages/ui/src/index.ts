@@ -1,6 +1,5 @@
 import { App } from 'vue'
 import 'uno.css'
-import './styles/base.css'
 
 // normalize.css
 import '@unocss/reset/tailwind.css'
@@ -10,6 +9,7 @@ import { ASTheme } from './styles/as-theme'
 import { ASRules } from './styles/rules'
 import { ASShortcuts } from './styles/shortcuts'
 import { ASTypographyOptions } from './styles/typography'
+import './styles/base.css'
 
 const modules = import.meta.glob('./components/**/!(*.spec|*.test|*.story).vue', {
   eager: true,
