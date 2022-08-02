@@ -3,7 +3,7 @@
   NPM_FLAGS = "--version" # prevent Netlify npm install
 [build]
   publish = "./apps/portfolio/dist"
-  command = "npx pnpm i --store=node_modules/.pnpm-store --shamefully-hoist && npx pnpm run build:ci"
+  command = "npx pnpm i --store=node_modules/.pnpm-store --shamefully-hoist && npx npm run build:ci"
 [[redirects]]
   from = "/*"
   to = "index.html"
