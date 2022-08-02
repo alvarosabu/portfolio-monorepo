@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.10.1
+
+### Patch Changes
+
+- 6d80db34: Downgrade to stable unocss vite version
+
 ## 2.10.0
 
 ### Minor Changes
