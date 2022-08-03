@@ -16,7 +16,7 @@ const modules = import.meta.glob('./components/**/!(*.spec|*.test|*.story).vue',
 })
 const components = Object.entries(modules)
 
-export * as AsImg from './components/as-img/AsImg.vue'
+/* export * as AsImg from './components/as-img/AsImg.vue' */
 
 export default {
   unoconfig: {
