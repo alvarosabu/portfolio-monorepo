@@ -44,7 +44,7 @@ export function usePortfolio() {
   async function fetchProjects() {
     try {
       const { data } = await storyapi.get('cdn/stories/', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        ...storiesConfig,
         starts_with: 'portfolio/',
         resolve_relations: 'category',
         is_startpage: false,
@@ -58,7 +58,7 @@ export function usePortfolio() {
   async function fetchProjectBySlug(slug: string): Promise<ProjectStory> {
     try {
       const { data } = await storyapi.get('cdn/stories', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        ...storiesConfig,
         starts_with: 'portfolio/',
         // Prepend */ to match with the first part of the full_slug
         by_slugs: '*/' + slug,
