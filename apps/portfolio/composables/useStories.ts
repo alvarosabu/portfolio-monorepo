@@ -85,6 +85,7 @@ export interface StoriesState {
 
 export const storiesConfig: StoriesConfig = {
   version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+  /*   version: 'published', */
 }
 
 const state: StoriesState = reactive({
@@ -124,9 +125,7 @@ export function useStories() {
   )
 
   async function getStory(id = 'home') {
-    const story: Story = await useStoryblok(id, {
-      version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-    })
+    const story: Story = await useStoryblok(id, storiesConfig)
 
     return story
   }
