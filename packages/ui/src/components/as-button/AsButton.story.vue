@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import AsIcon from '../as-icon/AsIcon.vue'
-import { iconList } from '../as-icon'
 import AsButton from './AsButton.vue'
+import { iconList } from '../as-icon'
 import { btnVariant /* btnVariantList */ } from './const'
 
 const btnVariants = ['primary', 'secondary']
