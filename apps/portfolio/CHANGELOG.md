@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.10.1
+
+### Patch Changes
+
+- 2f904167: Fixed Netlify build and update to pnpm 7
+
 ## 1.10.0
 
 ### Minor Changes
