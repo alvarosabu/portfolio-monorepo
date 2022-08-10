@@ -16,7 +16,7 @@ defineProps({
     <AsImg important-my-0 rounded-lg :src="media.filename" :alt="media.alt" />
     <div flex flex-col justify-between>
       <slot>
-        <div>
+        <div mb-16>
           <h2 important-mt-0 data-cy="featured-hero-title">{{ title }}</h2>
           <h3 uppercase important-text="primary-300 dark:secondary-400" data-cy="featured-hero-subtitle">
             {{ subtitle }}

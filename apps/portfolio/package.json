@@ -11,7 +11,6 @@
     "generate:ci": "pnpm run -w build:ui && nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "histoire": "pnpm exec histoire dev",
     "cy": "cypress open",
     "test:e2e:ci": "cypress run"
   },

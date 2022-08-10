@@ -90,7 +90,7 @@ useHead({
 })
 </script>
 <template>
-  <main role="main">
+  <main role="main" pt-4 md:pt-12>
     <div v-if="story" v-editable="story" mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <AsImg
@@ -125,7 +125,7 @@ useHead({
           </h1>
         </div>
       </header>
-      <div class="prose mx-auto text-primary-500 dark:text-gray-100">
+      <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8>
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
           Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" /> on
           <span class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4">{{
@@ -141,7 +141,7 @@ useHead({
         <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
         <TagList :tags="story.tag_list" />
       </div>
-      <div pt-12 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
+      <div pt-4 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
         <RichTextRenderer v-if="story" :document="story.content.content" />
       </div>
     </div>
