@@ -1,5 +1,12 @@
 # @alvarosabu/ui
 
+## 2.10.2
+
+### Patch Changes
+
+- 2f904167: Fixed Netlify build and update to pnpm 7
+- 4fd544d2: Updated Histoire
+
 ## 2.10.1
 
 ### Patch Changes
