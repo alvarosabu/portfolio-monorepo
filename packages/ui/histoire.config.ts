@@ -2,6 +2,8 @@
 /// <reference types="histoire" />
 
 import { defineConfig } from 'histoire'
+import { HstVue } from '@histoire/plugin-vue'
+
 import { primary } from './src/styles/as-theme'
 
 // histoire.config.ts
@@ -33,4 +35,5 @@ export default defineConfig({
     },
   },
   setupFile: '/src/histoire.setup.ts',
+  plugins: [HstVue()],
 })
