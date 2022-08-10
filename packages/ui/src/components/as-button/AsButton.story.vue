@@ -1,18 +1,17 @@
 <script lang="ts" setup>
-/* import { computed } from 'vue'
-
-import { iconList } from '../as-icon' */
+import { computed } from 'vue'
+import { iconList } from '../as-icon'
 import AsButton from './AsButton.vue'
 import { btnVariant /* btnVariantList */ } from './const'
 
 const btnVariants = ['primary', 'secondary']
 
-/* const iconOptions = computed(() =>
+const iconOptions = computed(() =>
   iconList.map(([key, value]) => ({
     label: value,
     value: key,
   })),
-) */
+)
 function initState() {
   return {
     label: 'Awiwi',
@@ -51,8 +50,8 @@ function initState() {
         <HstCheckbox v-model="state.flat" title="Flat"> Flat </HstCheckbox>
         <HstCheckbox v-model="state.outline" title="Outline"> Outline </HstCheckbox>
         <HstCheckbox v-model="state.disabled" title="Disabled"> Disabled </HstCheckbox>
-        <!--         <HstSelect v-model="state.icon" title="Icon" :options="iconOptions" />
-        <HstSelect v-model="state.iconRight" title="IconRight" :options="iconOptions" /> -->
+        <HstSelect v-model="state.icon" title="Icon" :options="iconOptions" />
+        <HstSelect v-model="state.iconRight" title="IconRight" :options="iconOptions" />
       </template>
     </Variant>
 
