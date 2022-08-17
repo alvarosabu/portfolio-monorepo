@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.11.0
+
+### Minor Changes
+
+- 473be85f: Blog Module
+
 ## 1.10.1
 
 ### Patch Changes
