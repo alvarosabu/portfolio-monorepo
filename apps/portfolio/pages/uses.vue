@@ -18,7 +18,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <main role="main" class="pt-12">
+  <main role="main" class="page">
     <AsGraphic type="zigzag" class="absolute top-48 right-0 transform scale-75 dark:text-gray-50" />
     <TheShevas v-if="!isMobile" class="absolute top-16 right-10 lg:right-100" />
     <StoryblokComponent v-if="story" :blok="story.content" />

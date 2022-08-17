@@ -3,3 +3,5 @@ node_modules
 apps/.DS_Store
 packages/.DS_Store
 .pnpm-store/
+# Local Netlify folder
+.netlify

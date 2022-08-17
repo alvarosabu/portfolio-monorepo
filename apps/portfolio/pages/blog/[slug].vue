@@ -8,9 +8,9 @@ const route = useRoute()
 
 const { isDesktop, isMobile, isTablet } = useBreakpoints()
 
-const { fetchProjectBySlug } = usePortfolio()
+const { fetchArticleBySlug } = useBlog()
 
-const story = await fetchProjectBySlug(route.params.slug as string)
+const story = await fetchArticleBySlug(route.params.slug as string)
 
 const isPublished = computed(() => story.publishedDateFormatted)
 
@@ -141,7 +141,7 @@ useHead({
         <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
         <TagList :tags="story.tag_list" />
       </div>
-      <div pt-4 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
+      <div pt-12 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
         <RichTextRenderer v-if="story" :document="story.content.content" />
       </div>
     </div>
