@@ -15,6 +15,16 @@ export const ASTypographyOptions: TypographyOptions = {
     },
     code: {
       'font-family': 'Fira Code',
+      'font-size': '0.875rem',
+      background: `${ASTheme?.colors?.primary[500]} !important`,
+      color: `${ASTheme?.colors?.secondary[500]} !important`,
+      padding: '0.25rem 0.5rem !important',
+    },
+    'code::after': {
+      content: 'none',
+    },
+    'code::before': {
+      content: 'none',
     },
     a: {
       color: ASTheme?.colors?.secondary[500],
