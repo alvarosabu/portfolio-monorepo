@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.10.3
+
+### Patch Changes
+
+- 5f2d4e3b: Fixed inline code
+
 ## 2.10.2
 
 ### Patch Changes
