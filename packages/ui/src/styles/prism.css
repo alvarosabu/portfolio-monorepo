@@ -60,11 +60,11 @@ pre[class*='language-'] {
   @apply p-0 sm:px-4 font-extrabold relative;
 }
 
-pre[class*='language-']::before {
+/* pre[class*='language-']::before {
   @apply absolute right-2 top-2 p-0.5 sm:p-2 rounded text-xs sm:text-sm;
-}
+} */
 
-pre[class*='language-javascript']::before {
+/* pre[class*='language-javascript']::before {
   @apply bg-yellow-500 text-dark-700;
   content: 'Javascript';
 }
@@ -72,7 +72,7 @@ pre[class*='language-javascript']::before {
 pre[class*='language-typescript']::before {
   @apply bg-blue-500 text-light-200;
   content: 'Typescript';
-}
+} */
 
 :not(pre) > code {
   font-size: 0.9em;
