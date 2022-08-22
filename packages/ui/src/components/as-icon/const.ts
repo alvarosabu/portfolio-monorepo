@@ -3,6 +3,9 @@ export const asNavigationIcons = new Map([
   ['close', 'gg-close'],
   ['location', 'carbon-location'],
   ['share', 'carbon-share'],
+  ['search', 'carbon-search'],
+  ['copy', 'carbon-copy'],
+  ['check', 'ic-outline-check'],
 ])
 
 export const asSocialIcons = new Map([

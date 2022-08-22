@@ -17,7 +17,7 @@ export function useLogger(): LoggerComposition {
   }
 
   function logMessage(name: string, value: any) {
-    console.log(`${logPrefix} - ${name}:`, value)
+    console.info(`${logPrefix} - ${name}:`, value)
   }
 
   return {
