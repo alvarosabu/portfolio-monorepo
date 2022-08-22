@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.11.1
+
+### Patch Changes
+
+- 9d287882: Rich text enhancements
+
 ## 1.11.0
 
 ### Minor Changes
