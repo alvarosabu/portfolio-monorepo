@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.10.4
+
+### Patch Changes
+
+- 9d287882: Rich text enhancements
+
 ## 2.10.3
 
 ### Patch Changes
