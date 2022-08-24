@@ -19,6 +19,7 @@ const props = defineProps({
   },
   objectFit: {
     type: String,
+    default: imgFitModes.CONTAIN,
     validator: (val: string) => {
       const { logError } = useLogger()
 
