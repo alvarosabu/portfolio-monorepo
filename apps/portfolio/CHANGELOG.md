@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.11.3
+
+### Patch Changes
+
+- d2f27287: Fixed prod issue with Repos
+
 ## 1.11.2
 
 ### Patch Changes
