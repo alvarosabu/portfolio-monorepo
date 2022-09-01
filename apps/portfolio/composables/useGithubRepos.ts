@@ -139,7 +139,7 @@ export const useGithubRepo = () => {
           [key: string]: LanguageColor
         }
         if (userRepos.value && orgRepos.value) {
-          preservedState.value.repositories = [...[userRepos.value], ...[orgRepos.value]]
+          preservedState.value.repositories = [...(<GithubRepo[]>userRepos.value), ...(<GithubRepo[]>orgRepos.value)]
             .map(formatRepo)
             .map((repo: GithubRepo): GithubRepo => {
               if (repo.language) {
@@ -154,7 +154,6 @@ export const useGithubRepo = () => {
         }
       } catch (error) {
         logError('There was an error fetching github repos', error)
-        // logError(error);
       }
     }
   }
