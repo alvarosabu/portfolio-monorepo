@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.10.5
+
+### Patch Changes
+
+- b55662e8: Fix images margin fix on reach text
+
 ## 2.10.4
 
 ### Patch Changes
