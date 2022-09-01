@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.11.2
+
+### Patch Changes
+
+- b55662e8: Fix images margin fix on reach text
+
 ## 1.11.1
 
 ### Patch Changes
