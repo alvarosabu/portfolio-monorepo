@@ -7,7 +7,6 @@ import { imgFitModes, imgCaptionType, imgAspectRatios } from './const'
 const props = defineProps({
   aspectRatio: {
     type: String,
-    default: '16/9',
     validator: (val: string) => {
       const { logError } = useLogger()
 
@@ -20,7 +19,7 @@ const props = defineProps({
   },
   objectFit: {
     type: String,
-    default: imgFitModes.COVER,
+    default: imgFitModes.CONTAIN,
     validator: (val: string) => {
       const { logError } = useLogger()
 

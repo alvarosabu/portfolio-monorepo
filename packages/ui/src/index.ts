@@ -23,7 +23,7 @@ const components = Object.entries(modules)
 
 export { default as AsIcon } from './components/as-icon/AsIcon.vue'
 export { default as AsButton } from './components/as-button/AsButton.vue'
-export { default as AsImage } from './components/as-img/AsImg.vue'
+export { default as AsImg } from './components/as-img/AsImg.vue'
 
 const plugin: AsUIPlugin = {
   unoconfig: {
