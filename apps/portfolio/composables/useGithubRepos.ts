@@ -107,52 +107,54 @@ const formatRepo = (repo: any): GithubRepo => {
 export const useGithubRepo = () => {
   const fetchRepos = async () => {
     const timeSinceLastUpdated = differenceInHours(Date.now(), new Date(preservedState.value.updatedAt))
-    try {
-      const [
-        { data: colors, pending: colorsPending, error: colorsErrors },
-        { data: userRepos, pending: usersPending, error: usersErrors },
-        { data: orgRepos, pending: orgsPending, error: orgsErrors },
-      ] = await Promise.all([
-        useFetch('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json', {
-          parseResponse: JSON.parse,
-        }),
-        useFetch('https://api.github.com/users/alvarosabu/repos', {
-          params: {
-            per_page: 100,
-          },
-        }),
-        useFetch('https://api.github.com/orgs/asigloo/repos', {
-          params: {
-            per_page: 20,
-          },
-        }),
-      ])
-      preservedState.value.updatedAt = new Date()
-      state.pending = colorsPending.value || usersPending.value || orgsPending.value
+    if (preservedState.value.repositories.length === 0 || timeSinceLastUpdated > 4) {
+      try {
+        const [
+          { data: colors, pending: colorsPending, error: colorsErrors },
+          { data: userRepos, pending: usersPending, error: usersErrors },
+          { data: orgRepos, pending: orgsPending, error: orgsErrors },
+        ] = await Promise.all([
+          useFetch('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json', {
+            parseResponse: JSON.parse,
+          }),
+          useFetch('https://api.github.com/users/alvarosabu/repos', {
+            params: {
+              per_page: 100,
+            },
+          }),
+          useFetch('https://api.github.com/orgs/asigloo/repos', {
+            params: {
+              per_page: 20,
+            },
+          }),
+        ])
+        preservedState.value.updatedAt = new Date()
+        state.pending = colorsPending.value || usersPending.value || orgsPending.value
 
-      const error = colorsErrors.value || usersErrors.value || orgsErrors.value
+        const error = colorsErrors.value || usersErrors.value || orgsErrors.value
 
-      state.error = error !== null
+        state.error = error !== null
 
-      preservedState.value.colors = colors as unknown as {
-        [key: string]: LanguageColor
-      }
-      if (userRepos.value && orgRepos.value) {
-        preservedState.value.repositories = [...(<GithubRepo[]>userRepos.value), ...(<GithubRepo[]>orgRepos.value)]
-          .map(formatRepo)
-          .map((repo: GithubRepo): GithubRepo => {
-            if (repo.language) {
-              return {
-                ...repo,
-                languageColor: colors.value[repo.language]?.color || '#34D399',
+        preservedState.value.colors = colors as unknown as {
+          [key: string]: LanguageColor
+        }
+        if (userRepos.value && orgRepos.value) {
+          preservedState.value.repositories = [...(<GithubRepo[]>userRepos.value), ...(<GithubRepo[]>orgRepos.value)]
+            .map(formatRepo)
+            .map((repo: GithubRepo): GithubRepo => {
+              if (repo.language) {
+                return {
+                  ...repo,
+                  languageColor: colors.value[repo.language]?.color || '#34D399',
+                }
               }
-            }
-            return repo
-          })
-          .sort(orderByStarsDesc)
+              return repo
+            })
+            .sort(orderByStarsDesc)
+        }
+      } catch (error) {
+        logError('There was an error fetching github repos', error)
       }
-    } catch (error) {
-      logError('There was an error fetching github repos', error)
     }
   }
 
