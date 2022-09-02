@@ -41,7 +41,7 @@ useHead({
     {
       hid: 'og:type',
       property: 'og:type',
-      content: 'project',
+      content: 'article',
     },
     {
       hid: 'og:url',
@@ -51,12 +51,12 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: story.content.media.filename,
+      content: story.content.media?.filename,
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: story.content.media.alt,
+      content: story.content.media?.alt,
     },
     {
       hid: 'og:publish_date',
@@ -79,12 +79,12 @@ useHead({
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: story.content.media.filename,
+      content: story.content.media?.filename,
     },
     {
       hid: 'twitter:image:alt',
       name: 'twitter:image:alt',
-      content: story.content.media.alt,
+      content: story.content.media?.alt,
     },
   ],
 })
@@ -92,9 +92,10 @@ useHead({
 <template>
   <main role="main" pt-4 md:pt-12>
     <div v-if="story" v-editable="story" mx-auto container>
-      <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
+      <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="article-hero">
         <AsImg
-          data-cy="project-thumbnail"
+          v-if="story.content.media"
+          data-cy="article-thumbnail"
           important-my-0
           rounded-xl
           z-10
@@ -102,9 +103,25 @@ useHead({
           important-mb-8
           class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-4/5"
           shadow-lg
-          :src="story.content.media.filename"
-          :alt="story.content.media.alt"
+          :src="story.content.media?.filename"
+          :alt="story.content.media?.alt"
         />
+        <div
+          v-else
+          flex
+          justify-center
+          items-center
+          bg-gray-300
+          text-gray-400
+          aspect-video
+          mr-12
+          z-10
+          w-full
+          border-rounded
+          text-4xl
+        >
+          <AsIcon name="brush" />
+        </div>
         <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
         <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
         <div flex flex-col lg:justify-end lg:items-end lg:h-full relative class="w-full lg:w-1/3">
@@ -117,10 +134,9 @@ useHead({
             font-bold
             font-display
             z-10
-            data-cy="project-hero-title"
+            data-cy="article-hero-title"
             important-line-height-6
           >
-            <!--        Hasura GraphQL Baas for the busy developer. -->
             {{ story.content.title }}
           </h1>
         </div>
@@ -144,7 +160,7 @@ useHead({
         <TagList :tags="story.tag_list" />
       </div>
       <div pt-12 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
-        <RichTextRenderer v-if="story" :document="story.content.content" />
+        <RichTextRenderer v-if="story && story.content.content" :document="story.content.content" />
       </div>
     </div>
   </main>
