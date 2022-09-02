@@ -127,11 +127,13 @@ useHead({
       </header>
       <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8>
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
-          Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" /> on
-          <span class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4">{{
-            story.content.category.name
-          }}</span>
-          <!-- <span class="ml-4 border border-gray-400 px-1 rounded">{{ story.content.category.name }}</span> -->
+          Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" />
+          <span
+            v-if="story.content.category"
+            class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4"
+          >
+            {{ story.content.category.name }}
+          </span>
         </p>
         <p v-else>
           This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state
