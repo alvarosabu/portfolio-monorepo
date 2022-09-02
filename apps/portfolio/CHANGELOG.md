@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.11.4
+
+### Patch Changes
+
+- de6d79d3: fixed category exception on blog
+
 ## 1.11.3
 
 ### Patch Changes
