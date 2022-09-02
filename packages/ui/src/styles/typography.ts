@@ -20,6 +20,11 @@ export const ASTypographyOptions: TypographyOptions = {
       color: `${ASTheme?.colors?.primary[500]} !important`,
       padding: '0.25rem 0.5rem !important',
     },
+    blockquote: {
+      padding: '1rem',
+      'border-left': `8px solid ${ASTheme?.colors?.primary[500]} !important`,
+      background: '#e8e8e8',
+    },
     'code::after': {
       content: 'none',
     },

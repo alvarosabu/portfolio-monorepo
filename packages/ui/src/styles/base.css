@@ -13,3 +13,7 @@ body {
 [prose] > .break-out-prose {
   @apply md:(relative -ml-25% w-150%);
 }
+
+.prose blockquote {
+  @apply border-l-4 border-primary-500 pl-4 bg-gray-200 dark:(bg-primary-500 text-gray-50);
+}
