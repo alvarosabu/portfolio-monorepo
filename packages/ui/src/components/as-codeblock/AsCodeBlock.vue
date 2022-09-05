@@ -39,7 +39,7 @@ async function copyToClipboard() {
       copySuccesfully.value = false
     }, 2000)
   } catch (error) {
-    logError('There was an error copying content to clipboard', error as Error)
+    logError('There was an error copying content to clipboard')
   }
 }
 
