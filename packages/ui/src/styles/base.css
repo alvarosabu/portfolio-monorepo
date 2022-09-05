@@ -1,5 +1,5 @@
 @import './fonts.css';
-@import './prism.css';
+@import './shiki.css';
 
 body {
   @apply text-primary-400;

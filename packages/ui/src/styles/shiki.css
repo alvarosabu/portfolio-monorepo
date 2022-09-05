@@ -1,0 +1,34 @@
+:root {
+  --prism-font-family: 'Fira Code';
+}
+
+/* pre[class*='language-']::before {
+  @apply absolute right-2 top-2 p-0.5 sm:p-2 rounded text-xs sm:text-sm;
+} */
+
+/* pre[class*='language-javascript']::before {
+  @apply bg-yellow-500 text-dark-700;
+  content: 'Javascript';
+}
+
+pre[class*='language-typescript']::before {
+  @apply bg-blue-500 text-light-200;
+  content: 'Typescript';
+} */
+
+:not(pre) > code {
+  font-size: 0.9em;
+  background: transparent;
+  @apply font-light py-0.5 rounded;
+}
+
+:not(pre) > code:before,
+:not(pre) > code:after {
+  content: '';
+  padding: 0 0.2em;
+  opacity: 0.5;
+}
+
+:not(pre) > code:before {
+  margin-right: -0.08em;
+}

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 interface LoggerComposition {
-  logError: (message: string) => void
+  logError: (message: string, error: Error) => void
   logWarning: (message: string) => void
   logMessage: (name: string, value: any) => void
 }
@@ -8,8 +8,8 @@ interface LoggerComposition {
 const logPrefix = 'AsUI'
 
 export function useLogger(): LoggerComposition {
-  function logError(message: string) {
-    console.error(`${logPrefix} ${message}`)
+  function logError(message: string, error: Error) {
+    console.error(`${logPrefix} ${message}`, error)
   }
 
   function logWarning(message: string) {
@@ -17,7 +17,7 @@ export function useLogger(): LoggerComposition {
   }
 
   function logMessage(name: string, value: any) {
-    console.info(`${logPrefix} - ${name}:`, value)
+    console.log(`${logPrefix} - ${name}:`, value)
   }
 
   return {
