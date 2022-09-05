@@ -43,7 +43,7 @@ async function copyToClipboard() {
   }
 }
 
-const highlighter = await getHighlighter({ theme: 'material-palenight' })
+const highlighter = await getHighlighter({ theme: 'css-variables' })
 const codeHtml = highlighter.codeToHtml(props.code as string, { lang: formattedLanguage.value })
 
 const root = h('div', { class: 'not-prose', innerHTML: codeHtml })
@@ -71,7 +71,23 @@ const root = h('div', { class: 'not-prose', innerHTML: codeHtml })
 </template>
 
 <style>
+:root {
+  --shiki-color-text: #88e5c3;
+  --shiki-color-background: #3e5166;
+  --shiki-token-constant: #7aceaf;
+  --shiki-token-string: #f8e4aa;
+  --shiki-token-comment: #a0ada0;
+  --shiki-token-keyword: #ff80bf;
+  --shiki-token-parameter: #f8e4aa;
+  --shiki-token-function: #e5f1af;
+  --shiki-token-string-expression: #f8e4aa;
+  --shiki-token-punctuation: #fbfbfb;
+  --shiki-token-link: #b3f9df;
+}
 pre.shiki {
   @apply p-4 rounded;
+}
+code {
+  @apply font-mono font-bold;
 }
 </style>
