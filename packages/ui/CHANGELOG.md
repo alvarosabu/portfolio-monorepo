@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.11.1
+
+### Patch Changes
+
+- 14a9d707: Fixed bug with navigation links
+
 ## 2.11.0
 
 ### Minor Changes
