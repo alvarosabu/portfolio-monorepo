@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   },
   css: ['@alvarosabu/ui/styles', 'lite-youtube-embed/src/lite-yt-embed.css'],
   /*   modules: ['@alvarosabu/nuxt3-markdownit'], */
+  build: {
+    transpile: ['@marvr/storyblok-rich-text-vue-renderer'],
+  },
   buildModules: [
     '@unocss/nuxt',
     [

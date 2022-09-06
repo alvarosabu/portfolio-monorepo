@@ -117,7 +117,7 @@ export function useStories() {
       .filter(filterPageByContentType)
       .map(story => ({
         label: story.name,
-        path: story.slug === 'home' ? '/' : story.slug,
+        path: story.slug === 'home' ? '' : story.slug,
         order: story.content.order,
       }))
 

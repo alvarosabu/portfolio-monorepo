@@ -35,10 +35,11 @@ defineProps({
         text="primary-400 hover:bg-md dark:gray-50"
       >
         <nuxt-link
+          no-rel
           :class="{
             'p-4 !w-full inline-flex': orientation === navOrientation.VERTICAL,
           }"
-          :to="link.path"
+          :to="`/${link.path}`"
         >
           {{ link.label }}
         </nuxt-link>
