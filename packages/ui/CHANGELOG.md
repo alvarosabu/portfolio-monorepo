@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.11.0
+
+### Minor Changes
+
+- 93bb044f: Move syntax highlighting to Shiki
+
 ## 2.10.5
 
 ### Patch Changes

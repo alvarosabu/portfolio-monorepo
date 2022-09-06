@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.12.0
+
+### Minor Changes
+
+- 93bb044f: Move syntax highlighting to Shiki
+
 ## 1.11.4
 
 ### Patch Changes
