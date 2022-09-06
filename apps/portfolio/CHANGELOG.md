@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.12.1
+
+### Patch Changes
+
+- 14a9d707: Fixed bug with navigation links
+
 ## 1.12.0
 
 ### Minor Changes
