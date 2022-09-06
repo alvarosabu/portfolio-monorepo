@@ -16,8 +16,10 @@ export const ASTypographyOptions: TypographyOptions = {
     code: {
       'font-family': 'Fira Code',
       'font-size': '0.875rem',
-      background: '#e8e8e8 !important',
       color: `${ASTheme?.colors?.primary[500]} !important`,
+    },
+    ':not(pre)>code': {
+      background: '#e8e8e8 !important',
       padding: '0.25rem 0.5rem !important',
     },
     blockquote: {

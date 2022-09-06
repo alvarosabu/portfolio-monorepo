@@ -46,18 +46,24 @@ async function copyToClipboard() {
 const highlighter = await getHighlighter({ theme: 'css-variables' })
 const codeHtml = highlighter.codeToHtml(props.code as string, { lang: formattedLanguage.value })
 
-const root = h('div', { class: 'not-prose', innerHTML: codeHtml })
+const root = h('div', { innerHTML: codeHtml.replace('class="shiki"', 'class="shiki not-prose"') })
 </script>
 <template>
-  <div class="not-prose relative" @mouseenter="showCopyButton = true" @mouseleave="showCopyButton = false">
-    <span class="absolute top-1 right-1 py-2 px-3 text-primary-300">{{ formattedLanguage }}</span>
+  <div class="relative" @mouseenter="showCopyButton = true" @mouseleave="showCopyButton = false">
     <Transition
-      name="fade"
-      enter-active-class="animate-fade-in animate-duration-200 animate-count-1"
-      leave-active-class="animate-fade-out animate-duration-200 animate-count-1"
+      name="fade-language"
+      enter-active-class="opacity-1 transition-opacity duration-200"
+      leave-active-class="opacity-0 transition-opacity duration-200"
+    >
+      <span v-show="!showCopyButton" class="absolute top-1 right-1 px-3 text-primary-300">{{ formattedLanguage }}</span>
+    </Transition>
+    <Transition
+      name="fade-copy"
+      enter-active-class="opacity-1 transition-opacity duration-200"
+      leave-active-class="opacity-0 transition-opacity duration-200"
     >
       <AsButton
-        v-show="showCopyButton"
+        v-if="showCopyButton"
         class="absolute top-1 right-1"
         :class="{ 'text-green-500': copySuccesfully }"
         size="sm"
