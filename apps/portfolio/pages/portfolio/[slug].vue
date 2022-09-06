@@ -94,6 +94,7 @@ useHead({
     <div v-if="story" v-editable="story" mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <AsImg
+          v-if="story.content.media"
           data-cy="project-thumbnail"
           important-my-0
           rounded-xl
@@ -105,6 +106,22 @@ useHead({
           :src="story.content.media.filename"
           :alt="story.content.media.alt"
         />
+        <div
+          v-else
+          flex
+          justify-center
+          items-center
+          bg-gray-300
+          text-gray-400
+          aspect-video
+          mr-12
+          w-full
+          border-rounded
+          text-4xl
+          z-10
+        >
+          <AsIcon name="brush" />
+        </div>
         <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
         <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
         <div flex flex-col lg:justify-end lg:items-end lg:h-full relative class="w-full lg:w-1/3">

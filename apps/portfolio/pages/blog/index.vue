@@ -36,18 +36,18 @@ await fetchArticles()
       <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-24 py-32 data-cy="blog-list">
         <AsCard
           v-for="article of articleList"
-          :key="article.content.title"
-          :title="article.content.title"
-          :media="article.content.media.filename"
-          :media-alt="article.content.media.alt"
+          :key="article.content?.title"
+          :title="article.content?.title"
+          :media="article.content?.media?.filename"
+          :media-alt="article.content?.media?.alt"
           data-cy="article"
         >
           <template #content>
-            <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px md:mb-8>{{ article.content.excerpt }}</p>
+            <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px md:mb-8>{{ article.content?.excerpt }}</p>
             <footer px-4 pb-4 md:py-2 md:flex md:justify-end>
               <NuxtLink :to="`/${article.full_slug}`">
                 <AsButton variant="secondary" size="md" class="w-full">
-                  {{ story.content.read_more_cta_label }}
+                  {{ story.content?.read_more_cta_label }}
                 </AsButton>
               </NuxtLink>
             </footer>
