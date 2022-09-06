@@ -91,7 +91,7 @@ useHead({
 </script>
 <template>
   <main role="main" pt-4 md:pt-12>
-    <div v-if="story" v-editable="story" mx-auto container>
+    <div v-if="story" mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <AsImg
           v-if="story.content.media"
