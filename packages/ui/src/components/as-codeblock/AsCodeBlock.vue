@@ -91,7 +91,7 @@ const root = h('div', { innerHTML: codeHtml.replace('class="shiki"', 'class="shi
   --shiki-token-link: #b3f9df;
 }
 pre.shiki {
-  @apply p-4 rounded;
+  @apply p-4 rounded overflow-scroll;
 }
 code {
   @apply font-mono font-bold;
