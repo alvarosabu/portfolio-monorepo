@@ -46,7 +46,7 @@ async function copyToClipboard() {
 const highlighter = await getHighlighter({ theme: 'css-variables' })
 const codeHtml = highlighter.codeToHtml(props.code as string, { lang: formattedLanguage.value })
 
-const root = h('div', { innerHTML: codeHtml.replace('class="shiki"', 'class="shiki not-prose"') })
+const root = () => h('div', { innerHTML: codeHtml.replace('class="shiki"', 'class="shiki not-prose"') })
 </script>
 <template>
   <div class="relative" @mouseenter="showCopyButton = true" @mouseleave="showCopyButton = false">
