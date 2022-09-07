@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 importers:
 
@@ -34,7 +34,7 @@ importers:
 
   apps/portfolio:
     specifiers:
-      '@alvarosabu/ui': workspace:^2.11.1
+      '@alvarosabu/ui': workspace:^2.12.0
       '@alvarosabu/utils': workspace:^2.1.0
       '@cypress/vite-dev-server': ^2.2.3
       '@cypress/vue': ^3.1.2
@@ -174,7 +174,7 @@ importers:
       vite-plugin-banner: 0.3.0
       vite-plugin-dts: 1.4.0_vite@3.0.8
       vite-svg-loader: 3.4.0
-      vitest: 0.20.2_i5k74j5e2cswohk27hbh2i5oby
+      vitest: 0.20.2_4755fe27a4d0a5671d5af9c27d23ae0e
       vue-tsc: 0.40.1_typescript@4.7.4
 
   packages/utils:
@@ -6221,7 +6221,7 @@ packages:
       globby: 13.1.2
       happy-dom: 2.55.0
       markdown-it: 12.3.2
-      markdown-it-anchor: 8.6.4_2zb4u3vubltivolgu556vv4aom
+      markdown-it-anchor: 8.6.4_d643ca6eb40ae68ab966a77bead78073
       markdown-it-attrs: 4.1.4_markdown-it@12.3.2
       markdown-it-emoji: 2.0.2
       micromatch: 4.0.5
@@ -7303,16 +7303,6 @@ packages:
   /map-obj/4.3.0:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
-    dev: true
-
-  /markdown-it-anchor/8.6.4_2zb4u3vubltivolgu556vv4aom:
-    resolution: {integrity: sha512-Ul4YVYZNxMJYALpKtu+ZRdrryYt/GlQ5CK+4l1bp/gWXOG2QWElt6AqF3Mih/wfUKdZbNAZVXGR73/n6U/8img==}
-    peerDependencies:
-      '@types/markdown-it': '*'
-      markdown-it: '*'
-    dependencies:
-      '@types/markdown-it': 12.2.3
-      markdown-it: 12.3.2
     dev: true
 
   /markdown-it-anchor/8.6.4_d643ca6eb40ae68ab966a77bead78073:
@@ -10843,7 +10833,7 @@ packages:
       - stylus
     dev: true
 
-  /vitest/0.20.2_i5k74j5e2cswohk27hbh2i5oby:
+  /vitest/0.20.2_4755fe27a4d0a5671d5af9c27d23ae0e:
     resolution: {integrity: sha512-AFXTHrwG4d2OO6SAL8WP5ZkOwLtgeF4tlrHfXFqrHc+5chNegeR53pge0lv/C4316SqJ2DbYaUBH8vh3CdF+BQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
