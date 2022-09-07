@@ -1,5 +1,12 @@
 # @alvarosabu/portfolio
 
+## 1.13.0
+
+### Minor Changes
+
+- 1d3cba6d: Blog metadata and portfolio metadata looking nice
+- 118be9a3: Solved hydration and shiki issues
+
 ## 1.12.1
 
 ### Patch Changes
