@@ -1,5 +1,4 @@
 import { useStoryblokApi } from '@storyblok/vue'
-import { format } from 'date-fns'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
 
 export interface ArticleStoryContent extends StoryContent {
