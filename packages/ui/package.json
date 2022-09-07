@@ -66,6 +66,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-visualizer": "^5.7.1",
     "sass": "^1.54.0",
+    "shikey": "^0.0.2",
     "shiki": "^0.11.1",
     "shiki-es": "^0.1.2",
     "tslib": "^2.4.0",
