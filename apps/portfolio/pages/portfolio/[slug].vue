@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
-import { format } from 'date-fns'
 
 definePageMeta({
   layout: 'single',
