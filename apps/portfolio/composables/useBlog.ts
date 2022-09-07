@@ -26,10 +26,8 @@ const state: BlogState = reactive({
 
 function formatArticleStory(story: ArticleStory): ArticleStory {
   if (story.published_at) {
-    story.publishedDateFormatted = format(new Date(story.published_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.PUBLISHED
   } else {
-    story.createdDateFormatted = format(new Date(story.created_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.DRAFT
   }
   // TODO: add reading time
