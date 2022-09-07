@@ -91,7 +91,7 @@ useHead({
 </script>
 <template>
   <main role="main" pt-4 md:pt-12>
-    <div v-if="story" v-editable="story" mx-auto container>
+    <div v-if="story" mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <AsImg
           v-if="story.content.media"
@@ -122,8 +122,6 @@ useHead({
         >
           <AsIcon name="brush" />
         </div>
-        <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
-        <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
         <div flex flex-col lg:justify-end lg:items-end lg:h-full relative class="w-full lg:w-1/3">
           <h1
             important-mt-0
@@ -140,11 +138,17 @@ useHead({
             <!--        Hasura GraphQL Baas for the busy developer. -->
             {{ story.content.title }}
           </h1>
+          <client-only>
+            <!-- this component will only be rendered on client-side -->
+            <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
+            <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
+          </client-only>
         </div>
       </header>
       <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8>
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
-          Published at {{ story.publishedDateFormatted }} <AsIcon name="calendar" class="mx-4" />
+          Published at {{ story.publishedDateFormatted }}
+          <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
           <span
             v-if="story.content.category"
             class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4"
@@ -157,7 +161,6 @@ useHead({
           and {{ story.publishedDateFormatted }} will be published.
         </p>
 
-        <!-- TODO: <p class="flex items-center">{{ story.readingTime }} <AsIcon name="clock" class="ml-4" /></p> -->
         <TagList :tags="story.tag_list" />
       </div>
       <div pt-4 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>

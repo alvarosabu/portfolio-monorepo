@@ -10,8 +10,22 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="AsCodeBlock">
+  <Story
+    title="AsCodeBlock"
+    :layout="{
+      type: 'grid',
+      width: 600,
+    }"
+  >
     <Variant title="playground">
+      <template #default>
+        <Suspense>
+          <AsCodeBlock :language="state.language" :code="state.code" />
+        </Suspense>
+      </template>
+    </Variant>
+
+    <Variant title="vue">
       <template #default>
         <Suspense>
           <AsCodeBlock :language="state.language" :code="state.code" />

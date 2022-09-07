@@ -5,9 +5,7 @@ import { useAttrs } from 'vue'
 
 const attrs = useAttrs()
 
-const root = () => {
-  return h(AsImg, { class: 'important-my-16 important-mx-auto ', ...attrs, objectFit: 'fill' })
-}
+const root = () => h(AsImg, { class: 'important-my-16 important-mx-auto ', ...attrs, objectFit: 'fill' })
 </script>
 <template>
   <root />

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, h, computed } from 'vue'
-import { getHighlighter } from 'shiki-es'
 import AsButton from '/@/components/as-button/AsButton.vue'
 
 import { useLogger } from '/@/composables/useLogger'
+import { useSyntaxHighlighter } from '/@/composables/useSyntaxHighlighter'
 
 const props = defineProps({
   language: {
@@ -43,7 +43,8 @@ async function copyToClipboard() {
   }
 }
 
-const highlighter = await getHighlighter({ theme: 'css-variables' })
+const { highlighter } = await useSyntaxHighlighter()
+
 const codeHtml = highlighter.codeToHtml(props.code as string, { lang: formattedLanguage.value })
 
 const root = () => h('div', { innerHTML: codeHtml.replace('class="shiki"', 'class="shiki not-prose"') })
