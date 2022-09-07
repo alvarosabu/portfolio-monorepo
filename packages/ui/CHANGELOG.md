@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.12.0
+
+### Minor Changes
+
+- 118be9a3: Solved hydration and shiki issues
+
 ## 2.11.1
 
 ### Patch Changes

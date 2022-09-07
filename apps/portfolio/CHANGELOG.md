@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 1.13.0
+
+### Minor Changes
+
+- 118be9a3: Solved hydration and shiki issues
+
 ## 1.12.1
 
 ### Patch Changes
