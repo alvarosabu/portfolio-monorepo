@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
+import { format } from 'date-fns'
 
 definePageMeta({
   layout: 'single',
@@ -12,7 +13,13 @@ const { fetchProjectBySlug } = usePortfolio()
 
 const story = await fetchProjectBySlug(route.params.slug as string)
 
-const isPublished = computed(() => story.publishedDateFormatted)
+const isPublished = computed(() => story.published_at)
+
+const storyPublishedDate = computed(() =>
+  isMobile.value
+    ? format(new Date(story.published_at), 'MM/dd/yy')
+    : format(new Date(story.published_at), 'MMMM dd, yyyy'),
+)
 
 useHead({
   title: `${story.content.title} - AS Portfolio`,
@@ -140,14 +147,14 @@ useHead({
           </h1>
           <client-only>
             <!-- this component will only be rendered on client-side -->
-            <AsGraphic v-if="isMobile || isTablet" class="absolute -right-8 -top-4 sm:(right-16)" type="dots" />
+            <AsGraphic v-if="isMobile || isTablet" class="absolute -right-4 bottom-16 sm:(right-16)" type="dots" />
             <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
           </client-only>
         </div>
       </header>
-      <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8>
+      <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8 z-20>
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
-          Published at {{ story.publishedDateFormatted }}
+          Published on {{ storyPublishedDate }}
           <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
           <span
             v-if="story.content.category"
@@ -158,13 +165,14 @@ useHead({
         </p>
         <p v-else>
           This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state
-          and {{ story.publishedDateFormatted }} will be published.
+          and {{ storyPublishedDate }} will be published.
         </p>
 
-        <TagList :tags="story.tag_list" />
+        <TagList v-if="isDesktop" :tags="story.tag_list" />
       </div>
-      <div pt-4 mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
+      <div mb-24 container mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
         <RichTextRenderer v-if="story" :document="story.content.content" />
+        <TagList v-if="!isDesktop" :tags="story.tag_list" />
       </div>
     </div>
   </main>
