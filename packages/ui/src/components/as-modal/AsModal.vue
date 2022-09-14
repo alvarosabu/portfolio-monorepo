@@ -49,6 +49,7 @@ defineProps<{
             overflow-hidden
             rounded-lg
             bg-white
+            dark:bg-primary-600
             text-left
             shadow-xl
             transition-all
@@ -56,7 +57,7 @@ defineProps<{
             sm:w-full
             sm:max-w-lg
           >
-            <div class="bg-white">
+            <div bg-white dark:bg-primary-600 text-primary dark:text-gray-400>
               <header relative px-4 pt-4 pb-4 sm:p-6 sm:pb-4>
                 <slot name="header">
                   <h2 id="modal-title" class="headline-1">

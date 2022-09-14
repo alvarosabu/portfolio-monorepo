@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import AsButton from '../as-button/AsButton.vue'
 import AsModal from './AsModal.vue'
 
 const state = reactive({
@@ -15,7 +16,11 @@ const state = reactive({
   <Story title="AsModal">
     <Variant title="playground">
       <teleport to="body">
-        <AsModal v-bind="state" />
+        <AsModal v-bind="state">
+          <template #footer>
+            <AsButton :variant="'secondary'" @click="state.isOpen = false"> Accept </AsButton>
+          </template>
+        </AsModal>
       </teleport>
       <template #controls>
         <HstCheckbox v-model="state.isOpen" title="isOpen" />

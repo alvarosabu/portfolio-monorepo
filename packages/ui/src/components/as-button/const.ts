@@ -36,7 +36,10 @@ export const btnShortcuts: DynamicShortcut[] = [
       `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500 hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
   [/^btn-flat-(.*)$/, ([, c]) => `bg-gray-50 border-transparent text-${c}-400 hover:text-${c}-600`],
-  [/^btn-transparent-(.*)$/, ([, c]) => `bg-transparent border-transparent text-${c}-400 hover:text-${c}-600`],
+  [
+    /^btn-transparent-(.*)$/,
+    ([, c]) => `bg-transparent border-transparent text-${c}-400 hover:text-${c}-600 dark:text-${c}-100`,
+  ],
 ]
 
 export const btnSafelist = [
