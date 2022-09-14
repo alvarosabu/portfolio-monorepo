@@ -19,6 +19,8 @@ const state = reactive({
       </teleport>
       <template #controls>
         <HstCheckbox v-model="state.isOpen" title="isOpen" />
+        <HstText v-model="state.title" title="Title" />
+        <HstTextarea v-model="state.content" title="Content" />
       </template>
     </Variant>
   </Story>

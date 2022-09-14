@@ -44,7 +44,17 @@ defineProps<{
           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       -->
           <div
-            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+            relative
+            transform
+            overflow-hidden
+            rounded-lg
+            bg-white
+            text-left
+            shadow-xl
+            transition-all
+            sm:my-8
+            sm:w-full
+            sm:max-w-lg
           >
             <div class="bg-white">
               <header relative px-4 pt-4 pb-4 sm:p-6 sm:pb-4>
