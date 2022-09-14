@@ -8,6 +8,7 @@ import AsIcon from '/@/components/as-icon/AsIcon.vue'
 const props = defineProps({
   disabled: Boolean,
   outline: Boolean,
+  transparent: Boolean,
   flat: Boolean,
   link: String,
   label: {
@@ -61,6 +62,8 @@ const btnClasses = computed(() => {
       classes.push(`btn-flat-${props.variant.toLowerCase()}`)
     } else if (props.outline) {
       classes.push(`btn-outline-${props.variant.toLowerCase()}`)
+    } else if (props.transparent) {
+      classes.push(`btn-transparent-${props.variant.toLowerCase()}`)
     } else {
       classes.push(`btn-${props.variant.toLowerCase()}`)
     }
@@ -110,7 +113,7 @@ const hasLabel = computed(() => props.label !== '')
 </template>
 
 <style>
-.as-btn:not([class*='btn-flat-']):hover {
+.as-btn:not([class*='btn-flat-'], [class*='btn-transparent-']):hover {
   /* TODO: Add transform directives on unocss and replace this */
   /* @apply transform -translate-x-0.5 -translate-y-0.5; */
   transform: translate(-0.125rem, -0.125rem);
