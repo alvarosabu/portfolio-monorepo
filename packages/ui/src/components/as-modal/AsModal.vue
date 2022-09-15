@@ -6,6 +6,12 @@ defineProps<{
   isOpen: boolean
   content?: string
 }>()
+
+const emit = defineEmits(['update:isOpen'])
+
+function onClose() {
+  emit('update:isOpen', false)
+}
 </script>
 <template>
   <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -64,7 +70,7 @@ defineProps<{
                     {{ title }}
                   </h2>
                 </slot>
-                <AsButton transparent p-4 absolute top-4 right-4 icon="close" />
+                <AsButton transparent p-4 absolute top-4 right-4 icon="close" @click="onClose" />
               </header>
               <div p-4 sm:p-6>
                 <slot name="content">
