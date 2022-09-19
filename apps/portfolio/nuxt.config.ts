@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
 import SvgLoader from 'vite-svg-loader'
 import head from './config/head'
 
@@ -19,12 +18,13 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@marvr/storyblok-rich-text-vue-renderer'],
   },
-  buildModules: [
+  modules: [
     '@unocss/nuxt',
     [
       '@storyblok/nuxt',
       {
         accessToken: process.env.STORYBLOK_API_TOKEN,
+        /*        useApiClient: true, */
       },
     ],
   ],
