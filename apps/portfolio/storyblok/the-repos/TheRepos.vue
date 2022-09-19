@@ -39,7 +39,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
     justify-center
     snap-start
   >
-    <h2 data-cy="repos-title" font-display text="primary-400 dark:gray-50 3xl" mb-24>
+    <h2 data-cy="repos-title" class="text-primary-400" font-display text="primary-400 dark:gray-50 3xl" mb-24>
       {{ blok.title }}
     </h2>
     <div

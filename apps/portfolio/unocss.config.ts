@@ -1,6 +1,9 @@
 import AsUI from '@alvarosabu/ui/'
 import {
   defineConfig,
+  presetUno,
+  presetAttributify,
+  presetIcons,
   presetWebFonts,
   presetTypography,
   transformerDirectives,
@@ -12,8 +15,11 @@ export default defineConfig({
   shortcuts: AsUI.unoconfig.shortcuts,
   rules: AsUI.unoconfig.rules,
   presets: [
-    presetTypography(AsUI.unoconfig.typhography),
+    presetUno(),
+    presetAttributify(),
+    presetIcons(),
     presetWebFonts(AsUI.unoconfig.fonts),
+    presetTypography(AsUI.unoconfig.typography),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
 })

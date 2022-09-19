@@ -14,6 +14,7 @@ import './styles/base.css'
 
 export interface AsUIPlugin {
   [key: string]: any
+  install: (app: App, options?: any) => void
 }
 
 const modules = import.meta.glob('./components/**/!(*.spec|*.test|*.story).vue', {
@@ -32,7 +33,7 @@ const plugin: AsUIPlugin = {
     fonts: ASWebFontsOptions,
     icons: ASIconsOptions,
     shortcuts: ASShortcuts,
-    typhography: ASTypographyOptions,
+    typography: ASTypographyOptions,
     rules: ASRules,
   },
   install(app: App, options: any) {
