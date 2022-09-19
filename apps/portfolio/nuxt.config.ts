@@ -33,12 +33,12 @@ export default defineNuxtConfig({
       isCustomElement: tag => ['lite-youtube'].includes(tag),
     },
   },
-  unocss: {
+  /*   unocss: {
     // presets
     uno: true, // enabled `@unocss/preset-uno`
     icons: true, // enabled `@unocss/preset-icons`
     attributify: true, // enabled `@unocss/preset-attributify`,
-  },
+  }, */
   vite: {
     plugins: [SvgLoader()],
   },
