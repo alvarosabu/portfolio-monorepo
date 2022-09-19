@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.13.0
+
+### Minor Changes
+
+- 8883683d: Full Static
+
 ## 2.12.0
 
 ### Minor Changes
