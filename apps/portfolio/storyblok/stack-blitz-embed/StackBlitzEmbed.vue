@@ -23,11 +23,7 @@ watch(
     sdk.embedProjectId(embed.value, props.blok.projectId, options)
   },
 )
-/* sdk.embedProjectId(embed.value, 'vitejs-vite-uoe7h4', {
-  forceEmbedLayout: true,
-  openFile: 'README.md',
-}) */
 </script>
 <template>
-  <div class="rounded" ref="embed">Awiwi</div>
+  <div ref="embed" class="rounded" />
 </template>
