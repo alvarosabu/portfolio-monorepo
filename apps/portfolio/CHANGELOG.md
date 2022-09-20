@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.1.0
+
+### Minor Changes
+
+- fb8ec379: Code embed bloks for rich text
+
 ## 2.0.0
 
 ### Major Changes
