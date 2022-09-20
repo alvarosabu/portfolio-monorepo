@@ -13,7 +13,7 @@ const embed = ref(null)
 watch(
   () => embed.value,
   () => {
-    const options: EmbedOptions = { openFile: '', forceEmbedLayout: true, height: 500, view: 'preview' }
+    const options: EmbedOptions = { openFile: '', forceEmbedLayout: true, width: 500, height: 500, view: 'preview' }
     if (props.blok.file) {
       options.openFile = props.blok.file
     }
@@ -25,5 +25,5 @@ watch(
 )
 </script>
 <template>
-  <div ref="embed" class="rounded" />
+  <div ref="embed" class="rounded break-out-prose w-full my-8" />
 </template>

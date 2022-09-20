@@ -18,7 +18,7 @@ watch(
 )
 </script>
 <template>
-  <div ref="codepenEmbed" class="rounded">
+  <div ref="codepenEmbed" class="rounded overflow-hidden break-out-prose my-8">
     <p
       class="codepen"
       data-height="500"
@@ -37,9 +37,10 @@ watch(
       "
     >
       <span>
-        See the Pen <a :href="`https://codepen.io/${blok.author}/pen/${blok.penId}`"> Svg Clip-Path Mask</a> by
-        {{ blok.author }} (<a :href="`https://codepen.io/${blok.author}`">@{{ blok.author }} </a>) on
-        <a href="https://codepen.io">CodePen</a>.
+        See the Pen <a :href="`https://codepen.io/${blok.author}/pen/${blok.penId}`"> Pen</a> by {{ blok.author }} (<a
+          :href="`https://codepen.io/${blok.author}`"
+          >@{{ blok.author }} </a
+        >) on <a href="https://codepen.io">CodePen</a>.
       </span>
     </p>
   </div>
