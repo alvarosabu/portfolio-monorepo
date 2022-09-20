@@ -4,7 +4,7 @@ import { AsCodeBlock } from '@alvarosabu/ui'
 import TextImage from '@/storyblok/text-image/TextImage.vue'
 import TheImage from '@/storyblok/the-image/TheImage.vue'
 import StackBlitzEmbed from '@/storyblok/stack-blitz-embed/StackBlitzEmbed.vue'
-import CodepenEmbed from '@/storyblok/code-pen-embed/CodepenEmbed.vue'
+import CodepenEmbed from '@/storyblok/codepen-embed/CodepenEmbed.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(
