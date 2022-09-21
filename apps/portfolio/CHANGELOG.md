@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.1.1
+
+### Patch Changes
+
+- 3fb99e58: Nuxt RC11
+
 ## 2.1.0
 
 ### Minor Changes
