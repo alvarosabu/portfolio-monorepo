@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "scripts": {
     "dev": "nuxt dev --port=2590",
     "dev:https": "nuxt dev --https --port=2591",
@@ -36,7 +36,7 @@
     "date-fns": "^2.28.0",
     "histoire": "^0.8.0",
     "lite-youtube-embed": "^0.2.0",
-    "nuxt": "3.0.0-rc.10",
+    "nuxt": "3.0.0-rc.11",
     "prismjs": "^1.28.0",
     "swiper": "^8.1.4",
     "velocity-animate": "^1.5.2",
