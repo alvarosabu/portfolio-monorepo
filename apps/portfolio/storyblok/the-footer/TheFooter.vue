@@ -4,8 +4,6 @@ import { navOrientation } from '@/components/the-nav/consts'
 /* tslint:disable-next-line */
 import Logo from '@/assets/logo.svg'
 /* tslint:disable-next-line */
-import Nuxt from '@/assets/nuxt.svg'
-/* tslint:disable-next-line */
 import Storyblok from '@/assets/storyblok.svg'
 
 defineProps({
