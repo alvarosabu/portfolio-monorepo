@@ -7,6 +7,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
   UserConfig,
+  Preset,
 } from 'unocss'
 
 import { imgAspectRatiosSafelist } from '../components/as-img/const'
@@ -28,8 +29,8 @@ export const ASUnoConfig: UserConfig = {
     presetUno(),
     presetAttributify(),
     presetIcons(ASIconsOptions),
-    presetTypography(ASTypographyOptions),
-    presetWebFonts(ASWebFontsOptions),
+    presetTypography(ASTypographyOptions) as Preset,
+    presetWebFonts(ASWebFontsOptions) as Preset,
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
 }
