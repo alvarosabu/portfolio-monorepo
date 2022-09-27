@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
+import { ref } from 'vue'
+
 import AsButton from '/@/components/as-button/AsButton.vue'
 
 defineProps<{
@@ -6,6 +9,10 @@ defineProps<{
   isOpen: boolean
   content?: string
 }>()
+
+const modal = ref<HTMLElement>()
+
+onClickOutside(modal, onClose)
 
 const emit = defineEmits(['update:isOpen'])
 
@@ -50,6 +57,7 @@ function onClose() {
           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       -->
           <div
+            ref="modal"
             relative
             transform
             overflow-hidden
