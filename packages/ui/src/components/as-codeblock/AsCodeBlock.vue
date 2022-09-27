@@ -91,6 +91,16 @@ const root = () => h('div', { innerHTML: codeHtml.replace('class="shiki"', 'clas
   --shiki-token-punctuation: #fbfbfb;
   --shiki-token-link: #b3f9df;
 }
+
+.dark {
+  --shiki-color-background: #273341;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shiki-color-background: #273341;
+  }
+}
 pre.shiki {
   @apply p-4 rounded overflow-scroll;
 }

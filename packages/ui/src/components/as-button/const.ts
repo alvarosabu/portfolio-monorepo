@@ -26,7 +26,7 @@ export enum btnSize {
 
 export const btnShortcuts: DynamicShortcut[] = [
   [
-    /^btn-(?!.*(outline|flat|block|sm|md|lg|default))(.*)/,
+    /^btn-(?!.*(outline|flat|transparent|block|sm|md|lg|default))(.*)/,
     ([, , c]) =>
       `bg-${c}-400 text-white border-transparent hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
@@ -35,13 +35,18 @@ export const btnShortcuts: DynamicShortcut[] = [
     ([, c]) =>
       `bg-transparent border-${c}-400 text-${c}-400 hover:text-${c}-500 hover:shadow-${c} hover:shadow-button focus:outline-none focus:ring-2 focus:ring-opacity-75 focus:ring-${c}-400`,
   ],
-  [/^btn-flat-(.*)$/, ([, c]) => `bg-gray-50 border-transparent text-${c}-400 hover:text-${c}-500`],
+  [/^btn-flat-(.*)$/, ([, c]) => `bg-gray-50 border-transparent text-${c}-400 hover:text-${c}-600`],
+  [
+    /^btn-transparent-(.*)$/,
+    ([, c]) => `bg-transparent border-transparent text-${c}-400 hover:text-${c}-600 dark:text-${c}-100`,
+  ],
 ]
 
 export const btnSafelist = [
   ...Object.values(btnVariant).map(v => `btn-${v}`),
   ...Object.values(btnVariant).map(v => `btn-outline-${v}`),
   ...Object.values(btnVariant).map(v => `btn-flat-${v}`),
+  ...Object.values(btnVariant).map(v => `btn-transparent-${v}`),
   ...Object.values(btnSize).map(v => `btn-${v}`),
 ]
 
