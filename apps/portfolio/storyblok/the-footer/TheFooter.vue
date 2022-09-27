@@ -15,7 +15,7 @@ defineProps({
 
 const showVersion = ref(false)
 
-const { version, environment } = useVersion()
+const { isMobile } = useBreakpoints()
 
 // Feature Menu
 const { storiesForNav } = await useStories()
@@ -35,17 +35,16 @@ const { storiesForNav } = await useStories()
       </div>
       <div class="flex flex-col items-center sm:(w-1/3 items-end)">
         <SocialLinks mb-14 :items="blok.socialLinks" />
-        <div absolute left-0 bottom-0 px-4 w-full flex justify-between align-center>
-          <div>
-            <span v-show="showVersion" text-xs text-gray-400 inline>{{ environment }} - v{{ version }}</span>
-          </div>
-          <div flex justify-between items-center class="prose text-gray-600 dark:text-gray-50 sm:justify-end">
-            <RichTextRenderer v-if="blok" :document="blok.text" />
+        <div absolute left-0 bottom-0 px-4 w-full flex justify-end align-center>
+          <div flex justify-between items-center class="prose text-gray-600 dark:text-gray-50 sm:justify-end w-full">
+            <RichTextRenderer v-if="blok && !isMobile" :document="blok.text" />
 
-            <AsIcon name="heart-fill" text-red-400 text-lg mx-2 />
-            <i i-logos-nuxt-icon text-2xl mr-2 />
-            +
-            <Storyblok class="scale-50%" mr-4 />
+            <div flex items-center>
+              <AsIcon name="heart-fill" text-red-400 text-lg mx-2 />
+              <i i-logos-nuxt-icon text-2xl mr-2 />
+              +
+              <Storyblok class="scale-50%" mr-4 />
+            </div>
             {{ blok.author }} &copy; {{ new Date().getFullYear() }}
           </div>
         </div>
