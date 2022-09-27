@@ -1,5 +1,23 @@
 # @alvarosabu/portfolio
 
+## 2.1.1
+
+### Patch Changes
+
+- 3fb99e58: Nuxt RC11
+
+## 2.1.0
+
+### Minor Changes
+
+- fb8ec379: Code embed bloks for rich text
+
+## 2.0.0
+
+### Major Changes
+
+- 8883683d: Full Static
+
 ## 1.13.0
 
 ### Minor Changes

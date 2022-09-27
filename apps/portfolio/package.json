@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "1.13.0",
+  "version": "2.1.1",
   "scripts": {
     "dev": "nuxt dev --port=2590",
     "dev:https": "nuxt dev --https --port=2591",
@@ -15,16 +15,19 @@
     "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
-    "@alvarosabu/ui": "workspace:^2.12.0",
+    "@alvarosabu/ui": "workspace:^2.13.0",
     "@alvarosabu/utils": "workspace:^2.1.0",
     "@cypress/vite-dev-server": "^2.2.3",
     "@cypress/vue": "^3.1.2",
     "@marvr/storyblok-rich-text-types": "^3.2.1",
     "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
-    "@storyblok/nuxt": "^4.0.1",
+    "@stackblitz/sdk": "^1.8.0",
+    "@storyblok/nuxt": "^4.3.0",
+    "@storyblok/vue": "^6.3.1",
     "@types/prismjs": "^1.26.0",
-    "@storyblok/vue": "^6.1.0",
-    "@unocss/nuxt": "^0.33.2",
+    "@unocss/nuxt": "^0.45.21",
+    "@unocss/preset-typography": "^0.45.21",
+    "@unocss/preset-web-fonts": "0.45.21",
     "axe-core": "^4.4.2",
     "axios": "^0.27.2",
     "cypress": "10.2.0",
@@ -33,8 +36,8 @@
     "date-fns": "^2.28.0",
     "histoire": "^0.8.0",
     "lite-youtube-embed": "^0.2.0",
+    "nuxt": "3.0.0-rc.11",
     "prismjs": "^1.28.0",
-    "nuxt": "3.0.0-rc.6",
     "swiper": "^8.1.4",
     "velocity-animate": "^1.5.2",
     "vite-svg-loader": "^3.3.0"
