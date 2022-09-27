@@ -15,8 +15,6 @@ defineProps({
 
 const showVersion = ref(false)
 
-const { version, environment } = useVersion()
-
 const { isMobile } = useBreakpoints()
 
 // Feature Menu
