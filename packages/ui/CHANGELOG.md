@@ -1,5 +1,16 @@
 # @alvarosabu/ui
 
+## 2.14.0
+
+### Minor Changes
+
+- 8722bd45: Modal component
+
+### Patch Changes
+
+- 1257af5c: Tweak mini footer for mobile
+- 1ee283ed: Small tweak on portfolio footer
+
 ## 2.13.0
 
 ### Minor Changes

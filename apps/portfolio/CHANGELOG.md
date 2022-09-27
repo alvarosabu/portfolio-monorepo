@@ -1,5 +1,12 @@
 # @alvarosabu/portfolio
 
+## 2.1.2
+
+### Patch Changes
+
+- 1257af5c: Tweak mini footer for mobile
+- 1ee283ed: Small tweak on portfolio footer
+
 ## 2.1.1
 
 ### Patch Changes
