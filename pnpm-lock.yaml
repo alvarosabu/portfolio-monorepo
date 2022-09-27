@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 importers:
 
@@ -144,7 +144,7 @@ importers:
     devDependencies:
       '@cypress/vite-dev-server': 3.1.1
       '@cypress/vue': 4.2.0_cypress@10.8.0+vue@3.2.39
-      '@histoire/plugin-vue': 0.10.7_561513805add1dde1a8f139b819e60a9
+      '@histoire/plugin-vue': 0.10.7_kykrhac23uo54gupconydhtave
       '@iconify-json/ant-design': 1.1.3
       '@iconify-json/carbon': 1.1.8
       '@iconify-json/gg': 1.1.2
@@ -909,7 +909,7 @@ packages:
       '@histoire/vendors': 0.8.4
     dev: true
 
-  /@histoire/plugin-vue/0.10.7_561513805add1dde1a8f139b819e60a9:
+  /@histoire/plugin-vue/0.10.7_kykrhac23uo54gupconydhtave:
     resolution: {integrity: sha512-PCh7YxD4ruF7accoEAs5fkU5Jn6Mml5zuoAp640a+OGp8yPB27WyPOMAgdnUTMuTNhDrO20/rNI67Jg1hu91JQ==}
     peerDependencies:
       histoire: ^0.10.7
@@ -3452,6 +3452,7 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+    requiresBuild: true
     dev: true
 
   /commander/5.1.0:
@@ -6306,7 +6307,7 @@ packages:
       gray-matter: 4.0.3
       happy-dom: 2.55.0
       markdown-it: 12.3.2
-      markdown-it-anchor: 8.6.5_d643ca6eb40ae68ab966a77bead78073
+      markdown-it-anchor: 8.6.5_2zb4u3vubltivolgu556vv4aom
       markdown-it-attrs: 4.1.4_markdown-it@12.3.2
       markdown-it-emoji: 2.0.2
       micromatch: 4.0.5
@@ -7465,6 +7466,16 @@ packages:
   /map-obj/4.3.0:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
+    dev: true
+
+  /markdown-it-anchor/8.6.5_2zb4u3vubltivolgu556vv4aom:
+    resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      '@types/markdown-it': 12.2.3
+      markdown-it: 12.3.2
     dev: true
 
   /markdown-it-anchor/8.6.5_d643ca6eb40ae68ab966a77bead78073:

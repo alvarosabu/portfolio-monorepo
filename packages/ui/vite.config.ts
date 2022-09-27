@@ -5,6 +5,8 @@ import SvgLoader from 'vite-svg-loader'
 import banner from 'vite-plugin-banner'
 
 import dts from 'vite-plugin-dts'
+import { visualizer } from 'rollup-plugin-visualizer'
+import analyze from 'rollup-plugin-analyzer'
 
 import vue from '@vitejs/plugin-vue'
 
@@ -46,14 +48,14 @@ export default defineConfig({
       include: [resolve(__dirname, 'src')],
     },
     rollupOptions: {
-      /*  plugins: [
+      plugins: [
         analyze(),
         visualizer({
           gzipSize: true,
           brotliSize: true,
           open: true,
         }),
-      ], */
+      ],
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue', '@vueuse/shared', '@vueuse/core'],

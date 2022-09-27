@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import { App, defineAsyncComponent } from 'vue'
 import 'uno.css'
 
 // normalize.css
@@ -41,13 +41,19 @@ const plugin: AsUIPlugin = {
       const componentName = key.replace(/^.*[\\/]/, '').replace(/\.vue$/, '')
 
       if (typeof options === 'undefined') {
-        app.component(componentName, (value as any).default)
+        app.component(
+          componentName,
+          defineAsyncComponent(() => (value as any).default),
+        )
       } else {
         if (!(options instanceof Array)) {
           throw new TypeError('options must be an array')
         }
         if (options.includes(componentName)) {
-          app.component(componentName, (value as any).default)
+          app.component(
+            componentName,
+            defineAsyncComponent(() => (value as any).default),
+          )
         }
       }
     }
