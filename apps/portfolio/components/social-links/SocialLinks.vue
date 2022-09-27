@@ -17,7 +17,7 @@ export interface SocialLink {
 const props = defineProps({
   size: {
     type: String,
-    default: '3xl',
+    default: 'xl',
   },
   items: {
     type: Array as PropType<SocialLink[]>,

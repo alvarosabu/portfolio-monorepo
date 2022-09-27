@@ -8,6 +8,7 @@ import {
   presetTypography,
   transformerDirectives,
   transformerVariantGroup,
+  Preset,
 } from 'unocss'
 
 export default defineConfig({
@@ -18,8 +19,8 @@ export default defineConfig({
     presetUno(),
     presetAttributify(),
     presetIcons(),
-    presetWebFonts(AsUI.unoconfig.fonts),
-    presetTypography(AsUI.unoconfig.typography),
+    presetWebFonts(AsUI.unoconfig.fonts) as unknown as Preset,
+    presetTypography(AsUI.unoconfig.typography) as unknown as Preset,
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
 })
