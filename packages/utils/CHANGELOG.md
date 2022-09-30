@@ -1,5 +1,11 @@
 # @alvarosabu/utils
 
+## 2.2.0
+
+### Minor Changes
+
+- d7ba4bfc: Sketchfab blok component and reusable error state
+
 ## 2.1.0
 
 ### Minor Changes

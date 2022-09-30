@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.2.0
+
+### Minor Changes
+
+- d7ba4bfc: Sketchfab blok component and reusable error state
+
 ## 2.1.2
 
 ### Patch Changes
