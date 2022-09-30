@@ -3,8 +3,6 @@
 import { computed } from 'vue'
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
-const { isMobile } = useBreakpoints()
-
 const props = defineProps({
   blok: {
     type: Object,
@@ -30,7 +28,7 @@ const title = computed(() => {
     items-center
     snap-start
   >
-    <div v-if="!isMobile" flex w="1/2" justify-center>
+    <div hidden md:flex w="1/2" justify-center>
       <PancakePlanet />
     </div>
     <div
