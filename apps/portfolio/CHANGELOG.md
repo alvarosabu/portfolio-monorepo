@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.2.1
+
+### Patch Changes
+
+- 449e7798: Fixed critical path mobile blinking issue with useBreakpoints
+
 ## 2.2.0
 
 ### Minor Changes
