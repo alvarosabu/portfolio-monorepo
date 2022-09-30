@@ -40,9 +40,10 @@ watch(route, () => {
         <TheLogo class="animate-tada animate-count-1" />
         <div flex items-center>
           <AsDarkModeSwitch mr-8 data-cy="dark-switch" />
-          <TheNav v-if="!isMobile" :menu="storiesForNav" />
+          <TheNav hidden md:block :menu="storiesForNav" />
           <AsButton
-            v-if="isMobile"
+            block
+            md:hidden
             ml-4
             border-transparent
             bg-transparent
