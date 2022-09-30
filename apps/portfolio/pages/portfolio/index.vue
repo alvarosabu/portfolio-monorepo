@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
+
 useHead({ title: 'Portfolio - AS Portfolio' })
 
 const { getStory } = useStories()
@@ -56,7 +58,9 @@ await fetchProjects()
       </div>
     </template>
     <template v-else>
-      <StoryblokComponent :blok="story?.content?.error_state[0]" />
+      <ErrorState :title="story?.content?.error_state[0].title + ' 🐛'">
+        <RichTextRenderer :document="story?.content?.error_state[0].message.content" />
+      </ErrorState>
     </template>
   </main>
 </template>
