@@ -26,9 +26,9 @@ const isReverse = computed(() => props.direction === textImgDirection.REVERSE)
         : 'important-flex-col sm:important-flex-row'
     "
   >
-    <div class="relative w-full sm:w-1/2 py-4 min-h-252px sm:min-h-325px">
+    <div class="relative w-full sm:w-1/2 py-4 min-h-300px sm:min-h-375px">
       <AsGraphic class="absolute top-16 scale-75" :class="isReverse ? 'right-0' : 'left-0'" />
-      <div class="absolute w-4/5 rounded-xl" :class="isReverse ? 'left-0' : 'right-0'">
+      <div class="absolute w-2/3 rounded-xl" :class="isReverse ? 'left-0' : 'right-0'">
         <AsImg class="shadow-lg" :src="media.src" :alt="media.alt" :aspect-ratio="media.aspectRatio" />
       </div>
     </div>
