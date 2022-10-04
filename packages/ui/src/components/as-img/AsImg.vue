@@ -78,7 +78,6 @@ const { logWarning } = useLogger()
 const imgStyles = computed(
   () =>
     ({
-      aspectRatio: props.aspectRatio,
       objectFit: props.objectFit,
     } as StyleValue),
 )
