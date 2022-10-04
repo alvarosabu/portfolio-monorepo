@@ -112,6 +112,7 @@ useHead({
           shadow-lg
           :src="story.content.media?.filename"
           :alt="story.content.media?.alt"
+          aspect-ratio="16/9"
         />
         <div
           v-else
