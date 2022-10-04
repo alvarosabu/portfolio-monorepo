@@ -1,5 +1,12 @@
 # @alvarosabu/ui
 
+## 2.14.1
+
+### Patch Changes
+
+- bbda6c47: Corrected measures on Text N Image to avoid cropping
+- 4e86aab3: Small adjustment on aspect ratio for card images and slug thumbnails
+
 ## 2.14.0
 
 ### Minor Changes
