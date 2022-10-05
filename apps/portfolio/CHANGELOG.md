@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.2.2
+
+### Patch Changes
+
+- 4e86aab3: Small adjustment on aspect ratio for card images and slug thumbnails
+
 ## 2.2.1
 
 ### Patch Changes
