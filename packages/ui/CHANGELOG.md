@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.16.0
+
+### Minor Changes
+
+- 36658afb: Portfolio category badges
+
 ## 2.15.0
 
 ### Minor Changes
