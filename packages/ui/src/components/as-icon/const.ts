@@ -24,6 +24,8 @@ export const asTechIcons = new Map([
   ['term', 'carbon-terminal'],
   ['brush', 'carbon-brush-freehand'],
   ['lamp', 'teenyicons-desklamp-outline'],
+  ['3d', 'carbon:chart-3d'],
+  ['art', 'heroicons:paint-brush'],
 ])
 
 export const miscIcons = new Map([

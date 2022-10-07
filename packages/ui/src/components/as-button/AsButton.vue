@@ -55,7 +55,7 @@ const props = defineProps({
 
 // Classes
 const btnClasses = computed(() => {
-  const classes: any[] = ['as-btn']
+  const classes: (string | { [key: string]: boolean })[] = ['as-btn']
 
   if (props.variant) {
     if (props.flat) {
