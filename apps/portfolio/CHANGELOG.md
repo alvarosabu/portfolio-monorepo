@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.3.0
+
+### Minor Changes
+
+- 36658afb: Portfolio category badges
+
 ## 2.2.2
 
 ### Patch Changes
