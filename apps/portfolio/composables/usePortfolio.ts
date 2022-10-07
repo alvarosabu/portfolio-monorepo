@@ -7,6 +7,7 @@ export interface ProjectStoryContent extends StoryContent {
   media: StoryAsset
   excerpt: string
   featured: boolean
+  category: Partial<StoryContent>
 }
 export interface ProjectStory extends Story {
   content: ProjectStoryContent
@@ -49,7 +50,10 @@ export function usePortfolio() {
         resolve_relations: 'category',
         is_startpage: false,
       })
-      state.projects = data.stories.map(formatPortfolioStory)
+      state.projects = data.stories.map(story => {
+        story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
+        return formatPortfolioStory(story)
+      })
     } catch (error) {
       logError('There was an error fetching projects from Storyblok', error)
     }

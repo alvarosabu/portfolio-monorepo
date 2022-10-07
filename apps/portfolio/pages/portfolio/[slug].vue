@@ -157,12 +157,7 @@ useHead({
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
           Published on {{ storyPublishedDate }}
           <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
-          <span
-            v-if="story.content.category"
-            class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4"
-          >
-            {{ story.content.category.name }}
-          </span>
+          <AsBadge :icon="story.content.category.content.icon" :label="story.content.category.content.name" outline />
         </p>
         <p v-else>
           This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state
