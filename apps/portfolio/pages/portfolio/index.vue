@@ -39,11 +39,24 @@ await fetchProjects()
         <AsCard
           v-for="project of projectList"
           :key="project.content.title"
-          :title="project.content.title"
           :media="project.content.media.filename"
           :media-alt="project.content.media.alt"
           data-cy="project"
         >
+          <template #header>
+            <header relative>
+              <AsImg :src="project.content.media.filename" :alt="project.content.media.alt" aspect-video />
+              <AsBadge
+                v-tooltip="{ content: project.content.category.content.name }"
+                absolute
+                class="right-4 shadow bottom-11 important-p-1 important-rounded-full bg-gray-200 text-primary important-text-xl"
+                :icon="project.content.category.content.icon"
+              />
+              <h2 v-if="project.content.title" font="bold display" text="base lg" p-4 m-0>
+                {{ project.content.title }}
+              </h2>
+            </header>
+          </template>
           <template #content>
             <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px mb-8>{{ project.content.excerpt }}</p>
             <footer px-4 py-2 md:flex md:justify-end>

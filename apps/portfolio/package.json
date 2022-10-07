@@ -15,7 +15,7 @@
     "test:e2e:ci": "cypress run"
   },
   "devDependencies": {
-    "@alvarosabu/ui": "workspace:^2.14.1",
+    "@alvarosabu/ui": "workspace:^2.15.0",
     "@alvarosabu/utils": "workspace:^2.2.0",
     "@cypress/vite-dev-server": "^2.2.3",
     "@cypress/vue": "^3.1.2",
@@ -34,6 +34,7 @@
     "cypress-axe": "^0.14.0",
     "cypress-localstorage-commands": "^1.7.0",
     "date-fns": "^2.28.0",
+    "floating-vue": "2.0.0-beta.20",
     "histoire": "^0.8.0",
     "lite-youtube-embed": "^0.2.0",
     "nuxt": "3.0.0-rc.11",
