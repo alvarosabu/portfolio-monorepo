@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.15.0
+
+### Minor Changes
+
+- a3e2171e: Basic Badge Component
+
 ## 2.14.1
 
 ### Patch Changes
