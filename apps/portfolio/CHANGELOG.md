@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.3.1
+
+### Patch Changes
+
+- 9a07734d: Added histoire nuxt to portfolio
+
 ## 2.3.0
 
 ### Minor Changes

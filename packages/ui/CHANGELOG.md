@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.16.1
+
+### Patch Changes
+
+- 9a07734d: Added histoire nuxt to portfolio
+
 ## 2.16.0
 
 ### Minor Changes
