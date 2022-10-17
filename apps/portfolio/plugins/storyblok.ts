@@ -6,6 +6,8 @@ import TheImage from '@/storyblok/the-image/TheImage.vue'
 import StackBlitzEmbed from '@/storyblok/stack-blitz-embed/StackBlitzEmbed.vue'
 import CodepenEmbed from '@/storyblok/codepen-embed/CodepenEmbed.vue'
 import SketchfabEmbed from '@/storyblok/sketchfab-embed/SketchfabEmbed.vue'
+import GithubEmbed from '@/storyblok/github-embed/GithubEmbed.vue'
+
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(
     plugin({
@@ -19,6 +21,7 @@ export default defineNuxtPlugin(nuxtApp => {
           'stackblitz-embed': ({ fields }) => h(StackBlitzEmbed, { blok: { ...fields } }),
           'codepen-embed': ({ fields }) => h(CodepenEmbed, { blok: { ...fields } }),
           'sketchfab-embed': ({ fields }) => h(SketchfabEmbed, { blok: { ...fields } }),
+          'github-embed': ({ fields }) => h(GithubEmbed, { blok: { ...fields } }),
         },
       },
     }),
