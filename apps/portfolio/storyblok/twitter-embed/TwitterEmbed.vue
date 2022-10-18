@@ -10,7 +10,6 @@ const props = defineProps({
 
 const tweet = computed(() => {
   return sanitizeHtml(props.blok.embed, {
-    /*   allowedTags: ['script'], */
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'script']),
     allowVulnerableTags: true,
     allowedAttributes: {
@@ -24,5 +23,5 @@ const tweet = computed(() => {
 })
 </script>
 <template>
-  <div v-html="tweet" />
+  <div class="flex justify-center" v-html="tweet" />
 </template>
