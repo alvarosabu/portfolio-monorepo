@@ -20,9 +20,14 @@ enum githubEmbedType {
 }
 
 interface GithubContent {
-  owner: string
+  owner: {
+    login: string
+    avatar_url: string
+    url: string
+  }
   repo: string
   id: string
+  full_name: string
   title: string
   body: string
   url: string
@@ -30,6 +35,18 @@ interface GithubContent {
   updated_at: string
   number: number
   state: string
+  description: string
+  stargazers_count: number
+  forks_count: number
+  language: string
+  files: {
+    filename: string
+    raw_url: string
+    type: string
+    language: string
+    size: number
+    content: string
+  }[]
   user: {
     login: string
     avatar_url: string
@@ -53,6 +70,13 @@ const url = computed(() => {
 
     return `${BASE_URL}repos/${url.split('github.com/')[1]}`.replace('pull', 'pulls')
   }
+  if (url.includes(githubEmbedType.GIST)) {
+    embedType.value = githubEmbedType.GIST
+    return `${BASE_URL}gists/${url.replace('https://gist.github.com/', '').split('/')[1]}`
+  } else {
+    embedType.value = githubEmbedType.REPO
+    return `${BASE_URL}repos/${url.split('github.com/')[1]}`
+  }
 })
 const { data: content, pending, error } = await useFetch<GithubContent>(url.value)
 
@@ -65,6 +89,21 @@ const contentBody = computed(() => {
 const formattedDate = computed(() => {
   if (embedType.value === githubEmbedType.ISSUE || embedType.value === githubEmbedType.PULL) {
     return format(new Date(content.value.created_at), 'MMMM dd, yyyy')
+  }
+})
+
+const gistFiles = computed(() => {
+  if (embedType.value === githubEmbedType.GIST) {
+    return Object.values(content.value.files)
+  }
+})
+
+const repoOrganization = computed(() => {
+  if (embedType.value === githubEmbedType.REPO) {
+    return {
+      name: content.value.full_name,
+      avatarUrl: content.value.owner.avatar_url,
+    }
   }
 })
 </script>
@@ -80,7 +119,7 @@ const formattedDate = computed(() => {
     </div>
     <template v-if="content">
       <div v-if="embedType === githubEmbedType.ISSUE" class="px-4 pb-8">
-        <h3 class="pb-4 border-b">
+        <h3 class="pb-4 border-b mt-2">
           <AsIcon name="github" /> {{ content.title }} <AsBadge :label="`# ${content.number}`" />
         </h3>
         <div class="py-4 flex">
@@ -98,7 +137,7 @@ const formattedDate = computed(() => {
         </footer>
       </div>
       <div v-else-if="embedType === githubEmbedType.PULL" class="px-4 pb-8">
-        <h3 class="pb-4 border-b">
+        <h3 class="pb-4 border-b mt-2">
           <AsIcon name="pull-request" /> {{ content.title }} <AsBadge :label="`# ${content.number}`" />
           <AsBadge class="border important-border-gray-600 text-gray-600 bg-transparent" :label="content.state" />
         </h3>
@@ -116,6 +155,48 @@ const formattedDate = computed(() => {
           <AsButton :link="blok.url.url" variant="secondary" label="View on github" class="text-light" />
         </footer>
       </div>
+
+      <div v-else-if="embedType === githubEmbedType.GIST && gistFiles.length > 0" class="px-4 pb-8">
+        <h3 class="flex items-center pb-4 border-b mt-2">
+          <AsImg :src="content.owner.avatar_url" class="w-10 h-10 rounded-full mr-4" /> {{ content.description }}
+          <AsBadge :label="`${gistFiles[0].language}`" />
+        </h3>
+        <div class="border-gray-200 border-1 rounded w-full">
+          <header class="p-2 border-b bg-white">
+            {{ gistFiles[0].filename }}
+          </header>
+          <div class="bg-white prose max-h-400px overflow-scroll">
+            <AsCodeBlock
+              class="gist-code-block"
+              :code="gistFiles[0].content"
+              :language="gistFiles[0].language.toLowerCase()"
+            />
+          </div>
+        </div>
+        <footer class="w-full mt-2 p-2 flex justify-center">
+          <AsButton :link="blok.url.url" variant="secondary" label="View on github" class="text-light" />
+        </footer>
+      </div>
+      <div v-else>
+        <GithubCard
+          class="w-full"
+          :name="content.full_name"
+          :organization="repoOrganization"
+          :description="content.description"
+          :stars="content.stargazers_count"
+          :forks="content.forks_count"
+          :url="blok.url.url"
+          :language="content.language"
+        ></GithubCard>
+      </div>
     </template>
   </div>
 </template>
+
+<style lang="scss">
+.gist-code-block {
+  pre.shiki {
+    @apply rounded-t-none rounded-b-lg;
+  }
+}
+</style>
