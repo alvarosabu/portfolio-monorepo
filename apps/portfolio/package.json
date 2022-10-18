@@ -30,6 +30,7 @@
     "@storyblok/nuxt": "^4.3.0",
     "@storyblok/vue": "^6.3.1",
     "@types/prismjs": "^1.26.0",
+    "@types/sanitize-html": "^2.6.2",
     "@unocss/nuxt": "^0.45.21",
     "@unocss/preset-typography": "^0.45.21",
     "@unocss/preset-web-fonts": "0.45.21",
@@ -44,6 +45,7 @@
     "lite-youtube-embed": "^0.2.0",
     "nuxt": "3.0.0-rc.11",
     "prismjs": "^1.28.0",
+    "sanitize-html": "^2.7.2",
     "swiper": "^8.1.4",
     "velocity-animate": "^1.5.2",
     "vite-svg-loader": "^3.3.0"

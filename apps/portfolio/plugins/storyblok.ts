@@ -7,6 +7,7 @@ import StackBlitzEmbed from '@/storyblok/stack-blitz-embed/StackBlitzEmbed.vue'
 import CodepenEmbed from '@/storyblok/codepen-embed/CodepenEmbed.vue'
 import SketchfabEmbed from '@/storyblok/sketchfab-embed/SketchfabEmbed.vue'
 import GithubEmbed from '@/storyblok/github-embed/GithubEmbed.vue'
+import TwitterEmbed from '@/storyblok/twitter-embed/TwitterEmbed.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
   nuxtApp.vueApp.use(
@@ -22,6 +23,7 @@ export default defineNuxtPlugin(nuxtApp => {
           'codepen-embed': ({ fields }) => h(CodepenEmbed, { blok: { ...fields } }),
           'sketchfab-embed': ({ fields }) => h(SketchfabEmbed, { blok: { ...fields } }),
           'github-embed': ({ fields }) => h(GithubEmbed, { blok: { ...fields } }),
+          'twitter-embed': ({ fields }) => h(TwitterEmbed, { blok: { ...fields } }),
         },
       },
     }),
