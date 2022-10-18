@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.17.0
+
+### Minor Changes
+
+- e111f12a: Github Embed Blok
+
 ## 2.16.1
 
 ### Patch Changes
