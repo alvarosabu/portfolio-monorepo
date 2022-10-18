@@ -19,6 +19,24 @@ enum githubEmbedType {
   PULL = 'pull',
 }
 
+interface GithubContent {
+  owner: string
+  repo: string
+  id: string
+  title: string
+  body: string
+  url: string
+  created_at: string
+  updated_at: string
+  number: number
+  state: string
+  user: {
+    login: string
+    avatar_url: string
+    url: string
+  }
+}
+
 const BASE_URL = 'https://api.github.com/'
 const embedType: Ref<GithubEmbedType> = ref(githubEmbedType.REPO)
 const md = new MarkdownIt()
@@ -36,7 +54,7 @@ const url = computed(() => {
     return `${BASE_URL}repos/${url.split('github.com/')[1]}`.replace('pull', 'pulls')
   }
 })
-const { data: content, pending, error } = await useFetch(url.value)
+const { data: content, pending, error } = await useFetch<GithubContent>(url.value)
 
 const contentBody = computed(() => {
   if (embedType.value === githubEmbedType.ISSUE || embedType.value === githubEmbedType.PULL) {
@@ -72,7 +90,7 @@ const formattedDate = computed(() => {
               Posted by <a :href="content.user.url" :alt="content.user.login">{{ content.user.login }}</a> on
               {{ formattedDate }}
             </header>
-            <div class="bg-white prose p-2 max-h-400px overflow-scroll" v-html="contentBody"></div>
+            <div class="bg-white prose p-2 max-h-400px overflow-scroll" v-html="contentBody" />
           </div>
         </div>
         <footer class="w-full p-2 flex justify-center">
@@ -91,7 +109,7 @@ const formattedDate = computed(() => {
               Posted by <a :href="content.user.url" :alt="content.user.login">{{ content.user.login }}</a> on
               {{ formattedDate }}
             </header>
-            <div class="bg-white prose p-2 max-h-400px overflow-scroll" v-html="contentBody"></div>
+            <div class="bg-white prose p-2 max-h-400px overflow-scroll" v-html="contentBody" />
           </div>
         </div>
         <footer class="w-full p-2 flex justify-center">
