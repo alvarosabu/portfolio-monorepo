@@ -26,6 +26,7 @@ export const asTechIcons = new Map([
   ['lamp', 'teenyicons-desklamp-outline'],
   ['3d', 'carbon:chart-3d'],
   ['art', 'heroicons:paint-brush'],
+  ['pull-request', 'tabler:git-pull-request'],
 ])
 
 export const miscIcons = new Map([
