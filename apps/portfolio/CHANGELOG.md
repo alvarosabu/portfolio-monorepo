@@ -1,5 +1,12 @@
 # @alvarosabu/portfolio
 
+## 2.4.0
+
+### Minor Changes
+
+- 6c2571d5: Twitter embedded blok
+- e111f12a: Github Embed Blok
+
 ## 2.3.1
 
 ### Patch Changes
