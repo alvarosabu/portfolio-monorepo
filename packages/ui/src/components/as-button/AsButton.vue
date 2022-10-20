@@ -9,7 +9,7 @@ const props = defineProps({
   disabled: Boolean,
   outline: Boolean,
   transparent: Boolean,
-  flat: Boolean,
+  flat: Boolean || String,
   link: String,
   label: {
     type: String,

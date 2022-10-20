@@ -22,6 +22,7 @@
     "@alvarosabu/utils": "workspace:^2.2.0",
     "@cypress/vite-dev-server": "^2.2.3",
     "@cypress/vue": "^3.1.2",
+    "@formkit/vue": "1.0.0-beta.11",
     "@histoire/plugin-nuxt": "^0.11.3",
     "@histoire/plugin-vue": "^0.11.3",
     "@marvr/storyblok-rich-text-types": "^3.2.1",
