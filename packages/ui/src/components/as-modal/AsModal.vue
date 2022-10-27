@@ -21,7 +21,7 @@ function onClose() {
 }
 </script>
 <template>
-  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="relative z-70" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!--
     Background backdrop, show/hide based on modal state.
 
@@ -44,7 +44,7 @@ function onClose() {
       enter-active-class="opacity-1 translate-y-0 sm:scale-100 delay-200 transition-all duration-300"
       leave-active-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 transition-all duration-200"
     >
-      <div v-show="isOpen" class="fixed inset-0 z-10 overflow-y-auto">
+      <div v-show="isOpen" class="fixed inset-0 z-70 overflow-y-auto">
         <div class="flex min-h-full items-start justify-center p-4 text-center sm:items-center sm:p-0">
           <!--
         Modal panel, show/hide based on modal state.
@@ -68,17 +68,17 @@ function onClose() {
             shadow-xl
             transition-all
             sm:my-8
-            sm:w-full
-            sm:max-w-lg
+            w-full
+            sm:max-w-3xl
           >
             <div bg-white dark:bg-primary-600 text-primary dark:text-gray-400>
               <header relative px-4 pt-4 pb-4 sm:p-6 sm:pb-4>
                 <slot name="header">
-                  <h2 id="modal-title" class="headline-1">
+                  <h2 id="modal-title" class="headline-3 sm:headline-2">
                     {{ title }}
                   </h2>
                 </slot>
-                <AsButton transparent p-4 absolute top-4 right-4 icon="close" @click="onClose" />
+                <AsButton transparent p-4 absolute top="2 sm:4" right="2 sm:4" icon="close" @click="onClose" />
               </header>
               <div p-4 sm:p-6>
                 <slot name="content">
@@ -86,7 +86,7 @@ function onClose() {
                 </slot>
               </div>
             </div>
-            <footer class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <footer class="px-4 py-3 flex justify-end">
               <slot name="footer"></slot>
             </footer>
           </div>

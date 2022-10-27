@@ -6,7 +6,7 @@ import AsButton from '../as-button/AsButton.vue'
 import AsModal from './AsModal.vue'
 
 const state = reactive({
-  isOpen: true,
+  isOpen: false,
   title: 'Modal Title',
   content: `It's commonly known that creative careers like Front-end development 
    or Design can't really show all their work they do with clients, 
@@ -43,6 +43,7 @@ function onClose(value: boolean) {
             <p class="text-gray-700 dark:text-gray-50">Awiwi</p>
           </template>
           <template #footer>
+            <AsButton :variant="'secondary'" class="mr-4" outline @click="state.isOpen = false"> Cancel </AsButton>
             <AsButton :variant="'secondary'" @click="state.isOpen = false"> Accept </AsButton>
           </template>
         </AsModal>
