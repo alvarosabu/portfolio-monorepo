@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.18.0
+
+### Minor Changes
+
+- d3f04487: Contact form modal
+
 ## 2.17.0
 
 ### Minor Changes
