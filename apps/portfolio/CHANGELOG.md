@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.5.0
+
+### Minor Changes
+
+- d3f04487: Contact form modal
+
 ## 2.4.0
 
 ### Minor Changes
