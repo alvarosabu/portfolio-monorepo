@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.5.1
+
+### Patch Changes
+
+- 350649c9: Form fixes
+
 ## 2.5.0
 
 ### Minor Changes
