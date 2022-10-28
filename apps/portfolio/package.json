@@ -35,6 +35,7 @@
     "@unocss/nuxt": "^0.45.21",
     "@unocss/preset-typography": "^0.45.21",
     "@unocss/preset-web-fonts": "0.45.21",
+    "@vueuse/core": "^9.3.0",
     "axe-core": "^4.4.2",
     "axios": "^0.27.2",
     "cypress": "10.2.0",

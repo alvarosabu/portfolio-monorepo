@@ -1,0 +1,64 @@
+.formkit-form {
+  display: flex;
+  flex-direction: column;
+
+  .formkit-label {
+    display: flex;
+    margin-bottom: 0.5rem;
+    font-family: 'Gilroy';
+    font-weight: 600;
+  }
+
+  .formkit-input:not(button) {
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .formkit-messages {
+    margin-bottom: 1rem;
+  }
+
+  [data-invalid] .formkit-input:not(button) {
+    border-color: #f87171;
+    background: #fecaca;
+  }
+
+  [data-invalid] .formkit-messages,
+  #contact-form-incomplete {
+    color: #f87171;
+  }
+}
+
+// TODO: understand why @apply doest work for the form on the SSG deploy
+/* .formkit-form {
+    @apply flex flex-col;
+  
+    label {
+      @apply flex mb-2  font-display font-semibold;
+    }
+  
+    input {
+      @apply w-full border-2 border-gray-200 bg-gray-200 rounded-md py-2 px-4 mb-4;
+    }
+    textarea {
+      @apply w-full border-2 border-gray-200 bg-gray-200 rounded-md py-2 px-4 mb-4;
+    }
+  
+    [data-invalid] {
+      input,
+      textarea {
+        @apply bg-red-100 border-red-400;
+      }
+  
+      .formkit-messages {
+        @apply text-red-400;
+      }
+    }
+  }
+  
+  .formkit-messages {
+    @apply mb-4;
+  } */
