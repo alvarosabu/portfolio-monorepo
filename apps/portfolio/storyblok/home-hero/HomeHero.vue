@@ -14,12 +14,19 @@ const state = reactive({
   isOpen: false,
 })
 
+const isFormSubmitted = ref(false)
+
 const title = computed(() => {
   return props.blok.title.content[0].content[0].text
 })
 
 function submitHandler() {
-  console.log('submit')
+  isFormSubmitted.value = true
+  state.isOpen = false
+
+  setTimeout(() => {
+    isFormSubmitted.value = false
+  }, 2000)
 }
 
 function onClose(value: boolean) {
@@ -92,6 +99,16 @@ function onClose(value: boolean) {
         </template>
       </AsModal>
     </teleport>
+    <teleport to="body">
+      <AsModal :is-open="isFormSubmitted">
+        <template #content>
+          <div class="w-full sm:w-3/4 sm:mx-auto text-center">
+            <p class="text-4xl mb-8">😊</p>
+            <div class="text-2xl"><RichTextRenderer v-if="blok" :document="blok.modalSubmitMessage.content" /></div>
+          </div>
+        </template>
+      </AsModal>
+    </teleport>
   </div>
 </template>
 
@@ -109,35 +126,5 @@ function onClose(value: boolean) {
   width: 460px !important;
   height: 460px !important;
   transform: scale(0.75);
-}
-
-.formkit-form {
-  @apply flex flex-col;
-
-  label {
-    @apply flex mb-2  font-display font-semibold;
-  }
-
-  input {
-    @apply w-full border-2 border-gray-200 bg-gray-200 rounded-md py-2 px-4 mb-4;
-  }
-  textarea {
-    @apply w-full border-2 border-gray-200 bg-gray-200 rounded-md py-2 px-4 mb-4;
-  }
-
-  [data-invalid] {
-    input,
-    textarea {
-      @apply bg-red-100 border-red-400;
-    }
-
-    .formkit-messages {
-      @apply text-red-400;
-    }
-  }
-}
-
-.formkit-messages {
-  @apply mb-4;
 }
 </style>
