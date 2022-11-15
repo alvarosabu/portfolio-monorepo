@@ -87,6 +87,8 @@ function onClose(value: boolean) {
               }"
               @submit="submitHandler"
             >
+              <FormKit type="hidden" name="form-name" value="contact-form" />
+
               <FormKit type="text" name="name" label="Your name" />
               <FormKit type="email" name="email" label="Email" validation="required" placeholder="hola@awiwi.dev" />
               <FormKit
