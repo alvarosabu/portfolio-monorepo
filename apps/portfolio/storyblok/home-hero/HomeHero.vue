@@ -10,9 +10,18 @@ const props = defineProps({
   },
 })
 
+const encode = data =>
+  Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&')
+
 const state = reactive({
   isOpen: false,
 })
+
+const netlifyHeaders = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+}
 
 const isFormSubmitted = ref(false)
 
@@ -20,9 +29,18 @@ const title = computed(() => {
   return props.blok.title.content[0].content[0].text
 })
 
-function submitHandler() {
+async function submitHandler(data) {
   isFormSubmitted.value = true
   state.isOpen = false
+
+  await useFetch('/', {
+    method: 'POST',
+    headers: netlifyHeaders,
+    body: encode({
+      'form-name': 'contact-form',
+      ...data,
+    }),
+  })
 
   setTimeout(() => {
     isFormSubmitted.value = false
