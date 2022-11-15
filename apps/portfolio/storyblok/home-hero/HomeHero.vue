@@ -73,8 +73,11 @@ function onClose(value: boolean) {
             <RichTextRenderer v-if="blok" :document="blok.modalText.content" />
             <FormKit
               id="contact-form"
+              name="contact-form"
               mt-8
+              method="POST"
               netlify
+              data-netlify="true"
               type="form"
               :config="{ validationVisibility: 'submit' }"
               :submit-label="blok.modalSubmitLabel"
