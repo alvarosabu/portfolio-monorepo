@@ -1,5 +1,12 @@
 # @alvarosabu/portfolio
 
+## 2.5.2
+
+### Patch Changes
+
+- a53f5f25: Fixed netlify form
+- a5163f96: Forms Finally working
+
 ## 2.5.1
 
 ### Patch Changes
