@@ -19,6 +19,8 @@ const state = reactive({
   isOpen: false,
 })
 
+const { isMobile } = useBreakpoints()
+
 const netlifyHeaders = {
   'Content-Type': 'application/x-www-form-urlencoded',
 }
@@ -103,7 +105,7 @@ function onClose(value: boolean) {
               :submit-label="blok.modalSubmitLabel"
               :submit-attrs="{
                 inputClass:
-                  'as-btn btn-secondary py-2 px-4 font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
+                  'as-btn btn-secondary w-full sm:w-auto py-2 px-4 mx-auto font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
               }"
               @submit="submitHandler"
             >
@@ -114,7 +116,7 @@ function onClose(value: boolean) {
               <FormKit
                 type="textarea"
                 name="subject"
-                rows="10"
+                :rows="isMobile ? 4 : 10"
                 label="Subject"
                 validation="required"
                 placeholder="You are a sunshine and I love you"
