@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   },
   modules: [
     'nuxt-plausible',
+    '@nuxt/image-edge',
     '@unocss/nuxt',
     [
       '@storyblok/nuxt',
@@ -39,5 +40,10 @@ export default defineNuxtConfig({
   },
   plausible: {
     domain: 'https://alvarosaburido.dev',
+  },
+  image: {
+    storyblok: {
+      baseURL: 'https://a.storyblok.com',
+    },
   },
 })

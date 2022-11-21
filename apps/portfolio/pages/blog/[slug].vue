@@ -100,7 +100,7 @@ useHead({
   <main role="main" pt-4 md:pt-12>
     <div mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="article-hero">
-        <AsImg
+        <NuxtImg
           v-if="story.content.media"
           data-cy="article-thumbnail"
           important-my-0
@@ -113,6 +113,9 @@ useHead({
           :src="story.content.media?.filename"
           :alt="story.content.media?.alt"
           aspect-ratio="16/9"
+          provider="storyblok"
+          format="webp"
+          sizes="sm:100vw md:75vw lg:600px xl:1200px"
         />
         <div
           v-else

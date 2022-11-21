@@ -1,12 +1,11 @@
-<script setup lang="ts">
-import { AsImg } from '@alvarosabu/ui'
-
-import { useAttrs } from 'vue'
-
-const attrs = useAttrs()
-
-const root = () => h(AsImg, { class: 'important-my-16 important-mx-auto ', ...attrs, objectFit: 'fill' })
-</script>
+<script setup lang="ts"></script>
 <template>
-  <root />
+  <NuxtImg
+    class="important-my-16 important-mx-auto"
+    v-bind="$attrs"
+    provider="storyblok"
+    format="webp"
+    object-fit="fill"
+    sizes="sm:100vw md:655px"
+  />
 </template>
