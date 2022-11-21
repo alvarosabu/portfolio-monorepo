@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     transpile: ['@marvr/storyblok-rich-text-vue-renderer'],
   },
   modules: [
+    'nuxt-plausible',
     '@unocss/nuxt',
     [
       '@storyblok/nuxt',
@@ -35,5 +36,8 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [SvgLoader()],
+  },
+  plausible: {
+    domain: 'https://alvarosaburido.dev',
   },
 })
