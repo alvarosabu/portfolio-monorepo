@@ -7,7 +7,7 @@ await fetchStories()
   <div>
     <TheHeader />
 
-    <div class="page mt-16">
+    <div class="page">
       <slot />
     </div>
   </div>

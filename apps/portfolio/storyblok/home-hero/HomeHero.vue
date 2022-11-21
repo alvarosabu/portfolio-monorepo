@@ -74,7 +74,7 @@ function onClose(value: boolean) {
     >
       <h1 mb-8 data-cy="home-hero-title" v-html="title"></h1>
       <RichTextRenderer v-if="blok" :document="blok.content" />
-      <SocialLinks mb-8 :items="blok.socialLinks" />
+      <SocialLinks mb-8 :items="blok.socialLinks" important-hidden md:important-flex />
       <footer class="flex justify-end">
         <AsButton outline variant="secondary" @click="state.isOpen = true">{{ blok.contactBtnLabel }}</AsButton>
       </footer>
