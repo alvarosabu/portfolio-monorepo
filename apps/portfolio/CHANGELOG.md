@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.6.1
+
+### Patch Changes
+
+- 3b0b46ea: Minor bugfixes spacings, ctas and snapping
+
 ## 2.6.0
 
 ### Minor Changes
