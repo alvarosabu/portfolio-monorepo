@@ -97,8 +97,10 @@ function onSlideChange(swiper) {
       </template>
     </suspense>
 
-    <footer class="flex w-full" :class="isMobile ? 'container mx-auto justify-center' : 'justify-end'">
+    <footer class="flex w-full justify-end">
       <AsButton
+        w="full sm:auto"
+        class="text-center"
         :label="blok.youtubeLabel"
         variant="secondary"
         data-cy="button-youtube"

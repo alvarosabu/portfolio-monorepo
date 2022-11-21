@@ -21,8 +21,17 @@ const { isMobile } = useBreakpoints()
 const { storiesForNav } = await useStories()
 </script>
 <template>
-  <footer bg="gray-100 dark:primary-600" text="gray-100" p="8 sm:y-8" min-h-90px relative snap-start>
-    <Logo m="x-auto b-16" @click="showVersion = !showVersion" />
+  <footer
+    bg="gray-100 dark:primary-600"
+    text="gray-100"
+    p="8 sm:y-8"
+    height-vh
+    sm:min-h-90px
+    sm:height-auto
+    relative
+    snap-start
+  >
+    <Logo m="x-auto b-4 sm:b-16" @click="showVersion = !showVersion" />
 
     <div container mx-auto m="b-4" class="flex flex-col sm:(flex-row justify-between)">
       <div class="mb-8 sm:(w-1/2 mb-0)">
@@ -35,8 +44,15 @@ const { storiesForNav } = await useStories()
       </div>
       <div class="flex flex-col items-center sm:(w-1/3 items-end)">
         <SocialLinks mb-14 :items="blok.socialLinks" />
-        <div absolute left-0 bottom-0 px-4 w-full flex justify-end align-center>
-          <div flex justify-between items-center class="prose text-gray-600 dark:text-gray-50 sm:justify-end w-full">
+        <div sm:absolute left-0 bottom-0 px-4 w-full flex justify-end align-center>
+          <div
+            flex
+            flex-col
+            sm:flex-row
+            justify-between
+            items-center
+            class="prose text-gray-600 dark:text-gray-50 sm:justify-end w-full"
+          >
             <RichTextRenderer v-if="blok && !isMobile" :document="blok.text" />
 
             <div flex items-center>

@@ -19,6 +19,8 @@ const state = reactive({
   isOpen: false,
 })
 
+const { isMobile } = useBreakpoints()
+
 const netlifyHeaders = {
   'Content-Type': 'application/x-www-form-urlencoded',
 }
@@ -74,9 +76,11 @@ function onClose(value: boolean) {
     >
       <h1 mb-8 data-cy="home-hero-title" v-html="title"></h1>
       <RichTextRenderer v-if="blok" :document="blok.content" />
-      <SocialLinks mb-8 :items="blok.socialLinks" />
+      <SocialLinks mb-8 :items="blok.socialLinks" important-hidden md:important-flex />
       <footer class="flex justify-end">
-        <AsButton outline variant="secondary" @click="state.isOpen = true">{{ blok.contactBtnLabel }}</AsButton>
+        <AsButton w="full sm:auto" outline variant="secondary" @click="state.isOpen = true">{{
+          blok.contactBtnLabel
+        }}</AsButton>
       </footer>
     </div>
     <teleport to="body">
@@ -101,7 +105,8 @@ function onClose(value: boolean) {
               :submit-label="blok.modalSubmitLabel"
               :submit-attrs="{
                 inputClass:
-                  'as-btn btn-secondary py-2 px-4 font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
+                  'as-btn btn-secondary w-full sm:w-auto py-2 px-4 font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
+                wrapperClass: 'flex justify-end',
               }"
               @submit="submitHandler"
             >
@@ -112,7 +117,7 @@ function onClose(value: boolean) {
               <FormKit
                 type="textarea"
                 name="subject"
-                rows="10"
+                :rows="isMobile ? 4 : 10"
                 label="Subject"
                 validation="required"
                 placeholder="You are a sunshine and I love you"

@@ -25,7 +25,7 @@ await fetchArticles()
           <template #footer>
             <footer md:flex md:justify-end>
               <NuxtLink :to="`/${featuredArticle.full_slug}`">
-                <AsButton variant="secondary" class="w-full">
+                <AsButton variant="secondary" outline class="w-full">
                   {{ story.content.read_more_cta_label }}
                 </AsButton>
               </NuxtLink>
@@ -33,7 +33,7 @@ await fetchArticles()
           </template>
         </FeaturedHero>
       </header>
-      <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-24 py-32 data-cy="blog-list">
+      <div grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full gap-24 py-32 data-cy="blog-list">
         <AsCard
           v-for="article of articleList"
           :key="article.content?.title"
@@ -44,7 +44,7 @@ await fetchArticles()
         >
           <template #content>
             <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px md:mb-8>{{ article.content?.excerpt }}</p>
-            <footer px-4 pb-4 md:py-2 md:flex md:justify-end>
+            <footer px-4 p-4 md:py-2 md:flex md:justify-end>
               <NuxtLink :to="`/${article.full_slug}`">
                 <AsButton variant="secondary" size="md" class="w-full">
                   {{ story.content?.read_more_cta_label }}
