@@ -27,7 +27,7 @@ await fetchProjects()
           <template #footer>
             <footer md:flex md:justify-end>
               <NuxtLink :to="`/${featuredProject.full_slug}`">
-                <AsButton variant="secondary" class="w-full">
+                <AsButton variant="secondary" outline class="w-full">
                   {{ story.content.read_more_cta_label }}
                 </AsButton>
               </NuxtLink>
@@ -35,7 +35,7 @@ await fetchProjects()
           </template>
         </FeaturedHero>
       </header>
-      <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-24 py-32 data-cy="project-list">
+      <div grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full gap-24 py-32 data-cy="project-list">
         <AsCard
           v-for="project of projectList"
           :key="project.content.title"
@@ -49,7 +49,10 @@ await fetchProjects()
               <AsBadge
                 v-tooltip="{ content: project.content.category.content.name }"
                 absolute
-                class="right-4 shadow bottom-11 important-p-1 important-rounded-full bg-gray-200 text-primary important-text-xl"
+                right-4
+                shadow
+                bottom-11
+                class="important-p-1 important-rounded-full bg-gray-200 text-primary important-text-xl"
                 :icon="project.content.category.content.icon"
               />
               <h2 v-if="project.content.title" font="bold display" text="base lg" p-4 m-0>
