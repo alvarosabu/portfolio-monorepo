@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.6.0
+
+### Minor Changes
+
+- 136f5814: Plausible Analyticis
+
 ## 2.5.2
 
 ### Patch Changes
