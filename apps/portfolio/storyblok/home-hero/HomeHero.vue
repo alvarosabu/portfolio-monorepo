@@ -105,7 +105,8 @@ function onClose(value: boolean) {
               :submit-label="blok.modalSubmitLabel"
               :submit-attrs="{
                 inputClass:
-                  'as-btn btn-secondary w-full sm:w-auto py-2 px-4 mx-auto font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
+                  'as-btn btn-secondary w-full sm:w-auto py-2 px-4 font-semibold transition-all duration-300 disabled:opacity-20 cursor-pointer decoration-none',
+                wrapperClass: 'flex justify-end',
               }"
               @submit="submitHandler"
             >
