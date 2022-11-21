@@ -115,6 +115,7 @@ useHead({
           aspect-ratio="16/9"
           provider="storyblok"
           format="webp"
+          sizes="sm:100vw md:75vw lg:600px xl:1200px"
         />
         <div
           v-else
