@@ -46,6 +46,7 @@
     "histoire": "^0.11.3",
     "lite-youtube-embed": "^0.2.0",
     "nuxt": "3.0.0",
+    "nuxt-plausible": "^0.1.2",
     "prismjs": "^1.28.0",
     "sanitize-html": "^2.7.2",
     "swiper": "^8.1.4",
