@@ -1,5 +1,11 @@
 # @alvarosabu/ui
 
+## 2.18.1
+
+### Patch Changes
+
+- 2c3b1815: NuxtImg improvement
+
 ## 2.18.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.7.0
+
+### Minor Changes
+
+- 2c3b1815: NuxtImg improvement
+
 ## 2.6.1
 
 ### Patch Changes
