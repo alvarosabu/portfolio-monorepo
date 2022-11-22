@@ -15,7 +15,11 @@ export default defineNuxtPlugin(nuxtApp => {
       resolvers: {
         ...defaultResolvers,
         [NodeTypes.CODE_BLOCK]: ({ children, attrs }) =>
-          h(AsCodeBlock, { code: children[0].children, language: attrs?.class?.split('-').pop() || '' }, children),
+          h(
+            AsCodeBlock,
+            { code: children[0].children, language: attrs?.class?.split('-').pop() || '' },
+            () => children,
+          ),
         [NodeTypes.IMAGE]: TheImage,
         components: {
           'text-image': ({ fields }) => h(TextImage, { blok: { ...fields } }),

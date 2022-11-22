@@ -24,8 +24,6 @@ export const ASTypographyOptions: TypographyOptions = {
     },
     blockquote: {
       padding: '1rem',
-      'border-left': `8px solid ${ASTheme?.colors?.primary[500]} !important`,
-      background: '#e8e8e8',
     },
     'code::after': {
       content: 'none',

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
+
 useHead({ title: 'Blog - AS Portfolio' })
 
 const { getStory } = useStories()
