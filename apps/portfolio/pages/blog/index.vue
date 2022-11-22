@@ -37,11 +37,27 @@ await fetchArticles()
         <AsCard
           v-for="article of articleList"
           :key="article.content?.title"
-          :title="article.content?.title"
-          :media="article.content?.media?.filename"
-          :media-alt="article.content?.media?.alt"
           data-cy="article"
+          :media="article.content?.media.filename"
+          :media-alt="article.content?.media.alt"
         >
+          <template #header>
+            <header relative>
+              <NuxtImg
+                v-if="article.content?.media.filename"
+                :src="article.content.media.filename"
+                :alt="article.content.media.alt"
+                aspect-video
+                provider="storyblok"
+                format="webp"
+                sizes="sm:100vw md:75vw lg:50vw xl:25vw"
+              />
+              <h2 v-if="article.content.title" font="bold display" text="base lg" p-4 m-0>
+                {{ article.content.title }}
+              </h2>
+            </header>
+          </template>
+
           <template #content>
             <p p-4 text-sm line-clamp-4 text-ellipsis max-h-96px md:mb-8>{{ article.content?.excerpt }}</p>
             <footer px-4 p-4 md:py-2 md:flex md:justify-end>

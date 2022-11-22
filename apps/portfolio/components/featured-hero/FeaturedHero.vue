@@ -8,12 +8,21 @@ defineProps({
   description: String,
   media: {
     type: Object as PropType<StoryAsset>,
+    required: true,
   },
 })
 </script>
 <template>
   <div grid grid-cols-1 md:grid-cols-2 w-full gap-16 data-cy="featured-hero">
-    <AsImg important-my-0 rounded-lg :src="media.filename" :alt="media.alt" />
+    <NuxtImg
+      important-my-0
+      rounded-lg
+      :src="media.filename"
+      :alt="media.alt"
+      provider="storyblok"
+      format="webp"
+      sizes="sm:100vw md:50vw"
+    />
     <div flex flex-col justify-between>
       <slot>
         <div mb-8 sm:mb-16>
