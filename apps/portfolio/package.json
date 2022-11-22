@@ -27,6 +27,7 @@
     "@histoire/plugin-vue": "^0.11.3",
     "@marvr/storyblok-rich-text-types": "^3.2.1",
     "@marvr/storyblok-rich-text-vue-renderer": "3.2.1",
+    "@nuxt/image-edge": "1.0.0-27809804.194d2d6",
     "@stackblitz/sdk": "^1.8.0",
     "@storyblok/nuxt": "^4.5.0",
     "@storyblok/vue": "^6.3.1",

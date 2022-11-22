@@ -14,6 +14,6 @@ body {
   @apply md:(relative -ml-25% w-150%);
 }
 
-.prose blockquote {
-  @apply border-l-4 border-primary-500 pl-4 bg-gray-200 dark:(bg-primary-500 text-gray-50);
+:is([prose=''], .prose) :where(blockquote):not(:where(.not-prose, .not-prose *)) {
+  @apply important-border-l-8 important-border-primary-500 dark:important-border-primary-600 important-pl-8 bg-gray-200 dark:bg-primary-700 dark:text-gray-50);
 }

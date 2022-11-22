@@ -45,7 +45,15 @@ await fetchProjects()
         >
           <template #header>
             <header relative>
-              <AsImg :src="project.content.media.filename" :alt="project.content.media.alt" aspect-video />
+              <NuxtImg
+                v-if="project.content?.media.filename"
+                :src="project.content.media.filename"
+                :alt="project.content.media.alt"
+                aspect-video
+                provider="storyblok"
+                format="webp"
+                sizes="sm:100vw md:75vw lg:50vw xl:25vw"
+              />
               <AsBadge
                 v-tooltip="{ content: project.content.category.content.name }"
                 absolute
