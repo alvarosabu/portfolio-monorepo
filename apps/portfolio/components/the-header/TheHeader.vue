@@ -52,7 +52,7 @@ watch(route, () => {
             text="md dark:gray-50"
             cursor-pointer
             :icon="showMenu ? 'close' : 'menu'"
-            flat="true"
+            :flat="true"
             :aria-label="showMenu ? 'Close menu' : 'Open menu'"
             @click="toggleMenu"
           />
