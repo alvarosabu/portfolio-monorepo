@@ -23,4 +23,5 @@ onMounted(() => {
     <TheShevas v-if="!isMobile" class="absolute top-16 right-10 lg:right-100" />
     <StoryblokComponent v-if="story" :blok="story.content" />
   </main>
+  <!--   <LazyTheFooter /> -->
 </template>

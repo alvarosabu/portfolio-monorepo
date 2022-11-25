@@ -26,7 +26,12 @@ watch(
 )
 </script>
 <template>
-  <div ref="embed" class="rounded break-out-prose w-full my-8 min-h-500px bg-gray-200 flex justify-center items-center">
-    <AsParticleLoader v-if="!isSnippetLoaded" size="4rem" />
-  </div>
+  <LazyHydrate :when-visible="{ rootMargin: '50px' }">
+    <div
+      ref="embed"
+      class="rounded break-out-prose w-full my-8 min-h-500px bg-gray-200 flex justify-center items-center"
+    >
+      <AsParticleLoader v-if="!isSnippetLoaded" size="4rem" />
+    </div>
+  </LazyHydrate>
 </template>

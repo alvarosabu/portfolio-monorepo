@@ -41,74 +41,76 @@ function onSlideChange(swiper) {
 }
 </script>
 <template>
-  <section
-    ref="videos"
-    v-editable="blok"
-    data-cy="videos"
-    h-screen
-    flex
-    flex-col
-    justify-center
-    snap-start
-    px-4
-    md:px-0
-    class="youtube-videos"
-    :class="!isMobile ? 'container mx-auto' : null"
-  >
-    <h2 font-display text="primary-400 dark:gray-50 3xl" mb-24>
-      {{ blok.title }}
-    </h2>
-    <div
-      v-if="error?.length > 0 && !pending"
-      min-h-40
-      bg="gray-50 dark:primary-600"
-      text="sm gray-500 dark:gray-50"
-      p-4
-      w-full
-      mb-8
+  <LazyHydrate :when-visible="{ rootMargin: '50px' }">
+    <section
+      ref="videos"
+      v-editable="blok"
+      data-cy="videos"
+      h-screen
       flex
+      flex-col
       justify-center
-      items-center
-      font-mono
+      snap-start
+      px-4
+      md:px-0
+      class="youtube-videos"
+      :class="!isMobile ? 'container mx-auto' : null"
     >
-      <img w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />{{ blok.errorState }}
-    </div>
-    <suspense v-else>
-      <template #default>
-        <div
-          class="relative"
-          :class="[{ 'swiper-gradient--left': !isBeginning }, { 'swiper-gradient--right': !isEnd }]"
-        >
-          <swiper
-            :slides-per-view="isMobile ? 1.5 : 3"
-            :space-between="50"
-            class="w-full mb-8 min-h-40"
-            @swiper="onSwiper"
-            @slide-change="onSlideChange"
+      <h2 font-display text="primary-400 dark:gray-50 3xl" mb-24>
+        {{ blok.title }}
+      </h2>
+      <div
+        v-if="error?.length > 0 && !pending"
+        min-h-40
+        bg="gray-50 dark:primary-600"
+        text="sm gray-500 dark:gray-50"
+        p-4
+        w-full
+        mb-8
+        flex
+        justify-center
+        items-center
+        font-mono
+      >
+        <img w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />{{ blok.errorState }}
+      </div>
+      <suspense v-else>
+        <template #default>
+          <div
+            class="relative"
+            :class="[{ 'swiper-gradient--left': !isBeginning }, { 'swiper-gradient--right': !isEnd }]"
           >
-            <swiper-slide v-for="{ id, title } of popularVideos" :key="id">
-              <YoutubeCard :title="title" :video-id="id" />
-            </swiper-slide>
-          </swiper>
-        </div>
-      </template>
-      <template #fallback>
-        <div>Loading...</div>
-      </template>
-    </suspense>
+            <swiper
+              :slides-per-view="isMobile ? 1.5 : 3"
+              :space-between="50"
+              class="w-full mb-8 min-h-40"
+              @swiper="onSwiper"
+              @slide-change="onSlideChange"
+            >
+              <swiper-slide v-for="{ id, title } of popularVideos" :key="id">
+                <YoutubeCard :title="title" :video-id="id" />
+              </swiper-slide>
+            </swiper>
+          </div>
+        </template>
+        <template #fallback>
+          <div>Loading...</div>
+        </template>
+      </suspense>
 
-    <footer class="flex w-full justify-end">
-      <AsButton
-        w="full sm:auto"
-        class="text-center"
-        :label="blok.youtubeLabel"
-        variant="secondary"
-        data-cy="button-youtube"
-        outline
-        link="https://www.youtube.com/c/AlvaroDevLabs/videos"
-      />
-    </footer>
-  </section>
+      <footer class="flex w-full justify-end">
+        <AsButton
+          w="full sm:auto"
+          class="text-center"
+          :label="blok.youtubeLabel"
+          variant="secondary"
+          data-cy="button-youtube"
+          outline
+          link="https://www.youtube.com/c/AlvaroDevLabs/videos"
+        />
+      </footer>
+    </section>
+  </LazyHydrate>
 </template>
 
 <style lang="scss">

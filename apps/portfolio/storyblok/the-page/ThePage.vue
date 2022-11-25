@@ -8,6 +8,11 @@ defineProps({
 </script>
 <template>
   <div v-editable="blok" data-test="page">
-    <StoryblokComponent v-for="inblok in blok.body" :key="inblok._uid" :blok="inblok" />
+    <template v-for="(inblok, index) in blok.body">
+      <TheLazy v-if="index > 1" :key="inblok._uid">
+        <StoryblokComponent :blok="inblok" />
+      </TheLazy>
+      <StoryblokComponent v-else :key="inblok._uid + 1" :blok="inblok" />
+    </template>
   </div>
 </template>
