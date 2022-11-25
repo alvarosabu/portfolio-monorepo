@@ -5,7 +5,7 @@ import { onUnmounted, ref } from 'vue'
 const target = ref(null)
 const targetIsVisible = ref(false)
 
-const { stop } = useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {
+const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
   targetIsVisible.value = isIntersecting
   if (isIntersecting) {
     stop()
