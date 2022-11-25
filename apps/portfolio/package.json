@@ -53,5 +53,8 @@
     "swiper": "^8.1.4",
     "velocity-animate": "^1.5.2",
     "vite-svg-loader": "^3.3.0"
+  },
+  "dependencies": {
+    "nuxt-lazy-hydrate": "^0.1.0"
   }
 }

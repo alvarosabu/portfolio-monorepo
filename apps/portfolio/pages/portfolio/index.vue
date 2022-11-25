@@ -55,7 +55,6 @@ await fetchProjects()
                 sizes="sm:100vw md:75vw lg:50vw xl:25vw"
               />
               <AsBadge
-                v-tooltip="{ content: project.content.category.content.name }"
                 absolute
                 right-4
                 shadow
