@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.8.0
+
+### Minor Changes
+
+- e522a9a1: Lazy Loading + Lazy Hydration
+
 ## 2.7.0
 
 ### Minor Changes
