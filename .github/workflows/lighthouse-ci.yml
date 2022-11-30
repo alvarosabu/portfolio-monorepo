@@ -36,5 +36,5 @@ jobs:
       - run: pnpm install --no-frozen-lockfile --shamefully-hoist
 
       - run: pnpm install -g @lhci/cli@0.8.x
-      - run: pnpm run generate:portfolio
+      - run: pnpm run build:ci
       - run: lhci autorun
