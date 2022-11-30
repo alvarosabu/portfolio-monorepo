@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     'nuxt-plausible',
     '@nuxt/image-edge',
     'nuxt-lazy-hydrate',
+    '@nuxtjs/fontaine',
     '@unocss/nuxt',
     [
       '@storyblok/nuxt',
