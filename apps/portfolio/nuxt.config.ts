@@ -40,9 +40,6 @@ export default defineNuxtConfig({
   vite: {
     plugins: [SvgLoader()],
   },
-  plausible: {
-    domain: 'https://alvarosaburido.dev',
-  },
   image: {
     storyblok: {
       baseURL: 'https://a.storyblok.com',
