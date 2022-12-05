@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useIntersectionObserver } from '@vueuse/core'
-
 defineProps({
   blok: {
     type: Object,
@@ -8,27 +6,14 @@ defineProps({
   },
 })
 
-const { listRelevantRepos, fetchRepos, error, pending } = useGithubRepo()
+const { data: repositories, error, pending } = await useFetch('/api/repositories')
 const hasError = computed(() => error.value && !pending.value)
-const showRepos = computed(() => !error.value && !pending.value && listRelevantRepos.value.length > 0)
-
+const showRepos = computed(() => !error.value && !pending.value)
 const { beforeEnter, enter, leave } = useStaggered(450)
-const { isMobile } = useBreakpoints()
-
-const repos = ref(null)
-const reposAreVisible = ref(false)
-
-useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
-  reposAreVisible.value = isIntersecting
-  if (isIntersecting) {
-    await fetchRepos()
-  }
-})
 </script>
 <template>
   <LazyHydrate :when-visible="{ rootMargin: '50px' }">
     <section
-      v-if="!isMobile"
       ref="repos"
       v-editable="blok"
       data-cy="repos"
@@ -44,7 +29,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
         {{ blok.title }}
       </h2>
       <div
-        v-if="listRelevantRepos.length === 0"
+        v-if="repositories?.length === 0"
         w-full
         min-h-40
         p-4
@@ -58,7 +43,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
       >
         <img v-if="hasError" w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />
         <AsParticleLoader v-if="pending" size="4rem" />
-        {{ hasError ? blok.errorState : '' }}
+        {{ error ? blok.errorState : '' }}
       </div>
       <transition-group
         v-show="showRepos"
@@ -74,12 +59,7 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
         @enter="enter"
         @leave="leave"
       >
-        <GithubCard
-          v-for="(repo, $index) of listRelevantRepos"
-          :key="repo.name"
-          v-bind="repo"
-          :data-index="$index + 1"
-        />
+        <GithubCard v-for="(repo, $index) of repositories" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
       </transition-group>
       <footer class="flex w-full justify-end">
         <a
