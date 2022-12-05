@@ -53,7 +53,7 @@ export enum UserType {
 export const orderByStarsDesc = (a: GithubRepo, b: GithubRepo) => b.stars - a.stars
 
 const formatRepo = (repo: any): GithubRepo => {
-  const { name, fullname, description, language, fork, forks, htmlUrl, archived, owner, stargazersCount, watchers } =
+  const { name, fullname, description, language, fork, forks, htmlUrl, archived, stargazersCount, watchers } =
     snakeToCamel(repo)
 
   const formattedRepo: GithubRepo = {
