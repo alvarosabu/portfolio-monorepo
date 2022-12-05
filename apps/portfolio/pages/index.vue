@@ -6,6 +6,7 @@ const { getStory } = useStories()
 const story = await getStory('home')
 </script>
 <template>
+  <pre>{{ data }}</pre>
   <main role="main">
     <StoryblokComponent v-if="story" :blok="story.content" />
   </main>
