@@ -175,7 +175,7 @@ useHead({
         <TagList v-if="isDesktop" :tags="story?.tag_list" />
       </div>
       <div mb-24 mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
-        <RichTextRenderer v-if="story && story?.content.content" :document="story?.content.content" />
+        <RichTextRenderer :document="story?.content.content" />
         <TagList v-if="!isDesktop" :tags="story?.tag_list" />
       </div>
     </div>

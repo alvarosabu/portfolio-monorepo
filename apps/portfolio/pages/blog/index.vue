@@ -3,13 +3,6 @@ import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
 useHead({ title: 'Blog - AS Portfolio' })
 
-/* const { getStory } = useStories()
-
-const story = await getStory('blog')
-
-const { fetchArticles, featuredArticle, articleList } = useBlog()
-
-await fetchArticles() */
 const { data: story } = await useFetch('/api/stories/blog')
 
 const { fetchArticles, featuredArticle, articleList } = useBlog()
