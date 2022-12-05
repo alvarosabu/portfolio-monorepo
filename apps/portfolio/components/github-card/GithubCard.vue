@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { GithubOrganization } from './consts'
+/* import { GithubOrganization } from './consts' */
 
 defineProps<{
   name: string
   url: string
   description: string
   language: string
-  organization: GithubOrganization
+  /*   organization: GithubOrganization */
   stars: number
   forks: number
   languageColor: string
@@ -19,15 +19,16 @@ defineProps<{
         <header flex w-full mb-4>
           <span block w-full :href="url">
             <AsIcon name="repo" mr-4 size="21" />
-            <span v-if="organization">{{ organization.name }} /</span>
-            <span :class="{ 'font-bold': organization }">{{ name }}</span>
+            <h3 inline-flex>{{ name }}</h3>
+            <!--   <span v-if="organization">{{ organization.name }} /</span>
+            <span :class="{ 'font-bold': organization }">{{ name }}</span> -->
           </span>
-          <img
+          <!--  <img
             v-if="organization"
             :src="organization.avatarUrl"
             :alt="organization.name"
             class="rounded-full w-8 h-8"
-          />
+          /> -->
         </header>
       </template>
       <template #content>

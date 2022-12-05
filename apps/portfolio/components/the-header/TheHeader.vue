@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const { storiesForNav } = useStories()
 const { isMobile } = useBreakpoints()
+
+const { data: storiesForNav } = useFetch('/api/navigation')
 
 const navMenu = ref(null)
 // Feature Menu visibiliy

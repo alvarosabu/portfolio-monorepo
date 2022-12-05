@@ -1,9 +1,7 @@
 <script setup lang="ts">
 useHead({ title: 'Home - AS Portfolio' })
 
-const { getStory } = useStories()
-
-const story = await getStory('home')
+const { data: story } = await useFetch('/api/stories/home')
 </script>
 <template>
   <main role="main">

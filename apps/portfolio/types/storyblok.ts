@@ -1,7 +1,3 @@
-/* eslint-disable no-use-before-define */
-import { ComputedRef } from 'vue'
-import { useStoryblok, useStoryblokApi } from '@storyblok/vue'
-
 export interface Slot {
   type: string
   content: StoryContent[]
@@ -86,54 +82,4 @@ export interface StoriesState {
 export const storiesConfig: StoriesConfig = {
   version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
   /*   version: 'published', */
-}
-
-const state: StoriesState = reactive({
-  stories: [],
-})
-
-const navigationContentTypes = ['ThePage', 'overview']
-
-export function useStories() {
-  const storyapi = useStoryblokApi()
-
-  async function fetchStories() {
-    const { data } = await storyapi.get('cdn/stories', storiesConfig)
-    state.stories = data.stories
-  }
-
-  const filterPageByContentType = (story: Story) => {
-    return navigationContentTypes.includes(story.content.component)
-  }
-
-  const storiesForNav: ComputedRef<
-    {
-      label: string
-      path: string
-      order: number
-    }[]
-  > = computed(() =>
-    state.stories
-      .filter(filterPageByContentType)
-      .map(story => ({
-        label: story.name,
-        path: story.slug === 'home' ? '' : story.slug,
-        order: story.content.order,
-      }))
-
-      .sort((a, b) => a.order - b.order),
-  )
-
-  async function getStory(id = 'home') {
-    const story: Story = await useStoryblok(id, storiesConfig)
-
-    return story
-  }
-
-  return {
-    ...toRefs(state),
-    storiesForNav,
-    fetchStories,
-    getStory,
-  }
 }

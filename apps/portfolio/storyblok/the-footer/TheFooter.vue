@@ -18,7 +18,7 @@ const showVersion = ref(false)
 const { isMobile } = useBreakpoints()
 
 // Feature Menu
-const { storiesForNav } = await useStories()
+const { data: storiesForNav } = useFetch('/api/navigation')
 </script>
 <template>
   <LazyHydrate :when-visible="{ rootMargin: '50px' }">

@@ -20,7 +20,7 @@ defineProps({
 <template>
   <nav :aria-label="`${parent} navigation`" data-cy="main-navigation">
     <ul
-      v-if="menu.length > 0"
+      v-if="menu?.length > 0"
       flex
       :class="{
         'flex-col': orientation === navOrientation.VERTICAL,

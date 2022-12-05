@@ -1,8 +1,3 @@
-<script lang="ts" setup>
-const { fetchStories } = useStories()
-
-await fetchStories()
-</script>
 <template>
   <div>
     <TheHeader />

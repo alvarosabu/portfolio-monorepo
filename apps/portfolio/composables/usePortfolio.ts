@@ -1,5 +1,5 @@
 import { format } from 'date-fns'
-import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
+import { Story, StoryAsset, StoryContent, StoryVersion, StoryStatus } from '../types/storyblok'
 
 export interface ProjectStoryContent extends StoryContent {
   title: string

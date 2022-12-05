@@ -1,5 +1,6 @@
 import { snakeToCamel } from '@alvarosabu/utils'
 import { reactive } from 'vue'
+
 export enum Language {
   JavaScript = 'JavaScript',
   Python = 'Python',
@@ -68,14 +69,6 @@ const formatRepo = (repo: any): GithubRepo => {
     watchers,
   }
 
-  if (owner?.type === UserType.Organization) {
-    const { login, url, avatarUrl } = owner
-    formattedRepo.organization = {
-      name: login,
-      url,
-      avatarUrl,
-    }
-  }
   return formattedRepo
 }
 
@@ -109,6 +102,7 @@ export default defineEventHandler(async () => {
       .sort(orderByStarsDesc)
     return state.repositories.filter((repo: GithubRepo) => !repo.archived && !repo.fork && repo.stars > 1).slice(0, 3)
   } catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 400,
       statusMessage: `There was an error fetching github repos' ${error}`,

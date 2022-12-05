@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { StoryAsset } from 'types/storyblok'
 import { PropType } from 'vue'
-import { StoryAsset } from 'composables/useStories'
 
 defineProps({
   title: String,

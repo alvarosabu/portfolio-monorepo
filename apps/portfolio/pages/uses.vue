@@ -3,9 +3,7 @@ import { AnimationTriggers, ShevasAnimationTypes } from '@/composables/useShevas
 
 useHead({ title: 'Uses - AS Portfolio' })
 
-const { getStory } = useStories()
-
-const story = await getStory('uses')
+const { data: story } = await useFetch('/api/stories/uses')
 
 const { updateCurrentAnimation } = useShevas()
 const { isMobile } = useBreakpoints()

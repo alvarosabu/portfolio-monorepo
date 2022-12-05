@@ -1,4 +1,5 @@
-import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
+import { Story, StoryAsset, StoryContent, StoryVersion, StoryStatus } from '../types/storyblok'
+
 export interface ArticleStoryContent extends StoryContent {
   title: string
   media: StoryAsset
