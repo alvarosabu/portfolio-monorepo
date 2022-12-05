@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 export interface Slot {
   type: string
   content: StoryContent[]
