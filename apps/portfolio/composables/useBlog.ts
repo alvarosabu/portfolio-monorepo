@@ -1,6 +1,4 @@
-import { useStoryblokApi } from '@storyblok/vue'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
-
 export interface ArticleStoryContent extends StoryContent {
   title: string
   media: StoryAsset
@@ -35,33 +33,34 @@ function formatArticleStory(story: ArticleStory): ArticleStory {
 }
 
 export function useBlog() {
-  const storyapi = useStoryblokApi()
+  /* const storyapi = useStoryblokApi() */
   const { logError } = useLogger()
 
   async function fetchArticles() {
     try {
-      const { data } = await storyapi.get('cdn/stories/', {
-        ...storiesConfig,
-        starts_with: 'blog/',
-        is_startpage: false,
+      const { data } = await useFetch('/api/stories/', {
+        params: {
+          starts_with: 'blog/',
+          is_startpage: false,
+        },
       })
-      state.articles = data.stories.map(formatArticleStory)
+      console.log('fetchArticles', data)
+      state.articles = data.value.map(formatArticleStory)
     } catch (error) {
       logError('There was an error fetching articles from Storyblok', error)
     }
   }
 
-  async function fetchArticleBySlug(slug: string): Promise<ArticleStory> {
+  async function fetchArticleBySlug(slug: string) {
     try {
-      const { data } = await storyapi.get('cdn/stories', {
-        ...storiesConfig,
-        starts_with: 'blog/',
-        // Prepend */ to match with the first part of the full_slug
-        by_slugs: '*/' + slug,
+      const { data: story } = await useFetch(`/api/stories/blog/${slug}`, {
+        params: {
+          resolve_relations: 'category',
+        },
       })
-      const story = data.stories[0]
-      story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
-      return formatArticleStory(story)
+
+      /* story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid) */
+      return formatArticleStory(story.value)
     } catch (error) {
       logError(`There was an error fetching article ${slug} from Storyblok`, error)
     }

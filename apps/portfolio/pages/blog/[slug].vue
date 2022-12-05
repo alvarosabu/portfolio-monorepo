@@ -13,37 +13,37 @@ const { fetchArticleBySlug } = useBlog()
 
 const story = await fetchArticleBySlug(route.params.slug as string)
 
-const isPublished = computed(() => story.published_at)
+const isPublished = computed(() => story?.published_at)
 
 const storyPublishedDate = computed(() =>
   isMobile.value
-    ? format(new Date(story.published_at), 'MM/dd/yy')
-    : format(new Date(story.published_at), 'MMMM dd, yyyy'),
+    ? format(new Date(story?.published_at), 'MM/dd/yy')
+    : format(new Date(story?.published_at), 'MMMM dd, yyyy'),
 )
 
 useHead({
-  title: `${story.content.title} - AS Portfolio`,
+  title: `${story?.content?.title} - AS Portfolio`,
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'keywords',
       property: 'keywords',
-      keywords: story.tag_list.join(', '),
+      keywords: story?.tag_list.join(', '),
     },
     // og
     {
       hid: 'og:description',
       property: 'og:description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: `${story.content.title} - AS Portfolio`,
+      content: `${story?.content.title} - AS Portfolio`,
     },
     {
       hid: 'og:type',
@@ -58,17 +58,17 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: story.content.media?.filename,
+      content: story?.content.media?.filename,
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: story.content.media?.alt,
+      content: story?.content.media?.alt,
     },
     {
       hid: 'og:publish_date',
       property: 'og:publish_date',
-      content: story.published_at,
+      content: story?.published_at,
     },
     // Twitter
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -76,22 +76,22 @@ useHead({
     {
       hid: 'twitter:title',
       property: 'twitter:title',
-      content: `${story.content.title} - AS Portfolio`,
+      content: `${story?.content.title} - AS Portfolio`,
     },
     {
       hid: 'twitter:description',
       name: 'twitter:description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: story.content.media?.filename,
+      content: story?.content.media?.filename,
     },
     {
       hid: 'twitter:image:alt',
       name: 'twitter:image:alt',
-      content: story.content.media?.alt,
+      content: story?.content.media?.alt,
     },
   ],
 })
@@ -101,7 +101,7 @@ useHead({
     <div mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="article-hero">
         <NuxtImg
-          v-if="story.content.media"
+          v-if="story?.content.media"
           data-cy="article-thumbnail"
           important-my-0
           rounded-xl
@@ -110,8 +110,8 @@ useHead({
           important-mb-8
           class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-4/5"
           shadow-lg
-          :src="story.content.media?.filename"
-          :alt="story.content.media?.alt"
+          :src="story?.content.media?.filename"
+          :alt="story?.content.media?.alt"
           aspect-ratio="16/9"
           provider="storyblok"
           format="webp"
@@ -146,7 +146,7 @@ useHead({
             data-cy="article-hero-title"
             important-line-height-6
           >
-            {{ story.content.title }}
+            {{ story?.content.title }}
           </h1>
           <client-only>
             <!-- this component will only be rendered on client-side -->
@@ -160,10 +160,10 @@ useHead({
           Published on {{ storyPublishedDate }}
           <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
           <span
-            v-if="story.content.category"
+            v-if="story?.content.category"
             class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4"
           >
-            {{ story.content.category.name }}
+            {{ story?.content.category.name }}
           </span>
         </p>
         <p v-else>
@@ -172,11 +172,11 @@ useHead({
         </p>
         <br />
 
-        <TagList v-if="isDesktop" :tags="story.tag_list" />
+        <TagList v-if="isDesktop" :tags="story?.tag_list" />
       </div>
       <div mb-24 mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
-        <RichTextRenderer v-if="story && story.content.content" :document="story.content.content" />
-        <TagList v-if="!isDesktop" :tags="story.tag_list" />
+        <RichTextRenderer v-if="story && story?.content.content" :document="story?.content.content" />
+        <TagList v-if="!isDesktop" :tags="story?.tag_list" />
       </div>
     </div>
   </main>
