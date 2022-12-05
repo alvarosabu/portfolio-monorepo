@@ -1,38 +1,19 @@
 <script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-  },
-  url: {
-    type: String,
-  },
-  description: {
-    type: String,
-  },
-  language: {
-    type: String,
-  },
-  organization: {
-    type: Object,
-  },
-  stars: {
-    type: Number,
-  },
-  forks: {
-    type: Number,
-  },
-  languageColor: {
-    type: String,
-  },
-})
+import { GithubOrganization } from './consts'
+
+defineProps<{
+  name: string
+  url: string
+  description: string
+  language: string
+  organization: GithubOrganization
+  stars: number
+  forks: number
+  languageColor: string
+}>()
 </script>
 <template>
-  <a
-    data-cy="github-card"
-    inline-flex
-    :href="url"
-    :alt="`Github repository ${name}`"
-  >
+  <a data-cy="github-card" inline-flex :href="url" :alt="`Github repository ${name}`">
     <AsCard p-4 h-full>
       <template #header>
         <header flex w-full mb-4>
@@ -54,19 +35,17 @@ defineProps({
       </template>
       <template #footer>
         <footer class="flex w-full text-sm">
-          <span v-if="language" class="w-1/3 inline-flex items-center">
-            <span
-              class="w-2 h-2 rounded-full mr-4"
-              :style="{ backgroundColor: languageColor }"
-            />{{ language }}
+          <span class="w-1/3 inline-flex items-center">
+            <span class="w-2 h-2 rounded-full mr-4" :style="{ backgroundColor: languageColor }" />
+            <span>{{ language }}</span>
           </span>
           <span class="w-1/3 inline-flex items-center">
             <AsIcon name="star" class="mr-4 -mt-1" :size="'18px'" />
-            {{ stars }}
+            <span>{{ stars }}</span>
           </span>
           <span class="w-1/3 inline-flex items-center">
             <AsIcon name="fork" class="mr-4 -mt-1" :size="'18px'" />
-            {{ forks }}
+            <span>{{ forks }}</span>
           </span>
         </footer>
       </template>
