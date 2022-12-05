@@ -44,7 +44,6 @@ export function useBlog() {
           is_startpage: false,
         },
       })
-      console.log('fetchArticles', data)
       state.articles = data.value.map(formatArticleStory)
     } catch (error) {
       logError('There was an error fetching articles from Storyblok', error)

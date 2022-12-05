@@ -50,10 +50,7 @@ export function usePortfolio() {
         },
       })
 
-      state.projects = data.value.map(story => {
-        /*  story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid) */
-        return formatPortfolioStory(story)
-      })
+      state.projects = data.value.map(formatPortfolioStory)
     } catch (error) {
       logError('There was an error fetching projects from Storyblok', error)
     }
