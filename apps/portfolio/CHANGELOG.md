@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.9.0
+
+### Minor Changes
+
+- 3cb1481c: Moved github repos to server
+
 ## 2.8.0
 
 ### Minor Changes
