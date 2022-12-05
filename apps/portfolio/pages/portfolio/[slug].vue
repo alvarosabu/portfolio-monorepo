@@ -13,37 +13,37 @@ const { fetchProjectBySlug } = usePortfolio()
 
 const story = await fetchProjectBySlug(route.params.slug as string)
 
-const isPublished = computed(() => story.published_at)
+const isPublished = computed(() => story?.published_at)
 
 const storyPublishedDate = computed(() =>
   isMobile.value
-    ? format(new Date(story.published_at), 'MM/dd/yy')
-    : format(new Date(story.published_at), 'MMMM dd, yyyy'),
+    ? format(new Date(story?.published_at), 'MM/dd/yy')
+    : format(new Date(story?.published_at), 'MMMM dd, yyyy'),
 )
 
 useHead({
-  title: `${story.content.title} - AS Portfolio`,
+  title: `${story?.content.title} - AS Portfolio`,
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'keywords',
       property: 'keywords',
-      keywords: story.tag_list.join(', '),
+      keywords: story?.tag_list.join(', '),
     },
     // og
     {
       hid: 'og:description',
       property: 'og:description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'og:title',
       property: 'og:title',
-      content: `${story.content.title} - AS Portfolio`,
+      content: `${story?.content.title} - AS Portfolio`,
     },
     {
       hid: 'og:type',
@@ -58,17 +58,17 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: story.content.media.filename,
+      content: story?.content.media.filename,
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: story.content.media.alt,
+      content: story?.content.media.alt,
     },
     {
       hid: 'og:publish_date',
       property: 'og:publish_date',
-      content: story.published_at,
+      content: story?.published_at,
     },
     // Twitter
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -76,32 +76,32 @@ useHead({
     {
       hid: 'twitter:title',
       property: 'twitter:title',
-      content: `${story.content.title} - AS Portfolio`,
+      content: `${story?.content.title} - AS Portfolio`,
     },
     {
       hid: 'twitter:description',
       name: 'twitter:description',
-      content: story.content.excerpt,
+      content: story?.content.excerpt,
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: story.content.media.filename,
+      content: story?.content.media.filename,
     },
     {
       hid: 'twitter:image:alt',
       name: 'twitter:image:alt',
-      content: story.content.media.alt,
+      content: story?.content.media.alt,
     },
   ],
 })
 </script>
 <template>
   <main role="main" pt-4 md:pt-12>
-    <div v-if="story" mx-auto container>
+    <div mx-auto container>
       <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="project-hero">
         <NuxtImg
-          v-if="story.content.media"
+          v-if="story?.content.media"
           data-cy="project-thumbnail"
           important-my-0
           rounded-xl
@@ -147,7 +147,7 @@ useHead({
             important-line-height-6
           >
             <!--        Hasura GraphQL Baas for the busy developer. -->
-            {{ story.content.title }}
+            {{ story?.content.title }}
           </h1>
           <client-only>
             <!-- this component will only be rendered on client-side -->
@@ -159,19 +159,21 @@ useHead({
       <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8 z-20>
         <p v-if="isPublished" class="flex items-center" data-cy="published-date">
           Published on {{ storyPublishedDate }}
-          <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
-          <AsBadge :icon="story.content.category.content.icon" :label="story.content.category.content.name" outline />
+          <AsIcon name="calendar" class="mx-4" />
+          <AsBadge :icon="story?.content.category.content.icon" :label="story?.content.category.content.name" outline />
         </p>
         <p v-else>
           This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state
           and {{ storyPublishedDate }} will be published.
         </p>
 
-        <TagList v-if="isDesktop" :tags="story.tag_list" />
+        <TagList v-if="isDesktop" :tags="story?.tag_list" />
       </div>
       <div mb-24 mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
-        <RichTextRenderer v-if="story" :document="story.content.content" />
-        <TagList v-if="!isDesktop" :tags="story.tag_list" />
+        <TheLazy>
+          <RichTextRenderer :document="story?.content.content" />
+          <LazyTagList v-if="!isDesktop" :tags="story?.tag_list" />
+        </TheLazy>
       </div>
     </div>
   </main>
