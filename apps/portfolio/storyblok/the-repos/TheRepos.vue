@@ -12,83 +12,81 @@ const showRepos = computed(() => !error.value && !pending.value)
 const { beforeEnter, enter, leave } = useStaggered(450)
 </script>
 <template>
-  <LazyHydrate :when-visible="{ rootMargin: '50px' }">
-    <section
-      ref="repos"
-      v-editable="blok"
-      data-cy="repos"
-      container
-      mx-auto
-      h-screen
+  <section
+    ref="repos"
+    v-editable="blok"
+    data-cy="repos"
+    container
+    mx-auto
+    h-screen
+    flex
+    flex-col
+    justify-center
+    snap-start
+  >
+    <h2 data-cy="repos-title" class="text-primary-400" font-display text="primary-400 dark:gray-50 3xl" mb-24>
+      {{ blok.title }}
+    </h2>
+    <div
+      v-if="repositories?.length === 0"
+      w-full
+      min-h-40
+      p-4
+      mb-8
       flex
-      flex-col
       justify-center
-      snap-start
+      items-center
+      bg="gray-50 dark:primary-600"
+      font-mono
+      text="sm gray-500 dark:gray-50"
     >
-      <h2 data-cy="repos-title" class="text-primary-400" font-display text="primary-400 dark:gray-50 3xl" mb-24>
-        {{ blok.title }}
-      </h2>
-      <div
-        v-if="repositories?.length === 0"
-        w-full
-        min-h-40
-        p-4
-        mb-8
-        flex
-        justify-center
-        items-center
-        bg="gray-50 dark:primary-600"
-        font-mono
-        text="sm gray-500 dark:gray-50"
+      <img v-if="hasError" w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />
+      <AsParticleLoader v-if="pending" size="4rem" />
+      {{ error ? blok.errorState : '' }}
+    </div>
+    <transition-group
+      v-show="showRepos"
+      grid
+      grid-cols-3
+      min-h-40
+      gap-8
+      mb-8
+      appear
+      name="staggered-fade"
+      tag="div"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @leave="leave"
+    >
+      <GithubCard v-for="(repo, $index) of repositories" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
+    </transition-group>
+    <footer class="flex w-full justify-end">
+      <a
+        href="https://github.com/sponsors/alvarosabu"
+        target="_blank"
+        data-cy="button-sponsor"
+        border="2 gray-300"
+        py-2
+        px-4
+        mr-8
+        rounded-sm
+        transition-all
+        duration-300
+        text-gray-500
+        dark:text-gray-50
+        font="sans semibold"
+        bg="hover:gray-100 dark:hover:primary-600"
       >
-        <img v-if="hasError" w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />
-        <AsParticleLoader v-if="pending" size="4rem" />
-        {{ error ? blok.errorState : '' }}
-      </div>
-      <transition-group
-        v-show="showRepos"
-        grid
-        grid-cols-3
-        min-h-40
-        gap-8
-        mb-8
-        appear
-        name="staggered-fade"
-        tag="div"
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @leave="leave"
-      >
-        <GithubCard v-for="(repo, $index) of repositories" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
-      </transition-group>
-      <footer class="flex w-full justify-end">
-        <a
-          href="https://github.com/sponsors/alvarosabu"
-          target="_blank"
-          data-cy="button-sponsor"
-          border="2 gray-300"
-          py-2
-          px-4
-          mr-8
-          rounded-sm
-          transition-all
-          duration-300
-          text-gray-500
-          dark:text-gray-50
-          font="sans semibold"
-          bg="hover:gray-100 dark:hover:primary-600"
-        >
-          <AsIcon text-red-400 mr-4 name="heart-outline" />
-          {{ blok.sponsorLabel }}
-        </a>
-        <AsButton
-          :label="blok.githubLabel"
-          variant="secondary"
-          data-cy="button-github"
-          outline
-          :link="'https://github.com/alvarosabu?tab=repositories'"
-        />
-      </footer>
-    </section>
-  </LazyHydrate>
+        <AsIcon text-red-400 mr-4 name="heart-outline" />
+        {{ blok.sponsorLabel }}
+      </a>
+      <AsButton
+        :label="blok.githubLabel"
+        variant="secondary"
+        data-cy="button-github"
+        outline
+        :link="'https://github.com/alvarosabu?tab=repositories'"
+      />
+    </footer>
+  </section>
 </template>
