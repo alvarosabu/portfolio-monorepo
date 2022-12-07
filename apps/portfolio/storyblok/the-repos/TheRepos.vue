@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useIntersectionObserver } from '@vueuse/core'
+
 defineProps({
   blok: {
     type: Object,
@@ -6,10 +8,19 @@ defineProps({
   },
 })
 
-const { data: repositories, error, pending } = await useFetch('/api/repositories')
+const { listRelevantRepos, fetchRepos, error, pending } = useGithubRepo()
 const hasError = computed(() => error.value && !pending.value)
-const showRepos = computed(() => !error.value && !pending.value)
+const showRepos = computed(() => !error.value && !pending.value && listRelevantRepos.value.length > 0)
 const { beforeEnter, enter, leave } = useStaggered(450)
+
+const repos = ref(null)
+const reposAreVisible = ref(false)
+useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
+  reposAreVisible.value = isIntersecting
+  if (isIntersecting) {
+    await fetchRepos()
+  }
+})
 </script>
 <template>
   <section
@@ -28,7 +39,7 @@ const { beforeEnter, enter, leave } = useStaggered(450)
       {{ blok.title }}
     </h2>
     <div
-      v-if="repositories?.length === 0"
+      v-if="listRelevantRepos?.length === 0"
       w-full
       min-h-40
       p-4
@@ -42,7 +53,7 @@ const { beforeEnter, enter, leave } = useStaggered(450)
     >
       <img v-if="hasError" w-8 h-8 mr-4 src="/pixel-penguin.png" :alt="blok.errorState" />
       <AsParticleLoader v-if="pending" size="4rem" />
-      {{ error ? blok.errorState : '' }}
+      {{ hasError ? blok.errorState : '' }}
     </div>
     <transition-group
       v-show="showRepos"
@@ -58,7 +69,7 @@ const { beforeEnter, enter, leave } = useStaggered(450)
       @enter="enter"
       @leave="leave"
     >
-      <GithubCard v-for="(repo, $index) of repositories" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
+      <GithubCard v-for="(repo, $index) of listRelevantRepos" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
     </transition-group>
     <footer class="flex w-full justify-end">
       <a
