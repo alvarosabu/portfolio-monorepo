@@ -1,7 +1,31 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
-useHead({ title: 'Portfolio - AS Portfolio' })
+useHead({
+  title: 'Portfolio - AS Portfolio',
+  meta: [
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: 'Portfolio - AS Portfolio',
+    },
+    {
+      hid: 'twitter:title',
+      name: 'twitter:title',
+      content: 'Portfolio - AS Portfolio',
+    },
+    {
+      hid: 'og:image',
+      property: 'og:image',
+      content: '/og-portfolio.png',
+    },
+    {
+      hid: 'twitter:image',
+      name: 'twitter:image',
+      content: '/og-portfolio.png',
+    },
+  ],
+})
 
 const { data: story } = await useFetch('/api/stories/portfolio')
 
