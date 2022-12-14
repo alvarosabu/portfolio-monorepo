@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     'nuxt-lazy-hydrate',
     '@nuxtjs/fontaine',
     '@unocss/nuxt',
+    '@nuxtjs/critters',
     [
       '@storyblok/nuxt',
       {
