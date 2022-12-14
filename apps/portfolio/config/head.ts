@@ -24,7 +24,7 @@ const OPEN_GRAPH = [
   {
     hid: 'og:image',
     property: 'og:image',
-    content: '/og-home.png',
+    content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031892/portfolio/og/og-home_zx5nfd.png',
   },
   { property: 'og:updated_time', content: new Date().toISOString() },
 ]
@@ -45,7 +45,7 @@ const TWITTER = [
   {
     hid: 'twitter:image',
     name: 'twitter:image',
-    content: '/og-home.png',
+    content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031892/portfolio/og/og-home_zx5nfd.png',
   },
   {
     hid: 'twitter:image:alt',

@@ -17,12 +17,14 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: '/og-portfolio.png',
+      content:
+        'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031890/portfolio/og/og-portfolio_vy29kx.png',
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: '/og-portfolio.png',
+      content:
+        'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031890/portfolio/og/og-portfolio_vy29kx.png',
     },
   ],
 })
