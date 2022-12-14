@@ -58,7 +58,8 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
     <transition-group
       v-show="showRepos"
       grid
-      grid-cols-3
+      grid-cols-1
+      md:grid-cols-3
       min-h-40
       gap-8
       mb-8
