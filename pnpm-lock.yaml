@@ -46,6 +46,7 @@ importers:
       '@nuxt/image-edge': 1.0.0-27809804.194d2d6
       '@nuxtjs/critters': ^0.4.0
       '@nuxtjs/fontaine': ^0.2.2
+      '@nuxtjs/robots': ^3.0.0
       '@stackblitz/sdk': ^1.8.0
       '@storyblok/nuxt': ^4.5.0
       '@storyblok/vue': ^6.3.1
@@ -74,6 +75,7 @@ importers:
       vite-svg-loader: ^3.3.0
     dependencies:
       '@nuxtjs/critters': 0.4.0
+      '@nuxtjs/robots': 3.0.0
       nuxt-lazy-hydrate: 0.1.0
     devDependencies:
       '@alvarosabu/ui': link:../../packages/ui
@@ -1741,6 +1743,16 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@nuxtjs/robots/3.0.0:
+    resolution: {integrity: sha512-qsHGW1KXBvV5Kq7u3huPnFCUTbHS4Fk8Za2mNPgmUXcwLgp3exvhPtdZfIdjrCF/aZk3A8OZONNmGghs6CecBA==}
+    dependencies:
+      '@nuxt/kit': 3.0.0
+      h3: 1.0.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
@@ -4194,7 +4206,6 @@ packages:
 
   /cookie-es/0.5.0:
     resolution: {integrity: sha512-RyZrFi6PNpBFbIaQjXDlFIhFVqV42QeKSZX1yQIl6ihImq6vcHNGMtqQ/QzY3RMPuYSkvsRwtnt5M9NeYxKt0g==}
-    dev: true
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -6805,7 +6816,6 @@ packages:
       destr: 1.2.1
       radix3: 1.0.0
       ufo: 1.0.0
-    dev: true
 
   /handlebars/4.7.7:
     resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
@@ -9769,7 +9779,6 @@ packages:
 
   /radix3/1.0.0:
     resolution: {integrity: sha512-6n3AEXth91ASapMVKiEh2wrbFJmI+NBilrWE0AbiGgfm0xet0QXC8+a3K19r1UVYjUjctUgB053c3V/J6V0kCQ==}
-    dev: true
 
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
