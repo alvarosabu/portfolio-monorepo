@@ -56,6 +56,8 @@
     "vite-svg-loader": "^3.3.0"
   },
   "dependencies": {
+    "@nuxtjs/critters": "^0.4.0",
+    "@nuxtjs/robots": "^3.0.0",
     "nuxt-lazy-hydrate": "^0.1.0"
   }
 }

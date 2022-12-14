@@ -23,7 +23,9 @@ export default defineNuxtConfig({
     '@nuxt/image-edge',
     'nuxt-lazy-hydrate',
     '@nuxtjs/fontaine',
+    '@nuxtjs/robots',
     '@unocss/nuxt',
+    '@nuxtjs/critters',
     [
       '@storyblok/nuxt',
       {
