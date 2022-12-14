@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.9.1
+
+### Patch Changes
+
+- fc903c65: Added critters module and robots
+
 ## 2.9.0
 
 ### Minor Changes
