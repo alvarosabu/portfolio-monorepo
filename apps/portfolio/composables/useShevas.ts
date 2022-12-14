@@ -3,18 +3,18 @@ import { reactive, watch, toRefs } from 'vue'
 import { useTime } from './useTime'
 
 export enum ShevasAnimationTypes {
-  IDDLE = 'shevas-iddle',
-  CEL = 'shevas-cel',
-  EAT = 'shevas-eatsandwich',
-  ENTER_THE_MAC = 'shevas-enterthemac',
-  IN_THE_MAC = 'shevas-inthemac',
-  LEAVING_THE_MAC = 'shevas-leavingthemac',
-  GOING_TO_BED = 'shevas-goingtobed',
-  SLEEP_TIGHT_LEFT = 'shevas-sleeptightleft',
-  SLEEPING_LEFT = 'shevas-sleepingleft',
-  SLEEPING_RIGHT = 'shevas-sleepingright',
-  SLEEP_TIGHT_RIGHT = 'shevas-sleeptightright',
-  LEAVING_THE_BED = 'shevas-leavingthebed',
+  IDDLE = 'iddle-play',
+  CEL = 'cel-play',
+  EAT = 'eatsandwich-play',
+  ENTER_THE_MAC = 'enterthemac-play',
+  IN_THE_MAC = 'inthemac-play',
+  LEAVING_THE_MAC = 'leavingthemac-play',
+  GOING_TO_BED = 'goingtobed-play',
+  SLEEP_TIGHT_LEFT = 'sleeptightleft-play',
+  SLEEPING_LEFT = 'sleepingleft-play',
+  SLEEPING_RIGHT = 'sleepingright-play',
+  SLEEP_TIGHT_RIGHT = 'sleeptightright-play',
+  LEAVING_THE_BED = 'leavingthebed-play',
 }
 
 export enum AnimationTriggers {
@@ -213,7 +213,7 @@ export const useShevas = () => {
   const getTimeBasedAnimation = (animations: ShevasAnimation[]) => {
     const matches = animations
       .filter(animation => animation.conditions.hours.includes(hours.value))
-      .sort(orderByPriorityDesc)
+      .sort(orderByPriorityAsc)
     return matches.length > 1
       ? {
           ...matches[0],
