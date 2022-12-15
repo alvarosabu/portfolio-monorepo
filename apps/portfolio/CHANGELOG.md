@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.10.0
+
+### Minor Changes
+
+- abd0ec5e: Refactor github section with swiper
+
 ## 2.9.1
 
 ### Patch Changes
