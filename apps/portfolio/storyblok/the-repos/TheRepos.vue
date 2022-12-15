@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import { useIntersectionObserver } from '@vueuse/core'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
 
 defineProps({
   blok: {
@@ -8,19 +13,35 @@ defineProps({
   },
 })
 
+const { isMobile } = useBreakpoints()
+
 const { listRelevantRepos, fetchRepos, error, pending } = useGithubRepo()
 const hasError = computed(() => error.value && !pending.value)
-const showRepos = computed(() => !error.value && !pending.value && listRelevantRepos.value.length > 0)
-const { beforeEnter, enter, leave } = useStaggered(450)
+/* const showRepos = computed(() => !error.value && !pending.value && listRelevantRepos.value.length > 0)
+const { beforeEnter, enter, leave } = useStaggered(450) */
 
 const repos = ref(null)
 const reposAreVisible = ref(false)
+
 useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
   reposAreVisible.value = isIntersecting
   if (isIntersecting) {
     await fetchRepos()
   }
 })
+
+// Swiper
+const isBeginning = ref(true)
+const isEnd = ref(false)
+
+function onSwiper(swiper) {
+  isBeginning.value = swiper.isBeginning
+  isEnd.value = swiper.isEnd
+}
+function onSlideChange(swiper) {
+  isBeginning.value = swiper.isBeginning
+  isEnd.value = swiper.isEnd
+}
 </script>
 <template>
   <section
@@ -55,24 +76,20 @@ useIntersectionObserver(repos, async ([{ isIntersecting }]) => {
       <AsParticleLoader v-if="pending" size="4rem" />
       {{ hasError ? blok.errorState : '' }}
     </div>
-    <transition-group
-      v-show="showRepos"
-      grid
-      grid-cols-1
-      md:grid-cols-3
-      min-h-40
-      gap-8
-      mb-8
-      appear
-      name="staggered-fade"
-      tag="div"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @leave="leave"
-    >
-      <GithubCard v-for="(repo, $index) of listRelevantRepos" :key="repo.name" v-bind="repo" :data-index="$index + 1" />
-    </transition-group>
-    <footer class="flex w-full justify-end">
+    <div class="relative" :class="[{ 'swiper-gradient--left': !isBeginning }, { 'swiper-gradient--right': !isEnd }]">
+      <swiper
+        :slides-per-view="isMobile ? 1 : 3"
+        :space-between="50"
+        class="w-full mb-12 md:mb-8 min-h-40"
+        @swiper="onSwiper"
+        @slide-change="onSlideChange"
+      >
+        <swiper-slide v-for="(repo, $index) of listRelevantRepos" :key="repo.name">
+          <GithubCard v-bind="repo" :data-index="$index + 1" class="w-full" />
+        </swiper-slide>
+      </swiper>
+    </div>
+    <footer class="flex w-full md:justify-end">
       <a
         href="https://github.com/sponsors/alvarosabu"
         target="_blank"

@@ -127,6 +127,11 @@ export const useGithubRepo = () => {
               per_page: 20,
             },
           }),
+          useFetch('https://api.github.com/orgs/tresjs/repos', {
+            params: {
+              per_page: 20,
+            },
+          }),
         ])
         preservedState.value.updatedAt = new Date()
         state.pending = colorsPending.value || usersPending.value || orgsPending.value
@@ -161,7 +166,7 @@ export const useGithubRepo = () => {
   const listRelevantRepos = computed(() =>
     preservedState.value.repositories
       .filter((repo: GithubRepo) => !repo.archived && !repo.fork && repo.stars > 1)
-      .slice(0, 3),
+      .slice(0, 6),
   )
 
   return {
