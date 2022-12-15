@@ -16,7 +16,7 @@ defineProps<{
   <a data-cy="github-card" inline-flex :href="url" :alt="`Github repository ${name}`">
     <AsCard p-4 h-full>
       <template #header>
-        <header flex w-full mb-4>
+        <header flex w-full mb-4 min-h-32px>
           <span block w-full :href="url">
             <AsIcon name="repo" mr-4 size="21" />
             <span v-if="organization">{{ organization.name }} /</span>
@@ -31,7 +31,7 @@ defineProps<{
         </header>
       </template>
       <template #content>
-        <p class="text-sm mb-4">{{ description }}</p>
+        <p class="text-sm mb-4 min-h-64px">{{ description }}</p>
       </template>
       <template #footer>
         <footer class="flex w-full text-sm">
