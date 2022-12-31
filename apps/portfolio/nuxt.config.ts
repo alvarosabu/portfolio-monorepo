@@ -1,3 +1,4 @@
+import { apiPlugin } from '@storyblok/vue'
 import SvgLoader from 'vite-svg-loader'
 import head from './config/head'
 
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
       '@storyblok/nuxt',
       {
         accessToken: process.env.STORYBLOK_API_TOKEN,
-        useApiClient: true,
+        use: [apiPlugin],
       },
     ],
   ],
