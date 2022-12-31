@@ -2,10 +2,14 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'pathe'
 import banner from 'vite-plugin-banner'
+import { lightGreen, bold } from 'kolorist'
 
 import dts from 'vite-plugin-dts'
 
 import pkg from './package.json'
+
+// eslint-disable-next-line no-console
+console.log(`${bold(lightGreen('[AS - Use 🐧]'))} v${pkg.version}`)
 
 export default defineConfig({
   resolve: {

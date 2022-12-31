@@ -1,3 +1,1 @@
-import { useLogger } from './useLogger'
-
-export default { useLogger }
+export * from './useLogger'
