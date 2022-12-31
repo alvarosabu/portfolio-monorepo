@@ -35,7 +35,7 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile --shamefully-hoist
 
-      - run: pnpm install -g @lhci/cli@0.8.x
+      - run: pnpm install -g @lhci/cli@0.10.x
       - run: pnpm run build:ci
       - name: run Lighthouse CI
         run: lhci autorun
