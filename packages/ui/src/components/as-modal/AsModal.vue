@@ -74,7 +74,7 @@ function onClose() {
             <div bg-white dark:bg-primary-600 text-primary dark:text-gray-400>
               <header relative px-4 pt-4 pb-4 sm:p-6 sm:pb-4>
                 <slot name="header">
-                  <h2 id="modal-title" class="headline-3 sm:headline-2">
+                  <h2 class="headline-3 sm:headline-2">
                     {{ title }}
                   </h2>
                 </slot>

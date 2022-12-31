@@ -2,273 +2,65 @@
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0,
+    "actual": 0.74,
     "values": [
-      0,
-      0,
-      0
+      0.71,
+      0.74,
+      0.74
     ],
     "operator": ">=",
     "passed": false,
-    "auditId": "apple-touch-icon",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Does not provide a valid `apple-touch-icon`",
-    "auditDocumentationLink": "https://web.dev/apple-touch-icon/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "color-contrast",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Background and foreground colors do not have a sufficient contrast ratio.",
-    "auditDocumentationLink": "https://web.dev/color-contrast/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "csp-xss",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Ensure CSP is effective against XSS attacks",
-    "auditDocumentationLink": "https://web.dev/csp-xss/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "duplicate-id-aria",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "ARIA IDs are not unique",
-    "auditDocumentationLink": "https://web.dev/duplicate-id-aria/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "image-size-responsive",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Serves images with low resolution",
-    "auditDocumentationLink": "https://web.dev/serve-responsive-images/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "installable-manifest",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Web app manifest or service worker do not meet the installability requirements",
-    "auditDocumentationLink": "https://web.dev/installable-manifest/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "maskable-icon",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Manifest doesn't have a maskable icon",
-    "auditDocumentationLink": "https://web.dev/maskable-icon-audit/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0.55,
-    "values": [
-      0.44,
-      0.21,
-      0.55
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "max-potential-fid",
+    "auditProperty": "performance",
+    "auditId": "categories",
     "level": "warn",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Max Potential First Input Delay",
-    "auditDocumentationLink": "https://web.dev/lighthouse-max-potential-fid/"
+    "url": "http://localhost:56050/"
   },
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0,
+    "actual": 0.71,
     "values": [
-      0,
-      0,
-      0
+      0.7,
+      0.71,
+      0.7
     ],
     "operator": ">=",
     "passed": false,
-    "auditId": "service-worker",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Does not register a service worker that controls page and `start_url`",
-    "auditDocumentationLink": "https://web.dev/service-worker/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "splash-screen",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Is not configured for a custom splash screen",
-    "auditDocumentationLink": "https://web.dev/splash-screen/"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "themed-omnibox",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Does not set a theme color for the address bar.",
-    "auditDocumentationLink": "https://web.dev/themed-omnibox/"
-  },
-  {
-    "name": "maxLength",
-    "expected": 0,
-    "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
-    "operator": "<=",
-    "passed": false,
-    "auditId": "unused-css-rules",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Reduce unused CSS",
-    "auditDocumentationLink": "https://web.dev/unused-css-rules/"
-  },
-  {
-    "name": "maxLength",
-    "expected": 0,
-    "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
-    "operator": "<=",
-    "passed": false,
-    "auditId": "unused-javascript",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Reduce unused JavaScript",
-    "auditDocumentationLink": "https://web.dev/unused-javascript/"
-  },
-  {
-    "name": "maxLength",
-    "expected": 0,
-    "actual": 1,
-    "values": [
-      1,
-      1,
-      1
-    ],
-    "operator": "<=",
-    "passed": false,
-    "auditId": "uses-long-cache-ttl",
+    "auditProperty": "performance",
+    "auditId": "categories",
     "level": "warn",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Uses efficient cache policy on static assets",
-    "auditDocumentationLink": "https://web.dev/uses-long-cache-ttl/"
+    "url": "http://localhost:56050/blog/"
   },
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0,
+    "actual": 0.69,
     "values": [
-      0,
-      0,
-      0
+      0.69,
+      0.69,
+      0.69
     ],
     "operator": ">=",
     "passed": false,
-    "auditId": "valid-source-maps",
-    "level": "error",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Missing source maps for large first-party JavaScript",
-    "auditDocumentationLink": "https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0.81,
-    "values": [
-      0.79,
-      0.68,
-      0.81
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "interactive",
+    "auditProperty": "performance",
+    "auditId": "categories",
     "level": "warn",
-    "url": "http://localhost:64375/",
-    "auditTitle": "Time to Interactive",
-    "auditDocumentationLink": "https://web.dev/interactive/"
+    "url": "http://localhost:56050/portfolio/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.78,
+    "values": [
+      0.77,
+      0.77,
+      0.78
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:56050/uses/"
   }
 ]

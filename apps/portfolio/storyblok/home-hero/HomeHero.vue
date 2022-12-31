@@ -86,7 +86,7 @@ function onClose(value: boolean) {
     <teleport to="body">
       <AsModal v-bind="state" :title="blok.modalTitle" @update:is-open="onClose($event)">
         <template #header>
-          <h2 id="modal-title" class="sm:mt-8 headline-3 sm:headline-2 sm:w-3/4 sm:mx-auto">
+          <h2 class="sm:mt-8 headline-3 sm:headline-2 sm:w-3/4 sm:mx-auto">
             {{ blok.modalTitle }}
           </h2>
         </template>
