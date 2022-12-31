@@ -4,7 +4,7 @@ module.exports = {
       preset: 'lighthouse:recommended',
     },
     collect: {
-      staticDistDir: './apps/portfolio/.output/public',
+      staticDistDir: './apps/portfolio/dist',
     },
     upload: {
       target: 'temporary-public-storage',
