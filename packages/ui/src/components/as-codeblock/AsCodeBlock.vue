@@ -16,7 +16,7 @@ const props = defineProps({
 
 const showCopyButton = ref(false)
 
-const { error } = useLogger('[ AS 🎨]')
+const { error } = useLogger()
 
 const copySuccesfully = ref(false)
 

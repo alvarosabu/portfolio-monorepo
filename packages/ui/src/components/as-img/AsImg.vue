@@ -8,7 +8,7 @@ const props = defineProps({
   aspectRatio: {
     type: String,
     validator: (val: string) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = imgAspectRatios.includes(val)
       if (!valid) {
@@ -21,7 +21,7 @@ const props = defineProps({
     type: String,
     default: imgFitModes.CONTAIN,
     validator: (val: string) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = Object.values(imgFitModes).includes(val as imgFitModes)
       if (!valid) {
@@ -35,7 +35,7 @@ const props = defineProps({
     type: String,
     default: imgCaptionType.OUTSIDE,
     validator: (val: string) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
@@ -48,7 +48,7 @@ const props = defineProps({
     type: String,
     default: imgCaptionType.OUTSIDE,
     validator: (val: string) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
@@ -73,7 +73,7 @@ const imgAttrs = computed(() => ({
 
 const hasError = ref(false)
 const loading = ref(true)
-const { error } = useLogger('[ AS 🎨]')
+const { error } = useLogger()
 
 const imgStyles = computed(
   () =>

@@ -18,7 +18,7 @@ const props = defineProps({
     type: String,
     default: btnVariant.PRIMARY,
     validator: (val: ButtonVariant) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
       const valid = Object.values(btnVariant).includes(val as btnVariant)
       if (!valid) {
         error(`Invalid button variant specified "${val}". Valid values are [${Object.values(btnVariant)}]`)
@@ -30,7 +30,7 @@ const props = defineProps({
     type: String,
     default: btnSize.DEFAULT,
     validator: (val: ButtonSize) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = Object.values(btnSize).includes(val as btnSize)
       if (!valid) {

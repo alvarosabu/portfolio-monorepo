@@ -5,11 +5,17 @@ export interface LoggerComposition {
   info: (message: string) => void
   error: (message: string, error?: Error | ErrorEvent) => void
   warn: (message: string) => void
-  log: (name: string, value: any) => void
-  table: (value: any, columns: string[]) => void
+  log: (name: string, value?: any) => void
+  table: (value: any, columns?: string[]) => void
 }
 
-export function useLogger(prefix = process.env.LOGGER_PREFIX || '[AsUse]'): LoggerComposition {
+let prefix = '[ AS-Use ]'
+
+export function useLogger(loggerPrefix?: string): LoggerComposition {
+  if (loggerPrefix) {
+    prefix = loggerPrefix
+  }
+
   function error(message: string, error?: Error | ErrorEvent) {
     error ? console.error(`${prefix} ${message}`, error) : console.error(`${prefix} ${message}`)
   }
@@ -22,17 +28,13 @@ export function useLogger(prefix = process.env.LOGGER_PREFIX || '[AsUse]'): Logg
     console.info(`${prefix} ${message}`)
   }
 
-  function log(name: string, value: any) {
+  function log(name: string, value?: any) {
     if (process.env.NODE_ENV === 'development') {
-      if (value === undefined) {
-        console.log(`${prefix} - ${name}`)
-      } else {
-        console.log(`${prefix} - ${name}:`, value)
-      }
+      value ? console.log(`${prefix} - ${name}:`, value) : console.log(`${prefix} - ${name}`)
     }
   }
 
-  function table(value: any, columns: string[]) {
+  function table(value: any, columns?: string[]) {
     if (process.env.NODE_ENV === 'development') {
       console.table(value, columns)
     }

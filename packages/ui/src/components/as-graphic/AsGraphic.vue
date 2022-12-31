@@ -8,7 +8,7 @@ const props = defineProps({
     type: String,
     default: graphicType.DOTS,
     validator: (val: string) => {
-      const { error } = useLogger('[ AS 🎨]')
+      const { error } = useLogger()
 
       const valid = Object.values(graphicType).includes(val as graphicType)
       if (!valid) {
