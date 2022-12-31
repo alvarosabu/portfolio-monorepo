@@ -1,3 +1,4 @@
+import { useLogger } from '@alvarosabu/use'
 import { format } from 'date-fns'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
 
@@ -38,7 +39,7 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
 }
 
 export function usePortfolio() {
-  const { logError } = useLogger()
+  const { error } = useLogger('[ AS 🐧]')
 
   async function fetchProjects() {
     try {
@@ -51,8 +52,8 @@ export function usePortfolio() {
       })
 
       state.projects = data.value.map(formatPortfolioStory)
-    } catch (error) {
-      logError('There was an error fetching projects from Storyblok', error)
+    } catch (errorMsg) {
+      error('There was an error fetching projects from Storyblok', errorMsg)
     }
   }
 
@@ -66,8 +67,8 @@ export function usePortfolio() {
 
       /*   story.value.content.category = story.value.rels.find(({ uuid }) => story.value.content.category === uuid) */
       return formatPortfolioStory(story.value)
-    } catch (error) {
-      logError(`There was an error fetching project ${slug} from Storyblok`, error)
+    } catch (errorMsg) {
+      error(`There was an error fetching project ${slug} from Storyblok`, errorMsg)
     }
   }
 

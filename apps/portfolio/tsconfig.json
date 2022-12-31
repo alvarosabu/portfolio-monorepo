@@ -7,5 +7,6 @@
       "@/*": ["src/*"]
     },
     "types": ["cypress", "cypress-axe"]
-  }
+  },
+  "exclude": ["node_modules", "dist", "src/**/*.cy.ts"]
 }

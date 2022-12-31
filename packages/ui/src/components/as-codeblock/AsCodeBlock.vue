@@ -2,7 +2,7 @@
 import { ref, h, computed } from 'vue'
 import AsButton from '/@/components/as-button/AsButton.vue'
 
-import { useLogger } from '/@/composables/useLogger'
+import { useLogger } from '@alvarosabu/use'
 import { useSyntaxHighlighter } from '/@/composables/useSyntaxHighlighter'
 
 const props = defineProps({
@@ -16,7 +16,7 @@ const props = defineProps({
 
 const showCopyButton = ref(false)
 
-const { logError } = useLogger()
+const { error } = useLogger()
 
 const copySuccesfully = ref(false)
 
@@ -38,8 +38,8 @@ async function copyToClipboard() {
     setTimeout(() => {
       copySuccesfully.value = false
     }, 2000)
-  } catch (error) {
-    logError('There was an error copying content to clipboard')
+  } catch (errorMsg) {
+    error('There was an error copying content to clipboard', errorMsg as Error)
   }
 }
 

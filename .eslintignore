@@ -1,3 +1,4 @@
+apps/**/dist
 packages/**/dist
 **.spec.js
 **.cy.js

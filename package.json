@@ -19,7 +19,7 @@
     "changeset": "changeset",
     "publish": "pnpm publish -r",
     "test": "pnpm run test:utils",
-    "build:ci": "pnpm --filter ui build && pnpm --filter utils build && pnpm --filter portfolio generate",
+    "build:ci": "pnpm --filter use build && pnpm --filter ui build && pnpm --filter utils build && pnpm --filter portfolio generate",
     "build:all": "pnpm --filter='./packages/' build",
     "ci:version": "pnpm changelog && pnpx changeset version && pnpm install --no-frozen-lockfile --shamefully-hoist && git add .",
     "ci:publish": "pnpm build:all && git status && pnpm publish -r && pnpm changeset tag",
