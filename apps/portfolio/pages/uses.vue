@@ -1,7 +1,31 @@
 <script setup lang="ts">
 import { AnimationTriggers, ShevasAnimationTypes } from '@/composables/useShevas'
 
-useHead({ title: 'Uses - AS Portfolio' })
+useHead({
+  title: 'Uses - AS Portfolio',
+  meta: [
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: 'Uses - AS Portfolio',
+    },
+    {
+      hid: 'twitter:title',
+      name: 'twitter:title',
+      content: 'Uses - AS Portfolio',
+    },
+    {
+      hid: 'og:image',
+      property: 'og:image',
+      content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031889/portfolio/og/og-uses_tj6zvb.png',
+    },
+    {
+      hid: 'twitter:image',
+      name: 'twitter:image',
+      content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031889/portfolio/og/og-uses_tj6zvb.png',
+    },
+  ],
+})
 
 const { getStory } = useStories()
 

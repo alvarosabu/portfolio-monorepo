@@ -53,7 +53,7 @@ const dotsStyle = computed(() => {
     <div class="big-tree" />
     <div class="small-tree" />
     <div :class="pancakeClasses" :style="backgroundImage" />
-    <TheShevas absolute top="-40" left="8" />
+    <TheShevas absolute top="-40" left="16" />
   </div>
 </template>
 

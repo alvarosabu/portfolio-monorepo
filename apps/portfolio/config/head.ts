@@ -9,8 +9,7 @@ const OPEN_GRAPH = [
   {
     hid: 'og:description',
     property: 'og:description',
-    content:
-      'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js. ',
+    content: 'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js + Storyblok ',
   },
   {
     hid: 'og:title',
@@ -25,8 +24,7 @@ const OPEN_GRAPH = [
   {
     hid: 'og:image',
     property: 'og:image',
-    content:
-      'https://res.cloudinary.com/alvarosaburido/image/upload/v1563876252/alvaro-saburido-portfolio.png',
+    content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031892/portfolio/og/og-home_zx5nfd.png',
   },
   { property: 'og:updated_time', content: new Date().toISOString() },
 ]
@@ -42,14 +40,12 @@ const TWITTER = [
   {
     hid: 'twitter:description',
     name: 'twitter:description',
-    content:
-      'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js. ',
+    content: 'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js + Storyblok ',
   },
   {
     hid: 'twitter:image',
     name: 'twitter:image',
-    content:
-      'https://res.cloudinary.com/alvarosaburido/image/upload/v1563876252/alvaro-saburido-portfolio.png',
+    content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031892/portfolio/og/og-home_zx5nfd.png',
   },
   {
     hid: 'twitter:image:alt',
@@ -67,8 +63,7 @@ const head: MetaObject = {
     {
       hid: 'description',
       name: 'description',
-      content:
-        'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js. ',
+      content: 'Welcome to my front-end planet. Alvaro Saburido personal portfolio made with Nuxt.js + Storyblok ',
     },
     { hid: 'author', name: 'author', content: 'Alvaro Saburido' },
     ...OPEN_GRAPH,

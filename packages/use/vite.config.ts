@@ -1,38 +1,26 @@
-import { bold, bgLightGreen } from 'kolorist'
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
-import Unocss from 'unocss/vite'
-import SvgLoader from 'vite-svg-loader'
+import { resolve } from 'pathe'
 import banner from 'vite-plugin-banner'
+import { bgLightGreen, bold } from 'kolorist'
 
 import dts from 'vite-plugin-dts'
-
-import vue from '@vitejs/plugin-vue'
-
-import { resolve } from 'pathe'
 
 import pkg from './package.json'
 
 // eslint-disable-next-line no-console
-console.log(`${bold(bgLightGreen(' AS - UI 🎨 '))} v${pkg.version}`)
-// https://vitejs.dev/config/
+console.log(`${bold(bgLightGreen(' AS - Use 🐧 '))} v${pkg.version}`)
+
 export default defineConfig({
   resolve: {
     alias: {
       '/@': resolve(__dirname, './src'),
     },
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
   plugins: [
-    vue(),
     dts({
       insertTypesEntry: true,
     }),
-    Unocss(),
-    SvgLoader(),
     banner({
       content: `/**\n * name: ${pkg.name}\n * version: v${
         pkg.version
@@ -42,32 +30,22 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'AsUI',
-      fileName: 'as-ui',
+      name: 'AsUse',
+      fileName: 'as-use',
     },
     watch: {
       include: [resolve(__dirname, 'src')],
     },
     rollupOptions: {
-      /*  plugins: [
-        analyze(),
-        visualizer({
-          gzipSize: true,
-          brotliSize: true,
-          open: true,
-        }),
-      ], */
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue', '@vueuse/shared', '@vueuse/core'],
+      external: ['vue'],
       output: {
         exports: 'named',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
-          '@vueuse/shared': 'VueUseShared',
-          '@vueuse/core': 'VueUseCore',
         },
       },
     },

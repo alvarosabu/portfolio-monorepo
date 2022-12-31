@@ -1,3 +1,4 @@
+import { useLogger } from '@alvarosabu/use'
 import { App } from 'vue'
 import 'uno.css'
 
@@ -37,6 +38,7 @@ const plugin: AsUIPlugin = {
     rules: ASRules,
   },
   install(app: App, options: any) {
+    const { info } = useLogger('[ AS 🎨]')
     for (const [key, value] of components) {
       const componentName = key.replace(/^.*[\\/]/, '').replace(/\.vue$/, '')
 
@@ -51,6 +53,7 @@ const plugin: AsUIPlugin = {
         }
       }
     }
+    info('✔')
   },
 }
 

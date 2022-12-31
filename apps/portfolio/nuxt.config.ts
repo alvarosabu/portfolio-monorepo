@@ -23,7 +23,9 @@ export default defineNuxtConfig({
     '@nuxt/image-edge',
     'nuxt-lazy-hydrate',
     '@nuxtjs/fontaine',
+    '@nuxtjs/robots',
     '@unocss/nuxt',
+    '@nuxtjs/critters',
     [
       '@storyblok/nuxt',
       {
@@ -39,9 +41,6 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [SvgLoader()],
-  },
-  plausible: {
-    domain: 'https://alvarosaburido.dev',
   },
   image: {
     storyblok: {

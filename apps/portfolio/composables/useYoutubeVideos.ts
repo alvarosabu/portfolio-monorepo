@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { RemovableRef, useStorage } from '@vueuse/core'
 import { differenceInHours } from 'date-fns'
-import { useLogger } from './useLogger'
+import { useLogger } from '@alvarosabu/use'
 
 export type YoutubeVideo = {
   id: string
@@ -36,7 +36,7 @@ const state = reactive({
   error: null,
 })
 
-const { logError } = useLogger()
+const { error } = useLogger('[ AS 🐧]')
 
 const formatVideos = (item): YoutubeVideo => {
   const { id, snippet } = item
@@ -74,8 +74,8 @@ export const useYoutubeVideos = () => {
         preservedState.value.updatedAt = new Date()
         state.pending = pending.value
         state.error = error.value
-      } catch (error) {
-        logError('There was an error fetching youtube videos', error)
+      } catch (errorMsg) {
+        error('There was an error fetching youtube videos', errorMsg)
       }
     }
   }

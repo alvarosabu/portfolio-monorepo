@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useLogger } from '/@/composables/useLogger'
+import { useLogger } from '@alvarosabu/use'
 import { graphicType, graphicTypeMap } from './const'
 
 const props = defineProps({
@@ -8,10 +8,11 @@ const props = defineProps({
     type: String,
     default: graphicType.DOTS,
     validator: (val: string) => {
-      const { logError } = useLogger()
+      const { error } = useLogger()
+
       const valid = Object.values(graphicType).includes(val as graphicType)
       if (!valid) {
-        logError(`Invalid button variant specified "${val}". Valid values are [${Object.values(graphicType)}]`)
+        error(`Invalid button variant specified "${val}". Valid values are [${Object.values(graphicType)}]`)
       }
       return valid
     },

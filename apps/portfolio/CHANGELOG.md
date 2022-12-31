@@ -1,5 +1,29 @@
 # @alvarosabu/portfolio
 
+## 2.11.0
+
+### Minor Changes
+
+- 025f1f8e: new Logger composable from uses package
+
+## 2.10.0
+
+### Minor Changes
+
+- abd0ec5e: Refactor github section with swiper
+
+## 2.9.1
+
+### Patch Changes
+
+- fc903c65: Added critters module and robots
+
+## 2.9.0
+
+### Minor Changes
+
+- 3cb1481c: Moved github repos to server
+
 ## 2.8.0
 
 ### Minor Changes

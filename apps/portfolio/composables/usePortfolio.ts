@@ -1,4 +1,4 @@
-import { useStoryblokApi } from '@storyblok/vue'
+import { useLogger } from '@alvarosabu/use'
 import { format } from 'date-fns'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
 
@@ -39,40 +39,36 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
 }
 
 export function usePortfolio() {
-  const storyapi = useStoryblokApi()
-  const { logError } = useLogger()
+  const { error } = useLogger('[ AS 🐧]')
 
   async function fetchProjects() {
     try {
-      const { data } = await storyapi.get('cdn/stories/', {
-        ...storiesConfig,
-        starts_with: 'portfolio/',
-        resolve_relations: 'category',
-        is_startpage: false,
+      const { data } = await useFetch('/api/stories/', {
+        params: {
+          starts_with: 'portfolio/',
+          resolve_relations: 'category',
+          is_startpage: false,
+        },
       })
-      state.projects = data.stories.map(story => {
-        story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
-        return formatPortfolioStory(story)
-      })
-    } catch (error) {
-      logError('There was an error fetching projects from Storyblok', error)
+
+      state.projects = data.value.map(formatPortfolioStory)
+    } catch (errorMsg) {
+      error('There was an error fetching projects from Storyblok', errorMsg)
     }
   }
 
-  async function fetchProjectBySlug(slug: string): Promise<ProjectStory> {
+  async function fetchProjectBySlug(slug: string) {
     try {
-      const { data } = await storyapi.get('cdn/stories', {
-        ...storiesConfig,
-        starts_with: 'portfolio/',
-        // Prepend */ to match with the first part of the full_slug
-        by_slugs: '*/' + slug,
-        resolve_relations: 'category',
+      const { data: story } = await useFetch(`/api/stories/portfolio/${slug}`, {
+        params: {
+          resolve_relations: 'category',
+        },
       })
-      const story = data.stories[0]
-      story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
-      return formatPortfolioStory(story)
-    } catch (error) {
-      logError(`There was an error fetching project ${slug} from Storyblok`, error)
+
+      /*   story.value.content.category = story.value.rels.find(({ uuid }) => story.value.content.category === uuid) */
+      return formatPortfolioStory(story.value)
+    } catch (errorMsg) {
+      error(`There was an error fetching project ${slug} from Storyblok`, errorMsg)
     }
   }
 

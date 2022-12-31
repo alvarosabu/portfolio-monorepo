@@ -1,14 +1,35 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
-useHead({ title: 'Blog - AS Portfolio' })
+useHead({
+  title: 'Blog - AS Portfolio',
+  meta: [
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: 'Blog - AS Portfolio',
+    },
+    {
+      hid: 'twitter:title',
+      name: 'twitter:title',
+      content: 'Blog - AS Portfolio',
+    },
+    {
+      hid: 'og:image',
+      property: 'og:image',
+      content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031889/portfolio/og/og-blog_bnhvts.png',
+    },
+    {
+      hid: 'twitter:image',
+      name: 'twitter:image',
+      content: 'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031889/portfolio/og/og-blog_bnhvts.png',
+    },
+  ],
+})
 
-const { getStory } = useStories()
-
-const story = await getStory('blog')
+const { data: story } = await useFetch('/api/stories/blog')
 
 const { fetchArticles, featuredArticle, articleList } = useBlog()
-
 await fetchArticles()
 </script>
 <template>

@@ -1,11 +1,35 @@
 <script setup lang="ts">
 import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
 
-useHead({ title: 'Portfolio - AS Portfolio' })
+useHead({
+  title: 'Portfolio - AS Portfolio',
+  meta: [
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: 'Portfolio - AS Portfolio',
+    },
+    {
+      hid: 'twitter:title',
+      name: 'twitter:title',
+      content: 'Portfolio - AS Portfolio',
+    },
+    {
+      hid: 'og:image',
+      property: 'og:image',
+      content:
+        'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031890/portfolio/og/og-portfolio_vy29kx.png',
+    },
+    {
+      hid: 'twitter:image',
+      name: 'twitter:image',
+      content:
+        'https://res.cloudinary.com/alvarosaburido/image/upload/v1671031890/portfolio/og/og-portfolio_vy29kx.png',
+    },
+  ],
+})
 
-const { getStory } = useStories()
-
-const story = await getStory('portfolio')
+const { data: story } = await useFetch('/api/stories/portfolio')
 
 const { fetchProjects, featuredProject, projectList } = usePortfolio()
 
@@ -55,6 +79,7 @@ await fetchProjects()
                 sizes="sm:100vw md:75vw lg:50vw xl:25vw"
               />
               <AsBadge
+                v-if="project.content.category"
                 absolute
                 right-4
                 shadow
