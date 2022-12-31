@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.11.0
+
+### Minor Changes
+
+- 025f1f8e: new Logger composable from uses package
+
 ## 2.10.0
 
 ### Minor Changes
