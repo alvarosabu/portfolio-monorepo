@@ -4,8 +4,8 @@ module.exports = {
       preset: 'lighthouse:recommended',
     },
     collect: {
-      startServerCommand: 'pnpm run lhci:portfolio',
-      url: ['http://localhost:3000/'],
+      staticDistDir: './apps/portfolio/.output/public',
+      url: ['http://localhost/index.html'],
     },
     upload: {
       target: 'temporary-public-storage',
