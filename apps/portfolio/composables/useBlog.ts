@@ -1,3 +1,4 @@
+import { useLogger } from '@alvarosabu/use'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
 export interface ArticleStoryContent extends StoryContent {
   title: string
@@ -34,7 +35,7 @@ function formatArticleStory(story: ArticleStory): ArticleStory {
 
 export function useBlog() {
   /* const storyapi = useStoryblokApi() */
-  const { logError } = useLogger()
+  const { error } = useLogger('[ AS 🐧]')
 
   async function fetchArticles() {
     try {
@@ -45,8 +46,8 @@ export function useBlog() {
         },
       })
       state.articles = data.value.map(formatArticleStory)
-    } catch (error) {
-      logError('There was an error fetching articles from Storyblok', error)
+    } catch (errorMsg) {
+      error('There was an error fetching articles from Storyblok', errorMsg)
     }
   }
 
@@ -60,8 +61,8 @@ export function useBlog() {
 
       /* story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid) */
       return formatArticleStory(story.value)
-    } catch (error) {
-      logError(`There was an error fetching article ${slug} from Storyblok`, error)
+    } catch (errorMsg) {
+      error(`There was an error fetching article ${slug} from Storyblok`, errorMsg)
     }
   }
 

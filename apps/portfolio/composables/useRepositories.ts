@@ -1,9 +1,9 @@
+import { useLogger } from '@alvarosabu/use'
 import { computed } from 'vue'
 import { RemovableRef, useStorage } from '@vueuse/core'
 import { differenceInHours } from 'date-fns'
 
 import { snakeToCamel } from '@alvarosabu/utils'
-import { useLogger } from './useLogger'
 
 export enum Language {
   JavaScript = 'JavaScript',
@@ -72,7 +72,7 @@ const state: Partial<GithubState> = reactive({
   error: false,
 })
 
-const { logError } = useLogger()
+const { error } = useLogger('[ AS 🐧]')
 
 export const orderByStarsDesc = (a: GithubRepo, b: GithubRepo) => b.stars - a.stars
 
@@ -157,8 +157,8 @@ export const useGithubRepo = () => {
             })
             .sort(orderByStarsDesc)
         }
-      } catch (error) {
-        logError('There was an error fetching github repos', error)
+      } catch (errorMsg) {
+        error('There was an error fetching github repos', errorMsg)
       }
     }
   }
