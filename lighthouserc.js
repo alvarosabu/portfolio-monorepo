@@ -5,7 +5,7 @@ module.exports = {
     },
     collect: {
       staticDistDir: './apps/portfolio/.output/public',
-      url: ['http://localhost/index.html'],
+      url: ['http://localhost/'],
     },
     upload: {
       target: 'temporary-public-storage',
