@@ -125,6 +125,7 @@ importers:
 
   packages/ui:
     specifiers:
+      '@alvarosabu/use': workspace:^0.1.0
       '@cypress/vite-dev-server': ^3.1.1
       '@cypress/vue': ^4.2.0
       '@histoire/plugin-vue': ^0.11.0
@@ -171,9 +172,10 @@ importers:
       '@vueuse/core': 9.5.0_vue@3.2.45
       vue: 3.2.45
     devDependencies:
+      '@alvarosabu/use': link:../use
       '@cypress/vite-dev-server': 3.4.0
       '@cypress/vue': 4.2.2_cypress@10.11.0+vue@3.2.45
-      '@histoire/plugin-vue': 0.11.7_f9c737aea7f960cec2e1b3a68e63ab1d
+      '@histoire/plugin-vue': 0.11.7_7hdtplvh7fqm5qxbwoti4y5ldu
       '@iconify-json/ant-design': 1.1.4
       '@iconify-json/carbon': 1.1.10
       '@iconify-json/gg': 1.1.2
@@ -192,7 +194,7 @@ importers:
       '@vue/test-utils': 2.2.3_vue@3.2.45
       c8: 7.12.0
       cypress: 10.11.0
-      histoire: 0.11.7_8beff86cdc32ecbfd5b108fcec4dc27c
+      histoire: 0.11.7_rpx7q3g4glwl7vnrbd6oytocpq
       jsdom: 20.0.3
       pathe: 0.3.9
       rollup-plugin-analyzer: 4.0.0
@@ -205,7 +207,7 @@ importers:
       tslib: 2.4.1
       typescript: 4.9.3
       unocss: 0.45.30_vite@3.2.4
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
       vite-plugin-banner: 0.5.0
       vite-plugin-dts: 1.7.1_vite@3.2.4
       vite-svg-loader: 3.6.0
@@ -1323,7 +1325,7 @@ packages:
       - supports-color
     dev: true
 
-  /@histoire/plugin-vue/0.11.7_f9c737aea7f960cec2e1b3a68e63ab1d:
+  /@histoire/plugin-vue/0.11.7_7hdtplvh7fqm5qxbwoti4y5ldu:
     resolution: {integrity: sha512-wtfBlRbqSuw5elTcjDtL/BbBuZcVC/Gr7XcUNopRe/3+aBaC7LFyaBetR3T7JuO8W2AiXcPSrMBHrZ97K7v55A==}
     peerDependencies:
       histoire: ^0.11.7
@@ -1332,7 +1334,7 @@ packages:
       '@histoire/controls': 0.11.7
       '@histoire/shared': 0.11.7_vite@3.2.4
       '@histoire/vendors': 0.11.7
-      histoire: 0.11.7_8beff86cdc32ecbfd5b108fcec4dc27c
+      histoire: 0.11.7_rpx7q3g4glwl7vnrbd6oytocpq
       vue: 3.2.45
     transitivePeerDependencies:
       - vite
@@ -1374,7 +1376,7 @@ packages:
       chokidar: 3.5.3
       pathe: 0.2.0
       picocolors: 1.0.0
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
     dev: true
 
   /@histoire/vendors/0.11.7:
@@ -2946,7 +2948,7 @@ packages:
       '@unocss/scope': 0.45.30
       '@unocss/transformer-directives': 0.45.30
       magic-string: 0.26.7
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -3027,7 +3029,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.4
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
       vue: 3.2.45
     dev: true
 
@@ -7208,7 +7210,7 @@ packages:
       - terser
     dev: true
 
-  /histoire/0.11.7_8beff86cdc32ecbfd5b108fcec4dc27c:
+  /histoire/0.11.7_rpx7q3g4glwl7vnrbd6oytocpq:
     resolution: {integrity: sha512-N1W5wIKXD8p26DydduiBJHewbi4t9MVA9ZNsnmMsiCfGLFUbtLbsC4/k1GKLuDuM8DhpEh4ItOEw5SLKupM5kw==}
     hasBin: true
     peerDependencies:
@@ -7233,7 +7235,7 @@ packages:
       happy-dom: 2.55.0
       jiti: 1.16.0
       markdown-it: 12.3.2
-      markdown-it-anchor: 8.6.5_d643ca6eb40ae68ab966a77bead78073
+      markdown-it-anchor: 8.6.5_2zb4u3vubltivolgu556vv4aom
       markdown-it-attrs: 4.1.4_markdown-it@12.3.2
       markdown-it-emoji: 2.0.2
       micromatch: 4.0.5
@@ -7244,8 +7246,8 @@ packages:
       shiki: 0.10.1
       sirv: 2.0.2
       tinypool: 0.1.3
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
-      vite-node: 0.23.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
+      vite-node: 0.23.4_ajklay5k626t46b6fyghkbup3i
     transitivePeerDependencies:
       - '@types/node'
       - encoding
@@ -8434,16 +8436,6 @@ packages:
     dev: true
 
   /markdown-it-anchor/8.6.5_2zb4u3vubltivolgu556vv4aom:
-    resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
-    peerDependencies:
-      '@types/markdown-it': '*'
-      markdown-it: '*'
-    dependencies:
-      '@types/markdown-it': 12.2.3
-      markdown-it: 12.3.2
-    dev: true
-
-  /markdown-it-anchor/8.6.5_d643ca6eb40ae68ab966a77bead78073:
     resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
     peerDependencies:
       '@types/markdown-it': '*'
@@ -11938,7 +11930,7 @@ packages:
       - terser
     dev: true
 
-  /vite-node/0.23.4_@types+node@18.11.9+sass@1.56.1:
+  /vite-node/0.23.4_ajklay5k626t46b6fyghkbup3i:
     resolution: {integrity: sha512-8VuDGwTWIvwPYcbw8ZycMlwAwqCmqZfLdFrDK75+o+6bWYpede58k6AAXN9ioU+icW82V4u1MzkxLVhhIoQ9xA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11946,7 +11938,7 @@ packages:
       debug: 4.3.4
       mlly: 0.5.17
       pathe: 0.2.0
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12061,7 +12053,7 @@ packages:
       fs-extra: 10.1.0
       kolorist: 1.6.0
       ts-morph: 16.0.0
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -12151,7 +12143,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/3.2.4_@types+node@18.11.9+sass@1.56.1:
+  /vite/3.2.4_ajklay5k626t46b6fyghkbup3i:
     resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -12284,7 +12276,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.4_@types+node@18.11.9+sass@1.56.1
+      vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
     transitivePeerDependencies:
       - less
       - sass

@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useLogger } from '/@/composables/useLogger'
 import { btnSize, btnVariant, ButtonSize, ButtonVariant } from './const'
-
+import { useLogger } from '@alvarosabu/use'
 import AsIcon from '/@/components/as-icon/AsIcon.vue'
 
 const props = defineProps({
@@ -19,10 +18,10 @@ const props = defineProps({
     type: String,
     default: btnVariant.PRIMARY,
     validator: (val: ButtonVariant) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
       const valid = Object.values(btnVariant).includes(val as btnVariant)
       if (!valid) {
-        logError(`Invalid button variant specified "${val}". Valid values are [${Object.values(btnVariant)}]`)
+        error(`Invalid button variant specified "${val}". Valid values are [${Object.values(btnVariant)}]`)
       }
       return valid
     },
@@ -31,10 +30,11 @@ const props = defineProps({
     type: String,
     default: btnSize.DEFAULT,
     validator: (val: ButtonSize) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
+
       const valid = Object.values(btnSize).includes(val as btnSize)
       if (!valid) {
-        logError(`Invalid button size specified "${val}". Valid values are [${Object.values(btnSize)}]`)
+        error(`Invalid button size specified "${val}". Valid values are [${Object.values(btnSize)}]`)
       }
       return valid
     },

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useLogger } from '/@/composables/useLogger'
+import { useLogger } from '@alvarosabu/use'
 
 defineProps({
   size: {
     type: String,
     default: '1rem',
     validator: val => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
       const REGEX = /^([0-9]*\.?[0-9]+)(em|rem|px|%|)$/
       const valid = REGEX.test(val as string)
 
       if (!valid) {
-        logError(`Invalid size specified "${val}". Valid units are em|rem|px|%`)
+        error(`Invalid size specified "${val}". Valid units are em|rem|px|%`)
       }
       return valid
     },

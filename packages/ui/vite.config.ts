@@ -1,3 +1,4 @@
+import { bold, bgLightGreen } from 'kolorist'
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
@@ -12,6 +13,8 @@ import { resolve } from 'pathe'
 
 import pkg from './package.json'
 
+// eslint-disable-next-line no-console
+console.log(`${bold(bgLightGreen(' AS - UI 🎨 '))} v${pkg.version}`)
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {

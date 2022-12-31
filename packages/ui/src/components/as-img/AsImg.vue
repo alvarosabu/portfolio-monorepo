@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, StyleValue, useAttrs } from 'vue'
-import { useLogger } from '/@/composables/useLogger'
+import { useLogger } from '@alvarosabu/use'
 
 import { imgFitModes, imgCaptionType, imgAspectRatios } from './const'
 
@@ -8,11 +8,11 @@ const props = defineProps({
   aspectRatio: {
     type: String,
     validator: (val: string) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
 
       const valid = imgAspectRatios.includes(val)
       if (!valid) {
-        logError(`Invalid image aspect-ratio specified "${val}". Valid values are [${imgAspectRatios}]`)
+        error(`Invalid image aspect-ratio specified "${val}". Valid values are [${imgAspectRatios}]`)
       }
       return valid
     },
@@ -21,11 +21,11 @@ const props = defineProps({
     type: String,
     default: imgFitModes.CONTAIN,
     validator: (val: string) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
 
       const valid = Object.values(imgFitModes).includes(val as imgFitModes)
       if (!valid) {
-        logError(`Invalid object-ratio specified "${val}". Valid values are [${Object.values(imgFitModes)}]`)
+        error(`Invalid object-ratio specified "${val}". Valid values are [${Object.values(imgFitModes)}]`)
       }
       return valid
     },
@@ -35,11 +35,11 @@ const props = defineProps({
     type: String,
     default: imgCaptionType.OUTSIDE,
     validator: (val: string) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
 
       const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
-        logError(`Invalid image caption mode specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
+        error(`Invalid image caption mode specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
       }
       return valid
     },
@@ -48,11 +48,11 @@ const props = defineProps({
     type: String,
     default: imgCaptionType.OUTSIDE,
     validator: (val: string) => {
-      const { logError } = useLogger()
+      const { error } = useLogger('[ AS 🎨]')
 
       const valid = Object.values(imgCaptionType).includes(val as imgCaptionType)
       if (!valid) {
-        logError(`Invalid caption-type specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
+        error(`Invalid caption-type specified "${val}". Valid values are [${Object.values(imgCaptionType)}]`)
       }
       return valid
     },
@@ -73,7 +73,7 @@ const imgAttrs = computed(() => ({
 
 const hasError = ref(false)
 const loading = ref(true)
-const { logWarning } = useLogger()
+const { error } = useLogger('[ AS 🎨]')
 
 const imgStyles = computed(
   () =>
@@ -125,7 +125,7 @@ function onError(event: Event) {
   const errorMessage = `Image source ${src} not found`
 
   emit('error', errorMessage)
-  logWarning(errorMessage)
+  error(errorMessage)
 }
 </script>
 <template>
