@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { graphicType, graphicTypeMap } from './const'
 import { useLogger } from '@alvarosabu/use'
+import { graphicType, graphicTypeMap } from './const'
 
 const props = defineProps({
   type: {
