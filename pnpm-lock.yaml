@@ -58,7 +58,6 @@ importers:
       '@unocss/preset-web-fonts': 0.46.5
       '@vueuse/core': ^9.3.0
       axe-core: ^4.4.2
-      axios: ^0.27.2
       cypress: 10.2.0
       cypress-axe: ^0.14.0
       cypress-localstorage-commands: ^1.7.0
@@ -92,7 +91,7 @@ importers:
       '@nuxt/image-edge': 1.0.0-27840416.dc1ed65
       '@nuxtjs/fontaine': 0.2.2
       '@stackblitz/sdk': 1.8.1
-      '@storyblok/nuxt': 4.6.0_axios@0.27.2
+      '@storyblok/nuxt': 4.6.0
       '@storyblok/vue': 7.0.0
       '@types/prismjs': 1.26.0
       '@types/sanitize-html': 2.6.2
@@ -101,7 +100,6 @@ importers:
       '@unocss/preset-web-fonts': 0.46.5
       '@vueuse/core': 9.5.0
       axe-core: 4.5.2
-      axios: 0.27.2
       cypress: 10.2.0
       cypress-axe: 0.14.0_zvyfa2fk3ysq62yoq4bcgowrju
       cypress-localstorage-commands: 1.7.0_cypress@10.2.0
@@ -2152,10 +2150,10 @@ packages:
     resolution: {integrity: sha512-hjYfjOLQBNDzqPD5AkGJOD7j+uvFwGocDTmwNqmLCWR5EY7BDtcOtDY2M+91v/twYWWNvI7N8UNIgojCPNgzMA==}
     dev: true
 
-  /@storyblok/js/1.8.6_axios@0.27.2:
+  /@storyblok/js/1.8.6:
     resolution: {integrity: sha512-MpDhwfs+TBrnfQqr9z+z7SCLnvX6/jZKCasexEvVt0Qp+MvWD7IsQtBu6WnKboTjaR4VLFb69YTk+xUG/Roqgw==}
     dependencies:
-      storyblok-js-client: 4.5.8_axios@0.27.2
+      storyblok-js-client: 4.5.8
     transitivePeerDependencies:
       - axios
     dev: true
@@ -2166,18 +2164,18 @@ packages:
       storyblok-js-client: 5.2.3
     dev: true
 
-  /@storyblok/nuxt/4.6.0_axios@0.27.2:
+  /@storyblok/nuxt/4.6.0:
     resolution: {integrity: sha512-Km0HEuHJZ3PP0R3S9mQhkr4pAIDQG2qX6Y35mB5ncH7Gw1NmO2yWScg6FcX0fGr2W5ENXjDfePGAtEtmytPdIQ==}
     dependencies:
-      '@storyblok/vue': 6.3.2_axios@0.27.2
+      '@storyblok/vue': 6.3.2
     transitivePeerDependencies:
       - axios
     dev: true
 
-  /@storyblok/vue/6.3.2_axios@0.27.2:
+  /@storyblok/vue/6.3.2:
     resolution: {integrity: sha512-0nBIco2WsEmaqTTRxuYQeTRQkFqUheZsUlRgo2uw9qbZj8VMDrSqd6pxstZEn0LcijzbpFNhOOObIpo9rVsCkQ==}
     dependencies:
-      '@storyblok/js': 1.8.6_axios@0.27.2
+      '@storyblok/js': 1.8.6
     transitivePeerDependencies:
       - axios
     dev: true
@@ -3601,15 +3599,6 @@ packages:
   /axe-core/4.5.2:
     resolution: {integrity: sha512-u2MVsXfew5HBvjsczCv+xlwdNnB1oQR9HlAcsejZttNjKKSkeDNVwB1vMThIUIFI9GoT57Vtk8iQLwqOfAkboA==}
     engines: {node: '>=4'}
-    dev: true
-
-  /axios/0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /balanced-match/1.0.2:
@@ -10842,12 +10831,10 @@ packages:
   /std-env/3.3.1:
     resolution: {integrity: sha512-3H20QlwQsSm2OvAxWIYhs+j01MzzqwMwGiiO1NQaJYZgJZFPuAbf95/DiKRBSTYIJ2FeGUc+B/6mPGcWP9dO3Q==}
 
-  /storyblok-js-client/4.5.8_axios@0.27.2:
+  /storyblok-js-client/4.5.8:
     resolution: {integrity: sha512-0Wp7Kn4RdKaKRgMmNDu8c6OC81x1mgeri4ziKDY9BsUZEIGLTNw8KFIWlHYACgMnJQn/6qZaV9kGo8IY4hv6GA==}
     peerDependencies:
       axios: ^0.27.2
-    dependencies:
-      axios: 0.27.2
     dev: true
 
   /storyblok-js-client/5.2.3:
