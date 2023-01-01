@@ -1,0 +1,6 @@
+{
+  "http://localhost:56050/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1672506047403-28909.report.html",
+  "http://localhost:56050/blog/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1672506048356-85237.report.html",
+  "http://localhost:56050/portfolio/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1672506049259-45459.report.html",
+  "http://localhost:56050/uses/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1672506050567-79974.report.html"
+}

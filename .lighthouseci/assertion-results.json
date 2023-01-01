@@ -1,0 +1,66 @@
+[
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.74,
+    "values": [
+      0.71,
+      0.74,
+      0.74
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:56050/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.71,
+    "values": [
+      0.7,
+      0.71,
+      0.7
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:56050/blog/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.69,
+    "values": [
+      0.69,
+      0.69,
+      0.69
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:56050/portfolio/"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.78,
+    "values": [
+      0.77,
+      0.77,
+      0.78
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditProperty": "performance",
+    "auditId": "categories",
+    "level": "warn",
+    "url": "http://localhost:56050/uses/"
+  }
+]
