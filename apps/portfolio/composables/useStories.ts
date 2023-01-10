@@ -74,17 +74,9 @@ export enum StoryStatus {
   DRAFT = 'draft',
   PUBLISHED = 'published',
 }
-export interface StoriesConfig {
-  version: StoryVersion
-}
 
 export interface StoriesState {
   stories: Story[]
-}
-
-export const storiesConfig: StoriesConfig = {
-  version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-  /*   version: 'published', */
 }
 
 const state: StoriesState = reactive({
@@ -94,10 +86,14 @@ const state: StoriesState = reactive({
 const navigationContentTypes = ['ThePage', 'overview']
 
 export function useStories() {
+  const config = useRuntimeConfig()
+
   const storyapi = useStoryblokApi()
 
   async function fetchStories() {
-    const { data } = await storyapi.get('cdn/stories', storiesConfig)
+    const { data } = await storyapi.get('cdn/stories', {
+      version: config.public.storyblokVersion,
+    })
     state.stories = data.stories
   }
 
@@ -124,7 +120,9 @@ export function useStories() {
   )
 
   async function getStory(id = 'home') {
-    const story: Story = await useStoryblok(id, storiesConfig)
+    const story: Story = await useStoryblok(id, {
+      version: config.public.storyblokVersion,
+    })
 
     return story
   }

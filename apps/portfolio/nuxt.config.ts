@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       apiURL: process.env.STORYBLOK_API_URL,
       apiToken: process.env.STORYBLOK_API_TOKEN,
       youtubeKey: process.env.YOUTUBE_API_KEY,
+      storyblokVersion: process.env.STORYBLOK_VERSION || 'published',
     },
   },
   app: {

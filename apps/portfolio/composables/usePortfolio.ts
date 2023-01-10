@@ -40,12 +40,13 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
 
 export function usePortfolio() {
   const storyapi = useStoryblokApi()
+  const config = useRuntimeConfig()
   const { error } = useLogger('[ AS 🐧]')
 
   async function fetchProjects() {
     try {
       const { data } = await storyapi.get('cdn/stories/', {
-        ...storiesConfig,
+        version: config.public.storyblokVersion,
         starts_with: 'portfolio/',
         resolve_relations: 'category',
         is_startpage: false,
@@ -62,7 +63,7 @@ export function usePortfolio() {
   async function fetchProjectBySlug(slug: string) {
     try {
       const { data } = await storyapi.get('cdn/stories', {
-        ...storiesConfig,
+        version: config.public.storyblokVersion,
         starts_with: 'portfolio/',
         // Prepend */ to match with the first part of the full_slug
         by_slugs: '*/' + slug,
