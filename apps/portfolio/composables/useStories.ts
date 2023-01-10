@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import { ComputedRef } from 'vue'
-import { useStoryblok, useStoryblokApi } from '@storyblok/vue'
 
 export interface Slot {
   type: string

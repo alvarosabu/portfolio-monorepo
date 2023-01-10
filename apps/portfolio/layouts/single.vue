@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-const { fetchStories } = useStories()
+/* const { fetchStories } = useStories()
 
-await fetchStories()
+await fetchStories() */
 </script>
 <template>
   <div>

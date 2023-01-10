@@ -30,9 +30,8 @@ export default defineNuxtConfig({
       '@storyblok/nuxt',
       {
         accessToken: process.env.STORYBLOK_API_TOKEN,
-        bridge: true,
-        apiOptions: {}, // storyblok-js-client options
-        useApiClient: true,
+        /* useApiClient: true, */
+        
       },
     ],
   ],

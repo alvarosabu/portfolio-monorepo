@@ -32,7 +32,6 @@
     "@nuxtjs/fontaine": "^0.2.2",
     "@stackblitz/sdk": "^1.8.0",
     "@storyblok/nuxt": "^4.6.0",
-    "@storyblok/vue": "^7.0.0",
     "@types/prismjs": "^1.26.0",
     "@types/sanitize-html": "^2.6.2",
     "@unocss/nuxt": "^0.46.5",
