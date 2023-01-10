@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.12.0
+
+### Minor Changes
+
+- 500a9e74: Update sdks
+
 ## 2.11.0
 
 ### Minor Changes
