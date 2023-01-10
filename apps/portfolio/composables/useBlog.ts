@@ -35,12 +35,13 @@ function formatArticleStory(story: ArticleStory): ArticleStory {
 
 export function useBlog() {
   const storyapi = useStoryblokApi()
+  const config = useRuntimeConfig()
   const { error } = useLogger('[ AS 🐧]')
 
   async function fetchArticles() {
     try {
       const { data } = await storyapi.get('cdn/stories/', {
-        ...storiesConfig,
+        version: config.public.storyblokVersion,
         starts_with: 'blog/',
         is_startpage: false,
       })
@@ -53,7 +54,7 @@ export function useBlog() {
   async function fetchArticleBySlug(slug: string) {
     try {
       const { data } = await storyapi.get('cdn/stories', {
-        ...storiesConfig,
+        version: config.public.storyblokVersion,
         starts_with: 'blog/',
         // Prepend */ to match with the first part of the full_slug
         by_slugs: '*/' + slug,
