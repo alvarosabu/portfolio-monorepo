@@ -31,7 +31,6 @@ export default defineNuxtConfig({
       {
         accessToken: process.env.STORYBLOK_API_TOKEN,
         /* useApiClient: true, */
-        
       },
     ],
   ],
