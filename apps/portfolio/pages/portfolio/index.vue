@@ -28,8 +28,9 @@ useHead({
     },
   ],
 })
+const { getStory } = useStories()
 
-const { data: story } = await useFetch('/api/stories/portfolio')
+const story = await getStory('portfolio')
 
 const { fetchProjects, featuredProject, projectList } = usePortfolio()
 

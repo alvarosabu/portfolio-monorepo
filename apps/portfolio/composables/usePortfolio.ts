@@ -39,36 +39,40 @@ function formatPortfolioStory(story: ProjectStory): ProjectStory {
 }
 
 export function usePortfolio() {
+  const storyapi = useStoryblokApi()
   const { error } = useLogger('[ AS 🐧]')
 
   async function fetchProjects() {
     try {
-      const { data } = await useFetch('/api/stories/', {
-        params: {
-          starts_with: 'portfolio/',
-          resolve_relations: 'category',
-          is_startpage: false,
-        },
+      const { data } = await storyapi.get('cdn/stories/', {
+        ...storiesConfig,
+        starts_with: 'portfolio/',
+        resolve_relations: 'category',
+        is_startpage: false,
       })
-
-      state.projects = data.value.map(formatPortfolioStory)
+      state.projects = data.stories.map(story => {
+        story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
+        return formatPortfolioStory(story)
+      })
     } catch (errorMsg) {
-      error('There was an error fetching projects from Storyblok', errorMsg)
+      error('There was an error fetching projects from Storyblok', errorMsg as Error)
     }
   }
 
   async function fetchProjectBySlug(slug: string) {
     try {
-      const { data: story } = await useFetch(`/api/stories/portfolio/${slug}`, {
-        params: {
-          resolve_relations: 'category',
-        },
+      const { data } = await storyapi.get('cdn/stories', {
+        ...storiesConfig,
+        starts_with: 'portfolio/',
+        // Prepend */ to match with the first part of the full_slug
+        by_slugs: '*/' + slug,
+        resolve_relations: 'category',
       })
-
-      /*   story.value.content.category = story.value.rels.find(({ uuid }) => story.value.content.category === uuid) */
-      return formatPortfolioStory(story.value)
+      const story = data.stories[0]
+      story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
+      return formatPortfolioStory(story)
     } catch (errorMsg) {
-      error(`There was an error fetching project ${slug} from Storyblok`, errorMsg)
+      error(`There was an error fetching project ${slug} from Storyblok`, errorMsg as Error)
     }
   }
 

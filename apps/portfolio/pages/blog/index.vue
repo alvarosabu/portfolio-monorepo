@@ -27,7 +27,9 @@ useHead({
   ],
 })
 
-const { data: story } = await useFetch('/api/stories/blog')
+const { getStory } = useStories()
+
+const story = await getStory('blog')
 
 const { fetchArticles, featuredArticle, articleList } = useBlog()
 await fetchArticles()

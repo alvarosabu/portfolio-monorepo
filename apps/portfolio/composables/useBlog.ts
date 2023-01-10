@@ -34,35 +34,36 @@ function formatArticleStory(story: ArticleStory): ArticleStory {
 }
 
 export function useBlog() {
-  /* const storyapi = useStoryblokApi() */
+  const storyapi = useStoryblokApi()
   const { error } = useLogger('[ AS 🐧]')
 
   async function fetchArticles() {
     try {
-      const { data } = await useFetch('/api/stories/', {
-        params: {
-          starts_with: 'blog/',
-          is_startpage: false,
-        },
+      const { data } = await storyapi.get('cdn/stories/', {
+        ...storiesConfig,
+        starts_with: 'blog/',
+        is_startpage: false,
       })
-      state.articles = data.value.map(formatArticleStory)
+      state.articles = data.stories.map(formatArticleStory)
     } catch (errorMsg) {
-      error('There was an error fetching articles from Storyblok', errorMsg)
+      error('There was an error fetching articles from Storyblok', errorMsg as Error)
     }
   }
 
   async function fetchArticleBySlug(slug: string) {
     try {
-      const { data: story } = await useFetch(`/api/stories/blog/${slug}`, {
-        params: {
-          resolve_relations: 'category',
-        },
+      const { data } = await storyapi.get('cdn/stories', {
+        ...storiesConfig,
+        starts_with: 'blog/',
+        // Prepend */ to match with the first part of the full_slug
+        by_slugs: '*/' + slug,
       })
 
-      /* story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid) */
-      return formatArticleStory(story.value)
+      const story = data.stories[0]
+      story.content.category = data.rels.find(({ uuid }) => story.content.category === uuid)
+      return formatArticleStory(story)
     } catch (errorMsg) {
-      error(`There was an error fetching article ${slug} from Storyblok`, errorMsg)
+      error(`There was an error fetching article ${slug} from Storyblok`, errorMsg as Error)
     }
   }
 
