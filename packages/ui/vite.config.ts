@@ -1,9 +1,9 @@
-import { bold, bgLightGreen } from 'kolorist'
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
 import SvgLoader from 'vite-svg-loader'
 import banner from 'vite-plugin-banner'
+import { bold, bgLightGreen } from 'kolorist'
 
 import dts from 'vite-plugin-dts'
 
