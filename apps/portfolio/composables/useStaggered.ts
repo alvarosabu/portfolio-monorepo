@@ -4,8 +4,8 @@ const STAGGER_DURATION = 200
 
 export function useStaggered(duration = STAGGER_DURATION) {
   const nuxtApp = useNuxtApp()
-  function beforeEnter(el: Element) {
-    ;(el as HTMLElement).style.opacity = '0'
+  function beforeEnter(el: HTMLElement) {
+    el.style.opacity = '0'
     /*  el.style.height = 0; */
   }
 
