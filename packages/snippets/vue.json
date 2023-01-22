@@ -1,0 +1,55 @@
+{
+    "Vue TS + Composition": {
+        "prefix": "vue3-ts",
+        "body": [
+          "<script lang=\"ts\">",
+          "import { ref, defineComponent } from 'vue'",
+          "",
+          "const props = {",
+          "  ${3:msg}: {",
+          "    type: ${4:String},",
+          "  },",
+          "}",
+          "",
+          "export default defineComponent({",
+          "  name: '${1:AsAwesome}',",
+          "  props,",
+          "  setup: () => {",
+          "    const count = ref(0)",
+          "    return { count }",
+          "  },",
+          "})",
+          "</script>",
+          "<template>",
+          "  <div class=\"${2:as-awesome}\"></div>",
+          "</template>",
+          "",
+          "<style lang=\"scss\" src=\"./${1:AsAwesome}.scss\"></style>"
+        ],
+        "description": "Vue TS + Composition"
+    },
+    "Vue SFC Setup component": {
+        "prefix": "vue-sfc-setup",
+        "body": [
+          "<script setup>",
+          "${2:}",
+          "</script>",
+          "<template>",
+          "${1:<div></div>}",
+          "</template>"
+        ],
+        "description": "Vue SFC Setup component"
+    },
+    "Vue SFC Setup typescript component": {
+        "prefix": "vue-sfc-setup-ts",
+        "body": [
+          "<script setup lang=\"ts\">",
+          "${2:}",
+          "</script>",
+          "<template>",
+          "${1:<div></div>}",
+          "</template>"
+        ],
+        "description": "Vue SFC Setup typescript component"
+    }
+}
