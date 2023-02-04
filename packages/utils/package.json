@@ -12,15 +12,16 @@
     "typescript"
   ],
   "license": "MIT",
-  "main": "./dist/as-utils.umd.js",
-  "module": "./dist/as-utils.es.js",
+  "type": "module",
+  "main": "./dist/as-utils.umd.cjs",
+  "module": "./dist/as-utils.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/as-utils.es.js",
-      "require": "./dist/as-utils.umd.js"
+      "import": "./dist/as-utils.js",
+      "require": "./dist/as-utils.umd.cjs"
     },
-    "./": "./dist/as-utils.es.js"
+    "./*": "./dist/as-utils.es.js"
   },
   "homepage": "https://github.com/alvarosabu/portfolio#readme",
   "repository": "https://github.com/alvarosabu/as-portfolio",
