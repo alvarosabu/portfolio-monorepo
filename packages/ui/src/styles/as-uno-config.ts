@@ -6,8 +6,8 @@ import {
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
-  UserConfig,
   Preset,
+  defineConfig,
 } from 'unocss'
 
 import { imgAspectRatiosSafelist } from '../components/as-img/const'
@@ -20,7 +20,7 @@ import { ASIconsOptions } from './icons'
 import { ASRules } from './rules'
 import { ASTypographyOptions } from './typography'
 
-export const ASUnoConfig: UserConfig = {
+export const ASUnoConfig = defineConfig({
   theme: ASTheme,
   shortcuts: ASShortcuts,
   rules: ASRules,
@@ -33,6 +33,6 @@ export const ASUnoConfig: UserConfig = {
     presetWebFonts(ASWebFontsOptions) as Preset,
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-}
+})
 
 export default ASUnoConfig
