@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "2.12.0",
+  "version": "2.13.0",
   "scripts": {
     "dev": "nuxt dev --port=2590",
     "dev:https": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --port=2591 --ssl-cert localhost.pem --ssl-key localhost-key.pem",
@@ -18,9 +18,9 @@
     "story:preview": "histoire preview"
   },
   "devDependencies": {
-    "@alvarosabu/ui": "workspace:^2.19.0",
-    "@alvarosabu/use": "workspace:^0.2.0",
-    "@alvarosabu/utils": "workspace:^2.2.0",
+    "@alvarosabu/ui": "workspace:^2.20.0",
+    "@alvarosabu/use": "workspace:^0.3.0",
+    "@alvarosabu/utils": "workspace:^2.3.0",
     "@cypress/vite-dev-server": "^5.0.2",
     "@cypress/vue": "^5.0.3",
     "@formkit/vue": "1.0.0-beta.14",
