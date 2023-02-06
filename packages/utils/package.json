@@ -12,15 +12,16 @@
     "typescript"
   ],
   "license": "MIT",
-  "main": "./dist/as-utils.umd.js",
-  "module": "./dist/as-utils.es.js",
+  "type": "module",
+  "main": "./dist/as-utils.umd.cjs",
+  "module": "./dist/as-utils.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/as-utils.es.js",
-      "require": "./dist/as-utils.umd.js"
+      "import": "./dist/as-utils.js",
+      "require": "./dist/as-utils.umd.cjs"
     },
-    "./": "./dist/as-utils.es.js"
+    "./*": "./dist/as-utils.es.js"
   },
   "homepage": "https://github.com/alvarosabu/portfolio#readme",
   "repository": "https://github.com/alvarosabu/as-portfolio",
@@ -37,13 +38,13 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
-    "@typescript-eslint/parser": "^5.27.1",
-    "pathe": "^0.3.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9",
-    "vite-plugin-banner": "^0.2.0",
-    "vite-plugin-dts": "^1.1.1",
-    "vitest": "^0.10.5"
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "pathe": "^1.1.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-banner": "^0.7.0",
+    "vite-plugin-dts": "^1.7.2",
+    "vitest": "^0.28.4"
   }
 }
