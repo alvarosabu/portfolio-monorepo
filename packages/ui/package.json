@@ -1,6 +1,6 @@
 {
   "name": "@alvarosabu/ui",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "type": "module",
   "description": "UI Library for AS development",
   "author": "Alvaro Saburido <hola@alvarosaburido.dev> (https://github.com/alvarosabu/)",
@@ -38,7 +38,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@alvarosabu/use": "workspace:^0.2.0",
+    "@alvarosabu/use": "workspace:^0.3.0",
     "@cypress/vite-dev-server": "^5.0.2",
     "@cypress/vue": "^5.0.3",
     "@histoire/plugin-vue": "^0.12.4",

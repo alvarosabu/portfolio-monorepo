@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.13.0
+
+### Minor Changes
+
+- 747d642a: Updated to vite 4
+
 ## 2.12.0
 
 ### Minor Changes
