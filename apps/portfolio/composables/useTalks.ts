@@ -1,5 +1,5 @@
 import { useLogger } from '@alvarosabu/use'
-import { format } from 'date-fns'
+import { format, compareDesc } from 'date-fns'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
 
 export interface TalkStoryContent extends StoryContent {
@@ -15,6 +15,8 @@ export interface TalkStory extends Story {
   readingTime: string
   publishedDateFormatted: string
   createdDateFormatted: string
+  videoId: string
+  eventDate: string
 }
 
 export interface TalkState {
@@ -25,7 +27,10 @@ const state: TalkState = reactive({
   talks: [],
 })
 
+const videoRegex = /(?:\?v=|&v=|^v\/|\/embed\/|\.be\/)([a-zA-Z0-9_-]{11}).*/
+
 function formatTalkStory(story: TalkStory): TalkStory {
+  const videoMatch = story?.content?.url?.url.match(videoRegex)
   if (story.published_at) {
     story.publishedDateFormatted = format(new Date(story.published_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.PUBLISHED
@@ -33,6 +38,8 @@ function formatTalkStory(story: TalkStory): TalkStory {
     story.createdDateFormatted = format(new Date(story.created_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.DRAFT
   }
+  story.videoId = videoMatch ? videoMatch[1] : ''
+  story.eventDate = format(new Date(story.content.date), 'MMMM dd, yyyy')
   // TODO: add reading time
   /*  story.readingTime = `${Math.ceil(story.content.split(/\s/g).length / 200)} min read` */
   return story
@@ -50,9 +57,7 @@ export function useTalks() {
         starts_with: 'talks/',
         is_startpage: false,
       })
-      state.talks = data.stories.map(story => {
-        return formatTalkStory(story)
-      })
+      state.talks = data.stories.map(formatTalkStory)
     } catch (errorMsg) {
       error('There was an error fetching talks from Storyblok', errorMsg as Error)
     }
@@ -75,12 +80,14 @@ export function useTalks() {
     }
   }
 
-  const talkList = computed(() => state.talks.filter(talk => talk.status === StoryStatus.PUBLISHED))
+  const talksList = computed(() =>
+    state.talks.sort((a, b) => compareDesc(new Date(a.content.date), new Date(b.content.date))),
+  )
 
   return {
     ...toRefs(state),
     fetchTalks,
     fetchTalkBySlug,
-    talkList,
+    talksList,
   }
 }
