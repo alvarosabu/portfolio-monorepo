@@ -60,7 +60,7 @@ await fetchTalks()
               aspect-ratio="16/9"
               :videoid="talk.videoId"
               :playlabel="talk.content.title"
-              params="controls=1&start=10&end=30&modestbranding=2&rel=0&enablejsapi=1"
+              :params="talk.videoParams"
             >
             </lite-youtube>
             <NuxtImg

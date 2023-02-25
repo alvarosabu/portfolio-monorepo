@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
-import { format } from 'date-fns'
-
 definePageMeta({
   layout: 'single',
 })
@@ -117,7 +114,7 @@ useHead({
           aspect-ratio="16/9"
           :videoid="story?.videoId"
           :playlabel="story?.content.title"
-          params="controls=1&start=10&end=30&modestbranding=2&rel=0&enablejsapi=1"
+          :params="story?.videoParams"
         >
         </lite-youtube>
         <NuxtImg

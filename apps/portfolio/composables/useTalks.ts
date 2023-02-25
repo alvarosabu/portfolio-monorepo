@@ -17,6 +17,7 @@ export interface TalkStory extends Story {
   createdDateFormatted: string
   videoId: string
   eventDate: string
+  videoParams: string
 }
 
 export interface TalkState {
@@ -28,9 +29,11 @@ const state: TalkState = reactive({
 })
 
 const videoRegex = /(?:\?v=|&v=|^v\/|\/embed\/|\.be\/)([a-zA-Z0-9_-]{11}).*/
+const startTimeRegex = /t=(\d+)s/
 
 function formatTalkStory(story: TalkStory): TalkStory {
   const videoMatch = story?.content?.url?.url.match(videoRegex)
+  const startTimeMatch = story?.content?.url?.url.match(startTimeRegex)
   if (story.published_at) {
     story.publishedDateFormatted = format(new Date(story.published_at), 'MMMM dd, yyyy')
     story.status = StoryStatus.PUBLISHED
@@ -39,6 +42,9 @@ function formatTalkStory(story: TalkStory): TalkStory {
     story.status = StoryStatus.DRAFT
   }
   story.videoId = videoMatch ? videoMatch[1] : ''
+  story.videoParams = `controls=1&start=${
+    startTimeMatch ? startTimeMatch[1] : '0'
+  }&modestbranding=2&rel=0&enablejsapi=1`
   story.eventDate = format(new Date(story.content.date), 'MMMM dd, yyyy')
   // TODO: add reading time
   /*  story.readingTime = `${Math.ceil(story.content.split(/\s/g).length / 200)} min read` */
