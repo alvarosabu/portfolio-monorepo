@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.14.0
+
+### Minor Changes
+
+- 7d9833d3: Talks page
+
 ## 2.13.0
 
 ### Minor Changes
