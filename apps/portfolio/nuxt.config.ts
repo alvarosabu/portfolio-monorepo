@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/robots',
     '@unocss/nuxt',
+    '@nuxt/devtools',
     '@nuxtjs/critters',
     [
       '@storyblok/nuxt',

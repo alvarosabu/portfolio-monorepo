@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
-import { format } from 'date-fns'
-
 definePageMeta({
   layout: 'single',
 })
@@ -9,20 +6,12 @@ const route = useRoute()
 
 const { isDesktop, isMobile, isTablet } = useBreakpoints()
 
-const { fetchArticleBySlug } = useBlog()
+const { fetchTalkBySlug } = useTalks()
 
-const story = await fetchArticleBySlug(route.params.slug as string)
-
-const isPublished = computed(() => story?.published_at)
-
-const storyPublishedDate = computed(() =>
-  isMobile.value
-    ? format(new Date(story?.published_at), 'MM/dd/yy')
-    : format(new Date(story?.published_at), 'MMMM dd, yyyy'),
-)
+const story = await fetchTalkBySlug(route.params.slug as string)
 
 useHead({
-  title: `${story?.content?.title} - AS Portfolio`,
+  title: `${story?.content.title} - AS Portfolio`,
   meta: [
     {
       hid: 'description',
@@ -48,7 +37,7 @@ useHead({
     {
       hid: 'og:type',
       property: 'og:type',
-      content: 'article',
+      content: 'project',
     },
     {
       hid: 'og:url',
@@ -58,12 +47,12 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: story?.content.media?.filename,
+      content: story?.content.media.filename,
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: story?.content.media?.alt,
+      content: story?.content.media.alt,
     },
     {
       hid: 'og:publish_date',
@@ -86,12 +75,12 @@ useHead({
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: story?.content.media?.filename,
+      content: story?.content.media.filename,
     },
     {
       hid: 'twitter:image:alt',
       name: 'twitter:image:alt',
-      content: story?.content.media?.alt,
+      content: story?.content.media.alt,
     },
   ],
 })
@@ -99,10 +88,22 @@ useHead({
 <template>
   <main role="main" pt-4 md:pt-12>
     <div mx-auto container>
-      <header pt-12 pb-0 lg:py-12 w-full relative flex flex-col lg:flex-row lg:items-end data-cy="article-hero">
-        <NuxtImg
-          v-if="story?.content.media"
-          data-cy="article-thumbnail"
+      <header
+        v-if="story"
+        pt-12
+        pb-0
+        lg:py-12
+        w-full
+        relative
+        flex
+        flex-col
+        lg:flex-row
+        lg:items-start
+        data-cy="project-hero"
+      >
+        <lite-youtube
+          v-if="story?.videoId"
+          controls
           important-my-0
           rounded-xl
           z-10
@@ -110,8 +111,24 @@ useHead({
           important-mb-8
           class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-4/5"
           shadow-lg
-          :src="story?.content.media?.filename"
-          :alt="story?.content.media?.alt"
+          aspect-ratio="16/9"
+          :videoid="story?.videoId"
+          :playlabel="story?.content.title"
+          :params="story?.videoParams"
+        >
+        </lite-youtube>
+        <NuxtImg
+          v-else-if="story?.content.media"
+          data-cy="project-thumbnail"
+          important-my-0
+          rounded-xl
+          z-10
+          mr-12
+          important-mb-8
+          class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-4/5"
+          shadow-lg
+          :src="story.content.media.filename"
+          :alt="story.content.media.alt"
           aspect-ratio="16/9"
           provider="storyblok"
           format="webp"
@@ -126,60 +143,47 @@ useHead({
           text-gray-400
           aspect-video
           mr-12
-          z-10
           w-full
           border-rounded
           text-4xl
+          z-10
         >
           <AsIcon name="brush" />
         </div>
-        <div flex flex-col lg:justify-end lg:items-end lg:h-full relative class="w-full lg:w-1/3">
+        <div flex flex-col lg:justify-end lg:h-full relative class="w-full lg:w-1/3">
           <h1
             important-mt-0
             text-primary-500
             dark:text-gray-100
-            text-4xl
-            lg:text-6xl
+            text-2xl
+            lg:text-4xl
             font-bold
             font-display
             z-10
-            data-cy="article-hero-title"
+            mb-6
+            data-cy="project-hero-title"
             important-line-height-6
           >
+            <!--        Hasura GraphQL Baas for the busy developer. -->
             {{ story?.content.title }}
           </h1>
+          <h2 font-bold mb-4 text-primary-300>
+            <a :href="story?.content.event_url.url">{{ story?.content.event_name }}</a>
+          </h2>
+          <p py-4 text-sm font-sans>{{ story?.eventDate }}</p>
+          <p mb-8>{{ story?.content.excerpt }}</p>
+          <TagList :tags="story?.tag_list" />
           <client-only>
             <!-- this component will only be rendered on client-side -->
-            <AsGraphic v-if="isMobile || isTablet" class="absolute -right-4 bottom-16 sm:(right-16)" type="dots" />
-            <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%]" type="dots-2x" />
+            <AsGraphic
+              v-if="isMobile || isTablet"
+              class="absolute -right-4 bottom-16 sm:(right-16) opacity-50"
+              type="dots"
+            />
+            <AsGraphic v-if="isDesktop" class="absolute right-4 lg:right-36 -bottom-[15%] opacity-20" type="dots-2x" />
           </client-only>
         </div>
       </header>
-      <div border-b md:border-none border-gray-300 prose mx-auto text-primary-500 dark:text-gray-100 pb-8 z-20>
-        <p v-if="isPublished" class="flex items-center" data-cy="published-date">
-          Published on {{ storyPublishedDate }}
-          <client-only><AsIcon name="calendar" class="mx-4" /> </client-only>
-          <span
-            v-if="story?.content.category"
-            class="bg-secondary-500 text-white rounded-lg text-sm font-bold py-0.5 px-1 ml-4"
-          >
-            {{ story?.content.category.name }}
-          </span>
-        </p>
-        <p v-else>
-          This story is in <span class="bg-secondary-500 text-white rounded-lg text-sm py-0.5 px-1">Draft</span> state
-          and {{ storyPublishedDate }} will be published.
-        </p>
-        <br />
-
-        <TagList v-if="isDesktop" :tags="story?.tag_list" />
-      </div>
-      <div mb-24 mx-auto w-full prose dark:prose-invert text-primary-500 dark:text-gray-100>
-        <TheLazy>
-          <RichTextRenderer :document="story?.content.content" />
-          <LazyTagList v-if="!isDesktop" :tags="story?.tag_list" />
-        </TheLazy>
-      </div>
     </div>
   </main>
 </template>

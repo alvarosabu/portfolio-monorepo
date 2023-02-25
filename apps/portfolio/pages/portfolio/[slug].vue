@@ -32,7 +32,7 @@ useHead({
     {
       hid: 'keywords',
       property: 'keywords',
-      keywords: story?.tag_list.join(', '),
+      keywords: story?.tag_list?.join(', '),
     },
     // og
     {
@@ -149,6 +149,7 @@ useHead({
             <!--        Hasura GraphQL Baas for the busy developer. -->
             {{ story?.content.title }}
           </h1>
+
           <client-only>
             <!-- this component will only be rendered on client-side -->
             <AsGraphic v-if="isMobile || isTablet" class="absolute -right-4 bottom-16 sm:(right-16)" type="dots" />
