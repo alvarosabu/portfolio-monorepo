@@ -11,9 +11,9 @@ const props = defineProps({
 const embed = ref(null)
 const isSnippetLoaded = ref(false)
 
-watch(
+/* watch(
   () => embed.value,
-  () => {
+  value => {
     const options: EmbedOptions = { openFile: '', forceEmbedLayout: true, width: 500, height: 500, view: 'preview' }
     if (props.blok.file) {
       options.openFile = props.blok.file
@@ -21,9 +21,25 @@ watch(
     if (props.blok.preview) {
       options.view = 'preview'
     }
-    sdk.embedProjectId(embed.value, props.blok.projectId, options)
+    if (value) {
+      sdk.embedProjectId(value, props.blok.projectId, options)
+    }
   },
-)
+) */
+
+watchEffect(() => {
+  if (embed.value) {
+    const options: EmbedOptions = { openFile: '', forceEmbedLayout: true, width: 500, height: 500, view: 'preview' }
+    if (props.blok.file) {
+      options.openFile = props.blok.file
+    }
+    if (props.blok.preview) {
+      options.view = 'preview'
+    }
+
+    sdk.embedProjectId(embed.value, props.blok.projectId)
+  }
+})
 </script>
 <template>
   <LazyHydrate :when-visible="{ rootMargin: '50px' }">
