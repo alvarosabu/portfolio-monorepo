@@ -1,7 +1,7 @@
 {
   "name": "@alvarosabu/portfolio",
   "private": true,
-  "version": "2.14.0",
+  "version": "2.15.0",
   "scripts": {
     "dev": "nuxt dev --port=2590",
     "dev:https": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --https --port=2591 --ssl-cert localhost.pem --ssl-key localhost-key.pem",

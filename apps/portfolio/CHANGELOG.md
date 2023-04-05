@@ -1,5 +1,11 @@
 # @alvarosabu/portfolio
 
+## 2.15.0
+
+### Minor Changes
+
+- 988b5bdf: Awiwiw
+
 ## 2.14.0
 
 ### Minor Changes
