@@ -27,11 +27,17 @@ useHead({
   ],
 })
 
-const { getStory } = useStories()
+const config = useRuntimeConfig()
 
-const story = await getStory('blog')
+const story = await useAsyncStoryblok(
+  'blog',
+  { version: config.public.storyblokVersion, resolve_relations: 'overview.featured_article' },
+  { resolveRelations: 'overview.featured_article' },
+)
 
-const { fetchArticles, featuredArticle, articleList } = useBlog()
+const featuredArticle = computed(() => story?.value.content?.featured_article)
+
+const { fetchArticles, articleList } = useBlog()
 await fetchArticles()
 </script>
 <template>
