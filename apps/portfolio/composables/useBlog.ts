@@ -1,5 +1,6 @@
 import { useLogger } from '@alvarosabu/use'
 import { Story, StoryAsset, StoryContent, StoryStatus, StoryVersion } from './useStories'
+
 export interface ArticleStoryContent extends StoryContent {
   title: string
   media: StoryAsset
@@ -68,7 +69,6 @@ export function useBlog() {
     }
   }
 
-  const featuredArticle = computed(() => state.articles.filter(article => article.content.featured)[0])
   const articleList = computed(() =>
     state.articles.filter(article => !article.content.featured /*  && article.status === StoryStatus.PUBLISHED */),
   )
@@ -77,7 +77,6 @@ export function useBlog() {
     ...toRefs(state),
     fetchArticles,
     fetchArticleBySlug,
-    featuredArticle,
     articleList,
   }
 }

@@ -118,6 +118,7 @@ useHead({
           format="webp"
           sizes="sm:100vw md:75vw lg:600px xl:1400px"
         />
+
         <div
           v-else
           flex

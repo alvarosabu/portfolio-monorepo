@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -28,14 +28,14 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: setup pnpm
-        uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2
         with:
-          version: 6.x
+          version: 7
 
       - name: setup node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: 'pnpm'
 
       - name: Set up NPM credentials
@@ -65,4 +65,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # npm publish token required for publishing. Set this in secrets
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-

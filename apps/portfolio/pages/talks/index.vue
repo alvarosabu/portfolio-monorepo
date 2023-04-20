@@ -34,14 +34,14 @@ const { fetchTalks, talksList } = useTalks()
 await fetchTalks()
 </script>
 <template>
-  <main v-if="story" class="page" role="main" pt-4 md:pt-12 container mx-auto w-full>
+  <main v-if="story" class="page" role="main" pt-4 md:pt-12 as-container w-full>
     <AsGraphic type="zigzag" class="absolute top-48 right-0 transform scale-75 dark:text-gray-50" />
     <header prose dark:prose-invert text-primary-500 dark:text-gray-100 important-container>
       <h1 important="mt-12 mb-12 md:mb-36">
         {{ story.content.title }}
       </h1>
     </header>
-    <div grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-24 py-32 data-cy="project-list">
+    <div grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-24 py-32 data-cy="project-list">
       <AsCard
         v-for="talk of talksList"
         :key="talk.content.title"

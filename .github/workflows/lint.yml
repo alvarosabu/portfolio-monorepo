@@ -1,15 +1,14 @@
-name: CI
+name: Run lint
 on: [push]
 
 env:
   PNPM_CACHE_FOLDER: .pnpm-store
   HUSKY: 0 # Bypass husky commit hook for CI
-  STORYBLOK_API_TOKEN: ${{secrets.STORYBLOK_API_TOKEN}}
-  YOUTUBE_API_KEY: ${{secrets.YOUTUBE_API_KEY}}
-  STORYBLOK_VERSION: published
+
 jobs:
-  lighthouseci:
-    runs-on: ubuntu-latest
+  lint:
+    name: Lint all projects
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,23 +22,20 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2.0.1
         with:
-          version: 7
+          version: 6.x
 
       - name: setup node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: 16.x
           cache: 'pnpm'
+
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
       - run: pnpm install --no-frozen-lockfile --shamefully-hoist
 
-      - run: pnpm install -g @lhci/cli@0.10.x
-      - run: pnpm run build:ci
-      - name: run Lighthouse CI
-        run: lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Run Lint
+        run: pnpm run lint
