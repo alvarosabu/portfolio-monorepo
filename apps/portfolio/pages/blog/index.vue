@@ -31,17 +31,17 @@ const config = useRuntimeConfig()
 
 const story = await useAsyncStoryblok(
   'blog',
-  { version: config.public.storyblokVersion, resolve_relations: 'overview.featured_article' },
-  { resolveRelations: 'overview.featured_article' },
+  { version: config.public.storyblokVersion, resolve_relations: 'overview.featured_story' },
+  { resolveRelations: 'overview.featured_story' },
 )
 
-const featuredArticle = computed(() => story?.value.content?.featured_article)
+const featuredArticle = computed(() => story?.value.content?.featured_story)
 
 const { fetchArticles, articleList } = useBlog()
 await fetchArticles()
 </script>
 <template>
-  <main role="main" pt-4 md:pt-12 container mx-auto w-full>
+  <main role="main" pt-4 md:pt-12 as-container w-full>
     <template v-if="story && articleList.length > 0">
       <header prose dark:prose-invert text-primary-500 dark:text-gray-100 important-container>
         <h1 important="mt-12 mb-12 md:mb-36">{{ story.content.title }}</h1>

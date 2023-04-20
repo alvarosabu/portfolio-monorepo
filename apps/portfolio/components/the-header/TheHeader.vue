@@ -36,7 +36,7 @@ watch(route, () => {
   </transition>
   <div ref="navMenu">
     <header w-full fixed top-0 z-60 bg="white dark:primary-500" text="dark:gray-200" role="banner">
-      <div md:container mx-auto p="x-4 md:x-0 md:y-2" flex justify-between items-center>
+      <div as-container w-full p="x-4 md:x-0 md:y-2" flex justify-between items-center>
         <TheLogo class="animate-tada animate-count-1" />
         <div flex items-center>
           <AsDarkModeSwitch mr-8 data-cy="dark-switch" />

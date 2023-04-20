@@ -28,16 +28,23 @@ useHead({
     },
   ],
 })
-const { getStory } = useStories()
 
-const story = await getStory('portfolio')
+const config = useRuntimeConfig()
 
-const { fetchProjects, featuredProject, projectList } = usePortfolio()
+const story = await useAsyncStoryblok(
+  'portfolio',
+  { version: config.public.storyblokVersion, resolve_relations: 'overview.featured_story' },
+  { resolveRelations: 'overview.featured_story' },
+)
+
+const featuredProject = computed(() => story?.value.content?.featured_story)
+
+const { fetchProjects, projectList } = usePortfolio()
 
 await fetchProjects()
 </script>
 <template>
-  <main role="main" pt-4 md:pt-12 container mx-auto w-full>
+  <main role="main" pt-4 md:pt-12 as-container w-full>
     <template v-if="story && projectList.length > 0">
       <header prose dark:prose-invert text-primary-500 dark:text-gray-100 important-container>
         <h1 important="mt-12 mb-12 md:mb-36">{{ story.content.title }}</h1>

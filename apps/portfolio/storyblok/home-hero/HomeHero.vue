@@ -58,8 +58,7 @@ function onClose(value: boolean) {
     v-editable="blok"
     data-cy="home-hero"
     class="home-hero"
-    container
-    mx-auto
+    as-container
     w-full
     h-screen
     flex

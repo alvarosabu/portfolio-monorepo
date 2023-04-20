@@ -9,5 +9,11 @@ export const HeadlineShortcuts = [
   },
 ]
 
-export const ASShortcuts: UserShortcuts<any> = [...btnShortcuts, ...HeadlineShortcuts]
+export const LayoutShortcuts = [
+  {
+    'as-container': 'container mx-auto px-4 lg:px-0',
+  },
+]
+
+export const ASShortcuts: UserShortcuts<any> = [...btnShortcuts, ...HeadlineShortcuts, ...LayoutShortcuts]
 export default ASShortcuts

@@ -51,8 +51,7 @@ function onSlideChange(swiper) {
       flex-col
       justify-center
       snap-start
-      px-4
-      md:px-0
+      as-container
       class="youtube-videos"
       :class="!isMobile ? 'container mx-auto' : null"
     >
