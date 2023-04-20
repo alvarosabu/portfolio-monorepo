@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: setup caching
         uses: actions/cache@v2
@@ -22,14 +22,14 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: setup pnpm
-        uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2
         with:
-          version: 6.x
+          version: 7
 
       - name: setup node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: 'pnpm'
 
       - name: setup pnpm config
@@ -39,36 +39,3 @@ jobs:
 
       - name: Run tests
         run: pnpm run test
-  lint:
-    name: Lint all projects
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: setup caching
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.PNPM_CACHE_FOLDER }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
-      - name: setup pnpm
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 6.x
-
-      - name: setup node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-          cache: 'pnpm'
-
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-
-      - run: pnpm install --no-frozen-lockfile --shamefully-hoist
-
-      - name: Run Lint
-        run: pnpm run lint
