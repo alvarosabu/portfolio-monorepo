@@ -9,8 +9,8 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">16.0.0",
-    "pnpm": ">=6"
+    "node": ">18.0.0",
+    "pnpm": ">=7"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
