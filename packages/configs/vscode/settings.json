@@ -1,0 +1,211 @@
+{
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
+  "editor.fontLigatures": true,
+  "workbench.editor.untitled.hint": "hidden",
+  "git.terminalAuthentication": false,
+  "git.autofetch": true,
+  "workbench.settings.useSplitJSON": true,
+
+  "editor.inlineSuggest.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.bracketPairColorization.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": true
+  },
+  "vscode-edge-devtools.mirrorEdits": true,
+  "window.restoreWindows": "none",
+  "VSCodeCounter.languages": {
+    "jsonc": {
+      "aliases": [],
+      "filenames": [
+        "settings.json",
+        "launch.json",
+        "tasks.json",
+        "keybindings.json",
+        "extensions.json",
+        "argv.json",
+        "profiles.json",
+        ".devcontainer.json",
+        ".eslintrc.json"
+      ],
+      "extensions": [
+        ".code-workspace",
+        "language-configuration.json",
+        "icon-theme.json",
+        "color-theme.json",
+        ".code-snippets"
+      ],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "ignore": {
+      "aliases": ["Ignore", "ignore"],
+      "filenames": [".vscodeignore", ".prettierignore"],
+      "extensions": [".gitignore_global", ".gitignore", ".npmignore", ".eslintignore"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "git-commit": {
+      "aliases": ["Git Commit Message", "git-commit"],
+      "filenames": ["COMMIT_EDITMSG", "MERGE_MSG"],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "git-rebase": {
+      "aliases": ["Git Rebase Message", "git-rebase"],
+      "filenames": ["git-rebase-todo"],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "jupyter": {
+      "aliases": ["Jupyter (JSON)"],
+      "filenames": [],
+      "extensions": [".ipynb"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "markdown-math": {
+      "aliases": [],
+      "filenames": [],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "properties": {
+      "aliases": [],
+      "filenames": [],
+      "extensions": [".npmrc"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "search-result": {
+      "aliases": ["Search Result"],
+      "filenames": [],
+      "extensions": [".code-search"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "scriban": {
+      "aliases": ["Sitecore Scriban Html", "scriban"],
+      "filenames": [],
+      "extensions": [".scriban"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "json": {
+      "aliases": [],
+      "filenames": [".prettierrc"],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "graphql": {
+      "aliases": [],
+      "filenames": [],
+      "extensions": [".graphql"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "vue": {
+      "aliases": ["Vue", "vue"],
+      "filenames": [],
+      "extensions": [".vue"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "handlebars": {
+      "aliases": [],
+      "filenames": [],
+      "extensions": [".hbs", ".gjs", ".gts", ".handlebars"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "aspnetcorerazor": {
+      "aliases": ["ASP.NET Razor"],
+      "filenames": [],
+      "extensions": [".cshtml", ".razor"],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "vue-html": {
+      "aliases": ["Vue-html"],
+      "filenames": [],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "vue-postcss": {
+      "aliases": ["Vue-PostCSS", "Vue-POSTCSS", "vue-postcss"],
+      "filenames": [],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    },
+    "vue-sugarss": {
+      "aliases": ["Vue-SugarSS", "Vue-SUGARSS", "vue-sugarss"],
+      "filenames": [],
+      "extensions": [],
+      "lineComments": [],
+      "blockComments": [],
+      "blockStrings": []
+    }
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "json.schemas": [],
+  "workbench.settings.editor": "json",
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  /* "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }, */
+  "scss.lint.unknownAtRules": "ignore",
+  "css.lint.unknownAtRules": "ignore",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.layoutControl.enabled": false,
+  "githubPullRequests.pullBranch": "never",
+  "ionic.previewInEditor": true,
+  "workbench.editor.enablePreview": false,
+  "editor.minimap.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.petColor": "gray",
+  "window.zoomLevel": 1
+}
