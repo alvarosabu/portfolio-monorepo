@@ -108,7 +108,7 @@ useHead({
           z-10
           mr-12
           important-mb-8
-          class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-4/5"
+          class="w-full sm:w-4/5 md:w-2/3 lg:w-2/3 xl:w-1/2"
           shadow-lg
           :src="story.content.media.filename"
           :alt="story.content.media.alt"
